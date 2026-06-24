@@ -11,7 +11,8 @@ interface SectionProps {
   title?: ReactNode;
   /** Optional supporting paragraph under the title. */
   intro?: ReactNode;
-  /** Alternating page band — "white" (#fff) or "gray" (#f5f5f7). */
+  /** Retained for API compatibility. Sections are transparent so the global
+   *  blur-blob backdrop shows through consistently on the dark theme. */
   band?: "white" | "gray";
   className?: string;
   children?: ReactNode;
@@ -29,23 +30,13 @@ export function Section({
   eyebrow,
   title,
   intro,
-  band = "white",
   className,
   children,
 }: SectionProps) {
   const hasHeader = eyebrow || title || intro;
 
   return (
-    <section
-      id={id}
-      className={cn(
-        "relative px-6",
-        band === "gray"
-          ? "bg-[var(--color-paper-2)]"
-          : "bg-[var(--color-paper)]",
-        className
-      )}
-    >
+    <section id={id} className={cn("relative px-6", className)}>
       <div className="mx-auto max-w-6xl py-20 sm:py-28">
         {hasHeader && (
           <header className="max-w-3xl">

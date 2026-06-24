@@ -37,7 +37,7 @@ export function HowItWorksPinned() {
   const total = howItWorks.steps.length;
 
   return (
-    <section id="how" className="relative bg-[var(--color-paper-2)]">
+    <section id="how" className="relative">
       <div ref={ref} style={{ height: `${total * 100}vh` }}>
         <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden px-6">
           <div className="mx-auto w-full max-w-6xl">

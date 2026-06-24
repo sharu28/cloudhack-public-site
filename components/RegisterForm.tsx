@@ -39,7 +39,7 @@ function validate(values: typeof initial): Errors {
 }
 
 const fieldBase =
-  "w-full rounded-xl border bg-[var(--color-paper)] px-4 py-3 text-[var(--color-text)] placeholder-[var(--color-text-2)]/60 transition focus:outline-none focus:ring-2 focus:ring-[#0071e3]/50";
+  "w-full rounded-xl border bg-[var(--color-paper)] px-4 py-3 text-[var(--color-text)] placeholder-[var(--color-text-2)]/60 transition focus:outline-none focus:ring-2 focus:ring-cyan/50";
 
 export function RegisterForm() {
   const { signup } = site;
@@ -120,7 +120,7 @@ export function RegisterForm() {
         </h2>
         <p className="mx-auto mt-3 max-w-md text-[var(--color-text-2)]">
           We&apos;ve recorded your registration and will email{" "}
-          <span className="font-medium text-[#0071e3]">{values.email}</span> with
+          <span className="font-medium text-cyan">{values.email}</span> with
           next steps and confirmation. Keep an eye on your inbox.
         </p>
         <button
@@ -129,7 +129,7 @@ export function RegisterForm() {
             setValues(initial);
             setStatus("idle");
           }}
-          className="mt-8 rounded-full border border-[var(--color-line)] px-6 py-2.5 text-sm text-[var(--color-text)] transition hover:bg-black/[0.04]"
+          className="mt-8 rounded-full border border-[var(--color-line)] px-6 py-2.5 text-sm text-[var(--color-text)] transition hover:bg-white/5"
         >
           Register another team
         </button>
@@ -296,7 +296,7 @@ export function RegisterForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-[var(--color-text)] px-8 py-4 text-sm font-semibold text-white transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60"
+        className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-white px-8 py-4 text-sm font-semibold text-ink transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60"
       >
         <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-teal via-cyan to-violet opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100" />
         <span className="relative">
@@ -330,7 +330,7 @@ function Field({
       >
         <span>
           {label}
-          {required && <span className="ml-1 text-[#0071e3]">*</span>}
+          {required && <span className="ml-1 text-cyan">*</span>}
         </span>
         {hint && (
           <span className="text-xs font-normal text-[var(--color-text-2)]">

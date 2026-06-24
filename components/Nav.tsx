@@ -5,13 +5,12 @@ import Link from "next/link";
 import { site } from "@/content/site";
 
 /**
- * Top navigation.
+ * Top navigation (dark theme).
  *
- * `overHero` is set by pages that open with the dark gradient hero (the home
- * page): at the very top the bar is transparent with white text sitting over the
- * dark hero, then once scrolled it becomes a light, blurred bar with dark text.
- * Pages without a dark hero (/contact, /signup) omit `overHero`, so the light bar
- * shows from the top.
+ * The whole site is dark, so text stays light throughout. `overHero` lets pages
+ * that open with a full-bleed hero (the home page) start fully transparent; once
+ * scrolled — or on pages without a hero (/contact, /signup) — the bar becomes a
+ * translucent dark, blurred strip with a hairline border.
  */
 export function Nav({ overHero = false }: { overHero?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
@@ -23,23 +22,20 @@ export function Nav({ overHero = false }: { overHero?: boolean }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // White-on-transparent only while we're still over the dark hero.
-  const onDark = overHero && !scrolled;
+  const transparent = overHero && !scrolled;
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        onDark
+        transparent
           ? "border-b border-transparent bg-transparent"
-          : "border-b border-[var(--color-line)] bg-[var(--color-paper)]/80 backdrop-blur-xl"
+          : "border-b border-white/10 bg-ink/70 backdrop-blur-xl"
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Link
           href="/"
-          className={`text-sm font-semibold tracking-[0.2em] transition ${
-            onDark ? "text-white" : "text-[var(--color-text)]"
-          }`}
+          className="text-sm font-semibold tracking-[0.2em] text-white transition hover:text-white/90"
         >
           {site.brand.wordmark}
           <span className="bg-gradient-to-r from-teal to-violet bg-clip-text text-transparent">
@@ -52,33 +48,21 @@ export function Nav({ overHero = false }: { overHero?: boolean }) {
           {/* Contact — plain text link, hidden on the narrowest screens. */}
           <Link
             href="/contact"
-            className={`hidden text-sm font-medium transition sm:inline-block ${
-              onDark
-                ? "text-white/80 hover:text-white"
-                : "text-[var(--color-text-2)] hover:text-[var(--color-text)]"
-            }`}
+            className="hidden text-sm font-medium text-white/80 transition hover:text-cyan sm:inline-block"
           >
             Contact
           </Link>
           {/* Secondary — ghost outline. */}
           <Link
             href={site.hero.partnerHref}
-            className={`hidden rounded-full border px-4 py-2 text-sm font-medium transition sm:inline-block ${
-              onDark
-                ? "border-white/25 text-white hover:bg-white/10"
-                : "border-[var(--color-line)] text-[var(--color-text)] hover:bg-black/[0.04]"
-            }`}
+            className="hidden rounded-full border border-white/25 px-4 py-2 text-sm font-medium text-white transition hover:border-cyan/60 hover:bg-white/5 sm:inline-block"
           >
             {site.hero.partnerLabel}
           </Link>
           {/* Primary */}
           <Link
             href={site.hero.ctaHref}
-            className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
-              onDark
-                ? "bg-white text-ink hover:bg-white/90"
-                : "bg-[var(--color-text)] text-white hover:bg-black"
-            }`}
+            className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-ink transition hover:bg-white/90"
           >
             {site.hero.ctaLabel}
           </Link>

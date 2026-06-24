@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AnimatedBlurBlobBackground } from "@/components/ui/animated-blur-blob-background";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#050505",
   width: "device-width",
   initialScale: 1,
 };
@@ -51,7 +52,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {/* Consistent gradient backdrop behind every section, on every page. */}
+        <div aria-hidden="true" className="fixed inset-0 -z-10 overflow-hidden">
+          <AnimatedBlurBlobBackground />
+          {/* Scrim + vignette so the aurora never competes with text */}
+          <div className="absolute inset-0 bg-ink/55" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,var(--color-ink)_95%)]" />
+          <div className="noise absolute inset-0 opacity-[0.035]" />
+        </div>
+        {children}
+      </body>
     </html>
   );
 }

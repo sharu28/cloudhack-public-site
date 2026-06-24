@@ -66,7 +66,7 @@ export function Sponsors() {
         <div className="mt-12">
           <Link
             href={sponsors.ctaHref}
-            className="inline-flex items-center gap-2 rounded-full bg-[var(--color-text)] px-7 py-3 text-sm font-medium text-white transition hover:bg-black"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-medium text-ink transition hover:bg-white/90"
           >
             {sponsors.ctaLabel}
             <span aria-hidden="true">→</span>

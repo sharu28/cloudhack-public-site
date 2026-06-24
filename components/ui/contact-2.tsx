@@ -112,7 +112,7 @@ export const Contact2 = ({
                   </span>
                   <a
                     href={`tel:${phone.replace(/\s/g, "")}`}
-                    className="text-[var(--color-text)] transition hover:text-[#0071e3]"
+                    className="text-[var(--color-text)] transition hover:text-cyan"
                   >
                     {phone}
                   </a>
@@ -123,7 +123,7 @@ export const Contact2 = ({
                   </span>
                   <a
                     href={`mailto:${email}`}
-                    className="text-[var(--color-text)] transition hover:text-[#0071e3]"
+                    className="text-[var(--color-text)] transition hover:text-cyan"
                   >
                     {email}
                   </a>
@@ -136,7 +136,7 @@ export const Contact2 = ({
                     href={web.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--color-text)] transition hover:text-[#0071e3]"
+                    className="text-[var(--color-text)] transition hover:text-cyan"
                   >
                     {web.label}
                   </a>
@@ -172,7 +172,7 @@ export const Contact2 = ({
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
-                className="mt-2 rounded-full border border-[var(--color-line)] px-6 py-2.5 text-sm text-[var(--color-text)] transition hover:bg-black/[0.04]"
+                className="mt-2 rounded-full border border-[var(--color-line)] px-6 py-2.5 text-sm text-[var(--color-text)] transition hover:bg-white/5"
               >
                 Send another message
               </button>
@@ -269,13 +269,13 @@ export const Contact2 = ({
               <div className="mt-2 flex flex-col gap-1 text-[var(--color-text-2)]">
                 <a
                   href={`mailto:${sponsor.email}`}
-                  className="transition hover:text-[#0071e3]"
+                  className="transition hover:text-cyan"
                 >
                   {sponsor.email}
                 </a>
                 <a
                   href={`tel:${sponsor.phone.replace(/\s/g, "")}`}
-                  className="transition hover:text-[#0071e3]"
+                  className="transition hover:text-cyan"
                 >
                   {sponsor.phone}
                 </a>

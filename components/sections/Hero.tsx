@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { site } from "@/content/site";
-import { AnimatedBlurBlobBackground } from "@/components/ui/animated-blur-blob-background";
 import { CircuitCorner, PixelArrow, ConvoyLogo, EtherLabsLogo } from "@/components/graphics";
 import { Reveal } from "@/components/Reveal";
 import { Parallax } from "@/components/Parallax";
@@ -9,23 +8,9 @@ export function Hero() {
   const { brand, hero } = site;
 
   return (
-    <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-ink px-5 text-center sm:px-8">
-      {/* Signature background: animated blur-blob aurora (scoped to the hero) */}
-      <AnimatedBlurBlobBackground />
-
-      {/* Vignette so the blobs melt into the near-black hero */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,var(--color-ink)_85%)]"
-      />
-      {/* Faint film grain for texture */}
-      <div className="noise pointer-events-none absolute inset-0 opacity-[0.04]" />
-
-      {/* Smooth dark → light hand-off into the light sections below */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-b from-transparent to-[var(--color-paper-2)]"
-      />
+    <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 text-center sm:px-8">
+      {/* The gradient aurora behind the hero is the global backdrop mounted in
+          app/layout.tsx, so it flows continuously into the sections below. */}
 
       {/* Accent: hexagonal circuit traces, top-right corner */}
       <CircuitCorner className="absolute right-0 top-0 z-10 hidden text-cyan/40 sm:block" />

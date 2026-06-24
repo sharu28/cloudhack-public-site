@@ -70,8 +70,8 @@ export function OrbitAccent({ className }: { className?: string }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="100" cy="100" r="88" stroke="#1d1d1f" strokeOpacity="0.08" />
-      <circle cx="100" cy="100" r="62" stroke="#1d1d1f" strokeOpacity="0.12" />
+      <circle cx="100" cy="100" r="88" stroke="white" strokeOpacity="0.06" />
+      <circle cx="100" cy="100" r="62" stroke="white" strokeOpacity="0.1" />
       <circle cx="100" cy="100" r="36" stroke="url(#bento-orbit)" strokeWidth="1.5" />
       <circle cx="100" cy="100" r="10" fill="url(#bento-orbit)" />
       <circle cx="100" cy="12" r="4" fill="#22d3ee" />
@@ -89,7 +89,7 @@ export function OrbitAccent({ className }: { className?: string }) {
 export function GlowAccent({ className }: { className?: string }) {
   return (
     <div aria-hidden="true" className={cn("pointer-events-none absolute", className)}>
-      <div className="blob h-full w-full opacity-25" />
+      <div className="blob h-full w-full opacity-40" />
     </div>
   );
 }

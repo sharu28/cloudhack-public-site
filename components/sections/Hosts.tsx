@@ -52,7 +52,7 @@ export function Hosts() {
                         {host.blurb}
                       </p>
                     </div>
-                    <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-[#0071e3] transition group-hover:gap-3">
+                    <span className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-cyan transition group-hover:gap-3">
                       Visit site
                       <span aria-hidden="true">→</span>
                     </span>

@@ -24,7 +24,7 @@ export default function SignupPage() {
         <div className="relative mx-auto max-w-xl">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-[var(--color-text-2)] transition hover:text-[#0071e3]"
+            className="inline-flex items-center gap-2 text-sm text-[var(--color-text-2)] transition hover:text-cyan"
           >
             <span>←</span> Back to home
           </Link>
@@ -59,13 +59,13 @@ export default function SignupPage() {
               <div className="mt-2 flex flex-col gap-1 text-[var(--color-text-2)]">
                 <a
                   href={`mailto:${signup.sponsorEnquiries.email}`}
-                  className="transition hover:text-[#0071e3]"
+                  className="transition hover:text-cyan"
                 >
                   {signup.sponsorEnquiries.email}
                 </a>
                 <a
                   href={`tel:${signup.sponsorEnquiries.phone.replace(/\s/g, "")}`}
-                  className="transition hover:text-[#0071e3]"
+                  className="transition hover:text-cyan"
                 >
                   {signup.sponsorEnquiries.phone}
                 </a>
