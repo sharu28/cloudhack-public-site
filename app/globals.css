@@ -24,7 +24,7 @@
      The whole site is dark; the animated blur-blob field shows through behind
      every section. "paper" is a translucent glass surface for cards/forms;
      "paper-2" is a slightly solid secondary surface (footer). */
-  --color-paper: rgba(255, 255, 255, 0.04); /* glass card / form surface */
+  --color-paper: rgba(10, 10, 14, 0.72); /* dark glass card / form surface */
   --color-paper-2: #0a0a0a; /* footer / secondary surface */
   --color-text: #f5f5f7; /* primary light text */
   --color-text-2: rgba(245, 245, 247, 0.62); /* secondary light text */
@@ -268,71 +268,205 @@ h3 {
 }
 
 /* ───────────────────────────────────────────────────────────────────────────
-   ANIMATED BLUR-BLOB BACKGROUND
-   Large, vivid, heavily-blurred blobs that drift on staggered loops to form a
-   living aurora behind the dark hero. Consumed by
+   ANIMATED BLUR-BLOB BACKGROUND  (dynamic radial-orb field)
+   Five soft, viewport-relative radial-gradient orbs that slowly drift + breathe
+   on their own odd-numbered periods (with negative delays so they start out of
+   phase and the composite never visibly repeats). The container blends with
+   mix-blend:screen so the orbs glow additively against the near-black page.
+   Colours map to our teal → cyan → blue → violet → magenta palette. Consumed by
    components/ui/animated-blur-blob-background.tsx. Animations pause under the
    global prefers-reduced-motion rule above.
    ─────────────────────────────────────────────────────────────────────────── */
 .blur-blob {
   position: absolute;
-  display: block;
-  width: 32rem;
-  height: 32rem;
   border-radius: 9999px;
-  filter: blur(70px);
-  opacity: 0.55;
   will-change: transform;
-  animation: blur-blob-drift 22s ease-in-out infinite;
 }
+/* A — violet, upper-left */
 .blur-blob-1 {
-  background: var(--color-teal);
-  top: -8rem;
-  left: -6rem;
-  animation-delay: 0s;
+  top: -5vh;
+  left: -6vw;
+  width: 52vw;
+  height: 58vh;
+  background: radial-gradient(
+    circle at 60% 40%,
+    rgba(139, 92, 246, 0.85) 0%,
+    rgba(124, 58, 237, 0.5) 35%,
+    transparent 65%
+  );
+  filter: blur(55px);
+  animation: orb-1 22s ease-in-out infinite;
 }
+/* B — magenta, right */
 .blur-blob-2 {
-  background: var(--color-cyan);
-  top: 8%;
-  right: -8rem;
-  width: 26rem;
-  height: 26rem;
-  animation-delay: -4s;
+  top: 0;
+  right: -8vw;
+  width: 48vw;
+  height: 60vh;
+  background: radial-gradient(
+    circle at 40% 50%,
+    rgba(232, 121, 249, 0.78) 0%,
+    rgba(217, 70, 239, 0.42) 35%,
+    transparent 65%
+  );
+  filter: blur(60px);
+  animation: orb-2 30s ease-in-out infinite;
+  animation-delay: -9s;
 }
+/* C — cyan, mid */
 .blur-blob-3 {
-  background: var(--color-violet);
-  bottom: -10rem;
-  left: 22%;
-  animation-delay: -8s;
+  top: 26vh;
+  left: 33vw;
+  width: 34vw;
+  height: 38vh;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(34, 211, 238, 0.8) 0%,
+    rgba(6, 182, 212, 0.42) 35%,
+    transparent 65%
+  );
+  filter: blur(45px);
+  animation: orb-3 17s ease-in-out infinite;
+  animation-delay: -5s;
 }
+/* D — blue, lower-left */
 .blur-blob-4 {
-  background: var(--color-magenta);
-  top: 28%;
-  left: 34%;
-  width: 24rem;
-  height: 24rem;
-  animation-delay: -12s;
+  bottom: -12vh;
+  left: 16vw;
+  width: 62vw;
+  height: 52vh;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(59, 130, 246, 0.72) 0%,
+    rgba(37, 99, 235, 0.38) 35%,
+    transparent 65%
+  );
+  filter: blur(65px);
+  animation: orb-4 26s ease-in-out infinite;
+  animation-delay: -14s;
 }
+/* E — teal, small, lower-right */
 .blur-blob-5 {
-  background: var(--color-blue);
-  bottom: 4%;
-  right: 18%;
-  animation-delay: -16s;
+  bottom: 4vh;
+  right: 16vw;
+  width: 24vw;
+  height: 28vh;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(45, 212, 191, 0.8) 0%,
+    rgba(20, 184, 166, 0.4) 35%,
+    transparent 65%
+  );
+  filter: blur(40px);
+  animation: orb-1 15s ease-in-out infinite;
+  animation-delay: -7s;
 }
 
-@keyframes blur-blob-drift {
+@keyframes orb-1 {
   0%,
   100% {
     transform: translate(0, 0) scale(1);
   }
   25% {
-    transform: translate(6%, -8%) scale(1.12);
+    transform: translate(8vw, -7vh) scale(1.06);
   }
   50% {
-    transform: translate(-8%, 6%) scale(0.92);
+    transform: translate(3vw, 9vh) scale(0.94);
   }
   75% {
-    transform: translate(8%, 8%) scale(1.06);
+    transform: translate(-7vw, 3vh) scale(1.03);
+  }
+}
+@keyframes orb-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  30% {
+    transform: translate(-9vw, 6vh) scale(1.08);
+  }
+  60% {
+    transform: translate(5vw, -8vh) scale(0.92);
+  }
+  85% {
+    transform: translate(4vw, 5vh) scale(1.04);
+  }
+}
+@keyframes orb-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  20% {
+    transform: translate(6vw, 8vh) scale(0.96);
+  }
+  55% {
+    transform: translate(-5vw, -6vh) scale(1.07);
+  }
+  80% {
+    transform: translate(3vw, 4vh) scale(0.98);
+  }
+}
+@keyframes orb-4 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  35% {
+    transform: translate(-4vw, -9vh) scale(1.05);
+  }
+  70% {
+    transform: translate(7vw, 4vh) scale(0.95);
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   CARD THEME
+   Glass surface + hairline border + a faint teal wash that fades in on hover,
+   plus a smooth transition shared by the JS mouse-tilt (see components/ui/card).
+   ─────────────────────────────────────────────────────────────────────────── */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease, border-color 0.3s ease,
+    background-color 0.3s ease;
+  will-change: transform;
+}
+.card-wash::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 120% at 50% 0%,
+    rgba(45, 212, 191, 0.07),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.card-wash:hover::before {
+  opacity: 1;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   MARQUEE TICKER
+   Two side-by-side copies translate -50% for a seamless loop. Duration is set
+   inline by components/ui/Marquee.tsx (constant px/sec). Paused on hover.
+   ─────────────────────────────────────────────────────────────────────────── */
+.marquee-track {
+  animation-name: marquee-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.group:hover > .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 

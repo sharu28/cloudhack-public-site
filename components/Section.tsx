@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/Reveal";
+import { SplitReveal, DividerLine } from "@/components/ui/SplitReveal";
 
 interface SectionProps {
   id?: string;
@@ -48,12 +49,11 @@ export function Section({
               </Reveal>
             )}
             {title && (
-              <Reveal delay={0.05}>
-                <h2 className="mt-3 text-3xl font-semibold text-[var(--color-text)] sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-                  {title}
-                </h2>
-              </Reveal>
+              <h2 className="mt-3 text-3xl font-semibold text-[var(--color-text)] sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+                <SplitReveal>{title}</SplitReveal>
+              </h2>
             )}
+            {(eyebrow || title) && <DividerLine className="mt-6" />}
             {intro && (
               <Reveal delay={0.1}>
                 <div className="mt-5 text-lg leading-relaxed text-[var(--color-text-2)]">

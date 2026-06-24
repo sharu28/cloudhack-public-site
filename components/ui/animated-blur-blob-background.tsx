@@ -20,7 +20,7 @@ export function AnimatedBlurBlobBackground({
     <div
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 overflow-hidden",
+        "pointer-events-none absolute inset-0 overflow-hidden [mix-blend-mode:screen]",
         className
       )}
     >

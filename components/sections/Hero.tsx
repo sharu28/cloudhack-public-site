@@ -3,6 +3,7 @@ import { site } from "@/content/site";
 import { CircuitCorner, PixelArrow, ConvoyLogo, EtherLabsLogo } from "@/components/graphics";
 import { Reveal } from "@/components/Reveal";
 import { Parallax } from "@/components/Parallax";
+import { SplitReveal } from "@/components/ui/SplitReveal";
 
 export function Hero() {
   const { brand, hero } = site;
@@ -38,14 +39,14 @@ export function Hero() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.24}>
-          <p className="mt-8 text-xl font-light tracking-wide text-white/90 sm:text-2xl">
+        <p className="mt-8 text-xl font-light tracking-wide text-white/90 sm:text-2xl">
+          <SplitReveal delay={0.24}>
             {hero.taglineLead}
             <span className="font-bold italic text-white">
               {hero.taglineEmphasis}
             </span>
-          </p>
-        </Reveal>
+          </SplitReveal>
+        </p>
 
         <Reveal delay={0.32}>
           <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">

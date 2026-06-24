@@ -56,9 +56,9 @@ export default function RootLayout({
         {/* Consistent gradient backdrop behind every section, on every page. */}
         <div aria-hidden="true" className="fixed inset-0 -z-10 overflow-hidden">
           <AnimatedBlurBlobBackground />
-          {/* Scrim + vignette so the aurora never competes with text */}
-          <div className="absolute inset-0 bg-ink/55" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,var(--color-ink)_95%)]" />
+          {/* Scrim + vignette so the glowing aurora never competes with text */}
+          <div className="absolute inset-0 bg-ink/45" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--color-ink)_92%)]" />
           <div className="noise absolute inset-0 opacity-[0.035]" />
         </div>
         {children}
