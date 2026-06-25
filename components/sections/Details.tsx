@@ -1,72 +1,73 @@
-import { Calendar, MapPin, Users } from "lucide-react";
+import {
+  Calendar,
+  MapPin,
+  Clock,
+  Users,
+  UsersRound,
+  GraduationCap,
+} from "lucide-react";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
-import { Card, CardContent } from "@/components/ui/card";
-import { RingIcon, OrbitAccent } from "@/components/ui/bento";
 
 const ICONS: Record<string, typeof Calendar> = {
   calendar: Calendar,
   pin: MapPin,
+  clock: Clock,
   users: Users,
+  team: UsersRound,
+  school: GraduationCap,
 };
 
-// When (compact) + Where (wide, with the orbit accent) share the top row;
-// Who spans the full width beneath them.
-const SPANS = [
-  "col-span-6 lg:col-span-2",
-  "col-span-6 lg:col-span-4",
-  "col-span-6",
-];
-
+/**
+ * Event logistics in a scannable grid of tiles, with a notice banner up top —
+ * the exact date and venue are still being locked in.
+ */
 export function Details() {
   const { details } = site;
 
   return (
-    <Section id="details" band="white" title={details.heading}>
-      <div className="grid grid-cols-6 gap-3 sm:gap-4">
+    <Section id="details" title={details.heading}>
+      {/* Date & venue still TBC — call it out rather than leaving fields blank. */}
+      <Reveal>
+        <div className="mb-6 flex items-center gap-3 rounded-lg border border-ignition-orange/30 bg-charcoal px-5 py-4">
+          <Calendar
+            className="size-5 shrink-0 text-ignition-orange"
+            strokeWidth={1.75}
+            aria-hidden="true"
+          />
+          <p className="text-sm font-medium text-stark-white">
+            {details.notice}
+          </p>
+        </div>
+      </Reveal>
+
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         {details.items.map((item, i) => {
           const Icon = ICONS[item.icon] ?? Users;
-          const isWhere = i === 1;
 
           return (
-            <Reveal
-              as="div"
-              key={item.label}
-              delay={i * 0.08}
-              className={SPANS[i] ?? "col-span-6 lg:col-span-2"}
-            >
-              <Card className="h-full">
-                {/* The "Where" card carries the orbit accent on its right edge */}
-                {isWhere && (
-                  <div
+            <Reveal as="div" key={item.label} delay={(i % 3) * 0.06}>
+              <div className="flex h-full items-start gap-4 rounded-lg border border-tarmac bg-charcoal p-6">
+                <div className="flex size-11 shrink-0 items-center justify-center rounded-lg border border-tarmac bg-graphite">
+                  <Icon
+                    className="size-5 text-stark-white"
+                    strokeWidth={1.75}
                     aria-hidden="true"
-                    className="pointer-events-none absolute -right-10 top-1/2 hidden h-48 w-48 -translate-y-1/2 opacity-80 lg:block"
-                  >
-                    <OrbitAccent />
-                  </div>
-                )}
-                <CardContent className="relative flex h-full flex-col p-7">
-                  <RingIcon>
-                    <Icon
-                      className="size-5"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </RingIcon>
-                  <div className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-text-2)]">
+                  />
+                </div>
+                <div>
+                  <div className="font-tomorrow text-xs font-medium uppercase tracking-[0.18em] text-dusk-gray">
                     {item.label}
                   </div>
-                  <div className="mt-1 text-xl font-semibold text-[var(--color-text)]">
+                  <div className="mt-1 text-lg font-medium text-stark-white">
                     {item.value}
                   </div>
                   {item.note && (
-                    <div className="mt-2 text-sm text-[var(--color-text-2)]">
-                      {item.note}
-                    </div>
+                    <div className="mt-1 text-sm text-ash">{item.note}</div>
                   )}
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </Reveal>
           );
         })}

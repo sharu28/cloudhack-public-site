@@ -107,36 +107,36 @@ export const Contact2 = ({
               </h3>
               <ul className="flex flex-col gap-4">
                 <li className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-teal via-cyan to-violet text-white shadow-sm">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-graphite border border-tarmac text-stark-white">
                     <Phone className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <a
                     href={`tel:${phone.replace(/\s/g, "")}`}
-                    className="text-[var(--color-text)] transition hover:text-cyan"
+                    className="text-[var(--color-text)] transition hover:text-ignition-orange"
                   >
                     {phone}
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-teal via-cyan to-violet text-white shadow-sm">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-graphite border border-tarmac text-stark-white">
                     <Mail className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <a
                     href={`mailto:${email}`}
-                    className="text-[var(--color-text)] transition hover:text-cyan"
+                    className="text-[var(--color-text)] transition hover:text-ignition-orange"
                   >
                     {email}
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-teal via-cyan to-violet text-white shadow-sm">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-graphite border border-tarmac text-stark-white">
                     <Globe className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <a
                     href={web.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--color-text)] transition hover:text-cyan"
+                    className="text-[var(--color-text)] transition hover:text-ignition-orange"
                   >
                     {web.label}
                   </a>
@@ -145,8 +145,8 @@ export const Contact2 = ({
             </div>
           </div>
           {status === "success" ? (
-            <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-4 rounded-2xl border border-[var(--color-line)] bg-[var(--color-paper)] p-10 text-center shadow-sm sm:p-12">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-cyan/30 to-violet/30">
+            <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-4 rounded-lg border border-[var(--color-line)] bg-[var(--color-paper)] p-10 text-center sm:p-12">
+              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-graphite border border-tarmac">
                 <svg
                   width="30"
                   height="30"
@@ -156,7 +156,7 @@ export const Contact2 = ({
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-cyan"
+                  className="text-ignition-orange"
                   aria-hidden="true"
                 >
                   <path d="M20 6 9 17l-5-5" />
@@ -172,7 +172,7 @@ export const Contact2 = ({
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
-                className="mt-2 rounded-full border border-[var(--color-line)] px-6 py-2.5 text-sm text-[var(--color-text)] transition hover:bg-white/5"
+                className="mt-2 rounded-lg border border-[var(--color-line)] px-6 py-2.5 text-sm text-[var(--color-text)] transition hover:bg-white/5"
               >
                 Send another message
               </button>
@@ -180,12 +180,12 @@ export const Contact2 = ({
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="flex w-full max-w-2xl flex-col gap-6 rounded-2xl border border-[var(--color-line)] bg-[var(--color-paper)] p-8 shadow-sm sm:p-10"
+              className="flex w-full max-w-2xl flex-col gap-6 rounded-lg border border-[var(--color-line)] bg-[var(--color-paper)] p-8 sm:p-10"
             >
               {status === "error" && formError && (
                 <div
                   role="alert"
-                  className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-700"
+                  className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-700"
                 >
                   {formError}
                 </div>
@@ -251,7 +251,7 @@ export const Contact2 = ({
         </div>
 
         {sponsor && (
-          <section className="mt-16 rounded-2xl border border-[var(--color-line)] bg-[var(--color-paper)] p-7 shadow-sm">
+          <section className="mt-16 rounded-lg border border-[var(--color-line)] bg-[var(--color-paper)] p-7">
             <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-text-2)]">
               {sponsor.heading}
             </h2>
@@ -269,13 +269,13 @@ export const Contact2 = ({
               <div className="mt-2 flex flex-col gap-1 text-[var(--color-text-2)]">
                 <a
                   href={`mailto:${sponsor.email}`}
-                  className="transition hover:text-cyan"
+                  className="transition hover:text-ignition-orange"
                 >
                   {sponsor.email}
                 </a>
                 <a
                   href={`tel:${sponsor.phone.replace(/\s/g, "")}`}
-                  className="transition hover:text-cyan"
+                  className="transition hover:text-ignition-orange"
                 >
                   {sponsor.phone}
                 </a>

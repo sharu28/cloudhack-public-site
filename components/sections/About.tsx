@@ -1,29 +1,32 @@
 import { site } from "@/content/site";
-import { Reveal } from "@/components/Reveal";
-import { Section } from "@/components/Section";
-import { Card, CardContent } from "@/components/ui/card";
+import { FeaturePanel } from "@/components/ui/FeaturePanel";
 
 export function About() {
   const { about } = site;
 
   return (
-    <Section id="about" band="white" title={about.heading} intro={about.body}>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        {about.stats.map((stat, i) => (
-          <Reveal as="div" key={stat.label} delay={i * 0.08}>
-            <Card className="h-full">
-              <CardContent className="p-8">
-                <div className="bg-gradient-to-br from-teal via-cyan to-violet bg-clip-text text-5xl font-semibold text-transparent sm:text-6xl">
-                  {stat.value}
-                </div>
-                <div className="mt-3 text-sm font-medium uppercase tracking-[0.15em] text-[var(--color-text-2)]">
-                  {stat.label}
-                </div>
-              </CardContent>
-            </Card>
-          </Reveal>
-        ))}
+    <FeaturePanel
+      id="about"
+      eyebrow="About"
+      title={about.heading}
+      body={about.body}
+    >
+      {/* A compact pull-quote that frames CloudHack as a movement. */}
+      <div className="relative mx-auto flex w-full max-w-sm flex-col gap-4 overflow-hidden rounded-lg border border-tarmac bg-charcoal p-6 sm:p-7">
+        <span
+          className="font-tomorrow text-4xl leading-none text-tarmac"
+          aria-hidden="true"
+        >
+          &ldquo;
+        </span>
+        <p className="font-tomorrow text-xl font-medium leading-snug tracking-[-0.01em] text-stark-white sm:text-2xl">
+          {about.pullQuote}
+        </p>
+        <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-dusk-gray">
+          <span className="h-px w-8 bg-ignition-orange" aria-hidden="true" />
+          Sri Lanka&rsquo;s tech future
+        </div>
       </div>
-    </Section>
+    </FeaturePanel>
   );
 }

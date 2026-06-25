@@ -1,7 +1,9 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 type Direction = "up" | "left" | "right" | "none";
 
@@ -30,17 +32,27 @@ export function Reveal({
   className?: string;
   as?: "div" | "li" | "section" | "span";
 }) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const MotionTag = motion[as];
   const offset = OFFSET[direction];
 
+  // `initial` and `whileInView` are kept deterministic (NOT branched on
+  // `reduce`) so the server and first client render always agree — branching
+  // them on the reduced-motion preference is what caused the hydration mismatch,
+  // and removing `whileInView` after mount used to strand the element at
+  // opacity:0. Reduced-motion is honoured by collapsing the transition to an
+  // instant cut instead, so the content still reveals — it just doesn't move.
   return (
     <MotionTag
       className={className}
-      initial={reduce ? false : { opacity: 0, ...offset }}
-      whileInView={reduce ? undefined : { opacity: 1, x: 0, y: 0 }}
+      initial={{ opacity: 0, ...offset }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-60px 0px" }}
-      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={
+        reduce
+          ? { duration: 0, delay: 0 }
+          : { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }
+      }
     >
       {children}
     </MotionTag>

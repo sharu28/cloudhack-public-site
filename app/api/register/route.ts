@@ -52,9 +52,7 @@ export async function POST(request: Request) {
   } else if (!EMAIL_RE.test(body.email.trim())) {
     errors.email = "Enter a valid email address.";
   }
-  if (!body.university?.trim())
-    errors.university = "University / institution is required.";
-  if (!body.role?.trim()) errors.role = "Please select a role.";
+  // University / institution and role are optional.
 
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ ok: false, errors }, { status: 422 });
@@ -77,8 +75,8 @@ export async function POST(request: Request) {
     teamSize: body.teamSize ? Number(body.teamSize) : null,
     email: body.email!.trim(),
     phone: body.phone?.trim() || null,
-    university: body.university!.trim(),
-    role: body.role!.trim(),
+    university: body.university?.trim() || null,
+    role: body.role?.trim() || null,
     link: body.link?.trim() || null,
     submittedAt: new Date().toISOString(),
   };
@@ -92,8 +90,8 @@ export async function POST(request: Request) {
     `Team size:   ${data.teamSize ?? "—"}`,
     `Email:       ${data.email}`,
     `Phone:       ${data.phone ?? "—"}`,
-    `University:  ${data.university}`,
-    `Role:        ${data.role}`,
+    `University:  ${data.university ?? "—"}`,
+    `Role:        ${data.role ?? "—"}`,
     `Link:        ${data.link ?? "—"}`,
     ``,
     `Submitted at: ${data.submittedAt}`,
@@ -110,8 +108,8 @@ export async function POST(request: Request) {
         ${row("Team size", String(data.teamSize ?? "—"))}
         ${row("Email", `<a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a>`)}
         ${row("Phone", data.phone ? escapeHtml(data.phone) : "—")}
-        ${row("University", escapeHtml(data.university))}
-        ${row("Role", escapeHtml(data.role))}
+        ${row("University", data.university ? escapeHtml(data.university) : "—")}
+        ${row("Role", data.role ? escapeHtml(data.role) : "—")}
         ${row("Link", data.link ? `<a href="${escapeHtml(data.link)}">${escapeHtml(data.link)}</a>` : "—")}
       </table>
       <p style="margin: 24px 0 0; color: #999; font-size: 12px;">Submitted at ${escapeHtml(data.submittedAt)}</p>

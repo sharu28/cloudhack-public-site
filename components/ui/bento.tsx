@@ -15,20 +15,18 @@ import { cn } from "@/lib/utils";
 
 const GRADIENT_STOPS = (
   <>
-    <stop offset="0%" stopColor="#2dd4bf" />
-    <stop offset="35%" stopColor="#22d3ee" />
-    <stop offset="70%" stopColor="#8b5cf6" />
-    <stop offset="100%" stopColor="#e879f9" />
+    <stop offset="0%" stopColor="#ffffff" />
+    <stop offset="100%" stopColor="#666666" />
   </>
 );
 
-/** A vivid gradient badge holding a white icon, with a faint outer halo. Reads as
- *  a colourful brand accent on the light cards. */
+/** A flat graphite badge holding a white icon — a precise hardware-panel accent
+ *  on the dark Rive cards (no gradient, 8px radius). */
 export function RingIcon({ children }: { children: ReactNode }) {
   return (
     <div
       aria-hidden="true"
-      className="relative flex aspect-square size-12 items-center justify-center rounded-full bg-gradient-to-br from-teal via-cyan to-violet text-white shadow-sm before:absolute before:-inset-1.5 before:rounded-full before:border before:border-black/5"
+      className="relative flex aspect-square size-12 items-center justify-center rounded-lg border border-tarmac bg-graphite text-stark-white"
     >
       {children}
     </div>
@@ -74,8 +72,8 @@ export function OrbitAccent({ className }: { className?: string }) {
       <circle cx="100" cy="100" r="62" stroke="white" strokeOpacity="0.1" />
       <circle cx="100" cy="100" r="36" stroke="url(#bento-orbit)" strokeWidth="1.5" />
       <circle cx="100" cy="100" r="10" fill="url(#bento-orbit)" />
-      <circle cx="100" cy="12" r="4" fill="#22d3ee" />
-      <circle cx="162" cy="138" r="3" fill="#8b5cf6" />
+      <circle cx="100" cy="12" r="4" fill="#ffa41c" />
+      <circle cx="162" cy="138" r="3" fill="#ffffff" />
       <defs>
         <linearGradient id="bento-orbit" x1="64" y1="64" x2="136" y2="136" gradientUnits="userSpaceOnUse">
           {GRADIENT_STOPS}

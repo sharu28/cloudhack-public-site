@@ -25,9 +25,7 @@ function validate(values: typeof initial): Errors {
   } else if (!EMAIL_RE.test(values.email.trim())) {
     errors.email = "Enter a valid email address.";
   }
-  if (!values.university.trim())
-    errors.university = "Please pick your university / institution.";
-  if (!values.role.trim()) errors.role = "Please select a role.";
+  // University / institution and role are optional.
   if (values.teamSize) {
     const n = Number(values.teamSize);
     if (!Number.isInteger(n) || n < 1 || n > 4)
@@ -39,7 +37,7 @@ function validate(values: typeof initial): Errors {
 }
 
 const fieldBase =
-  "w-full rounded-xl border bg-[var(--color-paper)] px-4 py-3 text-[var(--color-text)] placeholder-[var(--color-text-2)]/60 transition focus:outline-none focus:ring-2 focus:ring-cyan/50";
+  "w-full rounded-lg border bg-[var(--color-paper)] px-4 py-3 text-[var(--color-text)] placeholder-[var(--color-text-2)]/60 transition focus:outline-none focus:ring-2 focus:ring-ignition-orange";
 
 export function RegisterForm() {
   const { signup } = site;
@@ -99,8 +97,8 @@ export function RegisterForm() {
   // ── Success confirmation state ──────────────────────────────────────────
   if (status === "success") {
     return (
-      <div className="rounded-3xl border border-[var(--color-line)] bg-[var(--color-paper)] p-10 text-center shadow-sm">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-teal via-cyan to-violet text-white">
+      <div className="rounded-lg border border-[var(--color-line)] bg-[var(--color-paper)] p-10 text-center">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-graphite border border-tarmac text-stark-white">
           <svg
             width="30"
             height="30"
@@ -120,7 +118,7 @@ export function RegisterForm() {
         </h2>
         <p className="mx-auto mt-3 max-w-md text-[var(--color-text-2)]">
           We&apos;ve recorded your registration and will email{" "}
-          <span className="font-medium text-cyan">{values.email}</span> with
+          <span className="font-medium text-ignition-orange">{values.email}</span> with
           next steps and confirmation. Keep an eye on your inbox.
         </p>
         <button
@@ -129,7 +127,7 @@ export function RegisterForm() {
             setValues(initial);
             setStatus("idle");
           }}
-          className="mt-8 rounded-full border border-[var(--color-line)] px-6 py-2.5 text-sm text-[var(--color-text)] transition hover:bg-white/5"
+          className="mt-8 rounded-lg border border-[var(--color-line)] px-6 py-2.5 text-sm text-[var(--color-text)] transition hover:bg-white/5"
         >
           Register another team
         </button>
@@ -142,7 +140,7 @@ export function RegisterForm() {
       {formError && (
         <div
           role="alert"
-          className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-700"
+          className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-700"
         >
           {formError}
         </div>
@@ -229,7 +227,7 @@ export function RegisterForm() {
       <Field
         id="university"
         label="University / Institution"
-        required
+        hint="Optional"
         error={errors.university}
       >
         <input
@@ -251,7 +249,7 @@ export function RegisterForm() {
       </Field>
 
       {/* Role */}
-      <Field id="role" label="Role" required error={errors.role}>
+      <Field id="role" label="Role" hint="Optional" error={errors.role}>
         <select
           id="role"
           name="role"
@@ -296,12 +294,9 @@ export function RegisterForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-white px-8 py-4 text-sm font-semibold text-ink transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-ignition-orange px-8 py-4 text-sm font-semibold text-stark-white transition hover:bg-ignition-orange/90 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-teal via-cyan to-violet opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100" />
-        <span className="relative">
-          {status === "submitting" ? "Submitting…" : "Register team"}
-        </span>
+        {status === "submitting" ? "Submitting…" : "Register team"}
       </button>
     </form>
   );
@@ -330,7 +325,7 @@ function Field({
       >
         <span>
           {label}
-          {required && <span className="ml-1 text-cyan">*</span>}
+          {required && <span className="ml-1 text-ignition-orange">*</span>}
         </span>
         {hint && (
           <span className="text-xs font-normal text-[var(--color-text-2)]">

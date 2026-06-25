@@ -2,9 +2,10 @@
 
 import { useRef } from "react";
 import type { ReactNode } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 /**
  * Split-text line reveal. The content sits inside an overflow-hidden mask and
@@ -33,7 +34,7 @@ export function SplitReveal({
 }) {
   const ref = useRef<HTMLSpanElement | null>(null);
   const inView = useInView(ref, { once: true, margin: "-60px 0px" });
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
 
   const ease = [0.19, 1, 0.22, 1] as const;
 
@@ -82,7 +83,7 @@ export function DividerLine({ className }: { className?: string }) {
     <motion.div
       aria-hidden="true"
       className={cn(
-        "h-px w-16 origin-left bg-gradient-to-r from-teal to-violet",
+        "h-px w-16 origin-left bg-ignition-orange",
         className
       )}
       initial={{ scaleX: 0 }}

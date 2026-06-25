@@ -2,7 +2,9 @@
 
 import { useRef } from "react";
 import type { ReactNode } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 
 /**
  * Wraps children and translates them vertically as the element passes through the
@@ -20,7 +22,7 @@ export function Parallax({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],

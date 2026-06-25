@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Tomorrow } from "next/font/google";
 import "./globals.css";
 import { AnimatedBlurBlobBackground } from "@/components/ui/animated-blur-blob-background";
 
@@ -10,37 +10,45 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+// Tomorrow — the technical, semi-monospace display face for all headings and
+// prominent UI labels (see DESIGN.md). Weights 400/500 per the type spec.
+const tomorrow = Tomorrow({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-tomorrow",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://cloudhack.lk"),
-  title: "Cloudhack 2026 — A one-day AI hackathon in Colombo",
+  title: "CloudHack 2026 — Where Cloud Meets Creation",
   description:
-    "A one-day hackathon where 80 of Sri Lanka's strongest university students and early-career AI builders compete to solve real business problems set by sponsors. Co-hosted by Convoy Tech & Ether Labs.",
+    "A one-day hackathon where 80 of Sri Lanka's strongest university students and early-career builders compete to solve real business problems set by sponsor companies. Co-hosted by Ether Labs & Convoy Tech.",
   keywords: [
-    "Cloudhack",
+    "CloudHack",
     "hackathon",
     "Sri Lanka",
     "Colombo",
-    "AI",
-    "Convoy Tech",
     "Ether Labs",
+    "Convoy Tech",
   ],
   openGraph: {
-    title: "Cloudhack 2026 — A one-day AI hackathon in Colombo",
+    title: "CloudHack 2026 — Where Cloud Meets Creation",
     description:
-      "80 of Sri Lanka's strongest builders. Real problems from real sponsors. One day to build, break down, and hack.",
+      "80 of Sri Lanka's best young builders. Real problems. One day to solve them.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cloudhack 2026",
+    title: "CloudHack 2026",
     description:
-      "A one-day AI hackathon in Colombo. Build. Break Down. Hack.",
+      "Where Cloud Meets Creation — a one-day hackathon in Colombo.",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050505",
+  themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
 };
@@ -51,13 +59,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${tomorrow.variable}`}>
       <body className="font-sans antialiased">
-        {/* Consistent gradient backdrop behind every section, on every page. */}
+        {/* Consistent graphite-haze backdrop behind every section, on every page. */}
         <div aria-hidden="true" className="fixed inset-0 -z-10 overflow-hidden">
           <AnimatedBlurBlobBackground />
-          {/* Scrim + vignette so the glowing aurora never competes with text */}
-          <div className="absolute inset-0 bg-ink/45" />
+          {/* Scrim + vignette so the moving haze never competes with text */}
+          <div className="absolute inset-0 bg-ink/55" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--color-ink)_92%)]" />
           <div className="noise absolute inset-0 opacity-[0.035]" />
         </div>

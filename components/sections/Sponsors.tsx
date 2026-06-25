@@ -1,77 +1,39 @@
-import Link from "next/link";
-import { Crown, HeartHandshake, Route } from "lucide-react";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
-import { Card, CardContent } from "@/components/ui/card";
-import { RingIcon, GlowAccent } from "@/components/ui/bento";
+import { SponsorCarousel } from "@/components/sections/SponsorCarousel";
 
-const TIER_ICONS = [Crown, Route, HeartHandshake];
-
-// Title (wide, with a glow) + Track share the top row; Community banners across
-// the full width below.
-const SPANS = [
-  "col-span-6 lg:col-span-4",
-  "col-span-6 lg:col-span-2",
-  "col-span-6",
-];
-
+/**
+ * Sponsors (Section 8) — the logo grid. An auto-scrolling logo cloud plus a
+ * legend of the tier labels (Title / Track Partner / Community). Logos are
+ * placeholders until sponsors are confirmed; the carousel accepts real images
+ * dynamically (see content/site.ts → sponsors.logos[].logo).
+ */
 export function Sponsors() {
   const { sponsors } = site;
 
   return (
-    <Section
-      id="sponsors"
-      band="white"
-      title={sponsors.heading}
-      intro={sponsors.body}
-    >
-      <div className="grid grid-cols-6 gap-3 sm:gap-4">
-        {sponsors.tiers.map((tier, i) => {
-          const Icon = TIER_ICONS[i] ?? Crown;
-          const isTitle = i === 0;
+    <Section id="sponsors" title={sponsors.heading} intro={sponsors.intro}>
+      <Reveal>
+        <SponsorCarousel />
+      </Reveal>
 
-          return (
-            <Reveal
-              as="div"
+      {/* Tier legend so the line-up reads as labelled tiers. */}
+      <Reveal delay={0.08}>
+        <div className="mt-12 flex flex-wrap items-center gap-2.5">
+          {sponsors.tiers.map((tier) => (
+            <span
               key={tier.name}
-              delay={i * 0.08}
-              className={SPANS[i] ?? "col-span-6 lg:col-span-2"}
+              className="rounded-lg border border-tarmac bg-graphite px-3.5 py-1.5 font-tomorrow text-xs font-medium uppercase tracking-[0.16em] text-dusk-gray"
             >
-              <Card className="h-full">
-                {isTitle && <GlowAccent className="-right-12 -top-20 h-64 w-64" />}
-                <CardContent className="relative flex h-full flex-col p-7">
-                  <RingIcon>
-                    <Icon
-                      className="size-5"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </RingIcon>
-                  <div className="mt-5 text-lg font-semibold text-[var(--color-text)]">
-                    {tier.name}
-                  </div>
-                  <div className="mt-2 h-px w-10 bg-gradient-to-r from-teal to-violet" />
-                  <p className="mt-4 max-w-md text-sm leading-relaxed text-[var(--color-text-2)]">
-                    {tier.blurb}
-                  </p>
-                </CardContent>
-              </Card>
-            </Reveal>
-          );
-        })}
-      </div>
-
-      <Reveal delay={0.1}>
-        <div className="mt-12">
-          <Link
-            href={sponsors.ctaHref}
-            className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-medium text-ink transition hover:bg-white/90"
-          >
-            {sponsors.ctaLabel}
-            <span aria-hidden="true">→</span>
-          </Link>
+              {tier.name}
+            </span>
+          ))}
         </div>
+      </Reveal>
+
+      <Reveal delay={0.12}>
+        <p className="mt-6 text-sm text-dusk-gray">{sponsors.pending}</p>
       </Reveal>
     </Section>
   );

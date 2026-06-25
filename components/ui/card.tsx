@@ -48,7 +48,7 @@ const Card = React.forwardRef<
       onMouseLeave={handleLeave}
       style={{ transform, ...style }}
       className={cn(
-        "card-wash card-3d group relative overflow-hidden rounded-2xl border border-[var(--color-line)] bg-[var(--color-paper)] text-card-foreground backdrop-blur-sm hover:border-cyan/30 hover:bg-white/[0.06]",
+        "card-wash card-3d group relative overflow-hidden rounded-lg border border-[var(--color-line)] bg-[var(--color-paper)] text-card-foreground transition-colors hover:border-white/25",
         className
       )}
       {...props}

@@ -7,12 +7,9 @@ export function Footer() {
     <footer className="relative border-t border-[var(--color-line)] px-5 py-16 sm:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <div className="wordmark text-3xl text-[var(--color-text)]">
+          <div className="wordmark text-3xl text-stark-white">
             {brand.wordmark}
-            <span className="bg-gradient-to-r from-teal to-violet bg-clip-text text-transparent">
-              {" "}
-              {brand.year}
-            </span>
+            <span className="text-ignition-orange"> {brand.year}</span>
           </div>
 
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
@@ -30,7 +27,7 @@ export function Footer() {
                       href={p.websiteHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition hover:text-cyan"
+                      className="transition hover:text-ignition-orange"
                     >
                       {p.website}
                     </a>
@@ -38,7 +35,7 @@ export function Footer() {
                   <li>
                     <a
                       href={`mailto:${p.email}`}
-                      className="transition hover:text-cyan"
+                      className="transition hover:text-ignition-orange"
                     >
                       {p.email}
                     </a>
@@ -47,7 +44,7 @@ export function Footer() {
                     <li>
                       <a
                         href={`tel:${p.phone.replace(/\s/g, "")}`}
-                        className="transition hover:text-cyan"
+                        className="transition hover:text-ignition-orange"
                       >
                         {p.phone}
                       </a>
@@ -59,8 +56,29 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-[var(--color-line)] pt-6 text-xs text-[var(--color-text-2)]">
-          © {brand.year} {footer.copyright}
+        {/* Closing tagline */}
+        <p className="mt-14 max-w-2xl text-sm leading-relaxed text-[var(--color-text-2)]">
+          {footer.tagline}
+        </p>
+
+        <div className="mt-8 flex flex-col gap-4 border-t border-[var(--color-line)] pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-xs text-[var(--color-text-2)]">
+            © {brand.year} {footer.copyright}
+          </div>
+          <ul className="flex items-center gap-4">
+            {footer.socials.map((s) => (
+              <li key={s.label}>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-tomorrow text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-text-2)] transition hover:text-ignition-orange"
+                >
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

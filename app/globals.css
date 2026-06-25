@@ -4,31 +4,49 @@
    THEME
    ─────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-ink: #050505;
+  /* ── RIVE — "Precision Night Vision" palette (see DESIGN.md) ─────────────
+     Strictly monochromatic black/gray surfaces plus a single warm accent. */
+  --color-ignition-orange: #ffa41c; /* sole warm accent — primary CTAs / eyebrows */
+  --color-obsidian: #000000; /* page background */
+  --color-charcoal: #111111; /* secondary surface (cards) */
+  --color-graphite: #1d1d1d; /* tertiary surface (tags, badges) */
+  --color-tarmac: #262626; /* interactive / hairline borders */
+  --color-stark-white: #ffffff; /* headlines, icon fills */
+  --color-cloud: #f1f1f1; /* high-emphasis body */
+  --color-ash: #aaaaaa; /* standard body */
+  --color-dusk-gray: #999999; /* secondary text, nav links */
+
+  /* Legacy aliases kept so any straggler utilities resolve on-brand (gray). */
+  --color-ink: #000000;
   --color-ink-2: #0a0a0a;
-  --color-ink-3: #111113;
+  --color-ink-3: #111111;
 
-  --color-teal: #2dd4bf;
-  --color-cyan: #22d3ee;
-  --color-blue: #3b82f6;
-  --color-violet: #8b5cf6;
-  --color-magenta: #e879f9;
-  --color-grn: #34d399;
+  /* The former rainbow accents are collapsed to a neutral gray ramp so any
+     remaining var()/utility reference (e.g. from-teal) renders monochrome
+     instead of breaking. The Rive aesthetic is strictly gray + orange. */
+  --color-teal: #aaaaaa;
+  --color-cyan: #aaaaaa;
+  --color-blue: #555555;
+  --color-violet: #777777;
+  --color-magenta: #888888;
+  --color-grn: #666666;
 
+  --font-tomorrow: "Tomorrow", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
 
   --default-transition-duration: 200ms;
 
-  /* ── Dark palette ───────────────────────────────────────────────────────
-     The whole site is dark; the animated blur-blob field shows through behind
-     every section. "paper" is a translucent glass surface for cards/forms;
-     "paper-2" is a slightly solid secondary surface (footer). */
-  --color-paper: rgba(10, 10, 14, 0.72); /* dark glass card / form surface */
-  --color-paper-2: #0a0a0a; /* footer / secondary surface */
-  --color-text: #f5f5f7; /* primary light text */
-  --color-text-2: rgba(245, 245, 247, 0.62); /* secondary light text */
-  --color-line: rgba(255, 255, 255, 0.12); /* hairline on dark */
+  /* ── Semantic surface tokens ────────────────────────────────────────────
+     Re-pointed to the Rive palette so the many components that read these
+     flip on-brand without per-class rewrites. Flat, solid surfaces — no glass.
+     "paper" is the card surface (charcoal); "paper-2" a secondary surface. */
+  --color-paper: #111111; /* card / form surface (charcoal) */
+  --color-paper-2: #000000; /* footer / secondary surface */
+  --color-text: #ffffff; /* primary light text */
+  --color-text-2: #aaaaaa; /* secondary light text (ash) */
+  --color-line: #262626; /* hairline on dark (tarmac) */
 }
 
 /* ───────────────────────────────────────────────────────────────────────────
@@ -42,30 +60,30 @@
    composes cleanly.
    ─────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-background: #050505;
-  --color-foreground: #f5f5f7;
+  --color-background: #000000;
+  --color-foreground: #ffffff;
 
-  --color-card: #0a0a0a;
-  --color-card-foreground: #f5f5f7;
+  --color-card: #111111;
+  --color-card-foreground: #ffffff;
 
-  --color-primary: #ffffff;
-  --color-primary-foreground: #050505;
+  --color-primary: #ffa41c; /* Ignition Orange — primary CTAs */
+  --color-primary-foreground: #ffffff;
 
-  --color-secondary: #1c1c20;
-  --color-secondary-foreground: #f5f5f7;
+  --color-secondary: #1d1d1d;
+  --color-secondary-foreground: #ffffff;
 
-  --color-muted: #15151a;
-  --color-muted-foreground: #a1a1aa;
+  --color-muted: #111111;
+  --color-muted-foreground: #aaaaaa;
 
-  --color-accent: #1c1c20;
+  --color-accent: #262626;
   --color-accent-foreground: #ffffff;
 
   --color-destructive: #ef4444;
   --color-destructive-foreground: #ffffff;
 
-  --color-border: rgba(255, 255, 255, 0.12);
-  --color-input: rgba(255, 255, 255, 0.16);
-  --color-ring: #22d3ee; /* cyan focus ring */
+  --color-border: #262626;
+  --color-input: #262626;
+  --color-ring: #ffa41c; /* ignition-orange focus ring */
 }
 
 /* ───────────────────────────────────────────────────────────────────────────
@@ -94,6 +112,7 @@ body {
 h1,
 h2,
 h3 {
+  font-family: var(--font-tomorrow);
   letter-spacing: -0.02em;
 }
 
@@ -113,7 +132,7 @@ h3 {
 
 /* Accessible focus ring */
 :focus-visible {
-  outline: 2px solid var(--color-cyan);
+  outline: 2px solid var(--color-ignition-orange);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -124,21 +143,16 @@ h3 {
    teal → cyan → blue → violet → magenta → green gradient drifts via hue-rotate.
    ─────────────────────────────────────────────────────────────────────────── */
 .blob {
-  background: conic-gradient(
-    from 0deg at 50% 50%,
-    var(--color-teal),
-    var(--color-cyan),
-    var(--color-blue),
-    var(--color-violet),
-    var(--color-magenta),
-    var(--color-grn),
-    var(--color-teal)
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(120, 120, 120, 0.45) 0%,
+    rgba(70, 70, 70, 0.2) 45%,
+    transparent 70%
   );
-  filter: blur(60px) saturate(135%);
+  filter: blur(60px);
   border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
-  animation: blob-morph 18s ease-in-out infinite,
-    blob-hue 24s linear infinite;
-  will-change: transform, border-radius, filter;
+  animation: blob-morph 18s ease-in-out infinite;
+  will-change: transform, border-radius;
 }
 
 @keyframes blob-morph {
@@ -282,7 +296,10 @@ h3 {
   border-radius: 9999px;
   will-change: transform;
 }
-/* A — violet, upper-left */
+/* RIVE: monochrome gray orbs + a single faint orange accent (blob-2). Screen-
+   blended over pure black, these read as a soft, slow-drifting graphite haze
+   rather than a rainbow aurora. Kept low-opacity so content always wins. */
+/* A — graphite, upper-left */
 .blur-blob-1 {
   top: -5vh;
   left: -6vw;
@@ -290,14 +307,14 @@ h3 {
   height: 58vh;
   background: radial-gradient(
     circle at 60% 40%,
-    rgba(139, 92, 246, 0.85) 0%,
-    rgba(124, 58, 237, 0.5) 35%,
+    rgba(120, 120, 120, 0.5) 0%,
+    rgba(80, 80, 80, 0.28) 35%,
     transparent 65%
   );
   filter: blur(55px);
   animation: orb-1 22s ease-in-out infinite;
 }
-/* B — magenta, right */
+/* B — faint Ignition Orange accent, right (the only warm light in the field) */
 .blur-blob-2 {
   top: 0;
   right: -8vw;
@@ -305,15 +322,15 @@ h3 {
   height: 60vh;
   background: radial-gradient(
     circle at 40% 50%,
-    rgba(232, 121, 249, 0.78) 0%,
-    rgba(217, 70, 239, 0.42) 35%,
+    rgba(255, 164, 28, 0.22) 0%,
+    rgba(255, 164, 28, 0.1) 35%,
     transparent 65%
   );
   filter: blur(60px);
   animation: orb-2 30s ease-in-out infinite;
   animation-delay: -9s;
 }
-/* C — cyan, mid */
+/* C — graphite, mid */
 .blur-blob-3 {
   top: 26vh;
   left: 33vw;
@@ -321,15 +338,15 @@ h3 {
   height: 38vh;
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(34, 211, 238, 0.8) 0%,
-    rgba(6, 182, 212, 0.42) 35%,
+    rgba(110, 110, 110, 0.42) 0%,
+    rgba(70, 70, 70, 0.24) 35%,
     transparent 65%
   );
   filter: blur(45px);
   animation: orb-3 17s ease-in-out infinite;
   animation-delay: -5s;
 }
-/* D — blue, lower-left */
+/* D — graphite, lower-left */
 .blur-blob-4 {
   bottom: -12vh;
   left: 16vw;
@@ -337,15 +354,15 @@ h3 {
   height: 52vh;
   background: radial-gradient(
     circle at 50% 40%,
-    rgba(59, 130, 246, 0.72) 0%,
-    rgba(37, 99, 235, 0.38) 35%,
+    rgba(100, 100, 100, 0.4) 0%,
+    rgba(60, 60, 60, 0.22) 35%,
     transparent 65%
   );
   filter: blur(65px);
   animation: orb-4 26s ease-in-out infinite;
   animation-delay: -14s;
 }
-/* E — teal, small, lower-right */
+/* E — graphite, small, lower-right */
 .blur-blob-5 {
   bottom: 4vh;
   right: 16vw;
@@ -353,8 +370,8 @@ h3 {
   height: 28vh;
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(45, 212, 191, 0.8) 0%,
-    rgba(20, 184, 166, 0.4) 35%,
+    rgba(130, 130, 130, 0.45) 0%,
+    rgba(80, 80, 80, 0.24) 35%,
     transparent 65%
   );
   filter: blur(40px);
@@ -437,7 +454,7 @@ h3 {
   inset: 0;
   background: radial-gradient(
     120% 120% at 50% 0%,
-    rgba(45, 212, 191, 0.07),
+    rgba(255, 255, 255, 0.05),
     transparent 60%
   );
   opacity: 0;
@@ -484,8 +501,8 @@ h3 {
    whether or not the word is wider than its container. */
 .wordmark {
   display: inline-block;
-  font-weight: 200;
-  letter-spacing: 0.12em;
-  margin-right: -0.12em;
+  font-family: var(--font-tomorrow);
+  font-weight: 500;
+  letter-spacing: -0.02em;
   line-height: 0.95;
 }

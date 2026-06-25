@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
-import { Reveal } from "@/components/Reveal";
-import { SplitReveal, DividerLine } from "@/components/ui/SplitReveal";
+import { ClipReveal } from "@/components/ui/ClipReveal";
 
 interface SectionProps {
   id?: string;
@@ -38,30 +37,28 @@ export function Section({
 
   return (
     <section id={id} className={cn("relative px-6", className)}>
-      <div className="mx-auto max-w-6xl py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl py-16 sm:py-20">
         {hasHeader && (
-          <header className="max-w-3xl">
+          <ClipReveal className="max-w-3xl">
             {eyebrow && (
-              <Reveal>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-text-2)]">
-                  {eyebrow}
-                </p>
-              </Reveal>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-text-2)]">
+                {eyebrow}
+              </p>
             )}
             {title && (
               <h2 className="mt-3 text-3xl font-semibold text-[var(--color-text)] sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-                <SplitReveal>{title}</SplitReveal>
+                {title}
               </h2>
             )}
-            {(eyebrow || title) && <DividerLine className="mt-6" />}
-            {intro && (
-              <Reveal delay={0.1}>
-                <div className="mt-5 text-lg leading-relaxed text-[var(--color-text-2)]">
-                  {intro}
-                </div>
-              </Reveal>
+            {(eyebrow || title) && (
+              <div className="mt-6 h-px w-16 bg-ignition-orange" aria-hidden="true" />
             )}
-          </header>
+            {intro && (
+              <div className="mt-5 text-lg leading-relaxed text-[var(--color-text-2)]">
+                {intro}
+              </div>
+            )}
+          </ClipReveal>
         )}
 
         <div className={cn(hasHeader && "mt-12 sm:mt-14")}>{children}</div>
