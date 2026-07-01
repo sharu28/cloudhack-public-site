@@ -166,7 +166,7 @@ export const Contact2 = ({
                 Message sent!
               </h2>
               <p className="max-w-md text-muted-foreground">
-                Thanks for reaching out — the Cloudhack team has your message and
+                Thanks for reaching out. The Cloudhack team has your message and
                 will get back to you shortly.
               </p>
               <button

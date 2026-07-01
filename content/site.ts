@@ -38,15 +38,15 @@ export const site = {
   about: {
     heading: "About CloudHack",
     body:
-      "CloudHack is a one-day hackathon where 80 of Sri Lanka's strongest " +
-      "university students and early-career builders compete to solve real " +
-      "business problems set by sponsor companies. Born from a simple belief — " +
-      "Sri Lanka has exceptional tech talent that deserves a stage — CloudHack " +
-      "isn't just a hackathon. It's the beginning of a movement. A community " +
-      "where students and professionals collaborate, grow, and put Sri Lanka's " +
-      "tech scene on the map.",
+      "CloudHack is a one-day hackathon. 80 university students and " +
+      "early-career builders from across Sri Lanka team up to solve real " +
+      "business problems set by sponsor companies. We started it for a simple " +
+      "reason. There's a lot of tech talent here and not many places to show " +
+      "it. So it's more than a one-day event. It's a place for students and " +
+      "professionals to build together, learn from each other, and grow the " +
+      "local tech scene.",
     // Short pull-quote for the visual side of the section.
-    pullQuote: "Not just a hackathon. The beginning of a movement.",
+    pullQuote: "Not just a hackathon. A community that lasts.",
   },
 
   // ── Themes / Tracks ────────────────────────────────────────────────────────
@@ -55,22 +55,22 @@ export const site = {
   tracks: {
     heading: "The themes",
     intro:
-      "Three challenge tracks, each set by a Track Partner. Pick the one that " +
-      "fits your team and build against a real brief.",
+      "Three tracks, each set by a Track Partner. Pick the one that fits your " +
+      "team and build against a real brief.",
     items: [
       {
         name: "Automation",
         blurb:
-          "Build tools that eliminate repetitive tasks and drive efficiency.",
+          "Build tools that handle repetitive work.",
       },
       {
         name: "Web Applications",
-        blurb: "Create impactful, user-first web experiences.",
+        blurb: "Build web apps that people actually want to use.",
       },
       {
         name: "SME Software",
         blurb:
-          "Develop practical software solutions for small and medium enterprises in Sri Lanka.",
+          "Build practical software for small and medium businesses in Sri Lanka.",
       },
     ],
   },
@@ -79,16 +79,16 @@ export const site = {
   challenge: {
     heading: "The Challenge",
     intro:
-      "The problem briefs — set by our sponsor companies — drop on the day. The specifics are under wraps for now.",
+      "The problem briefs come from our sponsor companies, and you get them on the day. We're keeping the details quiet for now.",
     status: "Coming soon",
-    note: "The challenge briefs will be revealed closer to the event. Watch this space.",
+    note: "We'll share the briefs closer to the event.",
   },
 
   // ── Prizes ───────────────────────────────────────────────────────────────────
   prizes: {
     heading: "Prizes",
     intro:
-      "There's more than bragging rights on the line — the full prize pool will be announced soon.",
+      "There's more than bragging rights on the line. The full prize pool will be announced soon.",
     note: "Prizes coming soon.",
     items: [{ place: "1st" }, { place: "2nd" }, { place: "3rd" }],
   },
@@ -110,7 +110,7 @@ export const site = {
         icon: "pin",
         label: "Venue",
         value: "Colombo",
-        note: "Hatch / Orion City / Campus — TBC",
+        note: "Hatch, Orion City or Campus. Still to be confirmed",
       },
       {
         icon: "clock",
@@ -147,8 +147,8 @@ export const site = {
         name: "Ether Labs",
         role: "AI Partner",
         blurb:
-          "A Colombo-based AI automation company building AI agents and custom " +
-          "workflow automation for startups and growing businesses. Brings the AI " +
+          "A Colombo-based company that builds AI agents and workflow " +
+          "automation for startups and growing businesses. They bring the AI " +
           "tooling, mentorship and judging to the event.",
         email: "sharu@etherlabs.lk",
         website: "etherlabs.lk",
@@ -158,8 +158,8 @@ export const site = {
         name: "Convoy Tech",
         role: "Tech Partner",
         blurb:
-          "The technology and infrastructure partner behind the event — the " +
-          "platform teams use to build and run their solutions on the day.",
+          "The tech and infrastructure partner behind the event. Teams use " +
+          "their platform to build and run their solutions on the day.",
         email: "krishakary2j@gmail.com",
         website: "convoy-tech.com",
         href: "https://convoy-tech.com",
@@ -174,19 +174,19 @@ export const site = {
       {
         title: "Solve real problems",
         body:
-          "Build against actual business challenges set by sponsor companies — not made-up briefs.",
+          "Work on actual business problems set by sponsor companies, not made-up briefs.",
       },
       {
-        title: "Showcase your talent",
-        body: "Be assessed on what you ship in a day, not how you interview.",
+        title: "Show what you can build",
+        body: "You're judged on what you build in a day, not how you interview.",
       },
       {
         title: "Connect & collaborate",
-        body: "Meet Sri Lanka's sharpest young builders in one room.",
+        body: "Meet other young builders from across the country in one room.",
       },
       {
-        title: "Be part of the movement",
-        body: "Help shape the future of Sri Lanka's tech community.",
+        title: "Be part of it",
+        body: "Help grow Sri Lanka's tech community.",
       },
     ],
   },
@@ -195,8 +195,8 @@ export const site = {
   forSponsors: {
     heading: "For sponsors",
     body:
-      "You set a real problem from your business. You walk away with working " +
-      "solutions — and the people who built them.",
+      "You bring a real problem from your business. You leave with working " +
+      "solutions, plus the people who built them.",
     // Comparison rows; each tier carries a value for every row key. Booleans
     // render as ✓ / —; strings render as text.
     rows: [
@@ -254,8 +254,8 @@ export const site = {
   // ── Sponsors (logo grid) ────────────────────────────────────────────────────
   sponsors: {
     heading: "Sponsors",
-    intro: "Made possible by our incredible partners.",
-    carouselLabel: "Made possible by our incredible partners",
+    intro: "Made possible by our partners.",
+    carouselLabel: "Made possible by our partners",
     // ✏️ Placeholder sponsor line-up. Add a `logo` image path per entry once
     //    sponsors are confirmed — the carousel falls back to a wordmark plate
     //    until then.
@@ -273,7 +273,7 @@ export const site = {
     tiers: [
       { name: "Title", blurb: "Headline billing, keynote slot, first pick of talent." },
       { name: "Track Partner", blurb: "Own a problem track, set the brief, judge the teams." },
-      { name: "Community", blurb: "Back the ecosystem with mentorship, prizes or in-kind support." },
+      { name: "Community", blurb: "Support the event with mentorship, prizes or in-kind help." },
     ],
     ctaLabel: "Become a sponsor",
     ctaHref: "/signup#sponsor",
@@ -287,43 +287,43 @@ export const site = {
         q: "Who can participate?",
         a:
           "CloudHack is for university students and early-career builders from " +
-          "across Sri Lanka — Moratuwa, UCSC, IIT, SLIIT, NSBM and beyond. 80 " +
-          "participants are curated for the event.",
+          "across Sri Lanka, including Moratuwa, UCSC, IIT, SLIIT, NSBM and " +
+          "others. We select 80 people for the event.",
       },
       {
         q: "How do I register?",
         a:
-          "Hit any “Sign Up” button on this page to open the registration " +
-          "form. Tell us about you and your team, and we'll be in touch with next steps.",
+          "Click any “Sign Up” button on this page to open the registration " +
+          "form. Tell us about you and your team, and we'll follow up with next steps.",
       },
       {
         q: "Do I need to come with a team, or can I be matched?",
         a:
-          "Teams are 3–4 people. Come with your own crew, or register solo and " +
-          "we'll help match you into a team before the day.",
+          "Teams are 3–4 people. Come with your own team, or register solo and " +
+          "we'll match you with others before the day.",
       },
       {
         q: "What should I bring on the day?",
         a:
-          "Your laptop, charger, and whatever you build best with. Food and the " +
-          "venue are sorted — just bring your A-game.",
+          "Your laptop, charger, and whatever you work best with. We'll sort " +
+          "out food and the venue. Just come ready to build.",
       },
       {
         q: "Is there a registration fee?",
-        a: "No. CloudHack is free to participate in for selected builders.",
+        a: "No. It's free for the builders we select.",
       },
       {
         q: "What do I need to build?",
         a:
-          "Pick one of the sponsor problem tracks — Automation, Web Applications " +
-          "or SME Software — and ship a working prototype using AI tools by the " +
-          "evening demo.",
+          "Pick one of the sponsor tracks (Automation, Web Applications or SME " +
+          "Software) and build a working prototype with AI tools by the evening " +
+          "demo.",
       },
       {
         q: "When and where exactly is the event?",
         a:
-          "Late July 2026, in Colombo. The exact date and venue are being " +
-          "finalised — register and we'll send you the details first.",
+          "Late July 2026, in Colombo. We're still confirming the exact date " +
+          "and venue. Register and we'll send you the details first.",
       },
     ],
   },
@@ -332,8 +332,8 @@ export const site = {
   contact: {
     title: "Contact Us",
     description:
-      "Questions, partnership ideas, or just want to say hello? Send us a " +
-      "message and the CloudHack team will get back to you.",
+      "Questions or partnership ideas are welcome. Send us a message and the " +
+      "CloudHack team will get back to you.",
     phone: "+94 74 221 6040",
     email: "sharu@etherlabs.lk",
     web: { label: "etherlabs.lk", url: "https://etherlabs.lk" },
@@ -365,8 +365,8 @@ export const site = {
       { label: "LinkedIn", href: "#" },
     ],
     tagline:
-      "CloudHack 2026 — Co-hosted by Ether Labs & Convoy Tech. Building Sri " +
-      "Lanka's Tech Future, One Hack at a Time.",
+      "CloudHack 2026. Co-hosted by Ether Labs and Convoy Tech. Made for Sri " +
+      "Lanka's young builders.",
     copyright: "CloudHack 2026 · Co-hosted by Ether Labs & Convoy Tech",
   },
 
@@ -374,7 +374,7 @@ export const site = {
   signup: {
     title: "Register a team for CloudHack 2026",
     subtitle:
-      "Teams of 3–4 builders. Fill in your captain's details below and we'll be in touch with next steps.",
+      "Teams of 3–4 builders. Add your captain's details below and we'll follow up with next steps.",
     universities: ["Moratuwa", "UCSC", "IIT", "SLIIT", "NSBM", "Other"],
     roles: ["Developer", "AI Builder", "Designer", "Other"],
     sponsorEnquiries: {

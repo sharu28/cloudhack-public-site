@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Tomorrow } from "next/font/google";
 import "./globals.css";
 import { AnimatedBlurBlobBackground } from "@/components/ui/animated-blur-blob-background";
+import { StructuredData } from "@/components/StructuredData";
+import { SITE_URL, SITE_NAME } from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,31 +22,66 @@ const tomorrow = Tomorrow({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cloudhack.lk"),
-  title: "CloudHack 2026 — Where Cloud Meets Creation",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "CloudHack 2026 — Where Cloud Meets Creation",
+    template: "%s — CloudHack 2026",
+  },
   description:
     "A one-day hackathon where 80 of Sri Lanka's strongest university students and early-career builders compete to solve real business problems set by sponsor companies. Co-hosted by Ether Labs & Convoy Tech.",
+  applicationName: SITE_NAME,
   keywords: [
     "CloudHack",
     "hackathon",
     "Sri Lanka",
     "Colombo",
+    "cloud",
+    "developers",
+    "students",
     "Ether Labs",
     "Convoy Tech",
   ],
+  authors: [
+    { name: "Ether Labs", url: "https://etherlabs.lk" },
+    { name: "Convoy Tech", url: "https://convoy-tech.com" },
+  ],
+  creator: "Ether Labs & Convoy Tech",
+  publisher: "Ether Labs & Convoy Tech",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "CloudHack 2026 — Where Cloud Meets Creation",
     description:
       "80 of Sri Lanka's best young builders. Real problems. One day to solve them.",
+    url: "/",
+    siteName: SITE_NAME,
     type: "website",
     locale: "en_US",
+    // og:image is injected automatically from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
     title: "CloudHack 2026",
     description:
       "Where Cloud Meets Creation — a one-day hackathon in Colombo.",
+    // twitter:image is injected automatically from app/twitter-image.tsx
   },
+  // ── Google Search Console verification ─────────────────────────────────────
+  // After adding the https://www.cloudhacksrilanka.com property in Search
+  // Console (HTML-tag method), paste the token below and redeploy to verify:
+  // verification: { google: "PASTE_YOUR_TOKEN_HERE" },
 };
 
 export const viewport: Viewport = {
@@ -61,6 +98,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${tomorrow.variable}`}>
       <body className="font-sans antialiased">
+        <StructuredData />
         {/* Consistent graphite-haze backdrop behind every section, on every page. */}
         <div aria-hidden="true" className="fixed inset-0 -z-10 overflow-hidden">
           <AnimatedBlurBlobBackground />

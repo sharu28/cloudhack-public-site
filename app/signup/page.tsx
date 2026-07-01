@@ -8,9 +8,34 @@ import { RegisterForm } from "@/components/RegisterForm";
 import { CircuitCorner } from "@/components/graphics";
 
 export const metadata: Metadata = {
-  title: "Register your team — CloudHack 2026",
+  // Root layout's title.template appends " — CloudHack 2026", so keep this short.
+  title: "Register your team",
   description:
     "Register a team of 3–4 builders for CloudHack 2026, a one-day hackathon in Colombo.",
+  alternates: {
+    canonical: "/signup",
+  },
+  // Next.js replaces (doesn't deep-merge) the parent openGraph, so restate it
+  // here with this page's own og:url. og:image still comes from the file convention.
+  openGraph: {
+    title: "Register your team — CloudHack 2026",
+    description:
+      "Register a team of 3–4 builders for CloudHack 2026, a one-day hackathon in Colombo.",
+    url: "/signup",
+    siteName: "CloudHack 2026",
+    type: "website",
+    locale: "en_US",
+    // Restate the generated card — overriding openGraph drops the file-convention
+    // og:image, so point back at the same /opengraph-image route.
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "CloudHack 2026 — Where Cloud Meets Creation",
+      },
+    ],
+  },
 };
 
 export default function SignupPage() {
@@ -101,7 +126,7 @@ export default function SignupPage() {
               {signup.sponsorEnquiries.heading}
             </h2>
             <p className="mt-4 text-[var(--color-text-2)]">
-              Interested in setting a problem or backing the event?
+              To set a problem or back the event, here's who to talk to.
             </p>
             <div className="mt-4 text-sm">
               <div className="font-semibold text-[var(--color-text)]">
