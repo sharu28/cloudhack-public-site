@@ -78,10 +78,8 @@ export const metadata: Metadata = {
       "Where Cloud Meets Creation — a one-day hackathon in Colombo.",
     // twitter:image is injected automatically from app/twitter-image.tsx
   },
-  // ── Google Search Console verification ─────────────────────────────────────
-  // After adding the https://www.cloudhacksrilanka.com property in Search
-  // Console (HTML-tag method), paste the token below and redeploy to verify:
-  // verification: { google: "PASTE_YOUR_TOKEN_HERE" },
+  // Google Search Console — HTML-tag ownership verification.
+  verification: { google: "R6oXdIBrWJf4ggA55Z1QJppqFW3dShUzUmPHUdzkkHQ" },
 };
 
 export const viewport: Viewport = {
