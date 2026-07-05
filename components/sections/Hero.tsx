@@ -24,7 +24,7 @@ export function Hero() {
       <div className="flex flex-1 flex-col items-center justify-center">
       <Parallax speed={70} className="relative z-20 w-full max-w-4xl">
         <Reveal>
-          <p className="font-tomorrow text-xs font-medium uppercase tracking-[0.3em] text-ignition-orange sm:text-sm">
+          <p className="hidden font-tomorrow text-xs font-medium uppercase tracking-[0.3em] text-ignition-orange sm:block sm:text-sm">
             {brand.eyebrow}
           </p>
         </Reveal>

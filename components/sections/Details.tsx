@@ -20,15 +20,14 @@ const ICONS: Record<string, typeof Calendar> = {
 };
 
 /**
- * Event logistics in a scannable grid of tiles, with a notice banner up top —
- * the exact date and venue are still being locked in.
+ * Event logistics in a scannable grid of tiles, with a notice banner up top.
  */
 export function Details() {
   const { details } = site;
 
   return (
     <Section id="details" title={details.heading}>
-      {/* Date & venue still TBC — call it out rather than leaving fields blank. */}
+      {/* Venue still TBC — call it out rather than leaving fields blank. */}
       <Reveal>
         <div className="mb-6 flex items-center gap-3 rounded-lg border border-ignition-orange/30 bg-charcoal px-5 py-4">
           <Calendar

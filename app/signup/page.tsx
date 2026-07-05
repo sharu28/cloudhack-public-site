@@ -126,7 +126,7 @@ export default function SignupPage() {
               {signup.sponsorEnquiries.heading}
             </h2>
             <p className="mt-4 text-[var(--color-text-2)]">
-              To set a problem or back the event, here's who to talk to.
+              Interested in setting a problem or backing the event?
             </p>
             <div className="mt-4 text-sm">
               <div className="font-semibold text-[var(--color-text)]">
