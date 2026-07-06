@@ -27,7 +27,7 @@ export function Details() {
 
   return (
     <Section id="details" title={details.heading}>
-      {/* Venue still TBC — call it out rather than leaving fields blank. */}
+      {/* Confirmed venue callout above the details grid. */}
       <Reveal>
         <div className="mb-6 flex items-center gap-3 rounded-lg border border-ignition-orange/30 bg-charcoal px-5 py-4">
           <Calendar

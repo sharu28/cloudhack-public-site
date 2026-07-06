@@ -88,29 +88,32 @@ export const site = {
   prizes: {
     heading: "Prizes",
     intro:
-      "There's more than bragging rights on the line — the full prize pool will be announced soon.",
-    note: "Prizes coming soon.",
-    items: [{ place: "1st" }, { place: "2nd" }, { place: "3rd" }],
+      "There's more than bragging rights on the line — the top three teams take home cash prizes.",
+    note: "Prize pool confirmed for the top three places.",
+    items: [
+      { place: "1st", amount: "LKR 50,000" },
+      { place: "2nd", amount: "LKR 40,000" },
+      { place: "3rd", amount: "LKR 30,000" },
+    ],
   },
 
   // ── Event details ──────────────────────────────────────────────────────────
   details: {
     heading: "Event details",
-    // Shown as a prominent banner — date & venue are still being locked in.
-    notice: "Venue to be announced soon.",
+    // Shown as a prominent banner above the logistics grid.
+    notice: "Venue confirmed: SLIIT - Curtin Campus.",
     items: [
       {
         icon: "calendar",
         label: "When",
-        // ✏️ Update the date here once it's finalised.
         value: "9 August 2026",
         note: "Sunday · save the date",
       },
       {
         icon: "pin",
         label: "Venue",
-        value: "Colombo",
-        note: "Hatch / Orion City / Campus — TBC",
+        value: "SLIIT - Curtin Campus",
+        note: "Colombo",
       },
       {
         icon: "clock",
@@ -322,8 +325,8 @@ export const site = {
       {
         q: "When and where exactly is the event?",
         a:
-          "9 August 2026, in Colombo. The exact venue is being " +
-          "finalised — register and we'll send you the details first.",
+          "9 August 2026, at SLIIT - Curtin Campus in Colombo. Register and " +
+          "we'll send you the details first.",
       },
     ],
   },

@@ -7,7 +7,7 @@ import { SITE_URL, SITE_NAME } from "@/lib/seo";
  * event brand on every page.
  *
  * NOTE: an `Event` node (eligible for Google event rich results) is deliberately
- * omitted until the exact venue/address is locked.
+ * omitted until the exact venue address is locked.
  */
 export function StructuredData() {
   // Only include real, resolvable partner URLs in sameAs (the footer socials are

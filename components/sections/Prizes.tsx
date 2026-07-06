@@ -8,9 +8,7 @@ import { RingIcon } from "@/components/ui/bento";
 const PRIZE_ICONS = [Trophy, Medal, Award];
 
 /**
- * Prizes — 1st / 2nd / 3rd place cards with the amounts still to be announced.
- * The top prize is highlighted; everything reads "coming soon" until the pool
- * is confirmed.
+ * Prizes — 1st / 2nd / 3rd place cards with confirmed cash amounts.
  */
 export function Prizes() {
   const { prizes } = site;
@@ -42,7 +40,9 @@ export function Prizes() {
                     {p.place} place
                   </div>
                   <div className="mt-2 h-px w-10 bg-ignition-orange" />
-                  <p className="mt-4 text-sm text-ash">To be announced</p>
+                  <p className="mt-4 font-tomorrow text-xl font-medium text-ignition-orange">
+                    {p.amount}
+                  </p>
                 </CardContent>
               </Card>
             </Reveal>
