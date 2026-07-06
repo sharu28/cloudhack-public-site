@@ -139,6 +139,18 @@ export const site = {
         value: "Sri Lanka's top campuses",
         note: "Moratuwa · UCSC · IIT · SLIIT · NSBM",
       },
+      {
+        icon: "cpu",
+        label: "AI model",
+        value: "Kimi 2.6 endpoint",
+        note: "Provided through Convoy Cloud",
+      },
+      {
+        icon: "key",
+        label: "Tokens",
+        value: "Unlimited for teams",
+        note: "No personal API tokens needed",
+      },
     ],
   },
 
@@ -161,8 +173,9 @@ export const site = {
         name: "Convoy Tech",
         role: "Tech Partner",
         blurb:
-          "The technology and infrastructure partner behind the event — the " +
-          "platform teams use to build and run their solutions on the day.",
+          "The technology and infrastructure partner behind the event. Convoy " +
+          "Cloud will set up the cluster and shared Kimi 2.6 inference endpoint " +
+          "that teams use to build and run their solutions on the day.",
         email: "krishakary2j@gmail.com",
         website: "convoy-tech.com",
         href: "https://convoy-tech.com",
@@ -309,7 +322,7 @@ export const site = {
         q: "What should I bring on the day?",
         a:
           "Your laptop, charger, and whatever you build best with. Food and the " +
-          "venue are sorted — just bring your A-game.",
+          "venue are sorted, and you do not need to bring your own AI API tokens.",
       },
       {
         q: "Is there a registration fee?",
@@ -321,6 +334,14 @@ export const site = {
           "Pick one of the sponsor problem tracks — Automation, Web Applications " +
           "or SME Software — and ship a working prototype using AI tools by the " +
           "evening demo.",
+      },
+      {
+        q: "Do teams need their own AI API tokens?",
+        a:
+          "No. We will provide teams with access to a shared Kimi 2.6 inference " +
+          "endpoint, with unlimited tokens for teams during the event. Convoy " +
+          "Cloud will set up the cluster on Convoy Cloud so teams can build " +
+          "without using their own tokens.",
       },
       {
         q: "When and where exactly is the event?",

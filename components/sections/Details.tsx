@@ -5,6 +5,8 @@ import {
   Users,
   UsersRound,
   GraduationCap,
+  Cpu,
+  KeyRound,
 } from "lucide-react";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
@@ -17,6 +19,8 @@ const ICONS: Record<string, typeof Calendar> = {
   users: Users,
   team: UsersRound,
   school: GraduationCap,
+  cpu: Cpu,
+  key: KeyRound,
 };
 
 /**
