@@ -1,46 +1,33 @@
+import { ClipboardList } from "lucide-react";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 
 /**
- * "Judging & rules" — the weighted scoring criteria as cards (weight bar per
- * criterion) with the ground rules listed alongside, so teams know exactly
- * what they're scored on before the day.
+ * "Judging & rules" — the detailed scoring criteria aren't locked yet, so this
+ * shows only the ground rules plus a "criteria revealed at kickoff" note.
+ * Once the judging sheet is final, add the criteria to content/site.ts → rules
+ * and render them here.
  */
 export function Rules() {
   const { rules } = site;
 
   return (
     <Section id="rules" title={rules.heading} intro={rules.intro}>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-        {rules.criteria.map((criterion, i) => (
-          <Reveal as="div" key={criterion.name} delay={i * 0.08}>
-            <div className="flex h-full flex-col rounded-lg border border-tarmac bg-graphite p-6">
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="text-base font-semibold text-[var(--color-text)]">
-                  {criterion.name}
-                </h3>
-                <span className="font-tomorrow text-xl font-medium tabular-nums text-ignition-orange">
-                  {criterion.weight}%
-                </span>
-              </div>
-              {/* Weight bar — width mirrors the criterion's share of the score. */}
-              <div className="mt-3 h-1 w-full rounded-full bg-tarmac">
-                <div
-                  className="h-1 rounded-full bg-ignition-orange"
-                  style={{ width: `${criterion.weight}%` }}
-                  aria-hidden="true"
-                />
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-[var(--color-text-2)]">
-                {criterion.blurb}
-              </p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
+      <Reveal as="div">
+        <div className="inline-flex items-center gap-3 rounded-lg border border-tarmac bg-graphite px-5 py-3.5">
+          <ClipboardList
+            className="size-4 text-ignition-orange"
+            strokeWidth={1.75}
+            aria-hidden="true"
+          />
+          <span className="text-sm text-[var(--color-text-2)]">
+            {rules.criteriaNote}
+          </span>
+        </div>
+      </Reveal>
 
-      <Reveal as="div" delay={0.2}>
+      <Reveal as="div" delay={0.1}>
         <div className="mt-10">
           <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-text-2)]">
             {rules.rulesHeading}

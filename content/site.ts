@@ -212,18 +212,15 @@ export const site = {
   },
 
   // ── Judging & rules ─────────────────────────────────────────────────────────
-  //  ✏️ Criteria weights are the working scoring split — tweak here if the
-  //  judging sheet changes.
+  //  ✏️ The detailed scoring criteria aren't locked yet, so only the ground
+  //  rules are public. Once the judging sheet is final, add the criteria here
+  //  and surface them in components/sections/Rules.tsx.
   rules: {
     heading: "Judging & rules",
     intro:
-      "Every team is scored on the same weighted sheet by the full judging panel. Here's what counts — and the ground rules.",
-    criteria: [
-      { name: "Working demo", weight: 35, blurb: "Does it run? Judges score what they see working, not the pitch deck." },
-      { name: "Problem fit & impact", weight: 25, blurb: "How well the solution answers the sponsor's actual brief." },
-      { name: "Technical execution", weight: 25, blurb: "Sound engineering and smart use of the AI tooling provided." },
-      { name: "Pitch & clarity", weight: 15, blurb: "A tight demo that lands the problem, the solution and what's next." },
-    ],
+      "Every team demos to the full judging panel and is scored on the same sheet. The detailed criteria are revealed at kickoff — here are the ground rules to plan around.",
+    criteriaNote:
+      "Full judging criteria will be shared at kickoff on the day.",
     rulesHeading: "Ground rules",
     items: [
       "Teams are 3–4 people. Every member must be registered.",
