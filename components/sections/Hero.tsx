@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { Parallax } from "@/components/Parallax";
 import { SplitReveal } from "@/components/ui/SplitReveal";
 import { SponsorCarousel } from "@/components/sections/SponsorCarousel";
+import { Countdown } from "@/components/Countdown";
 
 export function Hero() {
   const { brand, hero } = site;
@@ -106,6 +107,14 @@ export function Hero() {
             />
             Colombo, Sri Lanka
           </p>
+        </Reveal>
+
+        <Reveal delay={0.54}>
+          <Countdown
+            targetISO={site.event.startISO}
+            label={site.event.countdownLabel}
+            className="mt-8"
+          />
         </Reveal>
       </Parallax>
       </div>

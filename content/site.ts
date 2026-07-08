@@ -15,6 +15,12 @@ export const site = {
     eyebrow: "ETHER LABS  &  CONVOY TECH present",
   },
 
+  // Event timing. Single source of truth for the countdown timer and sticky CTA.
+  event: {
+    startISO: "2026-08-09T09:00:00+05:30",
+    countdownLabel: "Kickoff in",
+  },
+
   // ── Hero ─────────────────────────────────────────────────────────────────
   hero: {
     // ✏️ The headline tagline for the event.
@@ -151,6 +157,40 @@ export const site = {
         value: "Unlimited for teams",
         note: "No personal API tokens needed",
       },
+    ],
+  },
+
+  // Participant-facing agenda, distilled from the day-of runbook.
+  schedule: {
+    heading: "Run of day",
+    intro:
+      "One day, morning brief to evening demos. Here's how Sunday 9 August plays out.",
+    note: "Times are provisional and may shift slightly on the day.",
+    items: [
+      { time: "08:30", title: "Doors open & check-in", blurb: "Grab your name tag, find your table, settle in." },
+      { time: "09:00", title: "Kickoff", blurb: "Format, rules, judging criteria and how submissions work." },
+      { time: "09:30", title: "Challenge briefings", blurb: "Sponsor companies walk through the real problems you'll solve." },
+      { time: "10:00", title: "Hacking begins", blurb: "Pick your track and start building." },
+      { time: "11:30", title: "Mentor checkpoint 1", blurb: "Sanity-check your approach with mentors before you go deep." },
+      { time: "13:00", title: "Lunch", blurb: "Fuel up. Food's on us." },
+      { time: "14:30", title: "Mentor checkpoint 2", blurb: "Pressure-test your demo path and scope for the final stretch." },
+      { time: "16:00", title: "Submissions open", blurb: "Lock in your links, decks and demo videos." },
+      { time: "17:00", title: "Final demos", blurb: "Every team presents in a fixed slot for real judges." },
+      { time: "19:00", title: "Winners & closing", blurb: "Prizes, photos and what happens next." },
+    ],
+  },
+
+  // Confirmed judges/mentors render as cards. Empty items render placeholders.
+  judges: {
+    heading: "Judges & mentors",
+    intro:
+      "Industry engineers and founders who set the briefs, mentor teams through the day, and judge the final demos.",
+    pending: "The full panel is being confirmed. Announcing soon.",
+    items: [] as { name: string; role: string; org: string; blurb?: string }[],
+    placeholders: [
+      { role: "Judge", hint: "Title sponsor engineering leadership" },
+      { role: "Judge", hint: "Track partner product and AI" },
+      { role: "Mentor", hint: "Senior engineers from sponsor teams" },
     ],
   },
 
