@@ -160,6 +160,23 @@ export const site = {
     ],
   },
 
+  // ── Venue ────────────────────────────────────────────────────────────────
+  //  ✏️ `mapQuery` drives the embedded Google Map — refine it (or swap in a
+  //  full address) once the exact building/hall is confirmed.
+  venue: {
+    heading: "The venue",
+    intro:
+      "Hosted at SLIIT – Curtin Campus in Colombo, our Venue Partner for CloudHack 2026.",
+    name: "SLIIT – Curtin Campus",
+    city: "Colombo, Sri Lanka",
+    mapQuery: "SLIIT Curtin Campus Colombo",
+    notes: [
+      { title: "Doors open 08:30", body: "Check-in closes at kickoff — arrive early to settle in." },
+      { title: "What to bring", body: "Laptop, charger, and whatever you build best with. Food, WiFi and power are sorted." },
+      { title: "Getting there", body: "Exact hall, entrance and parking details are emailed to registered participants before the day." },
+    ],
+  },
+
   // Participant-facing agenda, distilled from the day-of runbook.
   schedule: {
     heading: "Run of day",
@@ -192,6 +209,41 @@ export const site = {
       { role: "Judge", hint: "Track partner product and AI" },
       { role: "Mentor", hint: "Senior engineers from sponsor teams" },
     ],
+  },
+
+  // ── Judging & rules ─────────────────────────────────────────────────────────
+  //  ✏️ Criteria weights are the working scoring split — tweak here if the
+  //  judging sheet changes.
+  rules: {
+    heading: "Judging & rules",
+    intro:
+      "Every team is scored on the same weighted sheet by the full judging panel. Here's what counts — and the ground rules.",
+    criteria: [
+      { name: "Working demo", weight: 35, blurb: "Does it run? Judges score what they see working, not the pitch deck." },
+      { name: "Problem fit & impact", weight: 25, blurb: "How well the solution answers the sponsor's actual brief." },
+      { name: "Technical execution", weight: 25, blurb: "Sound engineering and smart use of the AI tooling provided." },
+      { name: "Pitch & clarity", weight: 15, blurb: "A tight demo that lands the problem, the solution and what's next." },
+    ],
+    rulesHeading: "Ground rules",
+    items: [
+      "Teams are 3–4 people. Every member must be registered.",
+      "All project code is written on the day. Open-source libraries, frameworks and AI tools (including the provided Kimi 2.6 endpoint) are fair game.",
+      "Each team builds against one sponsor track brief, chosen after the morning briefings.",
+      "Submissions close before final demos — a repo link and working demo are required.",
+      "Judges' decisions are final.",
+    ],
+  },
+
+  // ── Community ───────────────────────────────────────────────────────────────
+  //  ✏️ Drop the real WhatsApp invite URL into `href` — the button renders as
+  //  "link coming soon" until it starts with http.
+  community: {
+    heading: "Join the community",
+    body:
+      "The CloudHack WhatsApp community is where announcements drop first — and where solo builders find teammates before the day.",
+    ctaLabel: "Join the WhatsApp community",
+    pendingLabel: "WhatsApp community link coming soon",
+    href: "#",
   },
 
   // ── Who's behind CloudHack ──────────────────────────────────────────────────
@@ -312,19 +364,20 @@ export const site = {
     heading: "Sponsors",
     intro: "Made possible by our incredible partners.",
     carouselLabel: "Made possible by our incredible partners",
-    // ✏️ Placeholder sponsor line-up. Add a `logo` image path per entry once
-    //    sponsors are confirmed — the carousel falls back to a wordmark plate
-    //    until then.
+    // ✏️ Sponsor line-up. Entries with `confirmed: true` render in the carousel
+    //    as wordmark plates (or the `logo` image once one is added); unconfirmed
+    //    entries are hidden and "coming soon" plates fill the remaining slots.
     pending: "Full sponsor line-up to be announced.",
     logos: [
-      { name: "NIMBUS", tier: "Title", logo: "" },
-      { name: "VERTEX AI", tier: "Track Partner", logo: "" },
-      { name: "BYTEFORGE", tier: "Track Partner", logo: "" },
-      { name: "HELIX CLOUD", tier: "Track Partner", logo: "" },
-      { name: "QUANTA", tier: "Community", logo: "" },
-      { name: "NOVA STACK", tier: "Community", logo: "" },
-      { name: "ORBITAL", tier: "Community", logo: "" },
-      { name: "CIPHERWORKS", tier: "Community", logo: "" },
+      { name: "SLIIT", tier: "Venue Partner", logo: "", confirmed: true },
+      { name: "NIMBUS", tier: "Title", logo: "", confirmed: false },
+      { name: "VERTEX AI", tier: "Track Partner", logo: "", confirmed: false },
+      { name: "BYTEFORGE", tier: "Track Partner", logo: "", confirmed: false },
+      { name: "HELIX CLOUD", tier: "Track Partner", logo: "", confirmed: false },
+      { name: "QUANTA", tier: "Community", logo: "", confirmed: false },
+      { name: "NOVA STACK", tier: "Community", logo: "", confirmed: false },
+      { name: "ORBITAL", tier: "Community", logo: "", confirmed: false },
+      { name: "CIPHERWORKS", tier: "Community", logo: "", confirmed: false },
     ],
     tiers: [
       { name: "Title", blurb: "Headline billing, keynote slot, first pick of talent." },
@@ -356,7 +409,8 @@ export const site = {
         q: "Do I need to come with a team, or can I be matched?",
         a:
           "Teams are 3–4 people. Come with your own crew, or register solo and " +
-          "we'll help match you into a team before the day.",
+          "we'll help match you into a team before the day — the WhatsApp " +
+          "community is the best place to find teammates.",
       },
       {
         q: "What should I bring on the day?",

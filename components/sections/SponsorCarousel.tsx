@@ -12,18 +12,19 @@ import {
 /**
  * Auto-scrolling sponsor logo cloud — the shadcnblocks "logos3" pattern built on
  * Embla with the AutoScroll plugin (continuous drift, drag-able, pauses on hover).
- * Sponsors aren't confirmed yet, so the cloud scrolls "coming soon" plates. Once a
- * real logo image is dropped into content/site.ts → sponsors.logos[].logo, the same
- * cloud swaps over to the actual logos. Edge gradients dissolve the plates into the
- * page rather than hard-cutting.
+ * Confirmed partners (content/site.ts → sponsors.logos[].confirmed) render as
+ * wordmark plates — or the actual logo once an image path is added — and
+ * "coming soon" plates fill the remaining slots so the cloud keeps turning.
+ * Edge gradients dissolve the plates into the page rather than hard-cutting.
  */
 export function SponsorCarousel() {
   const { sponsors } = site;
 
-  // Only run the real logo cloud once a logo image exists; until then scroll a set
-  // of identical "coming soon" plates so the carousel still turns.
-  const hasLogos = sponsors.logos.some((logo) => logo.logo);
-  const comingSoonSlots = Array.from({ length: 8 });
+  const confirmed = sponsors.logos.filter((logo) => logo.confirmed);
+  // Keep the loop full: at least 8 plates total, topped up with "coming soon".
+  const comingSoonSlots = Array.from({
+    length: Math.max(8 - confirmed.length, 2),
+  });
 
   // Stable plugin instance — recreating it every render makes Embla re-init.
   const plugins = useMemo(
@@ -50,48 +51,47 @@ export function SponsorCarousel() {
           plugins={plugins}
         >
           <CarouselContent className="ml-0">
-            {hasLogos
-              ? sponsors.logos.map((logo) => (
-                  <CarouselItem
-                    key={logo.name}
-                    className="flex basis-1/2 justify-center pl-0 sm:basis-1/3 lg:basis-1/4 xl:basis-1/5"
-                  >
-                    <div className="mx-3 flex h-28 w-full max-w-[14rem] shrink-0 flex-col items-center justify-center gap-2 rounded-lg border border-tarmac bg-graphite px-6 transition-colors hover:border-white/25">
-                      {logo.logo ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={logo.logo}
-                          alt={logo.name}
-                          className="max-h-10 w-auto object-contain"
-                        />
-                      ) : (
-                        <>
-                          <span className="font-tomorrow text-lg font-medium tracking-[0.06em] text-stark-white sm:text-xl">
-                            {logo.name}
-                          </span>
-                          <span className="font-tomorrow text-[10px] font-medium uppercase tracking-[0.2em] text-dusk-gray">
-                            {logo.tier}
-                          </span>
-                        </>
-                      )}
-                    </div>
-                  </CarouselItem>
-                ))
-              : comingSoonSlots.map((_, i) => (
-                  <CarouselItem
-                    key={i}
-                    className="flex basis-1/2 justify-center pl-0 sm:basis-1/3 lg:basis-1/4 xl:basis-1/5"
-                  >
-                    <div className="mx-3 flex h-28 w-full max-w-[14rem] shrink-0 flex-col items-center justify-center gap-2 rounded-lg border border-tarmac bg-graphite px-6">
-                      <span className="font-tomorrow text-[10px] font-medium uppercase tracking-[0.2em] text-dusk-gray">
-                        Sponsors
-                      </span>
+            {confirmed.map((logo) => (
+              <CarouselItem
+                key={logo.name}
+                className="flex basis-1/2 justify-center pl-0 sm:basis-1/3 lg:basis-1/4 xl:basis-1/5"
+              >
+                <div className="mx-3 flex h-28 w-full max-w-[14rem] shrink-0 flex-col items-center justify-center gap-2 rounded-lg border border-tarmac bg-graphite px-6 transition-colors hover:border-white/25">
+                  {logo.logo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={logo.logo}
+                      alt={logo.name}
+                      className="max-h-10 w-auto object-contain"
+                    />
+                  ) : (
+                    <>
                       <span className="font-tomorrow text-lg font-medium tracking-[0.06em] text-stark-white sm:text-xl">
-                        Coming soon
+                        {logo.name}
                       </span>
-                    </div>
-                  </CarouselItem>
-                ))}
+                      <span className="font-tomorrow text-[10px] font-medium uppercase tracking-[0.2em] text-dusk-gray">
+                        {logo.tier}
+                      </span>
+                    </>
+                  )}
+                </div>
+              </CarouselItem>
+            ))}
+            {comingSoonSlots.map((_, i) => (
+              <CarouselItem
+                key={`pending-${i}`}
+                className="flex basis-1/2 justify-center pl-0 sm:basis-1/3 lg:basis-1/4 xl:basis-1/5"
+              >
+                <div className="mx-3 flex h-28 w-full max-w-[14rem] shrink-0 flex-col items-center justify-center gap-2 rounded-lg border border-tarmac bg-graphite px-6">
+                  <span className="font-tomorrow text-[10px] font-medium uppercase tracking-[0.2em] text-dusk-gray">
+                    Sponsors
+                  </span>
+                  <span className="font-tomorrow text-lg font-medium tracking-[0.06em] text-stark-white sm:text-xl">
+                    Coming soon
+                  </span>
+                </div>
+              </CarouselItem>
+            ))}
           </CarouselContent>
         </Carousel>
 
