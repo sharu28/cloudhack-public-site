@@ -8,6 +8,7 @@ import { Tracks } from "@/components/sections/Tracks";
 import { Challenge } from "@/components/sections/Challenge";
 import { Prizes } from "@/components/sections/Prizes";
 import { Details } from "@/components/sections/Details";
+import { CloudPlatform } from "@/components/sections/CloudPlatform";
 import { Venue } from "@/components/sections/Venue";
 import { Schedule } from "@/components/sections/Schedule";
 import { Rules } from "@/components/sections/Rules";
@@ -30,6 +31,7 @@ export default function Home() {
         <Challenge />
         <Prizes />
         <Details />
+        <CloudPlatform />
         <Venue />
         <Schedule />
         <Rules />

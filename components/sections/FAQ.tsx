@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
@@ -25,9 +26,17 @@ export function FAQ() {
                   aria-hidden="true"
                 />
               </summary>
-              <p className="max-w-2xl pb-6 text-sm leading-relaxed text-ash sm:text-base">
-                {item.a}
-              </p>
+              <div className="max-w-2xl pb-6 text-sm leading-relaxed text-ash sm:text-base">
+                <p>{item.a}</p>
+                {"href" in item && item.href && (
+                  <Link
+                    href={item.href}
+                    className="mt-3 inline-flex text-sm font-semibold text-ignition-orange transition hover:text-ignition-orange/80"
+                  >
+                    {item.linkLabel}
+                  </Link>
+                )}
+              </div>
             </details>
           </Reveal>
         ))}

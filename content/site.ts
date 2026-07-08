@@ -17,7 +17,7 @@ export const site = {
 
   // Event timing. Single source of truth for the countdown timer and sticky CTA.
   event: {
-    startISO: "2026-08-09T09:00:00+05:30",
+    startISO: "2026-08-16T09:00:00+05:30",
     countdownLabel: "Kickoff in",
   },
 
@@ -106,13 +106,12 @@ export const site = {
   // ── Event details ──────────────────────────────────────────────────────────
   details: {
     heading: "Event details",
-    // Shown as a prominent banner above the logistics grid.
     notice: "Venue confirmed: SLIIT - Curtin Campus.",
-    items: [
+    essentials: [
       {
         icon: "calendar",
         label: "When",
-        value: "9 August 2026",
+        value: "16 August 2026",
         note: "Sunday · save the date",
       },
       {
@@ -127,35 +126,50 @@ export const site = {
         value: "One full day",
         note: "Morning brief to evening demos",
       },
+    ],
+    groups: [
       {
-        icon: "users",
-        label: "Participants",
-        value: "80 curated builders",
-        note: "University students & early-career builders",
+        title: "Who should apply",
+        items: [
+          {
+            label: "Eligibility",
+            value: "Students & early-career builders",
+            note:
+              "Open to builders in Sri Lanka across technical and product roles.",
+          },
+          {
+            label: "Teams",
+            value: "Solo, partial, or full",
+            note: "Final event teams will be 3–4 members.",
+          },
+          {
+            label: "Capacity",
+            value: "80 curated builders",
+            note: "Selected from university and early-career applicants.",
+          },
+        ],
       },
       {
-        icon: "team",
-        label: "Team size",
-        value: "3–4 members",
-        note: "Come as a team or get matched",
-      },
-      {
-        icon: "school",
-        label: "Who's invited",
-        value: "Sri Lanka's top campuses",
-        note: "Moratuwa · UCSC · IIT · SLIIT · NSBM",
-      },
-      {
-        icon: "cpu",
-        label: "AI model",
-        value: "Kimi 2.6 endpoint",
-        note: "Provided through Convoy Cloud",
-      },
-      {
-        icon: "key",
-        label: "Tokens",
-        value: "Unlimited for teams",
-        note: "No personal API tokens needed",
+        title: "Build setup",
+        ctaLabel: "How Convoy Cloud works",
+        ctaHref: "/convoy-cloud",
+        items: [
+          {
+            label: "AI model",
+            value: "Kimi 2.6 endpoint",
+            note: "Provided through Convoy Cloud.",
+          },
+          {
+            label: "Tokens",
+            value: "Unlimited for teams",
+            note: "No personal API tokens needed.",
+          },
+          {
+            label: "Deployment",
+            value: "Convoy Cloud",
+            note: "Final apps deploy there before demos and judging.",
+          },
+        ],
       },
     ],
   },
@@ -173,7 +187,29 @@ export const site = {
     notes: [
       { title: "Doors open 08:30", body: "Check-in closes at kickoff — arrive early to settle in." },
       { title: "What to bring", body: "Laptop, charger, and whatever you build best with. Food, WiFi and power are sorted." },
-      { title: "Getting there", body: "Exact hall, entrance and parking details are emailed to registered participants before the day." },
+      { title: "Getting there", body: "Exact hall, entrance, parking, and arrival instructions will be emailed to confirmed participants." },
+    ],
+  },
+
+  cloudPlatform: {
+    heading: "Cloud platform",
+    intro:
+      "Apps will need to be deployed on Convoy Cloud, our Cloud Platform Partner, so every final demo runs from a shared event-ready platform.",
+    ctaLabel: "What is Convoy Cloud?",
+    ctaHref: "/convoy-cloud",
+    externalLabel: "Visit Convoy Tech",
+    externalHref: "https://convoy-tech.com",
+    items: [
+      {
+        title: "Deploy before demos",
+        body:
+          "Teams submit a live Convoy Cloud URL alongside their repo and short presentation or demo video.",
+      },
+      {
+        title: "Workshop before event",
+        body:
+          "An in-person workshop is planned two weeks before CloudHack to walk teams through the platform, deployment flow, environment variables, and demo setup.",
+      },
     ],
   },
 
@@ -181,7 +217,7 @@ export const site = {
   schedule: {
     heading: "Run of day",
     intro:
-      "One day, morning brief to evening demos. Here's how Sunday 9 August plays out.",
+      "One day, morning brief to evening demos. Here's how Sunday 16 August plays out.",
     note: "Times are provisional and may shift slightly on the day.",
     items: [
       { time: "08:30", title: "Doors open & check-in", blurb: "Grab your name tag, find your table, settle in." },
@@ -226,7 +262,8 @@ export const site = {
       "Teams are 3–4 people. Every member must be registered.",
       "All project code is written on the day. Open-source libraries, frameworks and AI tools (including the provided Kimi 2.6 endpoint) are fair game.",
       "Each team builds against one sponsor track brief, chosen after the morning briefings.",
-      "Submissions close before final demos — a repo link and working demo are required.",
+      "Apps must be deployed on Convoy Cloud, our Cloud Platform Partner, for final demos and judging.",
+      "Final submissions must include a working demo, a GitHub/repo link, and a short presentation or demo video. Submission links close before final demos.",
       "Judges' decisions are final.",
     ],
   },
@@ -240,7 +277,7 @@ export const site = {
       "The CloudHack WhatsApp community is where announcements drop first — and where solo builders find teammates before the day.",
     ctaLabel: "Join the WhatsApp community",
     pendingLabel: "WhatsApp community link coming soon",
-    href: "#",
+    href: "https://chat.whatsapp.com/KND60dRYwZz8GE3YU9NH9U",
   },
 
   // ── Who's behind CloudHack ──────────────────────────────────────────────────
@@ -392,9 +429,9 @@ export const site = {
       {
         q: "Who can participate?",
         a:
-          "CloudHack is for university students and early-career builders from " +
-          "across Sri Lanka — Moratuwa, UCSC, IIT, SLIIT, NSBM and beyond. 80 " +
-          "participants are curated for the event.",
+          "CloudHack is open to university students and early-career builders in Sri Lanka. " +
+          "Teams can include developers, AI builders, designers, product thinkers, or anyone " +
+          "who can help ship a working prototype in one day.",
       },
       {
         q: "How do I register?",
@@ -403,11 +440,17 @@ export const site = {
           "form. Tell us about you and your team, and we'll be in touch with next steps.",
       },
       {
-        q: "Do I need to come with a team, or can I be matched?",
+        q: "Can I register solo or with a partial team?",
         a:
-          "Teams are 3–4 people. Come with your own crew, or register solo and " +
-          "we'll help match you into a team before the day — the WhatsApp " +
-          "community is the best place to find teammates.",
+          "You can register solo, with a partial team, or as a full team. Full event " +
+          "teams will be 3–4 members; solo and partial applicants can use the WhatsApp " +
+          "community to find teammates before selection.",
+      },
+      {
+        q: "Do I need to register every team member now?",
+        a:
+          "For now, only the captain needs to register. We'll collect full member " +
+          "details from shortlisted teams.",
       },
       {
         q: "What should I bring on the day?",
@@ -424,7 +467,17 @@ export const site = {
         a:
           "Pick one of the sponsor problem tracks — Automation, Web Applications " +
           "or SME Software — and ship a working prototype using AI tools by the " +
-          "evening demo.",
+          "evening demo. Final submissions must include a working demo, a GitHub/repo " +
+          "link, and a short presentation or demo video.",
+      },
+      {
+        q: "What is Convoy Cloud?",
+        a:
+          "Convoy Cloud is CloudHack's Cloud Platform Partner. Teams will use it " +
+          "to deploy final apps for demos and judging, with an in-person platform " +
+          "workshop planned two weeks before the hackathon.",
+        href: "/convoy-cloud",
+        linkLabel: "Learn about Convoy Cloud",
       },
       {
         q: "Do teams need their own AI API tokens?",
@@ -437,7 +490,7 @@ export const site = {
       {
         q: "When and where exactly is the event?",
         a:
-          "9 August 2026, at SLIIT - Curtin Campus in Colombo. Register and " +
+          "16 August 2026, at SLIIT - Curtin Campus in Colombo. Register and " +
           "we'll send you the details first.",
       },
     ],
@@ -489,7 +542,7 @@ export const site = {
   signup: {
     title: "Register a team for CloudHack 2026",
     subtitle:
-      "Teams of 3–4 builders. Fill in your captain's details below and we'll be in touch with next steps.",
+      "You can register solo, with a partial team, or as a full team. Full event teams will be 3–4 members; only the captain needs to submit this form for now.",
     universities: ["Moratuwa", "UCSC", "IIT", "SLIIT", "NSBM", "Other"],
     roles: ["Developer", "AI Builder", "Designer", "Other"],
     sponsorEnquiries: {
@@ -499,6 +552,74 @@ export const site = {
       email: "sharu@etherlabs.lk",
       phone: "+94 74 221 6040",
     },
+  },
+
+  convoyCloudPage: {
+    title: "What is Convoy Cloud?",
+    subtitle:
+      "Convoy Cloud is CloudHack's Cloud Platform Partner. Every team will deploy its final app on the platform so demos are live, reviewable, and consistent for judges.",
+    externalLabel: "Visit Convoy Tech",
+    externalHref: "https://convoy-tech.com",
+    workshop:
+      "An in-person Convoy Cloud workshop is planned for Sunday 2 August 2026, two weeks before CloudHack. Final time and location will be shared with confirmed participants through email and WhatsApp.",
+    steps: [
+      {
+        label: "Workshop",
+        title: "Learn the platform",
+        body: "Selected teams attend the in-person Convoy Cloud workshop and get familiar with the deployment workflow before event day.",
+      },
+      {
+        label: "Build",
+        title: "Ship locally first",
+        body: "Teams build their prototype during CloudHack using their preferred framework, repo, and local development setup.",
+      },
+      {
+        label: "Deploy",
+        title: "Publish on Convoy Cloud",
+        body: "Before submissions close, teams deploy the app and confirm the live URL works for judges.",
+      },
+      {
+        label: "Submit",
+        title: "Share the demo package",
+        body: "Final submissions include the Convoy Cloud URL, GitHub/repo link, and a short presentation or demo video.",
+      },
+    ],
+    sections: [
+      {
+        title: "Why CloudHack uses it",
+        body:
+          "Hackathon demos are easier to judge when they are deployed in one reliable place. Convoy Cloud gives teams a shared deployment path, gives judges live URLs to test, and helps avoid laptop-only demos or last-minute hosting issues.",
+      },
+      {
+        title: "How it works for teams",
+        body:
+          "Teams build locally during the event, then deploy their frontend, backend, or full-stack app to Convoy Cloud before submissions close. Your final submission should include the deployed URL, a GitHub/repo link, and a short presentation or demo video.",
+      },
+      {
+        title: "What the workshop covers",
+        body:
+          "The workshop will cover account setup, project deployment, environment variables, repo structure, live URLs, troubleshooting, and what judges expect to see in a final deployed demo.",
+      },
+      {
+        title: "What to prepare",
+        body:
+          "Bring a laptop, make sure your GitHub account is ready, and be comfortable running a basic web app locally. Keep secrets out of your repo and be ready to document any environment variables your project needs.",
+      },
+    ],
+    faq: [
+      {
+        q: "Do I need to know Convoy Cloud before applying?",
+        a: "No. The workshop is designed to get selected teams comfortable with the platform before the hackathon.",
+      },
+      {
+        q: "Can we use another hosting provider?",
+        a: "For final CloudHack judging, apps need to be deployed on Convoy Cloud. You can still use familiar tools while building locally.",
+      },
+      {
+        q: "What if my app needs a backend or database?",
+        a: "Bring your expected stack and environment-variable needs to the workshop. The Convoy Cloud team will explain the supported deployment path and help teams plan a demo-safe setup.",
+      },
+    ],
   },
 } as const;
 

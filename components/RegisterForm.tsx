@@ -29,7 +29,7 @@ function validate(values: typeof initial): Errors {
   if (values.teamSize) {
     const n = Number(values.teamSize);
     if (!Number.isInteger(n) || n < 1 || n > 4)
-      errors.teamSize = "Teams are 1–4 members.";
+      errors.teamSize = "Enter 1–4 for now; full event teams will be 3–4 members.";
   }
   if (values.link.trim() && !/^https?:\/\/|^[\w.-]+\.\w/.test(values.link.trim()))
     errors.link = "Enter a valid URL.";
@@ -170,7 +170,7 @@ export function RegisterForm() {
       <Field
         id="teamSize"
         label="Number of team members"
-        hint="Teams of 3–4 (1–4 accepted while you finalise)"
+        hint="Register solo, partial, or full team"
         error={errors.teamSize}
       >
         <input
