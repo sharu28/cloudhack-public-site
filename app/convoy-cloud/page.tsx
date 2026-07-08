@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "What is Convoy Cloud? — CloudHack 2026",
     description:
-      "CloudHack teams deploy final apps on Convoy Cloud for live demos and judging, with an in-person workshop before the hackathon.",
+      "CloudHack teams deploy final apps on Convoy Cloud for live demos and judging, with hands-on guidance at the in-person workshop.",
     url: "/convoy-cloud",
     siteName: "CloudHack 2026",
     type: "website",

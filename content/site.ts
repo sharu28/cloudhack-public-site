@@ -167,7 +167,7 @@ export const site = {
           {
             label: "Deployment",
             value: "Convoy Cloud",
-            note: "Final apps deploy there before demos and judging.",
+            note: "Final apps run there for demos and judging.",
           },
         ],
       },
@@ -194,21 +194,21 @@ export const site = {
   cloudPlatform: {
     heading: "Cloud platform",
     intro:
-      "Apps will need to be deployed on Convoy Cloud, our Cloud Platform Partner, so every final demo runs from a shared event-ready platform.",
+      "Every final app runs on Convoy Cloud, our Cloud Platform Partner, giving judges a live, shared platform for review.",
     ctaLabel: "What is Convoy Cloud?",
     ctaHref: "/convoy-cloud",
     externalLabel: "Visit Convoy Tech",
     externalHref: "https://convoy-tech.com",
     items: [
       {
-        title: "Deploy before demos",
+        title: "Submit a live demo link",
         body:
-          "Teams submit a live Convoy Cloud URL alongside their repo and short presentation or demo video.",
+          "Teams include a working Convoy Cloud URL with their repo and short presentation or demo video.",
       },
       {
-        title: "Workshop before event",
+        title: "In-person workshop",
         body:
-          "An in-person workshop is planned two weeks before CloudHack to walk teams through the platform, deployment flow, environment variables, and demo setup.",
+          "A hands-on session two weeks ahead of CloudHack walks teams through the platform, deployment flow, environment variables, and demo setup.",
       },
     ],
   },
@@ -262,7 +262,7 @@ export const site = {
       "Teams are 3–4 people. Every member must be registered.",
       "All project code is written on the day. Open-source libraries, frameworks and AI tools (including the provided Kimi 2.6 endpoint) are fair game.",
       "Each team builds against one sponsor track brief, chosen after the morning briefings.",
-      "Apps must be deployed on Convoy Cloud, our Cloud Platform Partner, for final demos and judging.",
+      "Apps must run on Convoy Cloud, our Cloud Platform Partner, for final demos and judging.",
       "Final submissions must include a working demo, a GitHub/repo link, and a short presentation or demo video. Submission links close before final demos.",
       "Judges' decisions are final.",
     ],
@@ -475,7 +475,7 @@ export const site = {
         a:
           "Convoy Cloud is CloudHack's Cloud Platform Partner. Teams will use it " +
           "to deploy final apps for demos and judging, with an in-person platform " +
-          "workshop planned two weeks before the hackathon.",
+          "workshop planned two weeks ahead of the hackathon.",
         href: "/convoy-cloud",
         linkLabel: "Learn about Convoy Cloud",
       },
@@ -561,12 +561,12 @@ export const site = {
     externalLabel: "Visit Convoy Tech",
     externalHref: "https://convoy-tech.com",
     workshop:
-      "An in-person Convoy Cloud workshop is planned for Sunday 2 August 2026, two weeks before CloudHack. Final time and location will be shared with confirmed participants through email and WhatsApp.",
+      "An in-person Convoy Cloud workshop is planned for Sunday 2 August 2026, two weeks ahead of CloudHack. Final time and location will be shared with confirmed participants through email and WhatsApp.",
     steps: [
       {
         label: "Workshop",
         title: "Learn the platform",
-        body: "Selected teams attend the in-person Convoy Cloud workshop and get familiar with the deployment workflow before event day.",
+        body: "Selected teams attend the in-person Convoy Cloud workshop and get comfortable with the deployment workflow ahead of event day.",
       },
       {
         label: "Build",
@@ -576,7 +576,7 @@ export const site = {
       {
         label: "Deploy",
         title: "Publish on Convoy Cloud",
-        body: "Before submissions close, teams deploy the app and confirm the live URL works for judges.",
+        body: "Teams deploy the app, test the live URL, and keep it ready for judges when submissions close.",
       },
       {
         label: "Submit",
@@ -593,7 +593,7 @@ export const site = {
       {
         title: "How it works for teams",
         body:
-          "Teams build locally during the event, then deploy their frontend, backend, or full-stack app to Convoy Cloud before submissions close. Your final submission should include the deployed URL, a GitHub/repo link, and a short presentation or demo video.",
+          "Teams build locally during the event, then publish their frontend, backend, or full-stack app to Convoy Cloud for submission. Your final package should include the deployed URL, a GitHub/repo link, and a short presentation or demo video.",
       },
       {
         title: "What the workshop covers",
@@ -608,8 +608,8 @@ export const site = {
     ],
     faq: [
       {
-        q: "Do I need to know Convoy Cloud before applying?",
-        a: "No. The workshop is designed to get selected teams comfortable with the platform before the hackathon.",
+        q: "Do I need Convoy Cloud experience to apply?",
+        a: "No. The workshop is designed to get selected teams comfortable with the platform ahead of the hackathon.",
       },
       {
         q: "Can we use another hosting provider?",

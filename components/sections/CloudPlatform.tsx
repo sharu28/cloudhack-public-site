@@ -49,12 +49,11 @@ export function CloudPlatform() {
                 Platform requirement
               </p>
               <p className="mt-4 text-xl font-semibold leading-snug text-stark-white">
-                Final apps deploy on Convoy Cloud before judging.
+                Deploy apps to Convoy Cloud
               </p>
               <p className="mt-4 text-sm leading-relaxed text-ash">
-                The workshop gives selected teams the deployment workflow before
-                event day, so final demos are live links rather than local-only
-                builds.
+                Final submissions must include a live Convoy Cloud URL. Judges
+                use that link to test each app.
               </p>
             </div>
 
