@@ -216,6 +216,7 @@ export const site = {
     note: "Times are provisional and may shift slightly on the day.",
     items: [
       { time: "08:30", title: "Doors open & check-in", blurb: "Grab your name tag, find your table, settle in." },
+      { time: "08:45", title: "Opening keynote", blurb: "A short address to open CloudHack before the day's briefings begin." },
       { time: "09:00", title: "Kickoff", blurb: "Format, rules, judging criteria and how submissions work." },
       { time: "09:30", title: "Challenge briefings", blurb: "Sponsor companies walk through the real problems you'll solve." },
       { time: "10:00", title: "Hacking begins", blurb: "Pick your track and start building." },
@@ -224,6 +225,7 @@ export const site = {
       { time: "14:30", title: "Mentor checkpoint 2", blurb: "Pressure-test your demo path and scope for the final stretch." },
       { time: "16:00", title: "Submissions open", blurb: "Lock in your links, decks and demo videos." },
       { time: "17:00", title: "Final demos", blurb: "Every team presents in a fixed slot for real judges." },
+      { time: "18:00", title: "Closing keynote", blurb: "A closing address from Convoy Tech, our Cloud Platform Partner." },
       { time: "19:00", title: "Winners & closing", blurb: "Prizes, photos and what happens next." },
     ],
   },
@@ -236,6 +238,17 @@ export const site = {
     intro:
       "Industry engineers and founders who set the briefs, mentor teams through the day, and judge the final demos.",
     pending: "The full panel is being confirmed. Announcing soon.",
+  },
+
+  // Keynote speakers aren't confirmed yet - same honest-pending pattern as
+  // Judges above. Shape is ready (name/role/org/bio/photo) for whenever real
+  // speakers are locked in; renders as a single pending line until then,
+  // never as empty cards (see DESIGN.md: no placeholder theater).
+  speakers: {
+    heading: "Keynote speakers",
+    intro: "Short keynotes bookend the day - one to open, one to close.",
+    pending: "Speaker names and bios are being confirmed. Announcing soon.",
+    items: [] as Array<{ name: string; role: string; org: string; bio: string; photo: string }>,
   },
 
   // ── Judging & rules ─────────────────────────────────────────────────────────
@@ -404,7 +417,15 @@ export const site = {
     heading: "Sponsors",
     intro: "Made possible by our incredible partners.",
     pending: "Full sponsor line-up to be announced.",
-    logos: [{ name: "SLIIT", tier: "Venue Partner", logo: "", confirmed: true }],
+    logos: [
+      {
+        name: "SLIIT",
+        tier: "Venue Partner",
+        logo: "",
+        blurb: "SLIIT opens its Curtin Campus in Colombo as CloudHack 2026's venue for the day.",
+        confirmed: true,
+      },
+    ],
   },
 
   // ── FAQ ──────────────────────────────────────────────────────────────────────

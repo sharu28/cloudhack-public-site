@@ -147,18 +147,32 @@ export default function PartnersPage() {
               <p className="font-mono text-xs font-light uppercase tracking-[0.18em] text-ink-2">
                 {sponsors.heading}
               </p>
-              <div className="mt-5 flex flex-wrap items-center gap-4">
+              <div className="mt-5 flex flex-wrap items-start gap-4">
                 {confirmedSponsors.map((logo) => (
                   <div
                     key={logo.name}
-                    className="flex items-center gap-3 border border-line-strong bg-paper-raised px-5 py-3"
+                    className="flex max-w-xs items-start gap-3 border border-line-strong bg-paper-raised px-5 py-4"
                   >
-                    <span className="text-base font-extralight tracking-[-0.01em] text-ink">
-                      {logo.name}
-                    </span>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-2">
-                      {logo.tier}
-                    </span>
+                    {logo.logo && (
+                      <img
+                        src={logo.logo}
+                        alt={`${logo.name} logo`}
+                        className="h-8 w-auto shrink-0 object-contain"
+                      />
+                    )}
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="text-base font-extralight tracking-[-0.01em] text-ink">
+                          {logo.name}
+                        </span>
+                        <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-2">
+                          {logo.tier}
+                        </span>
+                      </div>
+                      {logo.blurb && (
+                        <p className="mt-1.5 text-sm leading-relaxed text-ink-2">{logo.blurb}</p>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
