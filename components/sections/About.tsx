@@ -1,32 +1,31 @@
 import { site } from "@/content/site";
-import { FeaturePanel } from "@/components/ui/FeaturePanel";
+import { Section } from "@/components/Section";
+import { ClipReveal } from "@/components/ui/ClipReveal";
+import { Parallax } from "@/components/Parallax";
 
+/**
+ * About — a full-width editorial statement, not a two-column panel with a
+ * floating pull-quote card (V4/V5). The quote becomes a stamped manifest
+ * entry: a ledger line with a hard rule, not a rounded card. Motion is the
+ * typographic mask reveal only — no card, no tilt (Section 8).
+ */
 export function About() {
   const { about } = site;
 
   return (
-    <FeaturePanel
-      id="about"
-      eyebrow="About"
-      title={about.heading}
-      body={about.body}
-    >
-      {/* A compact pull-quote that frames CloudHack as a movement. */}
-      <div className="relative mx-auto flex w-full max-w-sm flex-col gap-4 overflow-hidden rounded-lg border border-tarmac bg-charcoal p-6 sm:p-7">
-        <span
-          className="font-tomorrow text-4xl leading-none text-tarmac"
-          aria-hidden="true"
-        >
-          &ldquo;
-        </span>
-        <p className="font-tomorrow text-xl font-medium leading-snug tracking-[-0.01em] text-stark-white sm:text-2xl">
-          {about.pullQuote}
-        </p>
-        <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.18em] text-dusk-gray">
-          <span className="h-px w-8 bg-ignition-orange" aria-hidden="true" />
-          Sri Lanka&rsquo;s tech future
-        </div>
-      </div>
-    </FeaturePanel>
+    <Section id="about" eyebrow="About" title={about.heading} intro={about.body}>
+      <ClipReveal className="max-w-3xl" delay={0.1}>
+        <Parallax speed={14}>
+          <div className="flex items-start gap-5 border-l-2 border-stamp py-1 pl-6">
+            <span aria-hidden="true" className="mt-1 font-mono text-4xl leading-none text-stamp/25">
+              &ldquo;
+            </span>
+            <p className="text-2xl font-bold leading-snug tracking-[-0.02em] text-ink sm:text-3xl">
+              {about.pullQuote}
+            </p>
+          </div>
+        </Parallax>
+      </ClipReveal>
+    </Section>
   );
 }

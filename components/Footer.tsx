@@ -1,42 +1,38 @@
+import Link from "next/link";
 import { site } from "@/content/site";
 
 export function Footer() {
   const { footer, brand } = site;
 
   return (
-    <footer className="relative border-t border-[var(--color-line)] px-5 py-16 sm:px-8">
+    <footer className="relative border-t border-ink bg-paper-dim px-5 py-16 sm:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <div className="wordmark text-3xl text-stark-white">
+          <div className="font-stencil text-3xl font-bold tracking-[-0.01em] text-ink">
             {brand.wordmark}
-            <span className="text-ignition-orange"> {brand.year}</span>
+            <span className="text-stamp"> {brand.year}</span>
           </div>
 
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
             {footer.partners.map((p) => (
               <div key={p.name}>
-                <div className="text-sm font-semibold text-[var(--color-text)]">
+                <div className="text-sm font-semibold text-ink">
                   {p.name}
-                  <span className="ml-2 text-xs font-medium text-[var(--color-text-2)]">
-                    {p.role}
-                  </span>
+                  <span className="ml-2 text-xs font-medium text-ink-2">{p.role}</span>
                 </div>
-                <ul className="mt-3 space-y-1.5 text-sm text-[var(--color-text-2)]">
+                <ul className="mt-3 space-y-1.5 font-mono text-sm text-ink-2">
                   <li>
                     <a
                       href={p.websiteHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition hover:text-ignition-orange"
+                      className="transition-colors hover:text-stamp"
                     >
                       {p.website}
                     </a>
                   </li>
                   <li>
-                    <a
-                      href={`mailto:${p.email}`}
-                      className="transition hover:text-ignition-orange"
-                    >
+                    <a href={`mailto:${p.email}`} className="transition-colors hover:text-stamp">
                       {p.email}
                     </a>
                   </li>
@@ -44,7 +40,7 @@ export function Footer() {
                     <li>
                       <a
                         href={`tel:${p.phone.replace(/\s/g, "")}`}
-                        className="transition hover:text-ignition-orange"
+                        className="transition-colors hover:text-stamp"
                       >
                         {p.phone}
                       </a>
@@ -57,22 +53,28 @@ export function Footer() {
         </div>
 
         {/* Closing tagline */}
-        <p className="mt-14 max-w-2xl text-sm leading-relaxed text-[var(--color-text-2)]">
-          {footer.tagline}
-        </p>
+        <p className="mt-14 max-w-2xl text-sm leading-relaxed text-ink-2">{footer.tagline}</p>
 
-        <div className="mt-8 flex flex-col gap-4 border-t border-[var(--color-line)] pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-xs text-[var(--color-text-2)]">
+        <div className="mt-8 flex flex-col gap-4 border-t border-line-strong pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="font-mono text-xs text-ink-2">
             © {brand.year} {footer.copyright}
           </div>
-          <ul className="flex items-center gap-4">
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <li>
+              <Link
+                href="/partners"
+                className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-2 transition-colors hover:text-stamp"
+              >
+                Partners
+              </Link>
+            </li>
             {footer.socials.map((s) => (
               <li key={s.label}>
                 <a
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-tomorrow text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-text-2)] transition hover:text-ignition-orange"
+                  className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-2 transition-colors hover:text-stamp"
                 >
                   {s.label}
                 </a>

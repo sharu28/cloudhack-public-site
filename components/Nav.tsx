@@ -1,58 +1,34 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { site } from "@/content/site";
 
 /**
- * Top navigation (dark theme).
- *
- * The whole site is dark, so text stays light throughout. `overHero` lets pages
- * that open with a full-bleed hero (the home page) start fully transparent; once
- * scrolled — or on pages without a hero (/contact, /signup) — the bar becomes a
- * translucent dark, blurred strip with a hairline border.
+ * Masthead navigation — a flat, always-solid ink-bordered bar (no frosted
+ * transparency-on-scroll trick). Sign Up is the one visually dominant
+ * action everywhere on the site; "Join as Partner" is a quiet text link,
+ * never a peer button, and now points at the dedicated /partners route.
  */
-export function Nav({ overHero = false }: { overHero?: boolean }) {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const transparent = overHero && !scrolled;
-
+export function Nav() {
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        transparent
-          ? "border-b border-transparent bg-transparent"
-          : "border-b border-tarmac bg-obsidian/80 backdrop-blur-xl"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-ink bg-paper">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
         <Link
           href="/"
-          className="font-tomorrow text-sm font-medium tracking-[0.2em] text-stark-white transition hover:text-white/90"
+          className="font-stencil text-lg font-bold tracking-[-0.01em] text-ink transition-colors hover:text-stamp"
         >
           {site.brand.wordmark}
-          <span className="text-ignition-orange"> {site.brand.year}</span>
+          <span className="text-stamp"> {site.brand.year}</span>
         </Link>
 
-        <div className="flex items-center gap-2.5 sm:gap-3">
-          {/* Secondary — graphite surface. */}
+        <div className="flex items-center gap-5 sm:gap-6">
           <Link
-            href={site.hero.partnerHref}
-            className="hidden rounded-lg border border-tarmac bg-graphite px-4 py-2 text-sm font-medium text-stark-white transition hover:bg-tarmac sm:inline-block"
+            href="/partners"
+            className="hidden text-sm font-medium text-ink-2 underline decoration-line-strong decoration-1 underline-offset-4 transition-colors hover:text-stamp hover:decoration-stamp sm:inline-block"
           >
             {site.hero.partnerLabel}
           </Link>
-          {/* Primary — Ignition Orange CTA */}
           <Link
             href={site.hero.ctaHref}
-            className="rounded-lg bg-ignition-orange px-5 py-2 text-sm font-semibold text-stark-white transition hover:bg-ignition-orange/90"
+            className="inline-flex items-center justify-center border border-ink bg-stamp px-4 py-2 text-sm font-semibold text-paper-raised shadow-stamp transition-colors hover:bg-stamp-deep sm:px-5"
           >
             {site.hero.ctaLabel}
           </Link>

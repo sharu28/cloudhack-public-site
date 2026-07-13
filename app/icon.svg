@@ -1,6 +1,7 @@
 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CloudHack">
-  <rect width="64" height="64" rx="14" fill="#000000"/>
-  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#262626"/>
-  <polyline points="20,20 34,32 20,44" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="37" y="39" width="16" height="6" rx="3" fill="#ffa41c"/>
+  <rect width="64" height="64" rx="10" fill="#f1eada"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="9.5" fill="none" stroke="#1c1712"/>
+  <rect x="16" y="16" width="32" height="32" fill="#a62e1d"/>
+  <rect x="16" y="16" width="32" height="32" fill="none" stroke="#1c1712" stroke-width="1.5"/>
+  <path d="M32 24v16M24 32h16" stroke="#f1eada" stroke-width="2.5" stroke-linecap="square"/>
 </svg>

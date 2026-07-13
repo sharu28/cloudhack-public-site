@@ -31,7 +31,7 @@ export const site = {
     ctaLabel: "Sign Up",
     ctaHref: "/signup",
     partnerLabel: "Join as a Partner",
-    partnerHref: "/signup#sponsor",
+    partnerHref: "/partners",
     // Quick stats surfaced just below the CTA.
     stats: [
       { value: "80", label: "Participants" },
@@ -233,18 +233,14 @@ export const site = {
     ],
   },
 
-  // Confirmed judges/mentors render as cards. Empty items render placeholders.
+  // Judges/mentors panel isn't confirmed yet — rendered as a one-line
+  // footnote under Hosts (see components/sections/Hosts.tsx) rather than a
+  // standalone section of placeholder cards.
   judges: {
     heading: "Judges & mentors",
     intro:
       "Industry engineers and founders who set the briefs, mentor teams through the day, and judge the final demos.",
     pending: "The full panel is being confirmed. Announcing soon.",
-    items: [] as { name: string; role: string; org: string; blurb?: string }[],
-    placeholders: [
-      { role: "Judge", hint: "Title sponsor engineering leadership" },
-      { role: "Judge", hint: "Track partner product and AI" },
-      { role: "Mentor", hint: "Senior engineers from sponsor teams" },
-    ],
   },
 
   // ── Judging & rules ─────────────────────────────────────────────────────────
@@ -333,6 +329,17 @@ export const site = {
     ],
   },
 
+  // ── Partners teaser (homepage) ──────────────────────────────────────────────
+  //  A compact, honest pointer to /partners — the homepage no longer carries
+  //  the full sponsorship pricing table inside the participant funnel.
+  partnersTeaser: {
+    eyebrow: "Partnerships",
+    heading: "Set a real problem. Meet the builders.",
+    body: "Sponsor tracks, judging seats and recruiting access are open — full tiers and contribution levels live on the partnership page.",
+    ctaLabel: "View partnership tiers",
+    ctaHref: "/partners",
+  },
+
   // ── For sponsors ────────────────────────────────────────────────────────────
   forSponsors: {
     heading: "For sponsors",
@@ -393,33 +400,15 @@ export const site = {
     ctaHref: "mailto:sharu@etherlabs.lk",
   },
 
-  // ── Sponsors (logo grid) ────────────────────────────────────────────────────
+  // ── Sponsors (confirmed partners) ───────────────────────────────────────────
+  //  ✏️ Only real, confirmed partners belong in `logos` — silence over
+  //  placeholder theater (see /partners, which shows this list honestly
+  //  instead of a marquee padded out with synthetic "coming soon" names).
   sponsors: {
     heading: "Sponsors",
     intro: "Made possible by our incredible partners.",
-    carouselLabel: "Made possible by our incredible partners",
-    // ✏️ Sponsor line-up. Entries with `confirmed: true` render in the carousel
-    //    as wordmark plates (or the `logo` image once one is added); unconfirmed
-    //    entries are hidden and "coming soon" plates fill the remaining slots.
     pending: "Full sponsor line-up to be announced.",
-    logos: [
-      { name: "SLIIT", tier: "Venue Partner", logo: "", confirmed: true },
-      { name: "NIMBUS", tier: "Title", logo: "", confirmed: false },
-      { name: "VERTEX AI", tier: "Track Partner", logo: "", confirmed: false },
-      { name: "BYTEFORGE", tier: "Track Partner", logo: "", confirmed: false },
-      { name: "HELIX CLOUD", tier: "Track Partner", logo: "", confirmed: false },
-      { name: "QUANTA", tier: "Community", logo: "", confirmed: false },
-      { name: "NOVA STACK", tier: "Community", logo: "", confirmed: false },
-      { name: "ORBITAL", tier: "Community", logo: "", confirmed: false },
-      { name: "CIPHERWORKS", tier: "Community", logo: "", confirmed: false },
-    ],
-    tiers: [
-      { name: "Title", blurb: "Headline billing, keynote slot, first pick of talent." },
-      { name: "Track Partner", blurb: "Own a problem track, set the brief, judge the teams." },
-      { name: "Community", blurb: "Back the ecosystem with mentorship, prizes or in-kind support." },
-    ],
-    ctaLabel: "Become a sponsor",
-    ctaHref: "/signup#sponsor",
+    logos: [{ name: "SLIIT", tier: "Venue Partner", logo: "", confirmed: true }],
   },
 
   // ── FAQ ──────────────────────────────────────────────────────────────────────

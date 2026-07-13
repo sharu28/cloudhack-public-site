@@ -1,508 +1,332 @@
 @import "tailwindcss";
 
-/* ───────────────────────────────────────────────────────────────────────────
-   THEME
-   ─────────────────────────────────────────────────────────────────────────── */
+/**
+ * ─────────────────────────────────────────────────────────────────────────
+ *  DISPATCH — the CloudHack 2026 design system
+ * ─────────────────────────────────────────────────────────────────────────
+ *  The site reads as a live dispatch board for a one-day build-and-ship
+ *  operation: a manifest, not a landing page. Warm parchment paper, ink-stamp
+ *  red, hard rectangles, monospace reference codes. See DESIGN.md for the
+ *  full rationale — this file is the token source of truth.
+ */
 @theme {
-  /* ── RIVE — "Precision Night Vision" palette (see DESIGN.md) ─────────────
-     Strictly monochromatic black/gray surfaces plus a single warm accent. */
-  --color-ignition-orange: #ffa41c; /* sole warm accent — primary CTAs / eyebrows */
-  --color-obsidian: #000000; /* page background */
-  --color-charcoal: #111111; /* secondary surface (cards) */
-  --color-graphite: #1d1d1d; /* tertiary surface (tags, badges) */
-  --color-tarmac: #262626; /* interactive / hairline borders */
-  --color-stark-white: #ffffff; /* headlines, icon fills */
-  --color-cloud: #f1f1f1; /* high-emphasis body */
-  --color-ash: #aaaaaa; /* standard body */
-  --color-dusk-gray: #999999; /* secondary text, nav links */
+  /* ── Color — manifest paper & ink, not screen white/black ─────────────── */
+  --color-paper: #f1eada;       /* base canvas — warm parchment */
+  --color-paper-raised: #faf6ec; /* card / raised surface — whiter parchment */
+  --color-paper-dim: #eae0c9;    /* recessed surface, zebra rows, wells */
+  --color-ink: #1c1712;          /* primary text — warm near-black */
+  --color-ink-2: #5c5344;        /* secondary / muted text */
+  --color-line: #d8ccae;         /* hairline — decorative dividers */
+  --color-line-strong: #8c7b57;  /* meaningful boundary — inputs, active rules (≥3:1) */
 
-  /* Legacy aliases kept so any straggler utilities resolve on-brand (gray). */
-  --color-ink: #000000;
-  --color-ink-2: #0a0a0a;
-  --color-ink-3: #111111;
+  /* Ink-stamp red — the one operational accent. Verified ≥5.7:1 on paper,
+     ≥6.9:1 with white text (WCAG AA, checked against every paper tone). */
+  --color-stamp: #a62e1d;
+  --color-stamp-deep: #7d2113;   /* pressed / hover */
+  --color-stamp-wash: #f3e0d8;   /* pale stamp tint for chip/icon fills */
 
-  /* The former rainbow accents are collapsed to a neutral gray ramp so any
-     remaining var()/utility reference (e.g. from-teal) renders monochrome
-     instead of breaking. The Rive aesthetic is strictly gray + orange. */
-  --color-teal: #aaaaaa;
-  --color-cyan: #aaaaaa;
-  --color-blue: #555555;
-  --color-violet: #777777;
-  --color-magenta: #888888;
-  --color-grn: #666666;
+  /* Hazard amber — rare, genuine-urgency accent only (final-hours countdown). */
+  --color-hazard: #7a4e00;
+  --color-hazard-deep: #5c3b00;
+  --color-hazard-wash: #efe2c4;
 
-  --font-tomorrow: "Tomorrow", ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif;
+  /* Legacy alias kept so any untouched utility resolves sanely during the
+     migration; new work should reach for the tokens above. */
+  --color-convoy-red: var(--color-stamp);
+  --color-convoy-red-deep: var(--color-stamp-deep);
+  --color-convoy-rose: var(--color-stamp-wash);
+  --color-convoy-blush: var(--color-paper-dim);
+  --color-obsidian: var(--color-paper);
+  --color-text: var(--color-ink);
+  --color-text-2: var(--color-ink-2);
+
+  /* shadcn-style semantic aliases — repointed so components/ui/* primitives
+     inherit DISPATCH automatically. */
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+  --color-card: var(--color-paper-raised);
+  --color-card-foreground: var(--color-ink);
+  --color-primary: var(--color-stamp);
+  --color-primary-foreground: var(--color-paper-raised);
+  --color-secondary: var(--color-paper-dim);
+  --color-secondary-foreground: var(--color-ink);
+  --color-muted: var(--color-paper-dim);
+  --color-muted-foreground: var(--color-ink-2);
+  --color-accent: var(--color-stamp-wash);
+  --color-accent-foreground: var(--color-ink);
+  --color-destructive: #a62e1d;
+  --color-destructive-foreground: var(--color-paper-raised);
+  --color-border: var(--color-line);
+  --color-input: var(--color-line-strong);
+  --color-ring: var(--color-stamp);
+
+  /* ── Typography — three tiers, each with one job ───────────────────────
+     Display/stencil (Big Shoulders) is reserved for the wordmark, split-flap
+     numerals and Status Chip labels ONLY — never section headings, so those
+     three moments keep their impact. Section headings run on Plex Sans Bold,
+     reading like a technical document header, not a marketing display face. */
+  --font-body: var(--font-plex-sans), "IBM Plex Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-sans: var(--font-body);
+  --font-display: var(--font-big-shoulders), "Big Shoulders", ui-sans-serif, sans-serif;
+  --font-stencil: var(--font-big-shoulders-stencil), var(--font-big-shoulders), ui-sans-serif,
+    sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo,
+    monospace;
 
   --default-transition-duration: 200ms;
 
-  /* ── Semantic surface tokens ────────────────────────────────────────────
-     Re-pointed to the Rive palette so the many components that read these
-     flip on-brand without per-class rewrites. Flat, solid surfaces — no glass.
-     "paper" is the card surface (charcoal); "paper-2" a secondary surface. */
-  --color-paper: #111111; /* card / form surface (charcoal) */
-  --color-paper-2: #000000; /* footer / secondary surface */
-  --color-text: #ffffff; /* primary light text */
-  --color-text-2: #aaaaaa; /* secondary light text (ash) */
-  --color-line: #262626; /* hairline on dark (tarmac) */
+  /* ── Radius — hard rectangles by default; two deliberate exceptions ───── */
+  --radius-none: 0px;
+  --radius-flap: 3px;   /* split-flap character cells only */
+  --radius-chip: 2px;   /* status chip / small tag corners */
+
+  /* ── Elevation — flat, or one hard "lifted paper" offset. No blur haze. ── */
+  --shadow-flat: none;
+  --shadow-raised: 3px 3px 0 0 rgba(28, 23, 18, 0.12);
+  --shadow-lifted: 6px 6px 0 0 rgba(28, 23, 18, 0.16);
+  --shadow-stamp: 3px 3px 0 0 rgba(166, 46, 29, 0.28);
+
+  /* ── Motion — shared vocabulary ────────────────────────────────────────
+     Tailwind v4 recognises --ease-* as a themeable namespace (→ ease-*
+     utilities); durations are applied via arbitrary values so the same
+     tokens are usable from CSS, Tailwind, and inline styles alike. */
+  --ease-dispatch: cubic-bezier(0.16, 1, 0.3, 1); /* sharp deceleration — hero, stamps */
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1); /* mask reveals, section entrances */
 }
 
-/* ───────────────────────────────────────────────────────────────────────────
-   SHADCN SEMANTIC TOKENS
-   shadcn/ui primitives (components/ui/*) are written against semantic colour
-   utilities — bg-background, text-muted-foreground, border-input, bg-primary,
-   ring-ring, etc. These are mapped to the apple-style LIGHT palette so the
-   primitives (and the contact form) resolve on-brand: white surfaces, near-black
-   text, a dark "primary" button like apple.com, hairline borders. Values used
-   with an opacity modifier (e.g. bg-primary/90) are solid colours so the modifier
-   composes cleanly.
-   ─────────────────────────────────────────────────────────────────────────── */
-@theme {
-  --color-background: #000000;
-  --color-foreground: #ffffff;
-
-  --color-card: #111111;
-  --color-card-foreground: #ffffff;
-
-  --color-primary: #ffa41c; /* Ignition Orange — primary CTAs */
-  --color-primary-foreground: #ffffff;
-
-  --color-secondary: #1d1d1d;
-  --color-secondary-foreground: #ffffff;
-
-  --color-muted: #111111;
-  --color-muted-foreground: #aaaaaa;
-
-  --color-accent: #262626;
-  --color-accent-foreground: #ffffff;
-
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: #ffffff;
-
-  --color-border: #262626;
-  --color-input: #262626;
-  --color-ring: #ffa41c; /* ignition-orange focus ring */
+/* Motion durations as plain custom properties — referenced directly via
+   var(...) from CSS and Tailwind arbitrary values (e.g. duration-[var(--duration-base)]). */
+:root {
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --duration-hero: 900ms;
+  color-scheme: light;
 }
 
-/* ───────────────────────────────────────────────────────────────────────────
-   BASE
-   ─────────────────────────────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+  background: var(--color-paper);
 }
 
 body {
-  background-color: var(--color-ink);
-  color: var(--color-text);
+  background: var(--color-paper);
+  color: var(--color-ink);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
-/* ───────────────────────────────────────────────────────────────────────────
-   APPLE-STYLE TYPE SCALE
-   apple.com sets display headings in a tight, semibold cut and body copy in a
-   readable regular weight. Headings get negative tracking; the hairline weights
-   are reserved for the dark hero wordmark only (.wordmark). This replaces the
-   previous global ultra-thin override that made everything faint.
-   ─────────────────────────────────────────────────────────────────────────── */
 h1,
 h2,
 h3 {
-  font-family: var(--font-tomorrow);
-  letter-spacing: -0.02em;
+  font-family: var(--font-body);
+  letter-spacing: -0.01em;
 }
 
-/* Respect reduced-motion globally */
+::selection {
+  background: rgba(166, 46, 29, 0.22);
+  color: var(--color-ink);
+}
+
+/* Bespoke, hard-edged focus state — the brand ink-red, never a rounded ring
+   forced onto whatever is focused. Every focusable element keeps its own
+   (mostly 0) corner radius, so keyboard focus reads like a terminal cursor
+   box, not a generic accessibility bolt-on. */
+:focus-visible {
+  outline: 2px solid var(--color-stamp);
+  outline-offset: 3px;
+}
+
+/* ── Skip-to-content link (U4) ───────────────────────────────────────────
+   Visually hidden until keyboard-focused, then docks top-left, above nav. */
+.skip-link {
+  position: absolute;
+  top: -1000px;
+  left: 0;
+  z-index: 100;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.25rem;
+}
+
+.skip-link:focus-visible {
+  top: 0;
+  outline-color: var(--color-paper);
+}
+
+/* ── Manifest grid — a faint blueprint/ledger texture, replacing the old
+   cloud-grid dot field. Pure CSS, no image request. ─────────────────────── */
+.manifest-grid {
+  background-image:
+    linear-gradient(rgba(28, 23, 18, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 23, 18, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Corner crosshair mark — a print/cargo-document registration mark, used at
+   true waypoints and manifest card corners. One small inline SVG-free utility
+   built from borders so it costs nothing extra to render. */
+.crosshair {
+  position: relative;
+}
+.crosshair::before,
+.crosshair::after {
+  content: "";
+  position: absolute;
+  background: var(--color-ink);
+  opacity: 0.35;
+}
+.crosshair::before {
+  width: 9px;
+  height: 1px;
+  top: 50%;
+  left: -4.5px;
+  transform: translateY(-50%);
+}
+.crosshair::after {
+  width: 1px;
+  height: 9px;
+  left: 50%;
+  top: -4.5px;
+  transform: translateX(-50%);
+}
+
+/* Dashed "cut here" rule — print-production convention used between manifest
+   groups instead of a soft divider. */
+.cut-line {
+  border-top: 1px dashed var(--color-line-strong);
+}
+
+/* Die-cut notch — a small triangular cut at one corner of a manifest row or
+   card, standing in for a ticket-stub perforation. Pure CSS clip-path, one
+   corner only so it reads as a deliberate mark, not decoration-everywhere. */
+.notch-corner {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+}
+
+/* ── Reveal-on-scroll — CSS + IntersectionObserver (see components/Reveal.tsx).
+   Replaces a framer-motion wrapper per instance; the JS only toggles one
+   class, all motion runs on the compositor via transform/opacity. ────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity var(--duration-slow) var(--ease-standard),
+    transform var(--duration-slow) var(--ease-standard);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
+}
+[data-reveal="left"] {
+  transform: translateX(-14px);
+}
+[data-reveal="right"] {
+  transform: translateX(14px);
+}
+[data-reveal="none"] {
+  transform: none;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* ── Split-flap board (see components/SplitFlap.tsx) ─────────────────────
+   Pure CSS 3D transforms, no library. Each character is two static halves
+   (the settled glyph) plus a hinged leaf that flips 0→180deg to reveal the
+   incoming glyph; unchanged characters never re-render the leaf. */
+.flap-cell {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  perspective: 240px;
+  line-height: 1;
+}
+.flap-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.flap-leaf {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  transform-style: preserve-3d;
+}
+.flap-leaf.flap-leaf--back {
+  transform: rotateX(180deg);
+}
+.flap-cell[data-flipping="true"] .flap-leaf--front {
+  animation: flap-flip-front var(--duration-base) var(--ease-dispatch) forwards;
+}
+.flap-cell[data-flipping="true"] .flap-leaf--back {
+  animation: flap-flip-back var(--duration-base) var(--ease-dispatch) forwards;
+}
+@keyframes flap-flip-front {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
+}
+@keyframes flap-flip-back {
+  0% {
+    transform: rotateX(180deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+/* ── Route Line (see components/RouteLine.tsx) ────────────────────────────
+   The fill's height is driven every frame by a scroll listener writing
+   `--route-progress` directly onto the rail element — no React re-render on
+   scroll. Reduced motion short-circuits the listener entirely in JS (the
+   fill is set once, statically) rather than fighting a live CSS transition. */
+.route-fill {
+  transform: scaleY(var(--route-progress, 0));
+  transform-origin: top;
+}
+
+/* ── Status Chip cross-fade (see components/StatusChip.tsx) ─────────────── */
+@keyframes chip-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  *,
+  * ,
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-}
-
-/* Accessible focus ring */
-:focus-visible {
-  outline: 2px solid var(--color-ignition-orange);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-/* ───────────────────────────────────────────────────────────────────────────
-   THE SIGNATURE GRADIENT BLOB
-   A large, fluid, organic shape that morphs its silhouette while its
-   teal → cyan → blue → violet → magenta → green gradient drifts via hue-rotate.
-   ─────────────────────────────────────────────────────────────────────────── */
-.blob {
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(120, 120, 120, 0.45) 0%,
-    rgba(70, 70, 70, 0.2) 45%,
-    transparent 70%
-  );
-  filter: blur(60px);
-  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
-  animation: blob-morph 18s ease-in-out infinite;
-  will-change: transform, border-radius;
-}
-
-@keyframes blob-morph {
-  0% {
-    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
-    transform: rotate(0deg) scale(1);
-  }
-  33% {
-    border-radius: 67% 33% 41% 59% / 57% 59% 41% 43%;
-    transform: rotate(45deg) scale(1.06);
-  }
-  66% {
-    border-radius: 38% 62% 56% 44% / 63% 36% 64% 37%;
-    transform: rotate(-30deg) scale(0.97);
-  }
-  100% {
-    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
-    transform: rotate(0deg) scale(1);
-  }
-}
-
-@keyframes blob-hue {
-  0% {
-    filter: blur(60px) saturate(135%) hue-rotate(0deg);
-  }
-  100% {
-    filter: blur(60px) saturate(135%) hue-rotate(360deg);
-  }
-}
-
-/* ───────────────────────────────────────────────────────────────────────────
-   THE GLOBAL BACKGROUND FIELD
-   Several signature blobs distributed across a fixed, full-viewport layer that
-   sits behind every section, so the gradient flows consistently down the whole
-   page. Each blob reads two CSS variables set by BackgroundField on a single
-   rAF loop:
-     --mx / --my : pointer position in [-1, 1]  → cursor parallax
-     --sf        : scroll progress in [0, 1]     → drift + hue evolution
-   Each variant picks a different parallax depth, drift path and hue offset so
-   they never move in lockstep. Opacities are deliberately low — the field is
-   atmospheric, never competing with the content on top of it.
-   ─────────────────────────────────────────────────────────────────────────── */
-.field {
-  --mx: 0;
-  --my: 0;
-  --sf: 0;
-}
-
-.field-blob {
-  position: absolute;
-  background: conic-gradient(
-    from var(--fb-angle, 0deg) at 50% 50%,
-    var(--color-teal),
-    var(--color-cyan),
-    var(--color-blue),
-    var(--color-violet),
-    var(--color-magenta),
-    var(--color-grn),
-    var(--color-teal)
-  );
-  filter: blur(80px) saturate(125%) hue-rotate(var(--hue, 0deg));
-  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
-  will-change: transform, border-radius;
-  /* Parallax + scroll drift live on the outer translate; CSS animations layer
-     their own morph/float on top via the inner element (see .field-blob > i). */
-  transform: translate3d(
-    calc(var(--mx) * var(--fb-depth, 18px)),
-    calc(var(--my) * var(--fb-depth, 18px) + var(--sf) * var(--fb-rise, -160px)),
-    0
-  );
-}
-
-/* Inner layer carries the looping morph + float in ONE keyframe (a single
-   element can't compose two transform animations), so it stacks cleanly on top
-   of the pointer/scroll transform applied to the parent. */
-.field-blob > i {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  background: inherit;
-  animation: blob-float var(--fb-float, 26s) ease-in-out infinite;
-}
-
-/* Variant A — teal/cyan, upper-left, nearest (most parallax) */
-.fb-a {
-  --fb-angle: 0deg;
-  --fb-depth: 26px;
-  --fb-rise: -220px;
-  --fb-float: 24s;
-  opacity: 0.5;
-}
-/* Variant B — violet/magenta, centre-right, mid depth */
-.fb-b {
-  --fb-angle: 140deg;
-  --fb-depth: 16px;
-  --fb-rise: -120px;
-  --fb-float: 30s;
-  opacity: 0.42;
-}
-/* Variant C — blue/green, lower-centre, farthest (least parallax) */
-.fb-c {
-  --fb-angle: 250deg;
-  --fb-depth: 9px;
-  --fb-rise: -70px;
-  --fb-float: 36s;
-  opacity: 0.34;
-}
-
-@keyframes blob-float {
-  0% {
-    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
-    transform: rotate(0deg) translate(0, 0) scale(1);
-  }
-  33% {
-    border-radius: 67% 33% 41% 59% / 57% 59% 41% 43%;
-    transform: rotate(16deg) translate(2%, -3%) scale(1.06);
-  }
-  66% {
-    border-radius: 38% 62% 56% 44% / 63% 36% 64% 37%;
-    transform: rotate(-12deg) translate(-2%, 2%) scale(0.96);
-  }
-  100% {
-    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
-    transform: rotate(0deg) translate(0, 0) scale(1);
-  }
-}
-
-/* ───────────────────────────────────────────────────────────────────────────
-   ANIMATED BLUR-BLOB BACKGROUND  (dynamic radial-orb field)
-   Five soft, viewport-relative radial-gradient orbs that slowly drift + breathe
-   on their own odd-numbered periods (with negative delays so they start out of
-   phase and the composite never visibly repeats). The container blends with
-   mix-blend:screen so the orbs glow additively against the near-black page.
-   Colours map to our teal → cyan → blue → violet → magenta palette. Consumed by
-   components/ui/animated-blur-blob-background.tsx. Animations pause under the
-   global prefers-reduced-motion rule above.
-   ─────────────────────────────────────────────────────────────────────────── */
-.blur-blob {
-  position: absolute;
-  border-radius: 9999px;
-  will-change: transform;
-}
-/* RIVE: monochrome gray orbs + a single faint orange accent (blob-2). Screen-
-   blended over pure black, these read as a soft, slow-drifting graphite haze
-   rather than a rainbow aurora. Kept low-opacity so content always wins. */
-/* A — graphite, upper-left */
-.blur-blob-1 {
-  top: -5vh;
-  left: -6vw;
-  width: 52vw;
-  height: 58vh;
-  background: radial-gradient(
-    circle at 60% 40%,
-    rgba(120, 120, 120, 0.5) 0%,
-    rgba(80, 80, 80, 0.28) 35%,
-    transparent 65%
-  );
-  filter: blur(55px);
-  animation: orb-1 22s ease-in-out infinite;
-}
-/* B — faint Ignition Orange accent, right (the only warm light in the field) */
-.blur-blob-2 {
-  top: 0;
-  right: -8vw;
-  width: 48vw;
-  height: 60vh;
-  background: radial-gradient(
-    circle at 40% 50%,
-    rgba(255, 164, 28, 0.22) 0%,
-    rgba(255, 164, 28, 0.1) 35%,
-    transparent 65%
-  );
-  filter: blur(60px);
-  animation: orb-2 30s ease-in-out infinite;
-  animation-delay: -9s;
-}
-/* C — graphite, mid */
-.blur-blob-3 {
-  top: 26vh;
-  left: 33vw;
-  width: 34vw;
-  height: 38vh;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(110, 110, 110, 0.42) 0%,
-    rgba(70, 70, 70, 0.24) 35%,
-    transparent 65%
-  );
-  filter: blur(45px);
-  animation: orb-3 17s ease-in-out infinite;
-  animation-delay: -5s;
-}
-/* D — graphite, lower-left */
-.blur-blob-4 {
-  bottom: -12vh;
-  left: 16vw;
-  width: 62vw;
-  height: 52vh;
-  background: radial-gradient(
-    circle at 50% 40%,
-    rgba(100, 100, 100, 0.4) 0%,
-    rgba(60, 60, 60, 0.22) 35%,
-    transparent 65%
-  );
-  filter: blur(65px);
-  animation: orb-4 26s ease-in-out infinite;
-  animation-delay: -14s;
-}
-/* E — graphite, small, lower-right */
-.blur-blob-5 {
-  bottom: 4vh;
-  right: 16vw;
-  width: 24vw;
-  height: 28vh;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(130, 130, 130, 0.45) 0%,
-    rgba(80, 80, 80, 0.24) 35%,
-    transparent 65%
-  );
-  filter: blur(40px);
-  animation: orb-1 15s ease-in-out infinite;
-  animation-delay: -7s;
-}
-
-@keyframes orb-1 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(8vw, -7vh) scale(1.06);
-  }
-  50% {
-    transform: translate(3vw, 9vh) scale(0.94);
-  }
-  75% {
-    transform: translate(-7vw, 3vh) scale(1.03);
-  }
-}
-@keyframes orb-2 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  30% {
-    transform: translate(-9vw, 6vh) scale(1.08);
-  }
-  60% {
-    transform: translate(5vw, -8vh) scale(0.92);
-  }
-  85% {
-    transform: translate(4vw, 5vh) scale(1.04);
-  }
-}
-@keyframes orb-3 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  20% {
-    transform: translate(6vw, 8vh) scale(0.96);
-  }
-  55% {
-    transform: translate(-5vw, -6vh) scale(1.07);
-  }
-  80% {
-    transform: translate(3vw, 4vh) scale(0.98);
-  }
-}
-@keyframes orb-4 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  35% {
-    transform: translate(-4vw, -9vh) scale(1.05);
-  }
-  70% {
-    transform: translate(7vw, 4vh) scale(0.95);
-  }
-}
-
-/* ───────────────────────────────────────────────────────────────────────────
-   CARD THEME
-   Glass surface + hairline border + a faint teal wash that fades in on hover,
-   plus a smooth transition shared by the JS mouse-tilt (see components/ui/card).
-   ─────────────────────────────────────────────────────────────────────────── */
-.card-3d {
-  transform-style: preserve-3d;
-  transition: transform 0.25s ease, border-color 0.3s ease,
-    background-color 0.3s ease;
-  will-change: transform;
-}
-.card-wash::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    120% 120% at 50% 0%,
-    rgba(255, 255, 255, 0.05),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
-}
-.card-wash:hover::before {
-  opacity: 1;
-}
-
-/* ───────────────────────────────────────────────────────────────────────────
-   MARQUEE TICKER
-   Two side-by-side copies translate -50% for a seamless loop. Duration is set
-   inline by components/ui/Marquee.tsx (constant px/sec). Paused on hover.
-   ─────────────────────────────────────────────────────────────────────────── */
-.marquee-track {
-  animation-name: marquee-scroll;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-.group:hover > .marquee-track {
-  animation-play-state: paused;
-}
-@keyframes marquee-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Film-grain / noise texture overlaid on the blob & hero */
-.noise {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-}
-
-/* Wordmark: thin, wide-tracked.
-   letter-spacing adds a trailing gap after the FINAL glyph too, which makes the
-   glyph run sit off-centre when centred. We render it as an inline-block inside
-   a flex/justify-center container and pull that trailing gap back with a
-   negative right margin equal to the tracking — so the visible ink is centred
-   whether or not the word is wider than its container. */
-.wordmark {
-  display: inline-block;
-  font-family: var(--font-tomorrow);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
 }

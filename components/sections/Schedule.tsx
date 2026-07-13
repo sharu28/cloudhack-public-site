@@ -1,39 +1,53 @@
 import { site } from "@/content/site";
-import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
+import { ManifestList, ManifestRow } from "@/components/ManifestRow";
+import { SplitFlap } from "@/components/SplitFlap";
 
+/**
+ * Schedule — a true ledger: each row is a Split-Flap time, a title, a
+ * blurb. The single best fit for the Split-Flap device on the page, since a
+ * schedule is literally a timetable (Section 20's recommended first slice).
+ */
 export function Schedule() {
   const { schedule } = site;
 
   return (
-    <Section id="schedule" title={schedule.heading} intro={schedule.intro}>
-      <ol className="relative ml-2 border-l border-tarmac sm:ml-4">
-        {schedule.items.map((item, i) => (
-          <Reveal as="li" key={item.time} delay={Math.min(i * 0.05, 0.4)}>
-            <div className="relative pb-10 pl-8 last:pb-0 sm:pl-12">
-              <span
-                aria-hidden="true"
-                className="absolute -left-[5px] top-1.5 size-2.5 rounded-full bg-ignition-orange ring-4 ring-obsidian"
-              />
-              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6">
-                <span className="w-14 shrink-0 font-tomorrow text-sm font-medium tabular-nums text-ignition-orange">
-                  {item.time}
+    <Section id="schedule" eyebrow="Run of day" title={schedule.heading} intro={schedule.intro}>
+      <ManifestList>
+        {schedule.items.map((item, i) => {
+          const [hour, minute] = item.time.split(":");
+          return (
+            <ManifestRow
+              key={item.time}
+              index={i}
+              total={schedule.items.length}
+              leading={
+                <span className="flex items-center gap-[3px]">
+                  <SplitFlap
+                    value={hour}
+                    cellClassName="h-7 w-[0.68em] text-lg font-bold font-display"
+                    staggerMs={40}
+                    ariaLabel={item.time}
+                  />
+                  <span aria-hidden="true" className="font-mono text-sm text-line-strong">
+                    :
+                  </span>
+                  <SplitFlap
+                    value={minute}
+                    cellClassName="h-7 w-[0.68em] text-lg font-bold font-display"
+                    staggerMs={40}
+                    ariaLabel=""
+                  />
                 </span>
-                <div>
-                  <h3 className="text-lg font-semibold text-[var(--color-text)]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[var(--color-text-2)]">
-                    {item.blurb}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        ))}
-      </ol>
+              }
+              title={item.title}
+              description={item.blurb}
+            />
+          );
+        })}
+      </ManifestList>
 
-      <p className="mt-10 text-sm text-dusk-gray">{schedule.note}</p>
+      <p className="mt-8 text-sm text-ink-2">{schedule.note}</p>
     </Section>
   );
 }

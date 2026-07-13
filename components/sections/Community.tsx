@@ -3,27 +3,25 @@ import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
 
 /**
- * "Join the community" — compact WhatsApp call-to-action band. The join button
- * only goes live once community.href in content/site.ts is a real invite URL;
- * until then it renders an inert "link coming soon" pill so the section can
- * ship ahead of the link.
+ * Join the community — kept, restyled to the flat manifest surface, moved
+ * to the tail of the page alongside FAQ (Section 7). The join button only
+ * goes live once community.href is a real invite URL.
  */
 export function Community() {
   const { community } = site;
   const hasLink = community.href.startsWith("http");
 
   return (
-    <section id="community" className="relative px-6">
-      <div className="mx-auto max-w-6xl py-16 sm:py-20">
+    <section id="community" className="relative scroll-mt-24 px-5 sm:px-8">
+      <div className="mx-auto max-w-6xl py-20 sm:py-28">
         <Reveal as="div">
-          <div className="flex flex-col items-start gap-8 rounded-lg border border-tarmac bg-graphite p-8 sm:p-10 md:flex-row md:items-center md:justify-between">
+          <div className="notch-corner flex flex-col items-start gap-8 border border-ink bg-paper-raised p-8 shadow-raised sm:p-10 md:flex-row md:items-center md:justify-between">
             <div className="max-w-xl">
-              <h2 className="text-2xl font-semibold text-[var(--color-text)] sm:text-3xl">
-                {community.heading}
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-[var(--color-text-2)]">
-                {community.body}
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-stamp">
+                Community
               </p>
+              <h2 className="mt-3 text-2xl font-bold text-ink sm:text-3xl">{community.heading}</h2>
+              <p className="mt-3 text-base leading-relaxed text-ink-2">{community.body}</p>
             </div>
 
             {hasLink ? (
@@ -31,13 +29,13 @@ export function Community() {
                 href={community.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex shrink-0 items-center gap-2.5 rounded-lg bg-ignition-orange px-7 py-3.5 text-sm font-semibold text-stark-white transition hover:bg-ignition-orange/90"
+                className="inline-flex shrink-0 items-center gap-2.5 border border-ink bg-stamp px-7 py-3.5 text-sm font-semibold text-paper-raised shadow-stamp transition-colors hover:bg-stamp-deep"
               >
                 <MessageCircle className="size-4" aria-hidden="true" />
                 {community.ctaLabel}
               </a>
             ) : (
-              <span className="inline-flex shrink-0 items-center gap-2.5 rounded-lg border border-tarmac bg-obsidian px-7 py-3.5 text-sm font-medium text-dusk-gray">
+              <span className="inline-flex shrink-0 items-center gap-2.5 border border-line-strong bg-paper px-7 py-3.5 text-sm font-medium text-ink-2">
                 <MessageCircle className="size-4" aria-hidden="true" />
                 {community.pendingLabel}
               </span>

@@ -1,23 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
-import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
+import { cn } from "@/lib/utils";
 
 type Direction = "up" | "left" | "right" | "none";
-
-const OFFSET: Record<Direction, { x?: number; y?: number }> = {
-  up: { y: 24 },
-  left: { x: -24 },
-  right: { x: 24 },
-  none: {},
-};
+type Tag = "div" | "li" | "section" | "span";
 
 /**
- * Reveal-on-scroll: a translate + fade that fires once as the element nears the
- * viewport. Honours prefers-reduced-motion. Directions: up (default), left,
- * right, none (opacity only). Stagger neighbouring instances via `delay`.
+ * Reveal-on-scroll — CSS transition driven by a single IntersectionObserver
+ * per instance, no animation library (Section 11 of the revamp plan: the
+ * ~30 simple fade-up reveals across the page were the cheapest job
+ * framer-motion was doing; this cuts that JS out entirely while keeping the
+ * exact call-site API every section already uses).
+ *
+ * Honours prefers-reduced-motion for free: the global media query in
+ * globals.css collapses the CSS transition to ~0ms, so content still
+ * "reveals" (fires once, same as always) but never visibly moves.
  */
 export function Reveal({
   children,
@@ -30,31 +30,42 @@ export function Reveal({
   delay?: number;
   direction?: Direction;
   className?: string;
-  as?: "div" | "li" | "section" | "span";
+  as?: Tag;
 }) {
-  const reduce = useReducedMotionSafe();
-  const MotionTag = motion[as];
-  const offset = OFFSET[direction];
+  const ref = useRef<HTMLElement | null>(null);
+  const [visible, setVisible] = useState(false);
 
-  // `initial` and `whileInView` are kept deterministic (NOT branched on
-  // `reduce`) so the server and first client render always agree — branching
-  // them on the reduced-motion preference is what caused the hydration mismatch,
-  // and removing `whileInView` after mount used to strand the element at
-  // opacity:0. Reduced-motion is honoured by collapsing the transition to an
-  // instant cut instead, so the content still reveals — it just doesn't move.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const Component = as;
+  // A single, contained escape hatch: JSX can't express "one ref type valid
+  // across a union of intrinsic tags" without this — every tag here (div,
+  // li, section, span) is a plain HTMLElement, so the runtime ref is sound.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const polymorphicRef = ref as any;
+
   return (
-    <MotionTag
-      className={className}
-      initial={{ opacity: 0, ...offset }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-60px 0px" }}
-      transition={
-        reduce
-          ? { duration: 0, delay: 0 }
-          : { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }
-      }
+    <Component
+      ref={polymorphicRef}
+      data-reveal={direction}
+      className={cn(visible && "is-visible", className)}
+      style={delay ? ({ "--reveal-delay": `${delay}s` } as React.CSSProperties) : undefined}
     >
       {children}
-    </MotionTag>
+    </Component>
   );
 }

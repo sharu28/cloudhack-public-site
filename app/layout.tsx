@@ -1,24 +1,47 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Tomorrow } from "next/font/google";
+import { Big_Shoulders, Big_Shoulders_Stencil, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
-import { AnimatedBlurBlobBackground } from "@/components/ui/animated-blur-blob-background";
 import { StructuredData } from "@/components/StructuredData";
 import { SITE_URL, SITE_NAME } from "@/lib/seo";
 
-const inter = Inter({
+// Body + UI copy. Loaded as a single variable-font file (100–700) — an
+// engineering heritage face, not a general consumer-product one.
+const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: "variable",
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-plex-sans",
 });
 
-// Tomorrow — the technical, semi-monospace display face for all headings and
-// prominent UI labels (see DESIGN.md). Weights 400/500 per the type spec.
-const tomorrow = Tomorrow({
+// Timestamps, reference codes, coordinates, prices — every data value on the
+// site runs on this, deliberately developer-native.
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   display: "swap",
-  variable: "--font-tomorrow",
+  variable: "--font-plex-mono",
+});
+
+// Condensed industrial numerals — split-flap digits and stat figures only.
+// adjustFontFallback disabled: Next has no precomputed fallback-metric
+// override table for this family, which otherwise logs a harmless but
+// noisy build warning.
+const bigShoulders = Big_Shoulders({
+  subsets: ["latin"],
+  weight: ["700"],
+  display: "swap",
+  variable: "--font-big-shoulders",
+  adjustFontFallback: false,
+});
+
+// The stencil cut — crate/shipping-label lettering, reserved for the
+// wordmark and Status Chip labels only so it keeps its impact.
+const bigShouldersStencil = Big_Shoulders_Stencil({
+  subsets: ["latin"],
+  weight: ["700", "800"],
+  display: "swap",
+  variable: "--font-big-shoulders-stencil",
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -83,10 +106,17 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#f1eada",
   width: "device-width",
   initialScale: 1,
 };
+
+const fontVariables = [
+  plexSans.variable,
+  plexMono.variable,
+  bigShoulders.variable,
+  bigShouldersStencil.variable,
+].join(" ");
 
 export default function RootLayout({
   children,
@@ -94,16 +124,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${tomorrow.variable}`}>
-      <body className="font-sans antialiased">
+    <html lang="en" className={fontVariables}>
+      <body className="font-body antialiased">
         <StructuredData />
-        {/* Consistent graphite-haze backdrop behind every section, on every page. */}
+        {/* Skip-to-content — first focusable element on every page (U4). */}
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        {/* A quiet manifest/blueprint grid replaces the old gradient-blob
+            field — flat, print-production texture instead of a glow. */}
         <div aria-hidden="true" className="fixed inset-0 -z-10 overflow-hidden">
-          <AnimatedBlurBlobBackground />
-          {/* Scrim + vignette so the moving haze never competes with text */}
-          <div className="absolute inset-0 bg-ink/55" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,var(--color-ink)_92%)]" />
-          <div className="noise absolute inset-0 opacity-[0.035]" />
+          <div className="manifest-grid absolute inset-0" />
         </div>
         {children}
       </body>

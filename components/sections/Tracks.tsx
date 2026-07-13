@@ -1,45 +1,44 @@
-import { Cog, Globe, Building2 } from "lucide-react";
+import { Cog, Globe, Building2, Lock } from "lucide-react";
 import { site } from "@/content/site";
-import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
-import { Card, CardContent } from "@/components/ui/card";
-import { RingIcon } from "@/components/ui/bento";
+import { ManifestList, ManifestRow } from "@/components/ManifestRow";
 
 const TRACK_ICONS = [Cog, Globe, Building2];
 
 /**
- * The three challenge tracks (Automation / Web Applications / SME Software).
- * Each maps to a sponsor problem track owned by a Track Partner — kept generic,
- * no sponsor names, until they're confirmed.
+ * Tracks — the three challenge tracks as manifest rows with a track code,
+ * absorbing the old standalone Challenge section (P4: a whole section that
+ * only said "coming soon") as one inline note instead of its own
+ * full-width scroll beat.
  */
 export function Tracks() {
-  const { tracks } = site;
+  const { tracks, challenge } = site;
 
   return (
-    <Section id="tracks" title={tracks.heading} intro={tracks.intro}>
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-3">
+    <Section id="tracks" eyebrow="The themes" title={tracks.heading} intro={tracks.intro}>
+      <ManifestList>
         {tracks.items.map((track, i) => {
           const Icon = TRACK_ICONS[i] ?? Cog;
-
           return (
-            <Reveal as="div" key={track.name} delay={i * 0.08}>
-              <Card className="h-full">
-                <CardContent className="relative flex h-full flex-col p-7">
-                  <RingIcon>
-                    <Icon className="size-5" strokeWidth={1.75} aria-hidden="true" />
-                  </RingIcon>
-                  <div className="mt-5 font-tomorrow text-lg font-medium text-stark-white">
-                    {track.name}
-                  </div>
-                  <div className="mt-2 h-px w-10 bg-ignition-orange" />
-                  <p className="mt-4 text-sm leading-relaxed text-ash">
-                    {track.blurb}
-                  </p>
-                </CardContent>
-              </Card>
-            </Reveal>
+            <ManifestRow
+              key={track.name}
+              index={i}
+              total={tracks.items.length}
+              code={`TRK-${String(i + 1).padStart(2, "0")}`}
+              icon={<Icon className="size-5" strokeWidth={1.75} aria-hidden="true" />}
+              title={track.name}
+              description={track.blurb}
+            />
           );
         })}
+      </ManifestList>
+
+      <div className="mt-8 flex items-start gap-3 border border-dashed border-line-strong bg-paper-dim px-5 py-4">
+        <Lock className="mt-0.5 size-4 shrink-0 text-stamp" strokeWidth={1.75} aria-hidden="true" />
+        <p className="text-sm leading-relaxed text-ink-2">
+          <span className="font-semibold text-ink">{challenge.status}.</span> {challenge.intro}{" "}
+          {challenge.note}
+        </p>
       </div>
     </Section>
   );
