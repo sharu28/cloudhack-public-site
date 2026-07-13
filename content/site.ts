@@ -316,8 +316,7 @@ export const site = {
       },
       {
         title: "Showcase your talent",
-        body:
-          "Be assessed on what you ship in a day, not how you interview - with sponsor companies watching, collecting CVs, and recruiting straight from the room.",
+        body: "Get your skills in front of sponsor companies through a real, working project - not an interview.",
       },
       {
         title: "Connect & collaborate",
