@@ -70,13 +70,13 @@ export const site = {
           "Build tools that eliminate repetitive tasks and drive efficiency.",
       },
       {
-        name: "Web Applications",
-        blurb: "Create impactful, user-first web experiences.",
+        name: "Sustainability",
+        blurb: "Build solutions that cut waste, save resources, or support a greener Sri Lanka.",
       },
       {
-        name: "SME Software",
+        name: "AI Enablement",
         blurb:
-          "Develop practical software solutions for small and medium enterprises in Sri Lanka.",
+          "Bring AI into real workflows - practical tools that make businesses smarter and faster.",
       },
     ],
   },
@@ -454,8 +454,8 @@ export const site = {
       {
         q: "What do I need to build?",
         a:
-          "Pick one of the sponsor problem tracks - Automation, Web Applications " +
-          "or SME Software - and ship a working prototype using AI tools by the " +
+          "Pick one of the sponsor problem tracks - Automation, Sustainability, " +
+          "or AI Enablement - and ship a working prototype using AI tools by the " +
           "evening demo. Final submissions must include a working demo, a GitHub/repo " +
           "link, and a short presentation or demo video.",
       },

@@ -1,9 +1,9 @@
-import { Cog, Globe, Building2, Lock } from "lucide-react";
+import { Cog, Leaf, BrainCircuit, Lock } from "lucide-react";
 import { site } from "@/content/site";
 import { Section } from "@/components/Section";
 import { ManifestList, ManifestRow } from "@/components/ManifestRow";
 
-const TRACK_ICONS = [Cog, Globe, Building2];
+const TRACK_ICONS = [Cog, Leaf, BrainCircuit];
 
 /**
  * Tracks - the three challenge tracks as manifest rows with a track code,
