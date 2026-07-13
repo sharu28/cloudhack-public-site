@@ -53,12 +53,16 @@ export function Waypoint({
       {/* Full label - only the active waypoint carries it permanently; any
           waypoint reveals it on hover/keyboard focus. A flat paper backdrop
           keeps it legible on the rare frame it sits over body copy.
+          Anchored at a fixed offset (not left-full) so it never depends on
+          the shrink-to-fit width of the dot+ordinal content before it - that
+          dependency was letting the label render partially off the left
+          edge of the viewport on some scroll positions.
           aria-hidden: the sr-only span below is the link's real accessible
           name, so this purely visual reveal doesn't get announced twice. */}
       <span
         aria-hidden="true"
         className={cn(
-          "pointer-events-none absolute left-full ml-2 whitespace-nowrap border border-line bg-paper-raised px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-ink shadow-raised transition-opacity duration-200",
+          "pointer-events-none absolute left-8 top-1/2 -translate-y-1/2 whitespace-nowrap border border-line bg-paper-raised px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-ink shadow-raised transition-opacity duration-200",
           active ? "opacity-100" : "opacity-0 group-focus-visible:opacity-100 group-hover:opacity-100"
         )}
       >

@@ -155,19 +155,14 @@ export const site = {
         ctaHref: "/convoy-cloud",
         items: [
           {
-            label: "AI model",
-            value: "Kimi 2.6 endpoint",
-            note: "Provided through Convoy Cloud.",
+            label: "Inference",
+            value: "Shared inference endpoint",
+            note: "Includes models hosted directly by Convoy.",
           },
           {
             label: "Tokens",
             value: "Unlimited for teams",
             note: "No personal API tokens needed.",
-          },
-          {
-            label: "Deployment",
-            value: "Convoy Cloud",
-            note: "Final apps run there for demos and judging.",
           },
         ],
       },
@@ -256,7 +251,7 @@ export const site = {
     rulesHeading: "Ground rules",
     items: [
       "Teams are 3–4 people. Every member must be registered.",
-      "All project code is written on the day. Open-source libraries, frameworks and AI tools (including the provided Kimi 2.6 endpoint) are fair game.",
+      "All project code is written on the day. Open-source libraries, frameworks and AI tools (including the provided inference endpoint) are fair game.",
       "Each team builds against one sponsor track brief, chosen after the morning briefings.",
       "Apps must run on Convoy Cloud, our Cloud Platform Partner, for final demos and judging.",
       "Final submissions must include a working demo, a GitHub/repo link, and a short presentation or demo video. Submission links close before final demos.",
@@ -296,7 +291,8 @@ export const site = {
         role: "Tech Partner",
         blurb:
           "The technology and infrastructure partner behind the event. Convoy " +
-          "Cloud will set up the cluster and shared Kimi 2.6 inference endpoint " +
+          "Cloud will set up the cluster and a shared inference endpoint - " +
+          "spanning several models, including some hosted directly by Convoy - " +
           "that teams use to build and run their solutions on the day.",
         email: "krishakary2j@gmail.com",
         website: "convoy-tech.com",
@@ -471,10 +467,11 @@ export const site = {
       {
         q: "Do teams need their own AI API tokens?",
         a:
-          "No. We will provide teams with access to a shared Kimi 2.6 inference " +
-          "endpoint, with unlimited tokens for teams during the event. Convoy " +
-          "Cloud will set up the cluster on Convoy Cloud so teams can build " +
-          "without using their own tokens.",
+          "No. We will provide teams with access to a shared inference " +
+          "endpoint spanning multiple models, including some hosted directly " +
+          "on Convoy Cloud, with unlimited tokens for teams during the event. " +
+          "Convoy Cloud sets up the cluster so teams can build without using " +
+          "their own tokens.",
       },
       {
         q: "When and where exactly is the event?",

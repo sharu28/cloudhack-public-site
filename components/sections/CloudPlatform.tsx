@@ -1,11 +1,15 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Cpu, Infinity as InfinityIcon } from "lucide-react";
 import { site } from "@/content/site";
 import { Section } from "@/components/Section";
 import { ManifestList, ManifestRow } from "@/components/ManifestRow";
 import type { DispatchStage } from "@/lib/dispatch";
 
 const STEP_STAGES: DispatchStage[] = ["PENDING", "BUILDING", "DEPLOYING", "DEPLOYED"];
+const BUILD_SETUP_ICONS: Record<string, typeof Cpu> = {
+  Inference: Cpu,
+  Tokens: InfinityIcon,
+};
 
 /**
  * Cloud Platform - consolidated (P3): absorbs the old Details section's
@@ -15,6 +19,13 @@ const STEP_STAGES: DispatchStage[] = ["PENDING", "BUILDING", "DEPLOYING", "DEPLO
  * the most literal use of the status-machine device on the page: these
  * four rows ARE the `pending → building → deploying → deployed` lifecycle,
  * not just a page scroll position standing in for it.
+ *
+ * The build-setup tile grid below reuses the icon-box pattern from the
+ * Details section's essentials grid instead of a bare stacked dt/dd list,
+ * so the two manifest-tile treatments on the page read as one consistent
+ * device. The old third tile (Deployment: Convoy Cloud) is dropped here -
+ * the four-stage manifest above and the Ground Rules section already say
+ * that once each; a third repeat added nothing.
  */
 export function CloudPlatform() {
   const { cloudPlatform, convoyCloudPage, details } = site;
@@ -42,19 +53,27 @@ export function CloudPlatform() {
       </ManifestList>
 
       {buildSetup && (
-        <dl className="mt-8 grid grid-cols-1 gap-px border border-line-strong bg-line-strong sm:grid-cols-3">
-          {buildSetup.items.map((item) => (
-            <div key={item.label} className="bg-paper-raised p-5">
-              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-2">
-                {item.label}
-              </dt>
-              <dd className="mt-1.5">
-                <span className="block text-base font-light text-ink">{item.value}</span>
-                <span className="mt-1 block text-xs leading-relaxed text-ink-2">{item.note}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <div className="mt-8 grid grid-cols-1 gap-px border border-line-strong bg-line-strong sm:grid-cols-2">
+          {buildSetup.items.map((item) => {
+            const Icon = BUILD_SETUP_ICONS[item.label] ?? Cpu;
+            return (
+              <div key={item.label} className="flex items-start gap-4 bg-paper-raised p-6">
+                <div className="flex size-11 shrink-0 items-center justify-center border border-line-strong bg-paper text-stamp">
+                  <Icon className="size-4" strokeWidth={1.75} aria-hidden="true" />
+                </div>
+                <div>
+                  <div className="font-mono text-xs uppercase tracking-[0.16em] text-ink-2">
+                    {item.label}
+                  </div>
+                  <div className="mt-1 text-xl font-extralight tracking-[-0.02em] text-ink">
+                    {item.value}
+                  </div>
+                  {item.note && <div className="mt-1 text-sm text-ink-2">{item.note}</div>}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       )}
 
       <div className="mt-8 flex flex-wrap gap-4">
