@@ -74,7 +74,7 @@ export function Countdown({
             <div className="flex flex-col items-center gap-2">
               <SplitFlap
                 value={String(display[unit.key]).padStart(2, "0")}
-                cellClassName="h-9 w-[0.74em] text-2xl font-medium font-mono sm:h-11 sm:text-3xl"
+                cellClassName="h-9 w-7 text-2xl font-medium font-mono sm:h-11 sm:w-9 sm:text-3xl"
                 staggerMs={20}
                 ariaLabel={`${display[unit.key]} ${unit.label}`}
               />

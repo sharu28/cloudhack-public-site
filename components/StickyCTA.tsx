@@ -34,7 +34,7 @@ export function StickyCTA() {
           <span className="text-ink-2">T-</span>
           <SplitFlap
             value={String(daysLeft).padStart(2, "0")}
-            cellClassName="h-5 w-[0.68em] text-xs font-light font-mono"
+            cellClassName="h-5 w-4 text-xs font-light font-mono"
             ariaLabel={`${daysLeft} ${daysLeft === 1 ? "day" : "days"} to go`}
           />
         </span>
