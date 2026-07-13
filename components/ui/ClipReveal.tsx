@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
  * the feature text blocks so all sections reveal their words the same way.
  *
  * `initial`/`whileInView` are deterministic (not branched on the reduced-motion
- * preference) so the server and first client render agree — no hydration drift.
+ * preference) so the server and first client render agree - no hydration drift.
  * The wipe is shown to everyone (including under the OS reduced-motion setting)
  * because it's the headline motion the sections are built around.
  */

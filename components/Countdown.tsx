@@ -25,7 +25,7 @@ export function partsUntil(targetMs: number, nowMs: number): Parts | null {
   };
 }
 
-/** The countdown, rendered entirely on Split-Flap digits — the single best
+/** The countdown, rendered entirely on Split-Flap digits - the single best
  *  fit for the device outside Schedule, since a countdown is a live number
  *  changing in place. Only the digits that actually change flip each tick. */
 export function Countdown({

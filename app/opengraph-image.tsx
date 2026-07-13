@@ -5,7 +5,7 @@ export const alt = "CloudHack 2026 - Where Cloud Meets Creation";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/** The DISPATCH waypoint stamp — the same crosshair-on-glow-red mark used
+/** The DISPATCH waypoint stamp - the same crosshair-on-glow-red mark used
  *  for the favicon and every true Route Line waypoint, rotated slightly as
  *  if pressed onto the manifest at an angle. */
 function WaypointStamp() {
@@ -50,7 +50,7 @@ export default function OpengraphImage() {
         }}
       >
         {/* Ambient glow, standing in for the drifting orb field (static
-            for the OG card — the real page animates this). */}
+            for the OG card - the real page animates this). */}
         <div
           style={{
             position: "absolute",

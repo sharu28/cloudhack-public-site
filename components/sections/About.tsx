@@ -4,10 +4,10 @@ import { ClipReveal } from "@/components/ui/ClipReveal";
 import { Parallax } from "@/components/Parallax";
 
 /**
- * About — a full-width editorial statement, not a two-column panel with a
+ * About - a full-width editorial statement, not a two-column panel with a
  * floating pull-quote card (V4/V5). The quote becomes a stamped manifest
  * entry: a ledger line with a hard rule, not a rounded card. Motion is the
- * typographic mask reveal only — no card, no tilt (Section 8).
+ * typographic mask reveal only - no card, no tilt (Section 8).
  */
 export function About() {
   const { about } = site;

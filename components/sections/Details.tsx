@@ -10,7 +10,7 @@ const ICONS: Record<string, typeof Calendar> = {
 };
 
 /**
- * Details — trimmed to pure logistics (when / where / who / teams /
+ * Details - trimmed to pure logistics (when / where / who / teams /
  * capacity). The old "Build setup" group (AI model, tokens, deployment) now
  * lives exactly once, in Cloud Platform. Flat manifest blocks, not rounded
  * charcoal cards (Section 8).

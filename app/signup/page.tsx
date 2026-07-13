@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { RegisterForm } from "@/components/RegisterForm";
 
 export const metadata: Metadata = {
-  // Root layout's title.template appends " — CloudHack 2026", so keep this short.
+  // Root layout's title.template appends " - CloudHack 2026", so keep this short.
   title: "Register your team",
   description:
     "Register solo, with a partial team, or as a full team for CloudHack 2026, a one-day hackathon in Colombo.",
@@ -17,21 +17,21 @@ export const metadata: Metadata = {
   // Next.js replaces (doesn't deep-merge) the parent openGraph, so restate it
   // here with this page's own og:url. og:image still comes from the file convention.
   openGraph: {
-    title: "Register your team — CloudHack 2026",
+    title: "Register your team - CloudHack 2026",
     description:
       "Register solo, with a partial team, or as a full team for CloudHack 2026, a one-day hackathon in Colombo.",
     url: "/signup",
     siteName: "CloudHack 2026",
     type: "website",
     locale: "en_US",
-    // Restate the generated card — overriding openGraph drops the file-convention
+    // Restate the generated card - overriding openGraph drops the file-convention
     // og:image, so point back at the same /opengraph-image route.
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "CloudHack 2026 — Where Cloud Meets Creation",
+        alt: "CloudHack 2026 - Where Cloud Meets Creation",
       },
     ],
   },
@@ -113,7 +113,7 @@ export default function SignupPage() {
             </div>
           </div>
 
-          {/* ── Sponsor enquiries — a slim pointer, the full pitch and form
+          {/* ── Sponsor enquiries - a slim pointer, the full pitch and form
               now live on /partners so it's said in one place. ────────────── */}
           <section
             id="sponsor"

@@ -7,7 +7,7 @@ import { SplitFlap } from "@/components/SplitFlap";
 const PRIZE_ICONS = [Trophy, Medal, Award];
 
 /**
- * Prizes — three manifest rows, amounts rendered in Split-Flap so the real
+ * Prizes - three manifest rows, amounts rendered in Split-Flap so the real
  * confirmed cash figures get the same "read it, don't just see it" treatment
  * as a departure board's fare or gate number.
  */

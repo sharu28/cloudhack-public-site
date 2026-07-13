@@ -46,8 +46,8 @@ export const site = {
     body:
       "CloudHack is a one-day hackathon where 80 of Sri Lanka's strongest " +
       "university students and early-career builders compete to solve real " +
-      "business problems set by sponsor companies. Born from a simple belief — " +
-      "Sri Lanka has exceptional tech talent that deserves a stage — CloudHack " +
+      "business problems set by sponsor companies. Born from a simple belief - " +
+      "Sri Lanka has exceptional tech talent that deserves a stage - CloudHack " +
       "isn't just a hackathon. It's the beginning of a movement. A community " +
       "where students and professionals collaborate, grow, and put Sri Lanka's " +
       "tech scene on the map.",
@@ -56,7 +56,7 @@ export const site = {
   },
 
   // ── Themes / Tracks ────────────────────────────────────────────────────────
-  //  These map to sponsor problem tracks — each Track Partner owns one. Kept
+  //  These map to sponsor problem tracks - each Track Partner owns one. Kept
   //  generic (no sponsor names) until sponsors are confirmed.
   tracks: {
     heading: "The themes",
@@ -85,7 +85,7 @@ export const site = {
   challenge: {
     heading: "The Challenge",
     intro:
-      "The problem briefs — set by our sponsor companies — drop on the day. The specifics are under wraps for now.",
+      "The problem briefs - set by our sponsor companies - drop on the day. The specifics are under wraps for now.",
     status: "Coming soon",
     note: "The challenge briefs will be revealed closer to the event. Watch this space.",
   },
@@ -94,7 +94,7 @@ export const site = {
   prizes: {
     heading: "Prizes",
     intro:
-      "There's more than bragging rights on the line — the top three teams take home cash prizes.",
+      "There's more than bragging rights on the line - the top three teams take home cash prizes.",
     note: "Prize pool confirmed for the top three places.",
     items: [
       { place: "1st", amount: "LKR 50,000" },
@@ -175,7 +175,7 @@ export const site = {
   },
 
   // ── Venue ────────────────────────────────────────────────────────────────
-  //  ✏️ `mapQuery` drives the embedded Google Map — refine it (or swap in a
+  //  ✏️ `mapQuery` drives the embedded Google Map - refine it (or swap in a
   //  full address) once the exact building/hall is confirmed.
   venue: {
     heading: "The venue",
@@ -185,7 +185,7 @@ export const site = {
     city: "Colombo, Sri Lanka",
     mapQuery: "SLIIT Curtin Campus Colombo",
     notes: [
-      { title: "Doors open 08:30", body: "Check-in closes at kickoff — arrive early to settle in." },
+      { title: "Doors open 08:30", body: "Check-in closes at kickoff - arrive early to settle in." },
       { title: "What to bring", body: "Laptop, charger, and whatever you build best with. Food, WiFi and power are sorted." },
       { title: "Getting there", body: "Exact hall, entrance, parking, and arrival instructions will be emailed to confirmed participants." },
     ],
@@ -233,7 +233,7 @@ export const site = {
     ],
   },
 
-  // Judges/mentors panel isn't confirmed yet — rendered as a one-line
+  // Judges/mentors panel isn't confirmed yet - rendered as a one-line
   // footnote under Hosts (see components/sections/Hosts.tsx) rather than a
   // standalone section of placeholder cards.
   judges: {
@@ -250,7 +250,7 @@ export const site = {
   rules: {
     heading: "Judging & rules",
     intro:
-      "Every team demos to the full judging panel and is scored on the same sheet. The detailed criteria are revealed at kickoff — here are the ground rules to plan around.",
+      "Every team demos to the full judging panel and is scored on the same sheet. The detailed criteria are revealed at kickoff - here are the ground rules to plan around.",
     criteriaNote:
       "Full judging criteria will be shared at kickoff on the day.",
     rulesHeading: "Ground rules",
@@ -265,12 +265,12 @@ export const site = {
   },
 
   // ── Community ───────────────────────────────────────────────────────────────
-  //  ✏️ Drop the real WhatsApp invite URL into `href` — the button renders as
+  //  ✏️ Drop the real WhatsApp invite URL into `href` - the button renders as
   //  "link coming soon" until it starts with http.
   community: {
     heading: "Join the community",
     body:
-      "The CloudHack WhatsApp community is where announcements drop first — and where solo builders find teammates before the day.",
+      "The CloudHack WhatsApp community is where announcements drop first - and where solo builders find teammates before the day.",
     ctaLabel: "Join the WhatsApp community",
     pendingLabel: "WhatsApp community link coming soon",
     href: "https://chat.whatsapp.com/KND60dRYwZz8GE3YU9NH9U",
@@ -312,7 +312,7 @@ export const site = {
       {
         title: "Solve real problems",
         body:
-          "Build against actual business challenges set by sponsor companies — not made-up briefs.",
+          "Build against actual business challenges set by sponsor companies - not made-up briefs.",
       },
       {
         title: "Showcase your talent",
@@ -330,12 +330,12 @@ export const site = {
   },
 
   // ── Partners teaser (homepage) ──────────────────────────────────────────────
-  //  A compact, honest pointer to /partners — the homepage no longer carries
+  //  A compact, honest pointer to /partners - the homepage no longer carries
   //  the full sponsorship pricing table inside the participant funnel.
   partnersTeaser: {
     eyebrow: "Partnerships",
     heading: "Set a real problem. Meet the builders.",
-    body: "Sponsor tracks, judging seats and recruiting access are open — full tiers and contribution levels live on the partnership page.",
+    body: "Sponsor tracks, judging seats and recruiting access are open - full tiers and contribution levels live on the partnership page.",
     ctaLabel: "View partnership tiers",
     ctaHref: "/partners",
   },
@@ -345,9 +345,9 @@ export const site = {
     heading: "For sponsors",
     body:
       "You set a real problem from your business. You walk away with working " +
-      "solutions — and the people who built them.",
+      "solutions - and the people who built them.",
     // Comparison rows; each tier carries a value for every row key. Booleans
-    // render as ✓ / —; strings render as text.
+    // render as ✓ / -; strings render as text.
     rows: [
       { key: "slots", label: "Slots" },
       { key: "contribution", label: "Contribution (LKR)" },
@@ -401,7 +401,7 @@ export const site = {
   },
 
   // ── Sponsors (confirmed partners) ───────────────────────────────────────────
-  //  ✏️ Only real, confirmed partners belong in `logos` — silence over
+  //  ✏️ Only real, confirmed partners belong in `logos` - silence over
   //  placeholder theater (see /partners, which shows this list honestly
   //  instead of a marquee padded out with synthetic "coming soon" names).
   sponsors: {
@@ -454,8 +454,8 @@ export const site = {
       {
         q: "What do I need to build?",
         a:
-          "Pick one of the sponsor problem tracks — Automation, Web Applications " +
-          "or SME Software — and ship a working prototype using AI tools by the " +
+          "Pick one of the sponsor problem tracks - Automation, Web Applications " +
+          "or SME Software - and ship a working prototype using AI tools by the " +
           "evening demo. Final submissions must include a working demo, a GitHub/repo " +
           "link, and a short presentation or demo video.",
       },
@@ -522,7 +522,7 @@ export const site = {
       { label: "LinkedIn", href: "#" },
     ],
     tagline:
-      "CloudHack 2026 — Co-hosted by Ether Labs & Convoy Tech. Building Sri " +
+      "CloudHack 2026 - Co-hosted by Ether Labs & Convoy Tech. Building Sri " +
       "Lanka's Tech Future, One Hack at a Time.",
     copyright: "CloudHack 2026 · Co-hosted by Ether Labs & Convoy Tech",
   },

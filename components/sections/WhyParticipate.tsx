@@ -6,9 +6,9 @@ import { ManifestList, ManifestRow } from "@/components/ManifestRow";
 const WHY_ICONS = [Target, Trophy, Users, Rocket];
 
 /**
- * Why Participate — moved up from position 13 to position 2 (P2): motivation
+ * Why Participate - moved up from position 13 to position 2 (P2): motivation
  * belongs before logistics and rules, not after them. Four manifest rows
- * with reference codes; no CTA here on purpose — this section's job is
+ * with reference codes; no CTA here on purpose - this section's job is
  * motivation, conversion happens at the primary Sign Up action elsewhere.
  */
 export function WhyParticipate() {

@@ -7,7 +7,7 @@ import { useReducedMotion } from "framer-motion";
  * SSR-safe wrapper around framer-motion's `useReducedMotion`.
  *
  * The raw hook reads `matchMedia('(prefers-reduced-motion: reduce)')`, which is
- * unavailable on the server — so the server always renders as "motion enabled"
+ * unavailable on the server - so the server always renders as "motion enabled"
  * while a client with reduced-motion enabled renders as "motion disabled". That
  * divergence makes motion components emit different `initial`/`style` props on
  * the server vs. the first client render, tripping React's hydration check

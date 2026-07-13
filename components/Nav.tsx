@@ -14,7 +14,7 @@ function useScrollDirection() {
     function onScroll() {
       const y = window.scrollY;
       setScrolled(y > 16);
-      // Never hide while a nav link has keyboard focus — a focused element
+      // Never hide while a nav link has keyboard focus - a focused element
       // translated off-screen would strand a keyboard user's visible focus
       // ring (Shift+Tab back up the page after scroll-hide, for example).
       if (focusedRef.current) {
@@ -47,7 +47,7 @@ function useScrollDirection() {
 }
 
 /**
- * Masthead navigation — a floating, frosted pill (Convoy Cloud's own chrome
+ * Masthead navigation - a floating, frosted pill (Convoy Cloud's own chrome
  * language), hiding on scroll-down and reappearing on scroll-up so it never
  * competes with the Route Line for the reader's eye. Sign Up is the one
  * visually dominant action everywhere on the site; "Join as Partner" is a

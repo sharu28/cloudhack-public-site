@@ -7,7 +7,7 @@ import { Countdown } from "@/components/Countdown";
 import { ClipReveal } from "@/components/ui/ClipReveal";
 
 /**
- * Hero — establishes the DISPATCH concept immediately: this is a dispatch
+ * Hero - establishes the DISPATCH concept immediately: this is a dispatch
  * board, not a landing page. Full-bleed, not the old copy-left/image-right
  * split; the Route Line (fixed, page-level) supplies the graphic weight
  * that used to come from an illustration, so nothing decorative has to fill
@@ -51,7 +51,7 @@ export function Hero() {
                 <li key={stat.label} className="flex flex-col gap-2">
                   <SplitFlap
                     value={stat.value}
-                    cellClassName="h-10 w-[0.68em] text-3xl font-medium font-mono sm:h-12 sm:text-4xl"
+                    cellClassName="h-10 w-8 text-3xl font-medium font-mono sm:h-12 sm:w-10 sm:text-4xl"
                     ariaLabel={`${stat.value} ${stat.label}`}
                   />
                   <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-2">
@@ -93,7 +93,7 @@ export function Hero() {
 }
 
 /**
- * The hero's one "visual" — a stamped manifest data plate restating real
+ * The hero's one "visual" - a stamped manifest data plate restating real
  * event facts (route, date, cargo) in a shipping-manifest register instead
  * of an illustrative image. No asset exists (or should exist) to fill this
  * space; the data itself is the graphic.

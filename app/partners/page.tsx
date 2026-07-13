@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "CloudHack 2026 — Where Cloud Meets Creation",
+        alt: "CloudHack 2026 - Where Cloud Meets Creation",
       },
     ],
   },
@@ -75,7 +75,7 @@ export default function PartnersPage() {
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">{forSponsors.body}</p>
           </ClipReveal>
 
-          {/* ── Tier ledger — real tabular data, a real <table> ─────────── */}
+          {/* ── Tier ledger - real tabular data, a real <table> ─────────── */}
           <Reveal as="div" delay={0.1}>
             <div className="mt-14 overflow-x-auto border border-line-strong">
               <table className="w-full min-w-[36rem] border-collapse text-left">
@@ -141,7 +141,7 @@ export default function PartnersPage() {
             </p>
           </Reveal>
 
-          {/* ── Confirmed partners — honest, no synthetic "coming soon" plates ── */}
+          {/* ── Confirmed partners - honest, no synthetic "coming soon" plates ── */}
           <Reveal as="div" delay={0.2}>
             <div className="mt-16 border-t border-line-strong pt-10">
               <p className="font-mono text-xs font-light uppercase tracking-[0.18em] text-ink-2">
@@ -170,7 +170,7 @@ export default function PartnersPage() {
           <div className="mt-20 border-t border-line-strong pt-14">
             <Contact2
               title="Talk to us"
-              description="Tell us about your organization, which tier fits, or ask a question — enquiries go straight to the CloudHack partnerships inbox."
+              description="Tell us about your organization, which tier fits, or ask a question - enquiries go straight to the CloudHack partnerships inbox."
               email={signup.sponsorEnquiries.email}
               phone={signup.sponsorEnquiries.phone}
               web={{ label: "cloudhacksrilanka.com", url: "https://www.cloudhacksrilanka.com" }}

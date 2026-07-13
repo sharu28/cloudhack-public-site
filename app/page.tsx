@@ -20,7 +20,7 @@ import { Community } from "@/components/sections/Community";
 import { FAQ } from "@/components/sections/FAQ";
 
 /**
- * Homepage — the 11-section DISPATCH route (Section 7 of the revamp plan),
+ * Homepage - the 11-section DISPATCH route (Section 7 of the revamp plan),
  * reordered so motivation lands before logistics and the sponsor pricing
  * table moves off the participant funnel entirely (now /partners). Challenge
  * folds into Tracks and Judges folds into Hosts as one-line footnotes rather

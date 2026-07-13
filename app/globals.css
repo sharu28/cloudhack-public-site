@@ -2,39 +2,39 @@
 
 /**
  * ─────────────────────────────────────────────────────────────────────────
- *  DISPATCH — dark register
+ *  DISPATCH - dark register
  * ─────────────────────────────────────────────────────────────────────────
  *  The site reads as a live dispatch board for a one-day build-and-ship
  *  operation, now on a dark control-plane canvas: a near-black field, warm
  *  glowing red-ember accents, thin/light Inter type, and drifting soft glow
- *  orbs — the same register Convoy Cloud's own product marketing uses,
+ *  orbs - the same register Convoy Cloud's own product marketing uses,
  *  translated to CloudHack's ink-stamp red instead of Convoy's emerald.
  *  Content surfaces (manifest rows/cards, Split-Flap, Route Line, Status
  *  Chip) stay hard-edged; only chrome (nav, primary buttons) is pill-shaped.
- *  See DESIGN.md for the full rationale — this file is the token source of
+ *  See DESIGN.md for the full rationale - this file is the token source of
  *  truth.
  */
 @theme {
-  /* ── Color — dark control-plane canvas, warm-tinted (not neutral gray) ── */
+  /* ── Color - dark control-plane canvas, warm-tinted (not neutral gray) ── */
   --color-paper: #161210;        /* base canvas */
   --color-paper-raised: #221c15; /* card / raised surface */
   --color-paper-dim: #1c1712;    /* recessed surface, zebra rows, wells */
-  --color-ink: #f5efe1;          /* primary text — warm off-white */
+  --color-ink: #f5efe1;          /* primary text - warm off-white */
   --color-ink-2: #a39a8a;        /* secondary / muted text */
-  --color-line: rgba(245, 239, 225, 0.1);  /* hairline — decorative dividers only */
-  --color-line-strong: #8a7c5f;  /* meaningful boundary — inputs, card/plate edges (≥4:1) */
+  --color-line: rgba(245, 239, 225, 0.1);  /* hairline - decorative dividers only */
+  --color-line-strong: #8a7c5f;  /* meaningful boundary - inputs, card/plate edges (≥4:1) */
 
   /* Two reds for two jobs, verified against every surface above:
-     `stamp` is the bright glow — text, icons, links, active fills, the
+     `stamp` is the bright glow - text, icons, links, active fills, the
      Route Line and orb glow (6.6:1 on canvas). `stamp-deep` is the solid,
      legible fill for the ONE primary Sign Up action, paired with light
-     text (6:1). Never use stamp-deep for small text on the dark canvas —
+     text (6:1). Never use stamp-deep for small text on the dark canvas -
      it reads at just 2.7:1 there. */
   --color-stamp: #ff6b47;
   --color-stamp-deep: #a62e1d;
   --color-stamp-wash: rgba(255, 107, 71, 0.12);
 
-  /* Hazard amber — rare, genuine-urgency accent only (final-hours countdown). */
+  /* Hazard amber - rare, genuine-urgency accent only (final-hours countdown). */
   --color-hazard: #d9a23f;
   --color-hazard-deep: #8a5a1a;
   --color-hazard-wash: rgba(217, 162, 63, 0.12);
@@ -49,7 +49,7 @@
   --color-text: var(--color-ink);
   --color-text-2: var(--color-ink-2);
 
-  /* shadcn-style semantic aliases — repointed so components/ui/* primitives
+  /* shadcn-style semantic aliases - repointed so components/ui/* primitives
      inherit DISPATCH automatically. */
   --color-background: var(--color-paper);
   --color-foreground: var(--color-ink);
@@ -69,7 +69,7 @@
   --color-input: var(--color-line-strong);
   --color-ring: var(--color-stamp);
 
-  /* ── Typography — Inter only, thin-to-medium, never bold ──────────────
+  /* ── Typography - Inter only, thin-to-medium, never bold ──────────────
      Convoy's own register: font-thin display, font-extralight headings,
      font-light everything else. Reference codes/data stay on mono. */
   --font-body: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -82,13 +82,13 @@
 
   --default-transition-duration: 200ms;
 
-  /* ── Radius — hard rectangles for content; chrome (nav, buttons) uses
+  /* ── Radius - hard rectangles for content; chrome (nav, buttons) uses
      rounded-full directly, layered on top of these two exceptions. ──────── */
   --radius-none: 0px;
   --radius-flap: 3px;   /* split-flap character cells only */
   --radius-chip: 2px;   /* status chip / small tag corners */
 
-  /* ── Elevation — dark surfaces don't cast directional shadows; depth
+  /* ── Elevation - dark surfaces don't cast directional shadows; depth
      comes from background-lightness steps and a warm glow on hover, not a
      hard offset (Section-14-style paper shadows are a light-mode trick). ── */
   --shadow-flat: none;
@@ -96,15 +96,15 @@
   --shadow-lifted: 0 12px 32px -8px rgba(255, 107, 71, 0.22), 0 0 0 1px rgba(255, 107, 71, 0.16);
   --shadow-stamp: 0 8px 28px -6px rgba(255, 107, 71, 0.38);
 
-  /* ── Motion — shared vocabulary ────────────────────────────────────────
+  /* ── Motion - shared vocabulary ────────────────────────────────────────
      Tailwind v4 recognises --ease-* as a themeable namespace (→ ease-*
      utilities); durations are applied via arbitrary values so the same
      tokens are usable from CSS, Tailwind, and inline styles alike. */
-  --ease-dispatch: cubic-bezier(0.16, 1, 0.3, 1); /* sharp deceleration — hero, stamps */
+  --ease-dispatch: cubic-bezier(0.16, 1, 0.3, 1); /* sharp deceleration - hero, stamps */
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1); /* mask reveals, section entrances */
 }
 
-/* Motion durations as plain custom properties — referenced directly via
+/* Motion durations as plain custom properties - referenced directly via
    var(...) from CSS and Tailwind arbitrary values (e.g. duration-[var(--duration-base)]). */
 :root {
   --duration-fast: 150ms;
@@ -142,7 +142,7 @@ h3 {
   color: var(--color-ink);
 }
 
-/* Bespoke, hard-edged focus state — the brand glow-red, never a rounded
+/* Bespoke, hard-edged focus state - the brand glow-red, never a rounded
    ring forced onto whatever is focused. Every focusable element keeps its
    own corner radius (0 for content, full for chrome), so keyboard focus
    reads like a terminal cursor box or a lit pill, never a generic a11y
@@ -173,7 +173,7 @@ h3 {
   outline-color: var(--color-stamp);
 }
 
-/* ── Manifest grid — a faint blueprint/ledger texture, replacing the old
+/* ── Manifest grid - a faint blueprint/ledger texture, replacing the old
    cloud-grid dot field. Pure CSS, no image request. ─────────────────────── */
 .manifest-grid {
   background-image:
@@ -182,7 +182,7 @@ h3 {
   background-size: 32px 32px;
 }
 
-/* Corner crosshair mark — a print/cargo-document registration mark, used at
+/* Corner crosshair mark - a print/cargo-document registration mark, used at
    true waypoints and manifest card corners. One small inline SVG-free utility
    built from borders so it costs nothing extra to render. */
 .crosshair {
@@ -210,13 +210,13 @@ h3 {
   transform: translateX(-50%);
 }
 
-/* Dashed "cut here" rule — print-production convention used between manifest
+/* Dashed "cut here" rule - print-production convention used between manifest
    groups instead of a soft divider. */
 .cut-line {
   border-top: 1px dashed var(--color-line-strong);
 }
 
-/* Die-cut notch — a small triangular cut at one corner of a manifest row or
+/* Die-cut notch - a small triangular cut at one corner of a manifest row or
    card, standing in for a ticket-stub perforation. Pure CSS clip-path, one
    corner only so it reads as a deliberate mark, not decoration-everywhere. */
 .notch-corner {
@@ -229,7 +229,7 @@ h3 {
   );
 }
 
-/* ── Reveal-on-scroll — CSS + IntersectionObserver (see components/Reveal.tsx).
+/* ── Reveal-on-scroll - CSS + IntersectionObserver (see components/Reveal.tsx).
    Replaces a framer-motion wrapper per instance; the JS only toggles one
    class, all motion runs on the compositor via transform/opacity. ────────── */
 [data-reveal] {
@@ -315,7 +315,7 @@ h3 {
 
 /* ── Route Line (see components/RouteLine.tsx) ────────────────────────────
    The fill's height is driven every frame by a scroll listener writing
-   `--route-progress` directly onto the rail element — no React re-render on
+   `--route-progress` directly onto the rail element - no React re-render on
    scroll. Reduced motion short-circuits the listener entirely in JS (the
    fill is set once, statically) rather than fighting a live CSS transition. */
 .route-fill {
@@ -333,7 +333,7 @@ h3 {
   }
 }
 
-/* ── Hero wordmark glow-shimmer — a slow-moving gradient sweep across the
+/* ── Hero wordmark glow-shimmer - a slow-moving gradient sweep across the
    "2026" mark, the one place the bright glow red gets to move on its own
    (everywhere else it only moves in response to real scroll/state). ────── */
 .glow-shimmer {

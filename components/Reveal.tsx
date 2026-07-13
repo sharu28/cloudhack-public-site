@@ -9,7 +9,7 @@ type Direction = "up" | "left" | "right" | "none";
 type Tag = "div" | "li" | "section" | "span";
 
 /**
- * Reveal-on-scroll — CSS transition driven by a single IntersectionObserver
+ * Reveal-on-scroll - CSS transition driven by a single IntersectionObserver
  * per instance, no animation library (Section 11 of the revamp plan: the
  * ~30 simple fade-up reveals across the page were the cheapest job
  * framer-motion was doing; this cuts that JS out entirely while keeping the
@@ -53,7 +53,7 @@ export function Reveal({
 
   const Component = as;
   // A single, contained escape hatch: JSX can't express "one ref type valid
-  // across a union of intrinsic tags" without this — every tag here (div,
+  // across a union of intrinsic tags" without this - every tag here (div,
   // li, section, span) is a plain HTMLElement, so the runtime ref is sound.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const polymorphicRef = ref as any;

@@ -5,7 +5,7 @@ import { SITE_NAME } from "@/lib/seo";
 // Colours match the DISPATCH theme (see viewport.themeColor).
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${SITE_NAME} — Where Cloud Meets Creation`,
+    name: `${SITE_NAME} - Where Cloud Meets Creation`,
     short_name: SITE_NAME,
     description:
       "A one-day hackathon where 80 of Sri Lanka's best young builders solve real business problems set by sponsor companies.",

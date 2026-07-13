@@ -7,7 +7,7 @@ import { ROUTE } from "@/lib/dispatch";
 const RAIL_HEIGHT = "min(62vh, 560px)";
 
 /**
- * The Route Line — a single rail read scroll-first: a persistent scroll
+ * The Route Line - a single rail read scroll-first: a persistent scroll
  * indicator, a table of contents, and the literal route through the page's
  * `pending → building → deploying → deployed` narrative, all in one device.
  *
@@ -15,12 +15,12 @@ const RAIL_HEIGHT = "min(62vh, 560px)";
  * grows with real scroll progress, and a column of small numbered waypoints
  * hugging the true edge of the viewport. Only the active waypoint's full
  * code + label is ever shown persistently (any other reveals on hover or
- * keyboard focus) — keeping the rail's footprint to a couple of characters
+ * keyboard focus) - keeping the rail's footprint to a couple of characters
  * at rest means it never has to fight page content for room, at any
  * viewport from a narrow phone to a 1280px laptop.
  *
  * The fill height is driven by `--route-progress`, written directly by
- * DispatchProgressProvider — this component never touches scroll itself.
+ * DispatchProgressProvider - this component never touches scroll itself.
  */
 export function RouteLine() {
   const { activeId } = useDispatchProgress();

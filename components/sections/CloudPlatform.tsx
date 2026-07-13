@@ -8,10 +8,10 @@ import type { DispatchStage } from "@/lib/dispatch";
 const STEP_STAGES: DispatchStage[] = ["PENDING", "BUILDING", "DEPLOYING", "DEPLOYED"];
 
 /**
- * Cloud Platform — consolidated (P3): absorbs the old Details section's
+ * Cloud Platform - consolidated (P3): absorbs the old Details section's
  * duplicated AI-model/tokens/deployment content so it's said exactly once.
- * Presented as a literal four-stage manifest — Workshop, Build, Deploy,
- * Submit — each stamped with the matching real Status Chip state. This is
+ * Presented as a literal four-stage manifest - Workshop, Build, Deploy,
+ * Submit - each stamped with the matching real Status Chip state. This is
  * the most literal use of the status-machine device on the page: these
  * four rows ARE the `pending → building → deploying → deployed` lifecycle,
  * not just a page scroll position standing in for it.

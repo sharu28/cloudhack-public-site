@@ -4,7 +4,7 @@ import { ManifestList, ManifestRow } from "@/components/ManifestRow";
 import { SplitFlap } from "@/components/SplitFlap";
 
 /**
- * Schedule — a true ledger: each row is a Split-Flap time, a title, a
+ * Schedule - a true ledger: each row is a Split-Flap time, a title, a
  * blurb. The single best fit for the Split-Flap device on the page, since a
  * schedule is literally a timetable (Section 20's recommended first slice).
  */
@@ -22,10 +22,10 @@ export function Schedule() {
               index={i}
               total={schedule.items.length}
               leading={
-                <span className="flex items-center gap-[3px]">
+                <span className="flex items-center gap-1">
                   <SplitFlap
                     value={hour}
-                    cellClassName="h-7 w-[0.68em] text-lg font-medium font-mono"
+                    cellClassName="h-7 w-6 text-lg font-medium font-mono"
                     staggerMs={40}
                     ariaLabel={item.time}
                   />
@@ -34,7 +34,7 @@ export function Schedule() {
                   </span>
                   <SplitFlap
                     value={minute}
-                    cellClassName="h-7 w-[0.68em] text-lg font-medium font-mono"
+                    cellClassName="h-7 w-6 text-lg font-medium font-mono"
                     staggerMs={40}
                     ariaLabel=""
                   />

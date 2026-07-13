@@ -5,13 +5,13 @@ import { stageForId, type DispatchStage } from "@/lib/dispatch";
 import { cn } from "@/lib/utils";
 
 /**
- * The Status Chip — a small pinned readout using the platform's own
+ * The Status Chip - a small pinned readout using the platform's own
  * deployment states. Rather than inventing a four-colour traffic light (a
  * hue this palette deliberately doesn't have), the four stages are told
  * through the SAME two brand colours at rising then resolving intensity:
  * an empty ink mark (pending) warms to an empty stamp-red mark (building),
  * peaks as a solid stamp-red mark (deploying), and settles into a solid ink
- * mark once deployed — read the state, don't just decorate with one.
+ * mark once deployed - read the state, don't just decorate with one.
  */
 const STAGE_DOT: Record<DispatchStage, string> = {
   PENDING: "border border-ink-2/60 bg-transparent",
@@ -67,7 +67,7 @@ export function StatusChip({
   );
 }
 
-/** Static, per-section variant — each section already knows its own fixed
+/** Static, per-section variant - each section already knows its own fixed
  *  stage, so this needs no scroll tracking. Used inline near the eyebrow on
  *  small screens, where a fixed corner chip would eat scarce viewport space. */
 export function StatusChipInline({ id, className }: { id: string; className?: string }) {
@@ -76,7 +76,7 @@ export function StatusChipInline({ id, className }: { id: string; className?: st
   );
 }
 
-/** Fixed, scroll-driven variant — desktop only (md+); advances as the active
+/** Fixed, scroll-driven variant - desktop only (md+); advances as the active
  *  waypoint changes. Purely ambient/thematic (the real section identity is
  *  already in the visible heading), so it stays out of the a11y tree. */
 export function StatusChipGlobal() {

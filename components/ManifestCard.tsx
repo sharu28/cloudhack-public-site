@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * A hard-edged manifest card — the one place besides Split-Flap boards where
+ * A hard-edged manifest card - the one place besides Split-Flap boards where
  * a bounded "card" shape earns its keep (Hosts: two distinct organizations
  * genuinely warrant separate bounded surfaces). A die-cut notch at one
  * corner stands in for the rounded card this system deliberately avoids;

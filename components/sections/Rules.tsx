@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 
 /**
- * Judging & rules — restyled to a flat manifest block instead of a rounded
+ * Judging & rules - restyled to a flat manifest block instead of a rounded
  * charcoal card (Section 8). The detailed scoring criteria aren't locked
  * yet, so this shows only the ground rules plus a "revealed at kickoff" note.
  */

@@ -7,7 +7,7 @@ import { ManifestCard } from "@/components/ManifestCard";
 const HOST_ICONS = [Sparkles, Building2];
 
 /**
- * Who's behind CloudHack — the two co-host organizations as manifest cards,
+ * Who's behind CloudHack - the two co-host organizations as manifest cards,
  * one of the few places a card treatment is justified (two genuinely
  * distinct organizations). Absorbs the old standalone, entirely-empty
  * Judges section (P5) as one plain line instead of three placeholder cards.

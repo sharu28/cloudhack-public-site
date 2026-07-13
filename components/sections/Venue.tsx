@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 
 /**
- * The venue — embedded Google Map beside the practical notes, restyled to a
+ * The venue - embedded Google Map beside the practical notes, restyled to a
  * flat manifest block instead of a rounded charcoal card (Section 8).
  */
 export function Venue() {
@@ -16,12 +16,12 @@ export function Venue() {
       <div className="grid grid-cols-1 gap-px border border-line-strong bg-line-strong lg:grid-cols-2">
         <Reveal as="div" className="bg-paper-raised">
           {/* Google's embed has no dark-mode parameter without the full JS
-              Maps API — invert+hue-rotate is the standard CSS-only trick to
+              Maps API - invert+hue-rotate is the standard CSS-only trick to
               keep it from sitting as a jarring bright rectangle on the dark
               canvas. Full color is one hover/focus away for real map reading. */}
           <iframe
             src={mapSrc}
-            title={`Map — ${venue.name}`}
+            title={`Map - ${venue.name}`}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen

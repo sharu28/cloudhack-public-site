@@ -6,7 +6,7 @@ import { ManifestList, ManifestRow } from "@/components/ManifestRow";
 const TRACK_ICONS = [Cog, Globe, Building2];
 
 /**
- * Tracks — the three challenge tracks as manifest rows with a track code,
+ * Tracks - the three challenge tracks as manifest rows with a track code,
  * absorbing the old standalone Challenge section (P4: a whole section that
  * only said "coming soon") as one inline note instead of its own
  * full-width scroll beat.

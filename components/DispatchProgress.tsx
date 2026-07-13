@@ -19,15 +19,15 @@ export function useDispatchProgress() {
 }
 
 /**
- * One shared engine behind two devices — the Route Line and the Status
- * Chip — so the page runs a single IntersectionObserver and a single
+ * One shared engine behind two devices - the Route Line and the Status
+ * Chip - so the page runs a single IntersectionObserver and a single
  * scroll listener no matter how many components read the result.
  *
  *  • Active waypoint (which section is "current") is real React state: it
  *    changes rarely (once per section crossed), so a re-render is cheap.
  *  • Scroll progress (0–1, for the Route Line's drawn fill) is written
  *    directly to a CSS custom property on the document root every animation
- *    frame during a scroll — never through React state — so scrolling never
+ *    frame during a scroll - never through React state - so scrolling never
  *    triggers a re-render. See `.route-fill` in globals.css.
  *  • Under prefers-reduced-motion, the scroll listener is never attached:
  *    the fill is set once to "fully drawn" and stays there, per Section 9
@@ -64,7 +64,7 @@ export function DispatchProgressProvider({ children }: { children: ReactNode }) 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // Reduced motion: render the line fully drawn and skip the listener
-    // entirely — waypoint state above still updates (it's a discrete
+    // entirely - waypoint state above still updates (it's a discrete
     // position readout, not a continuous scroll-linked transform).
     if (reduce) {
       root.style.setProperty("--route-progress", "1");

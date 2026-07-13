@@ -5,7 +5,7 @@ import type { DispatchStage } from "@/lib/dispatch";
 import { cn } from "@/lib/utils";
 
 /**
- * A hard-edged ledger row — the shape lists take instead of a rounded bento
+ * A hard-edged ledger row - the shape lists take instead of a rounded bento
  * card. Every row carries a real reference stub (a sequence number, plus
  * either a manifest code like "TRK-01" or custom leading content such as a
  * Split-Flap time), so even the decorative numbering maps to something a

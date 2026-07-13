@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
 
 /**
- * A compact, honest pointer to /partners — replaces the old full sponsorship
+ * A compact, honest pointer to /partners - replaces the old full sponsorship
  * pricing table sitting inside the participant funnel (P1). One line of
  * intent, one CTA; the full tier ledger lives on its own route.
  */

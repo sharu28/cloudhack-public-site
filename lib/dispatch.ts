@@ -6,7 +6,7 @@
  * list so the rail, the waypoint dots, and the status readout can never
  * drift out of sync with each other or with the actual page order.
  *
- * Hero is the route's origin — it is the start of the line, not a numbered
+ * Hero is the route's origin - it is the start of the line, not a numbered
  * waypoint, so it carries no WP code.
  */
 

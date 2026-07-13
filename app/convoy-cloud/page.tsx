@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     canonical: "/convoy-cloud",
   },
   openGraph: {
-    title: "What is Convoy Cloud? — CloudHack 2026",
+    title: "What is Convoy Cloud? - CloudHack 2026",
     description:
       "CloudHack teams deploy final apps on Convoy Cloud for live demos and judging, with hands-on guidance at the in-person workshop.",
     url: "/convoy-cloud",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "CloudHack 2026 — Where Cloud Meets Creation",
+        alt: "CloudHack 2026 - Where Cloud Meets Creation",
       },
     ],
   },
@@ -125,7 +125,7 @@ export default function ConvoyCloudPage() {
                 </h2>
               </div>
               <p className="mt-2 max-w-2xl text-sm text-ink-2">
-                The same four stages your app will actually run through on deploy day — see{" "}
+                The same four stages your app will actually run through on deploy day - see{" "}
                 <Link href="/#cloud-platform" className="font-light text-stamp hover:text-ink">
                   Cloud Platform
                 </Link>{" "}

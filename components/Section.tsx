@@ -9,7 +9,7 @@ interface SectionProps {
   id?: string;
   /** Small uppercase kicker above the title. */
   eyebrow?: string;
-  /** Section headline — Inter extralight at fluid display sizes, matching
+  /** Section headline - Inter extralight at fluid display sizes, matching
    *  Convoy Cloud's own h2 register. Never bold; the wordmark's thin weight
    *  and the Split-Flap/Status Chip glow stay the only "loud" moments. */
   title?: ReactNode;
@@ -24,7 +24,7 @@ interface SectionProps {
  * shared container width, vertical rhythm, and the manifest-style header:
  * a waypoint reference code (looked up from lib/dispatch by `id`), the
  * eyebrow, the headline, a hard stamp-red rule, and an optional intro. On
- * small screens the section's own Status Chip renders inline here — the
+ * small screens the section's own Status Chip renders inline here - the
  * desktop chip is fixed and shared, but mobile has no room to spare for a
  * persistent corner element, so each section carries its own instead.
  */

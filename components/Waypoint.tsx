@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
  * index number, and (only when active, or on hover/focus) its full
  * reference code and label. Keeping the persistent footprint to a couple of
  * characters means the rail never has to fight page content for space at
- * any viewport width — the one thing the revamp plan flags as this device's
+ * any viewport width - the one thing the revamp plan flags as this device's
  * biggest technical risk. Real `<a href="#id">`, not a div with an onClick,
  * so the rail is a genuine keyboard- and screen-reader-navigable table of
  * contents, not just a decorative scroll indicator.
@@ -50,7 +50,7 @@ export function Waypoint({
         {isOrigin ? "◆" : ordinal}
       </span>
 
-      {/* Full label — only the active waypoint carries it permanently; any
+      {/* Full label - only the active waypoint carries it permanently; any
           waypoint reveals it on hover/keyboard focus. A flat paper backdrop
           keeps it legible on the rare frame it sits over body copy.
           aria-hidden: the sr-only span below is the link's real accessible
@@ -65,7 +65,7 @@ export function Waypoint({
         {!isOrigin && <span className="mr-1.5 text-stamp">{waypoint.code}</span>}
         {waypoint.label}
       </span>
-      <span className="sr-only">{isOrigin ? "Start" : `${waypoint.code} — ${waypoint.label}`}</span>
+      <span className="sr-only">{isOrigin ? "Start" : `${waypoint.code} - ${waypoint.label}`}</span>
     </a>
   );
 }

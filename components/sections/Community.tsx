@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
 
 /**
- * Join the community — kept, restyled to the flat manifest surface, moved
+ * Join the community - kept, restyled to the flat manifest surface, moved
  * to the tail of the page alongside FAQ (Section 7). The join button only
  * goes live once community.href is a real invite URL.
  */

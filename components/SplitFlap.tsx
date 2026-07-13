@@ -8,21 +8,21 @@ import { cn } from "@/lib/utils";
 const FLIP_MS = 300;
 
 /**
- * The Split-Flap board — an airport departure-board character flip, built in
+ * The Split-Flap board - an airport departure-board character flip, built in
  * pure CSS 3D transforms (see `.flap-cell` / `.flap-leaf` in globals.css), no
  * animation library. Used for hero stats, the countdown, schedule times, and
- * prize amounts — anywhere a value is real data, not decoration.
+ * prize amounts - anywhere a value is real data, not decoration.
  *
  * Behaviour:
  *  - Starts blank and flips in once the board scrolls into view.
  *  - Only characters that actually change re-flip; the rest hold still.
  *  - Each cell staggers by `staggerMs * index` so a whole board never flips
- *    in one flat beat — pass a larger `staggerMs` on narrow screens to
+ *    in one flat beat - pass a larger `staggerMs` on narrow screens to
  *    spread a long value (e.g. the countdown) over more time and keep fewer
  *    cells animating at once.
  *  - Reduced motion: every character snaps straight to its value, no flip.
  *
- * Sizing is intentionally unopinionated — pass explicit width/height/text
+ * Sizing is intentionally unopinionated - pass explicit width/height/text
  * size via `cellClassName` for the context (hero stat vs. schedule time).
  */
 export function SplitFlap({
@@ -114,7 +114,7 @@ function FlapCell({
     }, FLIP_MS + delayMs);
     timeoutRef.current = timer;
     return () => clearTimeout(timer);
-    // Only the target character should retrigger a flip — `reduce`/`delayMs`
+    // Only the target character should retrigger a flip - `reduce`/`delayMs`
     // changing mid-flight shouldn't restart it.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [char]);

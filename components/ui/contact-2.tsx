@@ -19,7 +19,7 @@ interface Contact2Props {
 type Status = "idle" | "submitting" | "success" | "error";
 
 /**
- * The partnership enquiry form — POSTs to /api/contact (Resend), which was
+ * The partnership enquiry form - POSTs to /api/contact (Resend), which was
  * already fully built and working but unused anywhere in the previous
  * design. Restyled to the flat DISPATCH surface: hard borders, ink-bordered
  * icon plates, no rounded corners or glassmorphism.
@@ -36,7 +36,7 @@ export const Contact2 = ({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget; // capture before await — React nullifies currentTarget
+    const form = e.currentTarget; // capture before await - React nullifies currentTarget
     const data = new FormData(form);
     const payload = {
       firstname: String(data.get("firstname") ?? "").trim(),
@@ -141,7 +141,7 @@ export const Contact2 = ({
           </div>
           <h2 className="text-2xl font-extralight text-ink">Message sent</h2>
           <p className="max-w-md text-ink-2">
-            Thanks for reaching out — the CloudHack team has your message and will get back to you
+            Thanks for reaching out - the CloudHack team has your message and will get back to you
             shortly.
           </p>
           <button
