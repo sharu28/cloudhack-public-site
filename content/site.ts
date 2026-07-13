@@ -71,7 +71,8 @@ export const site = {
       },
       {
         name: "Sustainability",
-        blurb: "Build solutions that cut waste, save resources, or support a greener Sri Lanka.",
+        blurb:
+          "Build solutions that cut waste, save resources, or support a greener Sri Lanka.",
       },
       {
         name: "AI Enablement",
@@ -134,8 +135,7 @@ export const site = {
           {
             label: "Eligibility",
             value: "Students & early-career builders",
-            note:
-              "Open to builders in Sri Lanka across technical and product roles.",
+            note: "Open to builders in Sri Lanka across technical and product roles.",
           },
           {
             label: "Teams",
@@ -180,9 +180,18 @@ export const site = {
     city: "Colombo, Sri Lanka",
     mapQuery: "SLIIT Curtin Campus Colombo",
     notes: [
-      { title: "Doors open 08:30", body: "Check-in closes at kickoff - arrive early to settle in." },
-      { title: "What to bring", body: "Laptop, charger, and whatever you build best with. Food, WiFi and power are sorted." },
-      { title: "Getting there", body: "Exact hall, entrance, parking, and arrival instructions will be emailed to confirmed participants." },
+      {
+        title: "Doors open 08:30",
+        body: "Check-in closes at kickoff - arrive early to settle in.",
+      },
+      {
+        title: "What to bring",
+        body: "Laptop, charger, and whatever you build best with. Food, WiFi and power are sorted.",
+      },
+      {
+        title: "Getting there",
+        body: "Exact hall, entrance, parking, and arrival instructions will be emailed to confirmed participants.",
+      },
     ],
   },
 
@@ -197,13 +206,11 @@ export const site = {
     items: [
       {
         title: "Submit a live demo link",
-        body:
-          "Teams include a working Convoy Cloud URL with their repo and short presentation or demo video.",
+        body: "Teams include a working Convoy Cloud URL with their repo and short presentation or demo video.",
       },
       {
         title: "In-person workshop",
-        body:
-          "A hands-on session two weeks ahead of CloudHack walks teams through the platform, deployment flow, environment variables, and demo setup.",
+        body: "A hands-on session two weeks ahead of CloudHack walks teams through the platform, deployment flow, environment variables, and demo setup.",
       },
     ],
   },
@@ -215,18 +222,64 @@ export const site = {
       "One day, morning brief to evening demos. Here's how Sunday 16 August plays out.",
     note: "Times are provisional and may shift slightly on the day.",
     items: [
-      { time: "08:30", title: "Doors open & check-in", blurb: "Grab your name tag, find your table, settle in." },
-      { time: "08:45", title: "Opening keynote", blurb: "A short address to open CloudHack before the day's briefings begin." },
-      { time: "09:00", title: "Kickoff", blurb: "Format, rules, judging criteria and how submissions work." },
-      { time: "09:30", title: "Challenge briefings", blurb: "Sponsor companies walk through the real problems you'll solve." },
-      { time: "10:00", title: "Hacking begins", blurb: "Pick your track and start building." },
-      { time: "11:30", title: "Mentor checkpoint 1", blurb: "Sanity-check your approach with mentors before you go deep." },
+      {
+        time: "08:30",
+        title: "Doors open & check-in",
+        blurb: "Grab your name tag, find your table, settle in.",
+      },
+      {
+        time: "08:45",
+        title: "Opening keynote",
+        blurb:
+          "A short address to open CloudHack before the day's briefings begin.",
+      },
+      {
+        time: "09:00",
+        title: "Kickoff",
+        blurb: "Format, rules, judging criteria and how submissions work.",
+      },
+      {
+        time: "09:30",
+        title: "Challenge briefings",
+        blurb: "Sponsor companies walk through the real problems you'll solve.",
+      },
+      {
+        time: "10:00",
+        title: "Hacking begins",
+        blurb: "Pick your track and start building.",
+      },
+      {
+        time: "11:30",
+        title: "Mentor checkpoint 1",
+        blurb: "Sanity-check your approach with mentors before you go deep.",
+      },
       { time: "13:00", title: "Lunch", blurb: "Fuel up." },
-      { time: "14:30", title: "Mentor checkpoint 2", blurb: "Pressure-test your demo path and scope for the final stretch." },
-      { time: "16:00", title: "Submissions open", blurb: "Lock in your links, decks and demo videos." },
-      { time: "17:00", title: "Final demos", blurb: "Every team presents in a fixed slot for real judges." },
-      { time: "18:00", title: "Closing keynote", blurb: "A closing address from Convoy Tech, our Cloud Platform Partner." },
-      { time: "19:00", title: "Winners & closing", blurb: "Prizes, photos and what happens next." },
+      {
+        time: "14:30",
+        title: "Mentor checkpoint 2",
+        blurb: "Pressure-test your demo path and scope for the final stretch.",
+      },
+      {
+        time: "16:00",
+        title: "Submissions open",
+        blurb: "Lock in your links, decks and demo videos.",
+      },
+      {
+        time: "17:00",
+        title: "Final demos",
+        blurb: "Every team presents in a fixed slot for real judges.",
+      },
+      {
+        time: "18:00",
+        title: "Closing keynote",
+        blurb:
+          "A closing address from Convoy Tech, our Cloud Platform Partner.",
+      },
+      {
+        time: "19:00",
+        title: "Winners & closing",
+        blurb: "Prizes, photos and what happens next.",
+      },
     ],
   },
 
@@ -248,7 +301,13 @@ export const site = {
     heading: "Keynote speakers",
     intro: "Short keynotes bookend the day - one to open, one to close.",
     pending: "Speaker names and bios are being confirmed. Announcing soon.",
-    items: [] as Array<{ name: string; role: string; org: string; bio: string; photo: string }>,
+    items: [] as Array<{
+      name: string;
+      role: string;
+      org: string;
+      bio: string;
+      photo: string;
+    }>,
   },
 
   // ── Judging & rules ─────────────────────────────────────────────────────────
@@ -259,15 +318,14 @@ export const site = {
     heading: "Judging & rules",
     intro:
       "Every team demos to the full judging panel and is scored on the same sheet. The detailed criteria are revealed at kickoff - here are the ground rules to plan around.",
-    criteriaNote:
-      "Full judging criteria will be shared at kickoff on the day.",
+    criteriaNote: "Full judging criteria will be shared at kickoff on the day.",
     rulesHeading: "Ground rules",
     items: [
       "Teams are 3–4 people. Every member must be registered.",
-      "All project code is written on the day. Open-source libraries, frameworks and AI tools (including the provided inference endpoint) are fair game.",
-      "Each team builds against one sponsor track brief, chosen after the morning briefings.",
-      "Apps must run on Convoy Cloud, our Cloud Platform Partner, for final demos and judging.",
-      "Final submissions must include a working demo, a GitHub/repo link, and a short presentation or demo video. Submission links close before final demos.",
+      "All project code is written on the day. Open-source libraries, frameworks and AI tools (including the hackathon inference endpoint) are fair game.",
+      "Each team builds against one or more of the themes (Automation, Sustainability, AI Enablement) and the sponsor problem briefs.",
+      "Final submissions must be demoable apps that are deployed on Convoy Cloud.",
+      "Final submissions must include a working demo, a GitHub/repo link, and a short demo video. Submission links close before final demos.",
       "Judges' decisions are final.",
     ],
   },
@@ -277,8 +335,7 @@ export const site = {
   //  "link coming soon" until it starts with http.
   community: {
     heading: "Join the community",
-    body:
-      "The CloudHack WhatsApp community is where announcements drop first - and where solo builders find teammates before the day.",
+    body: "The CloudHack WhatsApp community is where announcements drop first - and where solo builders find teammates before the day.",
     ctaLabel: "Join the WhatsApp community",
     pendingLabel: "WhatsApp community link coming soon",
     href: "https://chat.whatsapp.com/KND60dRYwZz8GE3YU9NH9U",
@@ -320,8 +377,7 @@ export const site = {
     items: [
       {
         title: "Solve real problems",
-        body:
-          "Build against actual business challenges set by sponsor companies - not made-up briefs.",
+        body: "Build against actual business challenges set by sponsor companies - not made-up briefs.",
       },
       {
         title: "Showcase your talent",
@@ -422,7 +478,8 @@ export const site = {
         name: "SLIIT",
         tier: "Venue Partner",
         logo: "",
-        blurb: "SLIIT opens its Curtin Campus in Colombo as CloudHack 2026's venue for the day.",
+        blurb:
+          "SLIIT opens its Curtin Campus in Colombo as CloudHack 2026's venue for the day.",
         confirmed: true,
       },
     ],
@@ -594,23 +651,19 @@ export const site = {
     sections: [
       {
         title: "Why CloudHack uses it",
-        body:
-          "Hackathon demos are easier to judge when they are deployed in one reliable place. Convoy Cloud gives teams a shared deployment path, gives judges live URLs to test, and helps avoid laptop-only demos or last-minute hosting issues.",
+        body: "Hackathon demos are easier to judge when they are deployed in one reliable place. Convoy Cloud gives teams a shared deployment path, gives judges live URLs to test, and helps avoid laptop-only demos or last-minute hosting issues.",
       },
       {
         title: "How it works for teams",
-        body:
-          "Teams build locally during the event, then publish their frontend, backend, or full-stack app to Convoy Cloud for submission. Your final package should include the deployed URL, a GitHub/repo link, and a short presentation or demo video.",
+        body: "Teams build locally during the event, then publish their frontend, backend, or full-stack app to Convoy Cloud for submission. Your final package should include the deployed URL, a GitHub/repo link, and a short presentation or demo video.",
       },
       {
         title: "What the workshop covers",
-        body:
-          "The workshop will cover account setup, project deployment, environment variables, repo structure, live URLs, troubleshooting, and what judges expect to see in a final deployed demo.",
+        body: "The workshop will cover account setup, project deployment, environment variables, repo structure, live URLs, troubleshooting, and what judges expect to see in a final deployed demo.",
       },
       {
         title: "What to prepare",
-        body:
-          "Bring a laptop, make sure your GitHub account is ready, and be comfortable running a basic web app locally. Keep secrets out of your repo and be ready to document any environment variables your project needs.",
+        body: "Bring a laptop, make sure your GitHub account is ready, and be comfortable running a basic web app locally. Keep secrets out of your repo and be ready to document any environment variables your project needs.",
       },
     ],
     faq: [
