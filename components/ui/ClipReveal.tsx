@@ -19,7 +19,7 @@ export function ClipReveal({
   children,
   className,
   delay = 0,
-  duration = 1.5,
+  duration = 2,
 }: {
   children: ReactNode;
   className?: string;

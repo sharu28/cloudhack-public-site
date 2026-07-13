@@ -109,7 +109,7 @@
 :root {
   --duration-fast: 150ms;
   --duration-base: 300ms;
-  --duration-slow: 600ms;
+  --duration-slow: 900ms;
   --duration-hero: 900ms;
   color-scheme: dark;
 }
