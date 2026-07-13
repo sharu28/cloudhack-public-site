@@ -97,9 +97,9 @@ export const site = {
       "There's more than bragging rights on the line - the top three teams take home cash prizes.",
     note: "Prize pool confirmed for the top three places.",
     items: [
-      { place: "1st", amount: "LKR 50,000" },
-      { place: "2nd", amount: "LKR 40,000" },
-      { place: "3rd", amount: "LKR 30,000" },
+      { place: "1st", amount: "LKR 100,000" },
+      { place: "2nd", amount: "LKR 60,000" },
+      { place: "3rd", amount: "LKR 40,000" },
     ],
   },
 
@@ -221,7 +221,7 @@ export const site = {
       { time: "09:30", title: "Challenge briefings", blurb: "Sponsor companies walk through the real problems you'll solve." },
       { time: "10:00", title: "Hacking begins", blurb: "Pick your track and start building." },
       { time: "11:30", title: "Mentor checkpoint 1", blurb: "Sanity-check your approach with mentors before you go deep." },
-      { time: "13:00", title: "Lunch", blurb: "Fuel up. Food's on us." },
+      { time: "13:00", title: "Lunch", blurb: "Fuel up." },
       { time: "14:30", title: "Mentor checkpoint 2", blurb: "Pressure-test your demo path and scope for the final stretch." },
       { time: "16:00", title: "Submissions open", blurb: "Lock in your links, decks and demo videos." },
       { time: "17:00", title: "Final demos", blurb: "Every team presents in a fixed slot for real judges." },

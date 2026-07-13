@@ -38,7 +38,7 @@ export function ManifestRow({
   return (
     <li
       className={cn(
-        "group relative flex flex-col gap-4 border-b border-line py-6 first:border-t sm:flex-row sm:items-start sm:gap-7 sm:py-7",
+        "group relative flex flex-col gap-4 border-b border-line py-6 pl-3 first:border-t sm:flex-row sm:items-start sm:gap-7 sm:py-7 sm:pl-4",
         className
       )}
     >
