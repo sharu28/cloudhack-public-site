@@ -170,7 +170,7 @@ export const site = {
   },
 
   // ── Venue ────────────────────────────────────────────────────────────────
-  //  ✏️ `mapQuery` drives the embedded Google Map - refine it (or swap in a
+  //  ✏️ `mapQuery` drives the Open in Maps link - refine it (or swap in a
   //  full address) once the exact building/hall is confirmed.
   venue: {
     heading: "The venue",
@@ -186,7 +186,7 @@ export const site = {
       },
       {
         title: "What to bring",
-        body: "Laptop, charger, and whatever you build best with. Food, WiFi and power are sorted.",
+        body: "Laptop, charger, and whatever you build best with. WiFi and power will be available.",
       },
       {
         title: "Getting there",
@@ -518,8 +518,8 @@ export const site = {
       {
         q: "What should I bring on the day?",
         a:
-          "Your laptop, charger, and whatever you build best with. Food and the " +
-          "venue are sorted, and you do not need to bring your own AI API tokens.",
+          "Your laptop, charger, and whatever you build best with. You do not need " +
+          "to bring your own AI API tokens.",
       },
       {
         q: "Is there a registration fee?",

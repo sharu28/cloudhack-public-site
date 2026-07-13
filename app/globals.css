@@ -182,6 +182,20 @@ h3 {
   background-size: 32px 32px;
 }
 
+/* Venue's location signal is intentionally an abstract navigation schematic,
+   not an inaccurate imitation of a street map. The real route remains
+   available through its Open in Maps link. */
+.venue-signal-grid {
+  background-image:
+    linear-gradient(rgba(245, 239, 225, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 239, 225, 0.06) 1px, transparent 1px),
+    radial-gradient(circle at 52% 50%, rgba(255, 107, 71, 0.18), transparent 24%),
+    linear-gradient(135deg, rgba(255, 107, 71, 0.05), transparent 48%);
+  background-size: 36px 36px, 36px 36px, auto, auto;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
 /* Corner crosshair mark - a print/cargo-document registration mark, used at
    true waypoints and manifest card corners. One small inline SVG-free utility
    built from borders so it costs nothing extra to render. */
