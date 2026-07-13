@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { site } from "@/content/site";
-import { StatusChip } from "@/components/StatusChip";
 import { SplitFlap } from "@/components/SplitFlap";
 import { Countdown } from "@/components/Countdown";
 import { ClipReveal } from "@/components/ui/ClipReveal";
@@ -23,11 +22,10 @@ export function Hero() {
       className="relative isolate overflow-hidden px-5 pb-16 pt-32 sm:px-8 sm:pb-20 sm:pt-40"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-wrap items-center gap-3">
+        <div>
           <p className="font-mono text-xs font-light uppercase tracking-[0.2em] text-ink-2">
             {brand.eyebrow}
           </p>
-          <StatusChip stage="PENDING" srPrefix="Pipeline stage" />
         </div>
 
         <h1 className="mt-6 text-[clamp(4.2rem,14vw,10.5rem)] font-thin leading-[0.86] tracking-[-0.03em] text-ink">

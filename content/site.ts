@@ -12,7 +12,7 @@ export const site = {
   brand: {
     wordmark: "CLOUDHACK",
     year: "2026",
-    eyebrow: "ETHER LABS  &  CONVOY TECH present",
+    eyebrow: "ETHER LABS  &  CONVOY TECHNOLOGIES present",
   },
 
   // Event timing. Single source of truth for the countdown timer and sticky CTA.
