@@ -103,19 +103,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`dark ${fontVariables}`}>
-      <body className="font-body antialiased">
+      <body className="relative isolate min-h-screen font-body antialiased">
         <StructuredData />
         {/* Skip-to-content - first focusable element on every page (U4). */}
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        {/* Dark control-plane canvas: a quiet manifest/blueprint grid plus
-            slow drifting glow orbs (disabled under reduced-motion). */}
-        <div aria-hidden="true" className="fixed inset-0 -z-10 overflow-hidden bg-paper">
+        {/* Dark control-plane canvas: the orb field must sit above the opaque
+            document canvas, then content establishes its own higher layer. */}
+        <div aria-hidden="true" className="background-field pointer-events-none fixed inset-0 z-0 overflow-hidden">
           <BackgroundOrbs />
           <div className="manifest-grid absolute inset-0" />
         </div>
-        {children}
+        <div className="relative z-10">{children}</div>
       </body>
     </html>
   );

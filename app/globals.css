@@ -371,46 +371,70 @@ h3 {
    large, heavily-blurred radial gradients drifting on slow independent
    loops with a gentle pulse. Purely decorative (aria-hidden), disabled
    entirely under prefers-reduced-motion rather than merely slowed. */
+.background-field {
+  background:
+    radial-gradient(ellipse 110% 72% at 50% -16%, rgba(255, 107, 71, 0.055), transparent 70%),
+    var(--color-paper);
+}
 .orb {
   position: absolute;
   border-radius: 9999px;
+  opacity: 0.85;
   will-change: transform, opacity;
 }
 .orb-1 {
-  width: 46vw;
-  height: 46vw;
-  max-width: 640px;
-  max-height: 640px;
-  top: -12%;
-  left: -10%;
-  background: radial-gradient(circle, rgba(255, 107, 71, 0.16) 0%, rgba(166, 46, 29, 0.05) 45%, transparent 72%);
-  filter: blur(10px);
+  width: 54vw;
+  height: 54vw;
+  max-width: 780px;
+  max-height: 780px;
+  top: -20%;
+  left: -18%;
+  background: radial-gradient(
+    circle at 38% 38%,
+    rgba(255, 107, 71, 0.24) 0%,
+    rgba(214, 73, 58, 0.13) 36%,
+    rgba(166, 46, 29, 0.04) 58%,
+    transparent 76%
+  );
+  filter: blur(42px);
   animation:
     orb-drift-1 46s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite,
     orb-pulse 9s ease-in-out infinite;
 }
 .orb-2 {
-  width: 40vw;
-  height: 40vw;
-  max-width: 560px;
-  max-height: 560px;
-  top: 48%;
-  right: -8%;
-  background: radial-gradient(circle, rgba(217, 162, 63, 0.12) 0%, rgba(138, 90, 26, 0.04) 45%, transparent 72%);
-  filter: blur(10px);
+  width: 50vw;
+  height: 50vw;
+  max-width: 720px;
+  max-height: 720px;
+  top: 42%;
+  right: -18%;
+  background: radial-gradient(
+    circle at 48% 42%,
+    rgba(217, 162, 63, 0.18) 0%,
+    rgba(184, 105, 36, 0.09) 37%,
+    rgba(138, 90, 26, 0.025) 59%,
+    transparent 76%
+  );
+  filter: blur(48px);
   animation:
     orb-drift-2 56s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite,
     orb-pulse 11s ease-in-out infinite 2s;
 }
 .orb-3 {
-  width: 30vw;
-  height: 30vw;
-  max-width: 420px;
-  max-height: 420px;
-  top: 20%;
-  left: 38%;
-  background: radial-gradient(circle, rgba(255, 107, 71, 0.1) 0%, rgba(166, 46, 29, 0.03) 45%, transparent 72%);
-  filter: blur(8px);
+  width: 42vw;
+  height: 42vw;
+  max-width: 600px;
+  max-height: 600px;
+  top: 18%;
+  left: 30%;
+  background: radial-gradient(
+    circle at 50% 48%,
+    rgba(255, 132, 97, 0.16) 0%,
+    rgba(195, 56, 49, 0.08) 38%,
+    rgba(166, 46, 29, 0.02) 60%,
+    transparent 78%
+  );
+  filter: blur(54px);
   animation:
     orb-drift-3 38s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite 3s,
     orb-pulse 7s ease-in-out infinite 1s;
@@ -430,7 +454,7 @@ h3 {
   50% { transform: translate(4vw, -6vh) scale(1.12); }
 }
 @keyframes orb-pulse {
-  0%, 100% { opacity: 0.6; }
+  0%, 100% { opacity: 0.62; }
   50% { opacity: 1; }
 }
 
