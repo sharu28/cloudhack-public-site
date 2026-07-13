@@ -7,10 +7,10 @@ export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
 const MARK = `<svg width="180" height="180" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="64" rx="10" fill="#f1eada"/>
+  <rect width="64" height="64" rx="10" fill="#161210"/>
   <rect x="16" y="16" width="32" height="32" fill="#a62e1d"/>
-  <rect x="16" y="16" width="32" height="32" fill="none" stroke="#1c1712" stroke-width="1.5"/>
-  <path d="M32 24v16M24 32h16" stroke="#f1eada" stroke-width="2.5" stroke-linecap="square"/>
+  <rect x="16" y="16" width="32" height="32" fill="none" stroke="#8a7c5f" stroke-width="1.5"/>
+  <path d="M32 24v16M24 32h16" stroke="#f5efe1" stroke-width="2.5" stroke-linecap="square"/>
 </svg>`;
 
 export default function AppleIcon() {

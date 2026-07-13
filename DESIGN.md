@@ -1,19 +1,24 @@
-# CloudHack 2026 Design System — DISPATCH
+# CloudHack 2026 Design System — DISPATCH (Dark Register)
 
 ## Direction
 
 The site is not a landing page. It is a live dispatch board for a one-day
-build-and-ship operation: a manifest, not a marketing page. Warm parchment
-paper, ink-stamp red, hard rectangles, monospace reference codes. Built
-directly from the client's own vocabulary — Convoy (vehicles moving
+build-and-ship operation: a manifest, not a marketing page — now rendered on
+a dark control-plane canvas. Warm near-black field, glowing ink-stamp
+red/amber accents, thin-to-medium Inter type, and slow drifting glow orbs.
+Built directly from the client's own vocabulary — Convoy (vehicles moving
 together), Cloud (the destination), Hack (the single day of transit) — and
 the real deployment lifecycle winning apps run through:
 `pending -> building -> deploying -> deployed` (see `AGENTS.md`).
 
-Two rebuilds preceded this one: a dark Linear/Vercel/Raycast-style system,
-then a light Apple-product-page system. Both were competent executions of
-someone else's identity. This system is built to be ownable — recognizable
-with the wordmark removed.
+This is the system's second surface pass. The first (light parchment paper,
+hard ink-black type) is preserved in git history on `main`. This dark
+register deliberately borrows Convoy Cloud's own actual marketing-site
+register (see `control-plane-frontend-v2`) — thin/light Inter, a near-black
+canvas, drifting gradient-orb glow — translated to CloudHack's own
+ink-stamp red instead of Convoy's emerald, so the two sibling sites (Convoy
+Cloud's product marketing and CloudHack's event site) read as the same
+family without being the same site.
 
 ## Principles
 
@@ -24,8 +29,8 @@ with the wordmark removed.
 3. Silence over placeholder theater. Say nothing decorative where there is
    nothing real yet (no synthetic "coming soon" sponsor plates, no empty
    judge cards).
-4. Flat and hard-edged, not floating and rounded. No glassmorphism, no
-   gradient blobs, no soft drop shadows.
+4. Content stays hard-edged and flat; chrome (nav, buttons) is pill-shaped —
+   a deliberate hybrid, not a contradiction (see "Shape" below).
 5. Motion narrates position and state — it doesn't just announce that
    content has loaded.
 6. Reduced motion is designed per-animation from the start, not bolted on.
@@ -41,7 +46,7 @@ with the wordmark removed.
    `DispatchProgress.tsx` on every scroll frame — never through React state.
    Only the active waypoint's full code/label shows persistently; others
    reveal on hover/focus, so the rail never fights page content for room at
-   any viewport width (the real risk identified before building this).
+   any viewport width.
 2. **Manifest Row / Card** (`ManifestRow.tsx`, `ManifestCard.tsx`) — a
    hard-edged ledger block: monospace reference codes, a die-cut notch, no
    rounded floating card. Used for Tracks, Why Participate, Prizes, Schedule,
@@ -50,96 +55,114 @@ with the wordmark removed.
 3. **Status Chip** (`StatusChip.tsx`) — a small pinned readout using the
    platform's real deployment states. Rather than a four-colour traffic
    light, the four stages are read through the same two brand colours at
-   rising then resolving intensity: empty ink (pending) → empty stamp-red
-   (building) → solid stamp-red (deploying) → solid ink (deployed).
+   rising then resolving intensity: empty ink (pending) → empty glow-red
+   (building) → solid glow-red (deploying) → solid ink (deployed).
 4. **Split-Flap** (`SplitFlap.tsx`) — an airport departure-board character
-   flip in pure CSS 3D transforms, no library. Used for hero stats, the
-   countdown, schedule times, and prize amounts — real data, never
-   decoration. Only characters that change re-flip.
+   flip in pure CSS 3D transforms, no library. Cells render as small lit
+   plates (dark plate, glowing red-orange digit) — literally an instrument
+   readout. Used for hero stats, the countdown, schedule times, and prize
+   amounts. Only characters that change re-flip.
 
 ## Color tokens
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--color-paper` | `#f1eada` | Base canvas — warm parchment, not screen white |
-| `--color-paper-raised` | `#faf6ec` | Card / raised surface |
-| `--color-paper-dim` | `#eae0c9` | Recessed surface, zebra rows |
-| `--color-ink` | `#1c1712` | Primary text — warm near-black |
-| `--color-ink-2` | `#5c5344` | Secondary / muted text |
-| `--color-line` | `#d8ccae` | Hairline — decorative dividers |
-| `--color-line-strong` | `#8c7b57` | Meaningful boundary — inputs, active rules (≥3:1 contrast) |
-| `--color-stamp` | `#a62e1d` | The one operational accent — CTAs, active state, links |
-| `--color-stamp-deep` | `#7d2113` | Hover / pressed |
-| `--color-hazard` | `#7a4e00` | Rare amber — genuine urgency only (final-hours countdown) |
+| `--color-paper` | `#161210` | Base dark canvas |
+| `--color-paper-raised` | `#221c15` | Card / raised surface |
+| `--color-paper-dim` | `#1c1712` | Recessed surface, zebra rows |
+| `--color-ink` | `#f5efe1` | Primary text — warm off-white (16:1 on canvas) |
+| `--color-ink-2` | `#a39a8a` | Secondary / muted text (6.7:1 on canvas) |
+| `--color-line` | `rgba(245,239,225,.10)` | Hairline — decorative dividers only |
+| `--color-line-strong` | `#8a7c5f` | Meaningful boundary — inputs, card/plate edges (≥4:1) |
+| `--color-stamp` | `#ff6b47` | Bright glow — text, icons, links, active fills, Route Line, orb glow (6.6:1 on canvas) |
+| `--color-stamp-deep` | `#a62e1d` | Solid fill for the **one** primary Sign Up action, paired with light text (6:1) — never used as small text on the canvas directly (2.7:1, fails AA) |
+| `--color-hazard` | `#d9a23f` | Rare amber — genuine urgency only (final-hours countdown, 8.1:1) |
 
-Every pairing above is contrast-checked for WCAG AA (verified ≥4.5:1 for
-text, ≥3:1 for meaningful UI boundaries) — see the git history for the
-calculation. Legacy `--color-convoy-red` / `--color-text` / `--color-line`
-aliases still resolve (repointed to the tokens above) so nothing silently
-breaks if an old class survives somewhere; new work should reach for the
-named tokens directly.
+Two reds, two jobs — this is the one rule to hold the line on. `stamp`
+(bright) is for anything read as text/icon/accent against the dark canvas.
+`stamp-deep` is only for large fills that have light text sitting on top of
+them. Mixing the two roles is exactly how a contrast regression sneaks in.
 
 ## Typography
 
-Three tiers, each with exactly one job:
+Inter only, thin-to-medium, **never bold** — Convoy Cloud's own register:
 
-- **Display/stencil — Big Shoulders / Big Shoulders Stencil.** Reserved for
-  the wordmark, Split-Flap numerals, and Status Chip labels *only*. Section
-  headings deliberately do NOT use it — keeping it rare is what makes it
-  land.
-- **Body/UI — IBM Plex Sans.** Every heading, paragraph, button, and label.
-  Chosen over Inter for its engineering/technical-documentation heritage
-  rather than a general consumer-product one. Loaded as a single variable
-  font (100–700).
-- **Data/mono — IBM Plex Mono.** Every timestamp, reference code,
-  coordinate, and price. Deliberately developer-native.
+- **Display** — `font-thin` (100) at fluid `clamp()` sizes for the wordmark
+  and page H1s. The one loud, huge moment on each page.
+- **Headings** — `font-extralight` (200), tight negative tracking
+  (`-0.02em` to `-0.03em`). Every section H2/H3 in the system.
+- **Body / UI** — `font-light` (300) is the default weight (set on `body`);
+  `font-normal` (400) and `font-medium` (500) appear only where Tailwind's
+  own defaults already used them (e.g. native `<label>` elements).
+- **Data / mono** — IBM Plex Mono, `font-light` (300) for labels/eyebrows,
+  `font-medium` (500) for Split-Flap digit readouts specifically (a
+  deliberate exception — live data should read like an instrument, not
+  prose).
 
-## Shape and elevation
+Only five weights are loaded for Inter (100/200/300/400/500) and three for
+Plex Mono (300/400/500) — anything requesting a weight outside those lists
+will silently fall back to the browser's system font at that weight, so
+new class combinations should stay inside this set.
 
-- Radius: `--radius-none` (0px) everywhere by default. Two deliberate
-  exceptions: `--radius-flap` (3px, Split-Flap cells) and `--radius-chip`
-  (2px, small tag corners).
-- Elevation: `--shadow-raised` and `--shadow-lifted` are **hard, unblurred
-  offset shadows** (e.g. `3px 3px 0 rgba(...)`) — a "card sitting on paper"
-  read, not a soft glow. Interactive cards lift along that same offset on
-  hover, like picking a card up off a stack.
-- Motifs: `.manifest-grid` (faint blueprint texture, replaces the old
-  cloud-grid dot field), `.cut-line` (dashed "cut here" rule), `.notch-corner`
-  (die-cut corner clip-path), `.crosshair` (registration mark).
+## Shape — a deliberate hybrid
+
+- **Content stays hard-edged**: Manifest Row/Card, Split-Flap cells, Status
+  Chip, icon plates, form inputs, data tables. `--radius-none` (0px)
+  everywhere here, plus two exceptions: `--radius-flap` (3px, Split-Flap)
+  and `--radius-chip` (2px, small tags).
+- **Chrome is pill-shaped**: the floating Nav, and every primary/secondary
+  CTA button, use `rounded-full` — matching Convoy Cloud's own nav/button
+  language. This is why the hybrid isn't a contradiction: a manifest ledger
+  is inherently rectangular (it's a printed form), but the *controls* you
+  press to act on it can be a different, friendlier shape, the way a
+  physical control panel has rectangular displays and round buttons.
+- **Elevation**: dark surfaces don't cast directional shadows — there's no
+  light source to imply. `--shadow-raised` is `none`; depth comes from
+  background-lightness steps (canvas → paper-dim → paper-raised) and
+  borders. `--shadow-lifted` and `--shadow-stamp` are warm ember-glow box
+  shadows (soft, colored, no offset) used only on hover/for the primary CTA.
+- Motifs: `.manifest-grid` (faint blueprint texture), `.cut-line` (dashed
+  "cut here" rule), `.notch-corner` (die-cut corner clip-path), `.crosshair`
+  (registration mark), `.orb`/`.orb-1/2/3` (drifting glow field).
 
 ## Motion
 
 - `Reveal.tsx` — CSS transition + one `IntersectionObserver` per instance,
-  no per-element framer-motion wrapper (cut real JS weight across the ~30
-  call sites that only ever needed a fade-up).
+  no per-element framer-motion wrapper.
 - `ClipReveal.tsx` — kept, scoped to headline text only (the "typographic
   mask reveal").
 - `Parallax.tsx` — kept, used sparingly (About's stamped quote only).
+- `.glow-shimmer` — a slow gradient sweep across the hero's "2026" mark,
+  the one place the glow color moves on its own rather than in response to
+  scroll/state.
+- `.orb` field — three large blurred gradients drifting/pulsing behind all
+  content, disabled entirely (not merely slowed) under reduced motion.
 - `SplitFlap.tsx` / `RouteLine.tsx` / `StatusChip.tsx` — bespoke motion
   systems described above.
 - Every animation honours `prefers-reduced-motion`: the global media query
   in `globals.css` collapses transitions/animations to ~0ms site-wide;
-  scroll-linked effects (the Route Line's fill, the cursor-follow devices)
-  additionally short-circuit their JS listeners entirely rather than
-  fighting a live transition.
+  scroll-linked effects and the orb field additionally short-circuit their
+  JS/CSS entirely rather than fighting a live transition.
 
 ## Do
 
-- Keep headlines short; let Plex Sans Bold carry the weight, not a display
-  face.
-- Use stamp red for exactly one clear primary action per view.
+- Keep the wordmark/H1 as the only `font-thin` moment on a page; headings
+  underneath it stay `font-extralight`.
+- Use `stamp` (bright) for anything read as text on the canvas; use
+  `stamp-deep` only for a filled button with light text on top.
 - Use manifest rows for lists, manifest cards only for genuinely distinct
   bounded entities (the two hosts).
-- Trace every reference code back to real content (WP- for route
-  waypoints, TRK- for tracks, PRZ- for prizes, RSN- for why-participate —
-  distinct prefixes per data type, like a real cargo manifest).
+- Keep chrome pill-shaped, content hard-edged — don't let one bleed into
+  the other.
 
 ## Do not
 
-- Reintroduce gradient blobs, glassmorphism, or rounded floating cards.
-- Add a second display/stencil-weight font anywhere outside the wordmark,
-  numerals, and Status Chip.
+- Reintroduce a directional drop shadow on a dark surface — it reads as a
+  bug, not depth. Use the glow tokens instead.
+- Add a sixth font weight anywhere without also adding the corresponding
+  `next/font` weight file — an unloaded weight silently falls back to the
+  system font.
 - Invent sponsor names, judges, testimonials, or metrics that aren't real —
   an honest "to be announced" line beats a placeholder card.
-- Add WebGL, canvas, or a 3D library for the Route Line or Split-Flap — both
-  are deliberately CSS/SVG-only.
+- Add WebGL, canvas, or a 3D library for the Route Line, Split-Flap, or orb
+  field — all three are deliberately CSS/SVG-only.

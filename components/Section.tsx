@@ -9,9 +9,9 @@ interface SectionProps {
   id?: string;
   /** Small uppercase kicker above the title. */
   eyebrow?: string;
-  /** Section headline — Plex Sans Bold, not the display/stencil face, so
-   *  the wordmark/numerals/Status Chip keep their impact as the only loud
-   *  type in the system. */
+  /** Section headline — Inter extralight at fluid display sizes, matching
+   *  Convoy Cloud's own h2 register. Never bold; the wordmark's thin weight
+   *  and the Split-Flap/Status Chip glow stay the only "loud" moments. */
   title?: ReactNode;
   /** Optional supporting paragraph under the title. */
   intro?: ReactNode;
@@ -39,7 +39,7 @@ export function Section({ id, eyebrow, title, intro, className, children }: Sect
           <ClipReveal className="max-w-3xl">
             <div className="flex flex-wrap items-center justify-between gap-3">
               {(eyebrow || waypoint) && (
-                <p className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-stamp">
+                <p className="flex items-center gap-2 font-mono text-xs font-light uppercase tracking-[0.18em] text-stamp">
                   {waypoint?.code && <span className="text-ink-2">{waypoint.code}</span>}
                   {eyebrow}
                 </p>
@@ -51,7 +51,7 @@ export function Section({ id, eyebrow, title, intro, className, children }: Sect
               )}
             </div>
             {title && (
-              <h2 className="mt-3 text-4xl font-bold tracking-[-0.02em] text-ink sm:text-5xl md:text-6xl md:leading-[1.05]">
+              <h2 className="mt-3 text-4xl font-extralight tracking-[-0.02em] text-ink sm:text-5xl md:text-6xl md:leading-[1.05]">
                 {title}
               </h2>
             )}

@@ -25,7 +25,7 @@ export function Schedule() {
                 <span className="flex items-center gap-[3px]">
                   <SplitFlap
                     value={hour}
-                    cellClassName="h-7 w-[0.68em] text-lg font-bold font-display"
+                    cellClassName="h-7 w-[0.68em] text-lg font-medium font-mono"
                     staggerMs={40}
                     ariaLabel={item.time}
                   />
@@ -34,7 +34,7 @@ export function Schedule() {
                   </span>
                   <SplitFlap
                     value={minute}
-                    cellClassName="h-7 w-[0.68em] text-lg font-bold font-display"
+                    cellClassName="h-7 w-[0.68em] text-lg font-medium font-mono"
                     staggerMs={40}
                     ariaLabel=""
                   />

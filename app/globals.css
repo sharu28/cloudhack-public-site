@@ -2,33 +2,42 @@
 
 /**
  * ─────────────────────────────────────────────────────────────────────────
- *  DISPATCH — the CloudHack 2026 design system
+ *  DISPATCH — dark register
  * ─────────────────────────────────────────────────────────────────────────
  *  The site reads as a live dispatch board for a one-day build-and-ship
- *  operation: a manifest, not a landing page. Warm parchment paper, ink-stamp
- *  red, hard rectangles, monospace reference codes. See DESIGN.md for the
- *  full rationale — this file is the token source of truth.
+ *  operation, now on a dark control-plane canvas: a near-black field, warm
+ *  glowing red-ember accents, thin/light Inter type, and drifting soft glow
+ *  orbs — the same register Convoy Cloud's own product marketing uses,
+ *  translated to CloudHack's ink-stamp red instead of Convoy's emerald.
+ *  Content surfaces (manifest rows/cards, Split-Flap, Route Line, Status
+ *  Chip) stay hard-edged; only chrome (nav, primary buttons) is pill-shaped.
+ *  See DESIGN.md for the full rationale — this file is the token source of
+ *  truth.
  */
 @theme {
-  /* ── Color — manifest paper & ink, not screen white/black ─────────────── */
-  --color-paper: #f1eada;       /* base canvas — warm parchment */
-  --color-paper-raised: #faf6ec; /* card / raised surface — whiter parchment */
-  --color-paper-dim: #eae0c9;    /* recessed surface, zebra rows, wells */
-  --color-ink: #1c1712;          /* primary text — warm near-black */
-  --color-ink-2: #5c5344;        /* secondary / muted text */
-  --color-line: #d8ccae;         /* hairline — decorative dividers */
-  --color-line-strong: #8c7b57;  /* meaningful boundary — inputs, active rules (≥3:1) */
+  /* ── Color — dark control-plane canvas, warm-tinted (not neutral gray) ── */
+  --color-paper: #161210;        /* base canvas */
+  --color-paper-raised: #221c15; /* card / raised surface */
+  --color-paper-dim: #1c1712;    /* recessed surface, zebra rows, wells */
+  --color-ink: #f5efe1;          /* primary text — warm off-white */
+  --color-ink-2: #a39a8a;        /* secondary / muted text */
+  --color-line: rgba(245, 239, 225, 0.1);  /* hairline — decorative dividers only */
+  --color-line-strong: #8a7c5f;  /* meaningful boundary — inputs, card/plate edges (≥4:1) */
 
-  /* Ink-stamp red — the one operational accent. Verified ≥5.7:1 on paper,
-     ≥6.9:1 with white text (WCAG AA, checked against every paper tone). */
-  --color-stamp: #a62e1d;
-  --color-stamp-deep: #7d2113;   /* pressed / hover */
-  --color-stamp-wash: #f3e0d8;   /* pale stamp tint for chip/icon fills */
+  /* Two reds for two jobs, verified against every surface above:
+     `stamp` is the bright glow — text, icons, links, active fills, the
+     Route Line and orb glow (6.6:1 on canvas). `stamp-deep` is the solid,
+     legible fill for the ONE primary Sign Up action, paired with light
+     text (6:1). Never use stamp-deep for small text on the dark canvas —
+     it reads at just 2.7:1 there. */
+  --color-stamp: #ff6b47;
+  --color-stamp-deep: #a62e1d;
+  --color-stamp-wash: rgba(255, 107, 71, 0.12);
 
   /* Hazard amber — rare, genuine-urgency accent only (final-hours countdown). */
-  --color-hazard: #7a4e00;
-  --color-hazard-deep: #5c3b00;
-  --color-hazard-wash: #efe2c4;
+  --color-hazard: #d9a23f;
+  --color-hazard-deep: #8a5a1a;
+  --color-hazard-wash: rgba(217, 162, 63, 0.12);
 
   /* Legacy alias kept so any untouched utility resolves sanely during the
      migration; new work should reach for the tokens above. */
@@ -46,46 +55,46 @@
   --color-foreground: var(--color-ink);
   --color-card: var(--color-paper-raised);
   --color-card-foreground: var(--color-ink);
-  --color-primary: var(--color-stamp);
-  --color-primary-foreground: var(--color-paper-raised);
+  --color-primary: var(--color-stamp-deep);
+  --color-primary-foreground: var(--color-ink);
   --color-secondary: var(--color-paper-dim);
   --color-secondary-foreground: var(--color-ink);
   --color-muted: var(--color-paper-dim);
   --color-muted-foreground: var(--color-ink-2);
   --color-accent: var(--color-stamp-wash);
   --color-accent-foreground: var(--color-ink);
-  --color-destructive: #a62e1d;
-  --color-destructive-foreground: var(--color-paper-raised);
-  --color-border: var(--color-line);
+  --color-destructive: #ff6b47;
+  --color-destructive-foreground: var(--color-paper);
+  --color-border: var(--color-line-strong);
   --color-input: var(--color-line-strong);
   --color-ring: var(--color-stamp);
 
-  /* ── Typography — three tiers, each with one job ───────────────────────
-     Display/stencil (Big Shoulders) is reserved for the wordmark, split-flap
-     numerals and Status Chip labels ONLY — never section headings, so those
-     three moments keep their impact. Section headings run on Plex Sans Bold,
-     reading like a technical document header, not a marketing display face. */
-  --font-body: var(--font-plex-sans), "IBM Plex Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  --font-sans: var(--font-body);
-  --font-display: var(--font-big-shoulders), "Big Shoulders", ui-sans-serif, sans-serif;
-  --font-stencil: var(--font-big-shoulders-stencil), var(--font-big-shoulders), ui-sans-serif,
+  /* ── Typography — Inter only, thin-to-medium, never bold ──────────────
+     Convoy's own register: font-thin display, font-extralight headings,
+     font-light everything else. Reference codes/data stay on mono. */
+  --font-body: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
+  --font-sans: var(--font-body);
+  --font-display: var(--font-body);
+  --font-stencil: var(--font-body);
   --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo,
     monospace;
 
   --default-transition-duration: 200ms;
 
-  /* ── Radius — hard rectangles by default; two deliberate exceptions ───── */
+  /* ── Radius — hard rectangles for content; chrome (nav, buttons) uses
+     rounded-full directly, layered on top of these two exceptions. ──────── */
   --radius-none: 0px;
   --radius-flap: 3px;   /* split-flap character cells only */
   --radius-chip: 2px;   /* status chip / small tag corners */
 
-  /* ── Elevation — flat, or one hard "lifted paper" offset. No blur haze. ── */
+  /* ── Elevation — dark surfaces don't cast directional shadows; depth
+     comes from background-lightness steps and a warm glow on hover, not a
+     hard offset (Section-14-style paper shadows are a light-mode trick). ── */
   --shadow-flat: none;
-  --shadow-raised: 3px 3px 0 0 rgba(28, 23, 18, 0.12);
-  --shadow-lifted: 6px 6px 0 0 rgba(28, 23, 18, 0.16);
-  --shadow-stamp: 3px 3px 0 0 rgba(166, 46, 29, 0.28);
+  --shadow-raised: none;
+  --shadow-lifted: 0 12px 32px -8px rgba(255, 107, 71, 0.22), 0 0 0 1px rgba(255, 107, 71, 0.16);
+  --shadow-stamp: 0 8px 28px -6px rgba(255, 107, 71, 0.38);
 
   /* ── Motion — shared vocabulary ────────────────────────────────────────
      Tailwind v4 recognises --ease-* as a themeable namespace (→ ease-*
@@ -102,7 +111,7 @@
   --duration-base: 300ms;
   --duration-slow: 600ms;
   --duration-hero: 900ms;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
@@ -113,7 +122,8 @@ html {
 body {
   background: var(--color-paper);
   color: var(--color-ink);
-  font-weight: 400;
+  font-weight: 300;
+  letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -123,18 +133,20 @@ h1,
 h2,
 h3 {
   font-family: var(--font-body);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
+  font-weight: 200;
 }
 
 ::selection {
-  background: rgba(166, 46, 29, 0.22);
+  background: rgba(255, 107, 71, 0.28);
   color: var(--color-ink);
 }
 
-/* Bespoke, hard-edged focus state — the brand ink-red, never a rounded ring
-   forced onto whatever is focused. Every focusable element keeps its own
-   (mostly 0) corner radius, so keyboard focus reads like a terminal cursor
-   box, not a generic accessibility bolt-on. */
+/* Bespoke, hard-edged focus state — the brand glow-red, never a rounded
+   ring forced onto whatever is focused. Every focusable element keeps its
+   own corner radius (0 for content, full for chrome), so keyboard focus
+   reads like a terminal cursor box or a lit pill, never a generic a11y
+   bolt-on. */
 :focus-visible {
   outline: 2px solid var(--color-stamp);
   outline-offset: 3px;
@@ -151,22 +163,22 @@ h3 {
   color: var(--color-paper);
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.04em;
   padding: 0.85rem 1.25rem;
 }
 
 .skip-link:focus-visible {
   top: 0;
-  outline-color: var(--color-paper);
+  outline-color: var(--color-stamp);
 }
 
 /* ── Manifest grid — a faint blueprint/ledger texture, replacing the old
    cloud-grid dot field. Pure CSS, no image request. ─────────────────────── */
 .manifest-grid {
   background-image:
-    linear-gradient(rgba(28, 23, 18, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 23, 18, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(245, 239, 225, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 239, 225, 0.035) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
@@ -246,7 +258,8 @@ h3 {
 /* ── Split-flap board (see components/SplitFlap.tsx) ─────────────────────
    Pure CSS 3D transforms, no library. Each character is two static halves
    (the settled glyph) plus a hinged leaf that flips 0→180deg to reveal the
-   incoming glyph; unchanged characters never re-render the leaf. */
+   incoming glyph; unchanged characters never re-render the leaf. Cells run
+   a shade lighter than the canvas so they read as their own lit plate. */
 .flap-cell {
   position: relative;
   display: inline-flex;
@@ -258,8 +271,9 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: var(--color-paper-raised);
+  color: var(--color-stamp);
+  border: 1px solid var(--color-line-strong);
 }
 .flap-leaf {
   position: absolute;
@@ -268,8 +282,9 @@ h3 {
   align-items: center;
   justify-content: center;
   backface-visibility: hidden;
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: var(--color-paper-raised);
+  color: var(--color-stamp);
+  border: 1px solid var(--color-line-strong);
   transform-style: preserve-3d;
 }
 .flap-leaf.flap-leaf--back {
@@ -318,6 +333,107 @@ h3 {
   }
 }
 
+/* ── Hero wordmark glow-shimmer — a slow-moving gradient sweep across the
+   "2026" mark, the one place the bright glow red gets to move on its own
+   (everywhere else it only moves in response to real scroll/state). ────── */
+.glow-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-stamp-deep) 0%,
+    var(--color-stamp) 25%,
+    #ffb199 50%,
+    var(--color-stamp) 75%,
+    var(--color-stamp-deep) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow-shimmer 9s ease-in-out infinite alternate;
+}
+@keyframes glow-shimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-shimmer {
+    animation: none;
+    background-position: 50% center;
+  }
+}
+
+/* ── Background glow orbs (see components/BackgroundOrbs.tsx) ─────────────
+   Convoy's own technique, translated to CloudHack's ink-stamp red/amber:
+   large, heavily-blurred radial gradients drifting on slow independent
+   loops with a gentle pulse. Purely decorative (aria-hidden), disabled
+   entirely under prefers-reduced-motion rather than merely slowed. */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform, opacity;
+}
+.orb-1 {
+  width: 46vw;
+  height: 46vw;
+  max-width: 640px;
+  max-height: 640px;
+  top: -12%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(255, 107, 71, 0.16) 0%, rgba(166, 46, 29, 0.05) 45%, transparent 72%);
+  filter: blur(10px);
+  animation:
+    orb-drift-1 46s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite,
+    orb-pulse 9s ease-in-out infinite;
+}
+.orb-2 {
+  width: 40vw;
+  height: 40vw;
+  max-width: 560px;
+  max-height: 560px;
+  top: 48%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(217, 162, 63, 0.12) 0%, rgba(138, 90, 26, 0.04) 45%, transparent 72%);
+  filter: blur(10px);
+  animation:
+    orb-drift-2 56s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite,
+    orb-pulse 11s ease-in-out infinite 2s;
+}
+.orb-3 {
+  width: 30vw;
+  height: 30vw;
+  max-width: 420px;
+  max-height: 420px;
+  top: 20%;
+  left: 38%;
+  background: radial-gradient(circle, rgba(255, 107, 71, 0.1) 0%, rgba(166, 46, 29, 0.03) 45%, transparent 72%);
+  filter: blur(8px);
+  animation:
+    orb-drift-3 38s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite 3s,
+    orb-pulse 7s ease-in-out infinite 1s;
+}
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(6vw, 4vh) scale(1.08); }
+  66% { transform: translate(-3vw, 7vh) scale(0.95); }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40% { transform: translate(-7vw, -5vh) scale(1.1); }
+  70% { transform: translate(-2vw, 5vh) scale(0.92); }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4vw, -6vh) scale(1.12); }
+}
+@keyframes orb-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -328,5 +444,8 @@ h3 {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+  .orb {
+    display: none;
   }
 }

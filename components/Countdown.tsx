@@ -50,7 +50,7 @@ export function Countdown({
 
   if (parts === null) {
     return (
-      <p className={`font-mono text-sm font-semibold uppercase tracking-[0.2em] text-stamp ${className}`}>
+      <p className={`font-mono text-sm font-light uppercase tracking-[0.2em] text-stamp ${className}`}>
         Happening now
       </p>
     );
@@ -61,7 +61,7 @@ export function Countdown({
   return (
     <div className={className}>
       {label && (
-        <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-ink-2">{label}</p>
+        <p className="font-mono text-xs font-light uppercase tracking-[0.2em] text-ink-2">{label}</p>
       )}
       <div className="mt-3 flex items-end gap-2.5 sm:gap-4">
         {UNITS.map((unit, i) => (
@@ -74,7 +74,7 @@ export function Countdown({
             <div className="flex flex-col items-center gap-2">
               <SplitFlap
                 value={String(display[unit.key]).padStart(2, "0")}
-                cellClassName="h-9 w-[0.74em] text-2xl font-bold font-display sm:h-11 sm:text-3xl"
+                cellClassName="h-9 w-[0.74em] text-2xl font-medium font-mono sm:h-11 sm:text-3xl"
                 staggerMs={20}
                 ariaLabel={`${display[unit.key]} ${unit.label}`}
               />

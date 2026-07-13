@@ -15,13 +15,17 @@ export function Venue() {
     <Section id="venue" eyebrow="Venue" title={venue.heading} intro={venue.intro}>
       <div className="grid grid-cols-1 gap-px border border-line-strong bg-line-strong lg:grid-cols-2">
         <Reveal as="div" className="bg-paper-raised">
+          {/* Google's embed has no dark-mode parameter without the full JS
+              Maps API — invert+hue-rotate is the standard CSS-only trick to
+              keep it from sitting as a jarring bright rectangle on the dark
+              canvas. Full color is one hover/focus away for real map reading. */}
           <iframe
             src={mapSrc}
             title={`Map — ${venue.name}`}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
-            className="h-72 w-full grayscale transition-[filter] duration-300 hover:grayscale-0 focus-visible:grayscale-0 lg:h-full lg:min-h-[22rem]"
+            className="h-72 w-full opacity-90 invert transition-[filter,opacity] duration-300 hue-rotate-180 hover:opacity-100 hover:invert-0 hover:hue-rotate-0 focus-visible:opacity-100 focus-visible:invert-0 focus-visible:hue-rotate-0 lg:h-full lg:min-h-[22rem]"
             style={{ border: 0 }}
           />
         </Reveal>
@@ -33,7 +37,7 @@ export function Venue() {
                 <MapPin className="size-4 text-stamp" strokeWidth={2} aria-hidden="true" />
                 Venue Partner
               </p>
-              <h3 className="mt-4 text-2xl font-bold tracking-[-0.01em] text-ink sm:text-3xl">
+              <h3 className="mt-4 text-2xl font-extralight tracking-[-0.01em] text-ink sm:text-3xl">
                 {venue.name}
               </h3>
               <p className="mt-1 text-sm text-ink-2">{venue.city}</p>
@@ -42,7 +46,7 @@ export function Venue() {
             <ul className="flex flex-col gap-5">
               {venue.notes.map((note) => (
                 <li key={note.title} className="border-l-2 border-line-strong pl-4">
-                  <div className="text-sm font-semibold text-ink">{note.title}</div>
+                  <div className="text-sm font-light text-ink">{note.title}</div>
                   <p className="mt-1 text-sm leading-relaxed text-ink-2">{note.body}</p>
                 </li>
               ))}

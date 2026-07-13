@@ -43,7 +43,7 @@ function CellValue({ value }: { value: string | boolean }) {
       <Minus className="mx-auto size-4 text-ink-2/50" aria-label="Not included" />
     );
   }
-  return <span className="text-sm font-semibold text-ink">{value}</span>;
+  return <span className="text-sm font-light text-ink">{value}</span>;
 }
 
 export default function PartnersPage() {
@@ -64,10 +64,10 @@ export default function PartnersPage() {
 
           {/* ── Page header ─────────────────────────────────────────────── */}
           <ClipReveal className="mt-10 max-w-3xl">
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-stamp">
+            <p className="font-mono text-xs font-light uppercase tracking-[0.2em] text-stamp">
               For partners
             </p>
-            <h1 className="mt-4 text-4xl font-extrabold tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl md:leading-[1.03]">
+            <h1 className="mt-4 text-4xl font-thin tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl md:leading-[1.03]">
               Set the problem.
               <br />
               Meet the builders.
@@ -77,11 +77,11 @@ export default function PartnersPage() {
 
           {/* ── Tier ledger — real tabular data, a real <table> ─────────── */}
           <Reveal as="div" delay={0.1}>
-            <div className="mt-14 overflow-x-auto border border-ink">
+            <div className="mt-14 overflow-x-auto border border-line-strong">
               <table className="w-full min-w-[36rem] border-collapse text-left">
                 <thead>
                   <tr>
-                    <th scope="col" className="border-b border-ink bg-paper-dim p-4">
+                    <th scope="col" className="border-b border-line-strong bg-paper-dim p-4">
                       <span className="sr-only">Comparison</span>
                     </th>
                     {forSponsors.tiers.map((tier) => (
@@ -89,17 +89,17 @@ export default function PartnersPage() {
                         key={tier.name}
                         scope="col"
                         className={cn(
-                          "border-b border-l border-ink p-4 text-left align-bottom",
+                          "border-b border-l border-line-strong p-4 text-left align-bottom",
                           tier.highlight ? "bg-stamp-wash" : "bg-paper-dim"
                         )}
                       >
                         <span className="block font-mono text-xs uppercase tracking-[0.14em] text-ink-2">
                           Tier
                         </span>
-                        <span className="mt-1 flex items-center gap-2 text-lg font-bold tracking-[-0.01em] text-ink">
+                        <span className="mt-1 flex items-center gap-2 text-lg font-extralight tracking-[-0.01em] text-ink">
                           {tier.name}
                           {tier.highlight && (
-                            <span className="border border-stamp px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-stamp">
+                            <span className="border border-stamp px-1.5 py-0.5 text-[9px] font-light uppercase tracking-[0.1em] text-stamp">
                               Exclusive
                             </span>
                           )}
@@ -113,7 +113,7 @@ export default function PartnersPage() {
                     <tr key={row.key}>
                       <th
                         scope="row"
-                        className="border-t border-ink bg-paper-raised p-4 text-left font-mono text-xs uppercase tracking-[0.1em] text-ink-2"
+                        className="border-t border-line-strong bg-paper-raised p-4 text-left font-mono text-xs uppercase tracking-[0.1em] text-ink-2"
                       >
                         {row.label}
                       </th>
@@ -121,7 +121,7 @@ export default function PartnersPage() {
                         <td
                           key={tier.name}
                           className={cn(
-                            "border-l border-t border-ink p-4 text-center",
+                            "border-l border-t border-line-strong p-4 text-center",
                             tier.highlight && "bg-stamp-wash/40"
                           )}
                         >
@@ -144,16 +144,16 @@ export default function PartnersPage() {
           {/* ── Confirmed partners — honest, no synthetic "coming soon" plates ── */}
           <Reveal as="div" delay={0.2}>
             <div className="mt-16 border-t border-line-strong pt-10">
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-ink-2">
+              <p className="font-mono text-xs font-light uppercase tracking-[0.18em] text-ink-2">
                 {sponsors.heading}
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-4">
                 {confirmedSponsors.map((logo) => (
                   <div
                     key={logo.name}
-                    className="flex items-center gap-3 border border-ink bg-paper-raised px-5 py-3"
+                    className="flex items-center gap-3 border border-line-strong bg-paper-raised px-5 py-3"
                   >
-                    <span className="text-base font-bold tracking-[-0.01em] text-ink">
+                    <span className="text-base font-extralight tracking-[-0.01em] text-ink">
                       {logo.name}
                     </span>
                     <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-2">
@@ -182,7 +182,7 @@ export default function PartnersPage() {
               <p className="text-sm text-ink-2">Prefer email? Reach the team directly:</p>
               <a
                 href={forSponsors.ctaHref}
-                className="group inline-flex items-center gap-2 text-sm font-semibold text-stamp"
+                className="group inline-flex items-center gap-2 text-sm font-light text-stamp"
               >
                 {forSponsors.ctaLabel}
                 <ArrowRight

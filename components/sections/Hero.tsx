@@ -24,20 +24,20 @@ export function Hero() {
     >
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-center gap-3">
-          <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-ink-2">
+          <p className="font-mono text-xs font-light uppercase tracking-[0.2em] text-ink-2">
             {brand.eyebrow}
           </p>
           <StatusChip stage="PENDING" srPrefix="Pipeline stage" />
         </div>
 
-        <h1 className="mt-6 font-stencil text-[clamp(4.2rem,14vw,10.5rem)] font-extrabold leading-[0.86] tracking-[-0.01em] text-ink">
+        <h1 className="mt-6 text-[clamp(4.2rem,14vw,10.5rem)] font-thin leading-[0.86] tracking-[-0.03em] text-ink">
           {brand.wordmark}
-          <span className="block text-stamp">{brand.year}</span>
+          <span className="glow-shimmer block">{brand.year}</span>
         </h1>
 
         <div className="mt-8 max-w-2xl">
           <ClipReveal>
-            <p className="text-2xl font-bold tracking-[-0.02em] text-ink sm:text-3xl">
+            <p className="text-2xl font-extralight tracking-[-0.02em] text-ink sm:text-3xl">
               {hero.tagline}.
             </p>
           </ClipReveal>
@@ -51,7 +51,7 @@ export function Hero() {
                 <li key={stat.label} className="flex flex-col gap-2">
                   <SplitFlap
                     value={stat.value}
-                    cellClassName="h-10 w-[0.68em] text-3xl font-bold font-display sm:h-12 sm:text-4xl"
+                    cellClassName="h-10 w-[0.68em] text-3xl font-medium font-mono sm:h-12 sm:text-4xl"
                     ariaLabel={`${stat.value} ${stat.label}`}
                   />
                   <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-2">
@@ -64,7 +64,7 @@ export function Hero() {
             <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-3">
               <Link
                 href={hero.ctaHref}
-                className="group inline-flex items-center justify-center gap-2.5 border border-ink bg-stamp px-7 py-3.5 text-sm font-semibold text-paper-raised shadow-stamp transition-colors hover:bg-stamp-deep"
+                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-stamp-deep px-7 py-3.5 text-sm font-light text-ink shadow-stamp transition-colors hover:opacity-90"
               >
                 {hero.ctaLabel}
                 <ArrowRight
@@ -84,7 +84,7 @@ export function Hero() {
           <ManifestDataPlate />
         </div>
 
-        <div className="mt-14 border-t border-ink pt-8">
+        <div className="mt-14 border-t border-line-strong pt-8">
           <Countdown targetISO={site.event.startISO} label={site.event.countdownLabel} />
         </div>
       </div>
@@ -112,12 +112,12 @@ function ManifestDataPlate() {
   ];
 
   return (
-    <div className="notch-corner w-full max-w-xs shrink-0 border border-ink bg-paper-raised shadow-raised sm:max-w-sm">
-      <div className="flex items-center justify-between gap-3 border-b border-ink px-5 py-3">
-        <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-2">
+    <div className="notch-corner w-full max-w-xs shrink-0 border border-line-strong bg-paper-raised shadow-raised sm:max-w-sm">
+      <div className="flex items-center justify-between gap-3 border-b border-line-strong px-5 py-3">
+        <span className="font-mono text-[10px] font-light uppercase tracking-[0.18em] text-ink-2">
           Manifest
         </span>
-        <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-stamp">
+        <span className="font-mono text-[10px] font-light uppercase tracking-[0.18em] text-stamp">
           No. CH-2026
         </span>
       </div>
@@ -127,7 +127,7 @@ function ManifestDataPlate() {
             <dt className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-2">
               {f.label}
             </dt>
-            <dd className="text-right text-sm font-semibold text-ink">{f.value}</dd>
+            <dd className="text-right text-sm font-light text-ink">{f.value}</dd>
           </div>
         ))}
       </dl>

@@ -5,19 +5,19 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap border text-sm font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-full border text-sm font-light ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "border-ink bg-primary text-primary-foreground shadow-stamp hover:bg-stamp-deep",
+        default: "border-line-strong bg-primary text-primary-foreground shadow-stamp hover:opacity-90",
         destructive:
-          "border-ink bg-destructive text-destructive-foreground hover:opacity-90",
+          "border-line-strong bg-destructive text-destructive-foreground hover:opacity-90",
         outline:
-          "border-ink bg-background text-foreground hover:border-stamp hover:text-stamp",
+          "border-line-strong bg-background text-foreground hover:border-stamp hover:text-stamp",
         secondary:
           "border-line-strong bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "border-transparent hover:bg-accent hover:text-accent-foreground",
-        link: "border-transparent text-primary underline-offset-4 hover:underline",
+        link: "border-transparent text-stamp underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 px-4 py-2",

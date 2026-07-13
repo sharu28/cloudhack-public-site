@@ -5,10 +5,10 @@ export function Footer() {
   const { footer, brand } = site;
 
   return (
-    <footer className="relative border-t border-ink bg-paper-dim px-5 py-16 sm:px-8">
+    <footer className="relative border-t border-line-strong bg-paper-dim px-5 py-16 sm:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <div className="font-stencil text-3xl font-bold tracking-[-0.01em] text-ink">
+          <div className="text-3xl font-extralight tracking-[-0.02em] text-ink">
             {brand.wordmark}
             <span className="text-stamp"> {brand.year}</span>
           </div>
@@ -16,7 +16,7 @@ export function Footer() {
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
             {footer.partners.map((p) => (
               <div key={p.name}>
-                <div className="text-sm font-semibold text-ink">
+                <div className="text-sm font-light text-ink">
                   {p.name}
                   <span className="ml-2 text-xs font-medium text-ink-2">{p.role}</span>
                 </div>
@@ -63,7 +63,7 @@ export function Footer() {
             <li>
               <Link
                 href="/partners"
-                className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-2 transition-colors hover:text-stamp"
+                className="text-xs font-light uppercase tracking-[0.14em] text-ink-2 transition-colors hover:text-stamp"
               >
                 Partners
               </Link>
@@ -74,7 +74,7 @@ export function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-2 transition-colors hover:text-stamp"
+                  className="text-xs font-light uppercase tracking-[0.14em] text-ink-2 transition-colors hover:text-stamp"
                 >
                   {s.label}
                 </a>

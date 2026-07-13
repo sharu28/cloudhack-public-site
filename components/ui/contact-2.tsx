@@ -75,16 +75,16 @@ export const Contact2 = ({
     <div className="flex flex-col justify-between gap-10 lg:flex-row lg:gap-16">
       <div className="flex w-full max-w-sm flex-col justify-between gap-10">
         <div>
-          <h2 className="text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl">{title}</h2>
+          <h2 className="text-3xl font-extralight tracking-[-0.02em] text-ink sm:text-4xl">{title}</h2>
           <p className="mt-3 text-ink-2">{description}</p>
         </div>
         <div>
-          <h3 className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ink-2">
+          <h3 className="mb-5 font-mono text-xs font-light uppercase tracking-[0.16em] text-ink-2">
             Direct contact
           </h3>
           <ul className="flex flex-col gap-4">
             <li className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center border border-ink bg-paper text-stamp">
+              <span className="flex h-10 w-10 items-center justify-center border border-line-strong bg-paper text-stamp">
                 <Phone className="h-4 w-4" aria-hidden="true" />
               </span>
               <a
@@ -95,7 +95,7 @@ export const Contact2 = ({
               </a>
             </li>
             <li className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center border border-ink bg-paper text-stamp">
+              <span className="flex h-10 w-10 items-center justify-center border border-line-strong bg-paper text-stamp">
                 <Mail className="h-4 w-4" aria-hidden="true" />
               </span>
               <a
@@ -106,7 +106,7 @@ export const Contact2 = ({
               </a>
             </li>
             <li className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center border border-ink bg-paper text-stamp">
+              <span className="flex h-10 w-10 items-center justify-center border border-line-strong bg-paper text-stamp">
                 <Globe className="h-4 w-4" aria-hidden="true" />
               </span>
               <a
@@ -123,8 +123,8 @@ export const Contact2 = ({
       </div>
 
       {status === "success" ? (
-        <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-4 border border-ink bg-paper-raised p-10 text-center shadow-raised sm:p-12">
-          <div className="flex h-16 w-16 items-center justify-center border border-ink bg-paper text-stamp">
+        <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-4 border border-line-strong bg-paper-raised p-10 text-center shadow-raised sm:p-12">
+          <div className="flex h-16 w-16 items-center justify-center border border-line-strong bg-paper text-stamp">
             <svg
               width="30"
               height="30"
@@ -139,7 +139,7 @@ export const Contact2 = ({
               <path d="M20 6 9 17l-5-5" />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-ink">Message sent</h2>
+          <h2 className="text-2xl font-extralight text-ink">Message sent</h2>
           <p className="max-w-md text-ink-2">
             Thanks for reaching out — the CloudHack team has your message and will get back to you
             shortly.
@@ -147,7 +147,7 @@ export const Contact2 = ({
           <button
             type="button"
             onClick={() => setStatus("idle")}
-            className="mt-2 border border-ink px-6 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-stamp hover:text-stamp"
+            className="mt-2 border border-line-strong px-6 py-2.5 text-sm font-light text-ink transition-colors hover:border-stamp hover:text-stamp"
           >
             Send another message
           </button>
@@ -155,7 +155,7 @@ export const Contact2 = ({
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="flex w-full max-w-2xl flex-col gap-6 border border-ink bg-paper-raised p-8 shadow-raised sm:p-10"
+          className="flex w-full max-w-2xl flex-col gap-6 border border-line-strong bg-paper-raised p-8 shadow-raised sm:p-10"
         >
           {status === "error" && formError && (
             <div role="alert" className="border border-stamp bg-stamp-wash px-4 py-3 text-sm text-ink">

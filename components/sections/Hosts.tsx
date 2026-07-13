@@ -26,14 +26,14 @@ export function Hosts() {
               <ManifestCard>
                 <div>
                   <div className="flex items-center gap-4">
-                    <div className="flex size-11 shrink-0 items-center justify-center border border-ink bg-paper text-stamp">
+                    <div className="flex size-11 shrink-0 items-center justify-center border border-line-strong bg-paper text-stamp">
                       <Icon className="size-5" strokeWidth={1.75} aria-hidden="true" />
                     </div>
                     <div className="font-mono text-xs uppercase tracking-[0.18em] text-ink-2">
                       {host.role}
                     </div>
                   </div>
-                  <h3 className="mt-6 text-2xl font-bold tracking-[-0.01em] text-ink sm:text-3xl">
+                  <h3 className="mt-6 text-2xl font-extralight tracking-[-0.01em] text-ink sm:text-3xl">
                     {host.name}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-ink-2 sm:text-base">
@@ -46,7 +46,7 @@ export function Hosts() {
                     href={host.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 font-semibold text-stamp transition-[gap] hover:gap-2.5"
+                    className="inline-flex items-center gap-1.5 font-light text-stamp transition-[gap] hover:gap-2.5"
                   >
                     {host.website}
                     <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -67,7 +67,7 @@ export function Hosts() {
 
       <Reveal delay={0.18}>
         <p className="mt-6 border-l-2 border-line-strong pl-4 text-sm leading-relaxed text-ink-2">
-          <span className="font-semibold text-ink">{judges.heading}.</span> {judges.pending}
+          <span className="font-light text-ink">{judges.heading}.</span> {judges.pending}
         </p>
       </Reveal>
     </Section>

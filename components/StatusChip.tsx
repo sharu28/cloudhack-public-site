@@ -17,7 +17,7 @@ const STAGE_DOT: Record<DispatchStage, string> = {
   PENDING: "border border-ink-2/60 bg-transparent",
   BUILDING: "border border-stamp bg-transparent",
   DEPLOYING: "border border-stamp bg-stamp",
-  DEPLOYED: "border border-ink bg-ink",
+  DEPLOYED: "border border-line-strong bg-ink",
 };
 
 export function StatusChip({
@@ -34,14 +34,14 @@ export function StatusChip({
   const content = (
     <span
       className={cn(
-        "inline-flex w-max items-center gap-2 border border-ink bg-paper-raised px-2.5 py-[5px]",
+        "inline-flex w-max items-center gap-2 border border-line-strong bg-paper-raised px-2.5 py-[5px]",
         className
       )}
     >
       <span aria-hidden="true" className={cn("size-2 shrink-0", STAGE_DOT[stage])} />
       <span
         key={stage}
-        className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-ink"
+        className="font-mono text-[10px] font-light uppercase tracking-[0.16em] text-ink"
         style={{ animation: "chip-fade var(--duration-base) var(--ease-standard)" }}
       >
         {stage}
@@ -83,7 +83,7 @@ export function StatusChipGlobal() {
   const { activeId } = useDispatchProgress();
 
   return (
-    <div className="fixed right-4 top-24 z-40 hidden md:block lg:right-6 xl:right-8">
+    <div className="fixed right-4 top-[5.75rem] z-40 hidden md:block lg:right-6 xl:right-8">
       <StatusChip stage={stageForId(activeId)} />
     </div>
   );

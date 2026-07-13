@@ -11,8 +11,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "A one-day hackathon where 80 of Sri Lanka's best young builders solve real business problems set by sponsor companies.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f1eada",
-    theme_color: "#f1eada",
+    background_color: "#161210",
+    theme_color: "#161210",
     icons: [
       { src: "/icon.svg", sizes: "any", type: "image/svg+xml" },
       { src: "/apple-icon", sizes: "180x180", type: "image/png" },

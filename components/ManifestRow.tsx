@@ -50,7 +50,7 @@ export function ManifestRow({
       {/* Reference stub */}
       <div className="flex shrink-0 items-center gap-3 sm:w-24 sm:flex-col sm:items-start sm:gap-1">
         {leading ?? (
-          <span className="font-mono text-xs font-semibold uppercase tracking-[0.06em] text-stamp">
+          <span className="font-mono text-xs font-light uppercase tracking-[0.06em] text-stamp">
             {code}
           </span>
         )}
@@ -60,14 +60,14 @@ export function ManifestRow({
       </div>
 
       {icon && (
-        <div className="flex size-10 shrink-0 items-center justify-center border border-ink bg-paper-raised text-stamp">
+        <div className="flex size-10 shrink-0 items-center justify-center border border-line-strong bg-paper-raised text-stamp">
           {icon}
         </div>
       )}
 
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-          <h3 className="text-lg font-bold tracking-[-0.015em] text-ink sm:text-xl">{title}</h3>
+          <h3 className="text-lg font-extralight tracking-[-0.015em] text-ink sm:text-xl">{title}</h3>
           {statusStage && <StatusChip stage={statusStage} srPrefix="Stage" />}
         </div>
         {description && (

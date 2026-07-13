@@ -24,7 +24,7 @@ export function Details() {
       <Reveal>
         <div className="mb-6 flex items-center gap-3 border border-stamp bg-paper-raised px-4 py-3.5 sm:px-5">
           <Calendar className="size-4 shrink-0 text-stamp" strokeWidth={1.75} aria-hidden="true" />
-          <p className="text-sm font-semibold text-ink">{details.notice}</p>
+          <p className="text-sm font-light text-ink">{details.notice}</p>
         </div>
       </Reveal>
 
@@ -33,14 +33,14 @@ export function Details() {
           const Icon = ICONS[item.icon] ?? Calendar;
           return (
             <div key={item.label} className="flex items-start gap-4 bg-paper-raised p-6">
-              <div className="flex size-11 shrink-0 items-center justify-center border border-ink bg-paper text-stamp">
+              <div className="flex size-11 shrink-0 items-center justify-center border border-line-strong bg-paper text-stamp">
                 <Icon className="size-4" strokeWidth={1.75} aria-hidden="true" />
               </div>
               <div>
                 <div className="font-mono text-xs uppercase tracking-[0.16em] text-ink-2">
                   {item.label}
                 </div>
-                <div className="mt-1 text-xl font-bold tracking-[-0.02em] text-ink">
+                <div className="mt-1 text-xl font-extralight tracking-[-0.02em] text-ink">
                   {item.value}
                 </div>
                 {item.note && <div className="mt-1 text-sm text-ink-2">{item.note}</div>}
@@ -65,7 +65,7 @@ export function Details() {
                   {item.label}
                 </dt>
                 <dd>
-                  <div className="text-base font-semibold text-ink">{item.value}</div>
+                  <div className="text-base font-light text-ink">{item.value}</div>
                   <p className="mt-1 text-sm leading-relaxed text-ink-2">{item.note}</p>
                 </dd>
               </div>

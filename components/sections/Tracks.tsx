@@ -36,7 +36,7 @@ export function Tracks() {
       <div className="mt-8 flex items-start gap-3 border border-dashed border-line-strong bg-paper-dim px-5 py-4">
         <Lock className="mt-0.5 size-4 shrink-0 text-stamp" strokeWidth={1.75} aria-hidden="true" />
         <p className="text-sm leading-relaxed text-ink-2">
-          <span className="font-semibold text-ink">{challenge.status}.</span> {challenge.intro}{" "}
+          <span className="font-light text-ink">{challenge.status}.</span> {challenge.intro}{" "}
           {challenge.note}
         </p>
       </div>

@@ -28,7 +28,7 @@ export function Rules() {
           <ol className="mt-5 flex flex-col divide-y divide-line">
             {rules.items.map((rule, i) => (
               <li key={rule} className="flex items-start gap-4 py-3.5 text-sm leading-relaxed text-ink-2 first:pt-0 last:pb-0">
-                <span className="font-mono text-xs font-semibold text-stamp">
+                <span className="font-mono text-xs font-light text-stamp">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {rule}

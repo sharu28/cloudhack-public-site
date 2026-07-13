@@ -17,10 +17,10 @@ export function PartnersTeaser() {
         <Reveal>
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
             <div>
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-stamp">
+              <p className="font-mono text-xs font-light uppercase tracking-[0.18em] text-stamp">
                 {partnersTeaser.eyebrow}
               </p>
-              <p className="mt-2 text-lg font-bold tracking-[-0.01em] text-ink">
+              <p className="mt-2 text-lg font-extralight tracking-[-0.01em] text-ink">
                 {partnersTeaser.heading}
               </p>
               <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-ink-2">
@@ -29,7 +29,7 @@ export function PartnersTeaser() {
             </div>
             <Link
               href={partnersTeaser.ctaHref}
-              className="group inline-flex shrink-0 items-center gap-2 border border-ink bg-paper-raised px-5 py-3 text-sm font-semibold text-ink transition-colors hover:border-stamp hover:text-stamp"
+              className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-line-strong bg-transparent px-5 py-3 text-sm font-light text-ink transition-colors hover:border-stamp hover:text-stamp"
             >
               {partnersTeaser.ctaLabel}
               <ArrowRight

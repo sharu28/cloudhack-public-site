@@ -44,7 +44,7 @@ export function Waypoint({
         aria-hidden="true"
         className={cn(
           "font-mono text-[9px] tabular-nums leading-none transition-colors duration-300",
-          active ? "font-semibold text-stamp" : lit ? "text-ink-2" : "text-ink-2/40"
+          active ? "font-light text-stamp" : lit ? "text-ink-2" : "text-ink-2/40"
         )}
       >
         {isOrigin ? "◆" : ordinal}

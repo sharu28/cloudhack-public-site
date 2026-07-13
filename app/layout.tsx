@@ -1,47 +1,30 @@
 import type { Metadata, Viewport } from "next";
-import { Big_Shoulders, Big_Shoulders_Stencil, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { BackgroundOrbs } from "@/components/BackgroundOrbs";
 import { StructuredData } from "@/components/StructuredData";
 import { SITE_URL, SITE_NAME } from "@/lib/seo";
 
-// Body + UI copy. Loaded as a single variable-font file (100–700) — an
-// engineering heritage face, not a general consumer-product one.
-const plexSans = IBM_Plex_Sans({
+// Body + UI copy, thin-to-medium only — Convoy Cloud's own register, never
+// bold. Loaded as five static weights (Inter's variable axis would pull in
+// the full 100–900 range; static files keep only what's actually used).
+const inter = Inter({
   subsets: ["latin"],
-  weight: "variable",
+  weight: ["100", "200", "300", "400", "500"],
   display: "swap",
-  variable: "--font-plex-sans",
+  variable: "--font-inter",
 });
 
-// Timestamps, reference codes, coordinates, prices — every data value on the
-// site runs on this, deliberately developer-native.
+// Timestamps, reference codes, coordinates, prices, Split-Flap digits —
+// every data value on the site runs on this, deliberately developer-native.
+// Weights: 300 for mono labels/eyebrows (the site's default text weight),
+// 500 for Split-Flap digit readouts (deliberately a touch heavier than the
+// thin body register, so live data reads like an instrument, not prose).
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500"],
   display: "swap",
   variable: "--font-plex-mono",
-});
-
-// Condensed industrial numerals — split-flap digits and stat figures only.
-// adjustFontFallback disabled: Next has no precomputed fallback-metric
-// override table for this family, which otherwise logs a harmless but
-// noisy build warning.
-const bigShoulders = Big_Shoulders({
-  subsets: ["latin"],
-  weight: ["700"],
-  display: "swap",
-  variable: "--font-big-shoulders",
-  adjustFontFallback: false,
-});
-
-// The stencil cut — crate/shipping-label lettering, reserved for the
-// wordmark and Status Chip labels only so it keeps its impact.
-const bigShouldersStencil = Big_Shoulders_Stencil({
-  subsets: ["latin"],
-  weight: ["700", "800"],
-  display: "swap",
-  variable: "--font-big-shoulders-stencil",
-  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -106,17 +89,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f1eada",
+  themeColor: "#161210",
   width: "device-width",
   initialScale: 1,
 };
 
-const fontVariables = [
-  plexSans.variable,
-  plexMono.variable,
-  bigShoulders.variable,
-  bigShouldersStencil.variable,
-].join(" ");
+const fontVariables = [inter.variable, plexMono.variable].join(" ");
 
 export default function RootLayout({
   children,
@@ -124,16 +102,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={fontVariables}>
+    <html lang="en" className={`dark ${fontVariables}`}>
       <body className="font-body antialiased">
         <StructuredData />
         {/* Skip-to-content — first focusable element on every page (U4). */}
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        {/* A quiet manifest/blueprint grid replaces the old gradient-blob
-            field — flat, print-production texture instead of a glow. */}
-        <div aria-hidden="true" className="fixed inset-0 -z-10 overflow-hidden">
+        {/* Dark control-plane canvas: a quiet manifest/blueprint grid plus
+            slow drifting glow orbs (disabled under reduced-motion). */}
+        <div aria-hidden="true" className="fixed inset-0 -z-10 overflow-hidden bg-paper">
+          <BackgroundOrbs />
           <div className="manifest-grid absolute inset-0" />
         </div>
         {children}

@@ -18,7 +18,7 @@ export function FAQ() {
           <Reveal as="div" key={item.q} delay={i * 0.04}>
             <details className="group border-b border-line">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">
-                <span className="text-base font-semibold tracking-[-0.01em] text-ink sm:text-lg">
+                <span className="text-base font-light tracking-[-0.01em] text-ink sm:text-lg">
                   {item.q}
                 </span>
                 <ChevronDown
@@ -31,7 +31,7 @@ export function FAQ() {
                 {"href" in item && item.href && (
                   <Link
                     href={item.href}
-                    className="mt-3 inline-flex text-sm font-semibold text-stamp transition-colors hover:text-stamp-deep"
+                    className="mt-3 inline-flex text-sm font-light text-stamp transition-colors hover:text-ink"
                   >
                     {item.linkLabel}
                   </Link>

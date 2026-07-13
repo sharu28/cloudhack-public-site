@@ -97,8 +97,8 @@ export function RegisterForm() {
   // ── Success confirmation state ──────────────────────────────────────────
   if (status === "success") {
     return (
-      <div className="notch-corner border border-ink bg-paper-raised p-10 text-center shadow-raised">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center border border-ink bg-paper text-stamp">
+      <div className="notch-corner border border-line-strong bg-paper-raised p-10 text-center shadow-raised">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center border border-line-strong bg-paper text-stamp">
           <svg
             width="30"
             height="30"
@@ -113,12 +113,12 @@ export function RegisterForm() {
             <path d="M20 6 9 17l-5-5" />
           </svg>
         </div>
-        <h2 className="mt-6 text-2xl font-bold text-ink">
+        <h2 className="mt-6 text-2xl font-extralight text-ink">
           You&apos;re on the list, {values.teamName}.
         </h2>
         <p className="mx-auto mt-3 max-w-md text-ink-2">
           We&apos;ve recorded your registration and will email{" "}
-          <span className="font-semibold text-stamp">{values.email}</span> with next steps and
+          <span className="font-light text-stamp">{values.email}</span> with next steps and
           confirmation. Keep an eye on your inbox.
         </p>
         <button
@@ -127,7 +127,7 @@ export function RegisterForm() {
             setValues(initial);
             setStatus("idle");
           }}
-          className="mt-8 border border-ink px-6 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-stamp hover:text-stamp"
+          className="mt-8 border border-line-strong px-6 py-2.5 text-sm font-light text-ink transition-colors hover:border-stamp hover:text-stamp"
         >
           Register another team
         </button>
@@ -291,7 +291,7 @@ export function RegisterForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 border border-ink bg-stamp px-8 py-4 text-sm font-semibold text-paper-raised shadow-stamp transition-colors hover:bg-stamp-deep disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-stamp-deep px-8 py-4 text-sm font-light text-ink shadow-stamp transition-colors hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "submitting" ? "Submitting…" : "Register team"}
       </button>

@@ -34,7 +34,7 @@ export function Prizes() {
                   <span className="font-mono text-xs text-ink-2">LKR</span>
                   <SplitFlap
                     value={amount}
-                    cellClassName="h-8 w-[0.62em] text-xl font-bold font-display"
+                    cellClassName="h-8 w-[0.62em] text-xl font-medium font-mono"
                     ariaLabel={p.amount}
                   />
                 </span>

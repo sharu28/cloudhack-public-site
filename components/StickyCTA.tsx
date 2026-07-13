@@ -29,19 +29,19 @@ export function StickyCTA() {
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >
-      <div className="flex items-center gap-0 border border-ink bg-paper-raised shadow-lifted">
-        <span className="flex items-center gap-2 whitespace-nowrap border-r border-ink px-4 py-2.5 font-mono text-xs text-ink-2">
+      <div className="flex items-center gap-0 border border-line-strong bg-paper-raised shadow-lifted">
+        <span className="flex items-center gap-2 whitespace-nowrap border-r border-line-strong px-4 py-2.5 font-mono text-xs text-ink-2">
           <span className="text-ink-2">T-</span>
           <SplitFlap
             value={String(daysLeft).padStart(2, "0")}
-            cellClassName="h-5 w-[0.68em] text-xs font-semibold font-mono"
+            cellClassName="h-5 w-[0.68em] text-xs font-light font-mono"
             ariaLabel={`${daysLeft} ${daysLeft === 1 ? "day" : "days"} to go`}
           />
         </span>
         <Link
           href={site.hero.ctaHref}
           tabIndex={visible ? 0 : -1}
-          className="whitespace-nowrap bg-stamp px-5 py-2.5 text-sm font-semibold text-paper-raised transition-colors hover:bg-stamp-deep"
+          className="whitespace-nowrap rounded-full bg-stamp-deep px-5 py-2.5 text-sm font-light text-ink transition-colors hover:opacity-90"
         >
           {site.hero.ctaLabel}
         </Link>

@@ -20,7 +20,7 @@ export function About() {
             <span aria-hidden="true" className="mt-1 font-mono text-4xl leading-none text-stamp/25">
               &ldquo;
             </span>
-            <p className="text-2xl font-bold leading-snug tracking-[-0.02em] text-ink sm:text-3xl">
+            <p className="text-2xl font-extralight leading-snug tracking-[-0.02em] text-ink sm:text-3xl">
               {about.pullQuote}
             </p>
           </div>

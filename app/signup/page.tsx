@@ -55,22 +55,22 @@ export default function SignupPage() {
           <div className="mt-10 flex flex-col gap-10 lg:flex-row lg:gap-20">
             <div className="flex w-full max-w-sm flex-col gap-10">
               <div>
-                <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-stamp">
+                <p className="font-mono text-xs font-light uppercase tracking-[0.18em] text-stamp">
                   CloudHack 2026
                 </p>
-                <h1 className="mt-4 text-4xl font-extrabold tracking-[-0.03em] text-ink sm:text-5xl">
+                <h1 className="mt-4 text-4xl font-thin tracking-[-0.03em] text-ink sm:text-5xl">
                   {signup.title}
                 </h1>
                 <p className="mt-3 text-ink-2">{signup.subtitle}</p>
               </div>
 
               <div>
-                <h2 className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ink-2">
+                <h2 className="mb-5 font-mono text-xs font-light uppercase tracking-[0.16em] text-ink-2">
                   Questions?
                 </h2>
                 <ul className="flex flex-col gap-4">
                   <li className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center border border-ink bg-paper text-stamp">
+                    <span className="flex h-10 w-10 items-center justify-center border border-line-strong bg-paper text-stamp">
                       <Mail className="h-4 w-4" aria-hidden="true" />
                     </span>
                     <a
@@ -81,7 +81,7 @@ export default function SignupPage() {
                     </a>
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center border border-ink bg-paper text-stamp">
+                    <span className="flex h-10 w-10 items-center justify-center border border-line-strong bg-paper text-stamp">
                       <Phone className="h-4 w-4" aria-hidden="true" />
                     </span>
                     <a
@@ -92,7 +92,7 @@ export default function SignupPage() {
                     </a>
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center border border-ink bg-paper text-stamp">
+                    <span className="flex h-10 w-10 items-center justify-center border border-line-strong bg-paper text-stamp">
                       <Globe className="h-4 w-4" aria-hidden="true" />
                     </span>
                     <a
@@ -108,7 +108,7 @@ export default function SignupPage() {
               </div>
             </div>
 
-            <div className="w-full border border-ink bg-paper-raised p-6 shadow-raised sm:p-8 lg:max-w-2xl lg:flex-1">
+            <div className="w-full border border-line-strong bg-paper-raised p-6 shadow-raised sm:p-8 lg:max-w-2xl lg:flex-1">
               <RegisterForm />
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function SignupPage() {
           >
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h2 className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-ink-2">
+                <h2 className="font-mono text-xs font-light uppercase tracking-[0.2em] text-ink-2">
                   {signup.sponsorEnquiries.heading}
                 </h2>
                 <p className="mt-2 text-sm text-ink-2">
@@ -131,7 +131,7 @@ export default function SignupPage() {
               </div>
               <Link
                 href="/partners"
-                className="group inline-flex shrink-0 items-center gap-2 border border-ink bg-paper-raised px-5 py-3 text-sm font-semibold text-ink transition-colors hover:border-stamp hover:text-stamp"
+                className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-line-strong bg-transparent px-5 py-3 text-sm font-light text-ink transition-colors hover:border-stamp hover:text-stamp"
               >
                 View partnership tiers
                 <ArrowRight

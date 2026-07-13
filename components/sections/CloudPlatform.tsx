@@ -49,7 +49,7 @@ export function CloudPlatform() {
                 {item.label}
               </dt>
               <dd className="mt-1.5">
-                <span className="block text-base font-semibold text-ink">{item.value}</span>
+                <span className="block text-base font-light text-ink">{item.value}</span>
                 <span className="mt-1 block text-xs leading-relaxed text-ink-2">{item.note}</span>
               </dd>
             </div>
@@ -60,7 +60,7 @@ export function CloudPlatform() {
       <div className="mt-8 flex flex-wrap gap-4">
         <Link
           href={cloudPlatform.ctaHref}
-          className="group inline-flex items-center justify-center gap-2 border border-ink bg-stamp px-6 py-3 text-sm font-semibold text-paper-raised shadow-stamp transition-colors hover:bg-stamp-deep"
+          className="group inline-flex items-center justify-center gap-2 rounded-full bg-stamp-deep px-6 py-3 text-sm font-light text-ink shadow-stamp transition-colors hover:opacity-90"
         >
           {cloudPlatform.ctaLabel}
           <ArrowRight
@@ -72,7 +72,7 @@ export function CloudPlatform() {
           href={cloudPlatform.externalHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 border border-ink bg-paper-raised px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-stamp hover:text-stamp"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-line-strong bg-transparent px-6 py-3 text-sm font-light text-ink transition-colors hover:border-stamp hover:text-stamp"
         >
           {cloudPlatform.externalLabel}
           <ArrowRight className="size-4" aria-hidden="true" />
