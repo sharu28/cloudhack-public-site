@@ -1,114 +1,111 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/content/site";
 
-// 1200×630 social share card, generated from code so it always matches the
-// brand (Tomorrow type, "Precision Night Vision" palette — see DESIGN.md).
-// Next.js injects og:image automatically from this file; twitter-image.tsx
-// re-exports it for the summary_large_image card.
-export const alt = "CloudHack 2026 — Where Cloud Meets Creation";
+export const alt = "CloudHack 2026 - Where Cloud Meets Creation";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const FONT = "https://raw.githubusercontent.com/google/fonts/main/ofl/tomorrow";
-
-async function loadFont(file: string): Promise<ArrayBuffer> {
-  const res = await fetch(`${FONT}/${file}`);
-  if (!res.ok) throw new Error(`Failed to load font ${file}`);
-  return res.arrayBuffer();
+/** The DISPATCH waypoint stamp - the same crosshair-on-glow-red mark used
+ *  for the favicon and every true Route Line waypoint, rotated slightly as
+ *  if pressed onto the manifest at an angle. */
+function WaypointStamp() {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        right: 88,
+        top: 70,
+        width: 190,
+        height: 190,
+        border: "3px solid #8a7c5f",
+        background: "#a62e1d",
+        transform: "rotate(-8deg)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div style={{ position: "absolute", width: 3, height: 100, background: "#f5efe1", display: "flex" }} />
+      <div style={{ position: "absolute", width: 100, height: 3, background: "#f5efe1", display: "flex" }} />
+    </div>
+  );
 }
 
-export default async function OpengraphImage() {
-  let fonts;
-  try {
-    const [medium, regular] = await Promise.all([
-      loadFont("Tomorrow-Medium.ttf"),
-      loadFont("Tomorrow-Regular.ttf"),
-    ]);
-    fonts = [
-      { name: "Tomorrow", data: medium, weight: 500 as const, style: "normal" as const },
-      { name: "Tomorrow", data: regular, weight: 400 as const, style: "normal" as const },
-    ];
-  } catch {
-    // Network unavailable at render time: fall back to a text-free brand card
-    // (no glyphs → no font required) so og:image always resolves.
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            height: "100%",
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "#000000",
-            border: "1px solid #262626",
-          }}
-        >
-          <div style={{ display: "flex", width: 140, height: 140, backgroundColor: "#ffa41c", borderRadius: 28 }} />
-        </div>
-      ),
-      { ...size },
-    );
-  }
-
+export default function OpengraphImage() {
   return new ImageResponse(
     (
       <div
         style={{
           height: "100%",
           width: "100%",
+          overflow: "hidden",
+          position: "relative",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#000000",
+          background: "#161210",
           padding: "72px 80px",
-          border: "1px solid #262626",
-          fontFamily: "Tomorrow",
+          color: "#f5efe1",
+          fontFamily: "sans-serif",
         }}
       >
+        {/* Ambient glow, standing in for the drifting orb field (static
+            for the OG card - the real page animates this). */}
         <div
           style={{
+            position: "absolute",
+            top: -160,
+            right: -120,
+            width: 620,
+            height: 620,
+            borderRadius: 9999,
+            background:
+              "radial-gradient(circle, rgba(255,107,71,0.20) 0%, rgba(166,46,29,0.06) 45%, transparent 72%)",
             display: "flex",
-            color: "#ffa41c",
-            fontSize: 26,
-            fontWeight: 500,
-            letterSpacing: "0.18em",
+          }}
+        />
+        <WaypointStamp />
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            color: "#ff6b47",
+            fontSize: 20,
+            fontWeight: 400,
+            letterSpacing: "0.16em",
           }}
         >
           ETHER LABS &amp; CONVOY TECH PRESENT
         </div>
-
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              display: "flex",
-              color: "#ffffff",
-              fontSize: 150,
-              fontWeight: 500,
-              letterSpacing: "-0.03em",
-              lineHeight: 1,
-            }}
-          >
+        <div style={{ position: "relative", display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", fontSize: 122, fontWeight: 100, letterSpacing: "-0.03em", lineHeight: 0.9 }}>
             CLOUDHACK
           </div>
-          <div style={{ display: "flex", alignItems: "flex-end", marginTop: 10 }}>
-            <div style={{ display: "flex", color: "#ffffff", fontSize: 80, fontWeight: 500, letterSpacing: "-0.02em" }}>
+          <div style={{ display: "flex", marginTop: 18, alignItems: "center" }}>
+            <div style={{ display: "flex", color: "#ff6b47", fontSize: 64, fontWeight: 200, letterSpacing: "-0.02em" }}>
               2026
             </div>
-            <div style={{ display: "flex", color: "#aaaaaa", fontSize: 40, fontWeight: 400, marginLeft: 28, paddingBottom: 10 }}>
+            <div style={{ display: "flex", marginLeft: 28, color: "#a39a8a", fontSize: 28, fontWeight: 300 }}>
               {site.hero.tagline}
             </div>
           </div>
         </div>
-
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ display: "flex", color: "#999999", fontSize: 28, fontWeight: 400, letterSpacing: "0.02em" }}>
-            cloudhacksrilanka.com
-          </div>
-          <div style={{ display: "flex", width: 18, height: 18, backgroundColor: "#ffa41c", borderRadius: 4 }} />
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            color: "#a39a8a",
+            fontSize: 22,
+            fontFamily: "monospace",
+          }}
+        >
+          <div style={{ display: "flex" }}>cloudhacksrilanka.com</div>
+          <div style={{ display: "flex", width: 16, height: 16, background: "#ff6b47" }} />
         </div>
       </div>
     ),
-    { ...size, fonts },
+    { ...size },
   );
 }

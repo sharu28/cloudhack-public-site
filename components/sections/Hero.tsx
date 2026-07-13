@@ -1,128 +1,136 @@
 import Link from "next/link";
-import { MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { site } from "@/content/site";
-import { CircuitCorner, PixelArrow } from "@/components/graphics";
-import { Reveal } from "@/components/Reveal";
-import { Parallax } from "@/components/Parallax";
-import { SplitReveal } from "@/components/ui/SplitReveal";
-import { SponsorCarousel } from "@/components/sections/SponsorCarousel";
+import { StatusChip } from "@/components/StatusChip";
+import { SplitFlap } from "@/components/SplitFlap";
 import { Countdown } from "@/components/Countdown";
+import { ClipReveal } from "@/components/ui/ClipReveal";
 
+/**
+ * Hero - establishes the DISPATCH concept immediately: this is a dispatch
+ * board, not a landing page. Full-bleed, not the old copy-left/image-right
+ * split; the Route Line (fixed, page-level) supplies the graphic weight
+ * that used to come from an illustration, so nothing decorative has to fill
+ * "the other half." Sign Up is the only button on the page; "Join as
+ * Partner" is a quiet text link.
+ */
 export function Hero() {
   const { brand, hero } = site;
 
   return (
-    <section className="relative flex min-h-[100svh] flex-col overflow-hidden px-5 pb-8 text-center sm:px-8 sm:pb-10">
-      {/* The gradient aurora behind the hero is the global backdrop mounted in
-          app/layout.tsx, so it flows continuously into the sections below. */}
-
-      {/* Accent: hexagonal circuit traces, top-right corner */}
-      <CircuitCorner className="absolute right-0 top-0 z-10 hidden text-white/15 sm:block" />
-      {/* Accent: pixelated cursor arrow, top-center area (matches poster) */}
-      <PixelArrow className="absolute left-1/2 top-36 z-10 hidden -translate-x-1/2 text-ignition-orange md:block" />
-
-      {/* Centered hero content fills the space above the sponsor strip. */}
-      <div className="flex flex-1 flex-col items-center justify-center">
-      <Parallax speed={70} className="relative z-20 w-full max-w-4xl">
-        <Reveal>
-          <p className="hidden font-tomorrow text-xs font-medium uppercase tracking-[0.3em] text-ignition-orange sm:block sm:text-sm">
+    <section
+      id="hero"
+      className="relative isolate overflow-hidden px-5 pb-16 pt-32 sm:px-8 sm:pb-20 sm:pt-40"
+    >
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-wrap items-center gap-3">
+          <p className="font-mono text-xs font-light uppercase tracking-[0.2em] text-ink-2">
             {brand.eyebrow}
           </p>
-        </Reveal>
+          <StatusChip stage="PENDING" srPrefix="Pipeline stage" />
+        </div>
 
-        <Reveal delay={0.08}>
-          <h1 className="mt-6 flex w-full justify-center">
-            <span className="wordmark text-[clamp(3rem,16vw,11rem)] text-white">
-              {brand.wordmark}
-              <span className="text-ignition-orange"> {brand.year}</span>
-            </span>
-          </h1>
-        </Reveal>
+        <h1 className="mt-6 text-[clamp(4.2rem,14vw,10.5rem)] font-thin leading-[0.86] tracking-[-0.03em] text-ink">
+          {brand.wordmark}
+          <span className="glow-shimmer block">{brand.year}</span>
+        </h1>
 
-        <p className="mt-6 font-tomorrow text-xl font-normal tracking-wide text-cloud sm:text-2xl md:text-3xl">
-          <SplitReveal delay={0.18}>
-            Where Cloud Meets{" "}
-            <span className="font-medium italic text-stark-white">Creation</span>
-          </SplitReveal>
-        </p>
+        <div className="mt-8 max-w-2xl">
+          <ClipReveal>
+            <p className="text-2xl font-extralight tracking-[-0.02em] text-ink sm:text-3xl">
+              {hero.tagline}.
+            </p>
+          </ClipReveal>
+          <p className="mt-4 text-base leading-relaxed text-ink-2 sm:text-lg">{hero.oneLiner}</p>
+        </div>
 
-        <Reveal delay={0.26}>
-          <p className="mx-auto mt-5 max-w-xl text-base text-ash sm:text-lg">
-            {hero.oneLiner}
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.34}>
-          <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-            {/* Primary action — sole Ignition Orange CTA */}
-            <Link
-              href={hero.ctaHref}
-              className="group inline-flex items-center justify-center gap-2 rounded-lg bg-ignition-orange px-8 py-3.5 text-sm font-semibold text-stark-white transition hover:bg-ignition-orange/90"
-            >
-              <span>{hero.ctaLabel}</span>
-              <span className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
-
-            {/* Secondary action — graphite surface */}
-            <Link
-              href={hero.partnerHref}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-tarmac bg-graphite px-8 py-3.5 text-sm font-medium text-stark-white transition hover:bg-tarmac"
-            >
-              {hero.partnerLabel}
-            </Link>
-          </div>
-        </Reveal>
-
-        {/* Quick stats — 80 Participants · ~20 Teams · 1 Day */}
-        <Reveal delay={0.42}>
-          <ul className="mx-auto mt-10 flex max-w-md flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm sm:gap-x-5">
-            {hero.stats.map((stat, i) => (
-              <li key={stat.label} className="flex items-center gap-3 sm:gap-5">
-                {i > 0 && (
-                  <span
-                    aria-hidden="true"
-                    className="h-1 w-1 rounded-full bg-tarmac"
+        <div className="mt-12 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <ul className="flex flex-wrap items-end gap-x-9 gap-y-6">
+              {hero.stats.map((stat) => (
+                <li key={stat.label} className="flex flex-col gap-2">
+                  <SplitFlap
+                    value={stat.value}
+                    cellClassName="h-10 w-8 text-3xl font-medium font-mono sm:h-12 sm:w-10 sm:text-4xl"
+                    ariaLabel={`${stat.value} ${stat.label}`}
                   />
-                )}
-                <span className="flex items-baseline gap-1.5">
-                  <span className="font-tomorrow text-base font-medium text-stark-white">
-                    {stat.value}
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-2">
+                    {stat.label}
                   </span>
-                  <span className="text-dusk-gray">{stat.label}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+                </li>
+              ))}
+            </ul>
 
-        {/* Location */}
-        <Reveal delay={0.48}>
-          <p className="mt-4 flex items-center justify-center gap-1.5 text-sm text-dusk-gray">
-            <MapPin
-              className="size-3.5 text-ignition-orange"
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-            Colombo, Sri Lanka
-          </p>
-        </Reveal>
+            <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-3">
+              <Link
+                href={hero.ctaHref}
+                className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-stamp-deep px-7 py-3.5 text-sm font-light text-ink shadow-stamp transition-colors hover:opacity-90"
+              >
+                {hero.ctaLabel}
+                <ArrowRight
+                  className="size-4 transition-transform group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
+              <Link
+                href="/partners"
+                className="text-sm font-medium text-ink-2 underline decoration-line-strong decoration-1 underline-offset-4 transition-colors hover:text-stamp hover:decoration-stamp"
+              >
+                {hero.partnerLabel}
+              </Link>
+            </div>
+          </div>
 
-        <Reveal delay={0.54}>
-          <Countdown
-            targetISO={site.event.startISO}
-            label={site.event.countdownLabel}
-            className="mt-8"
-          />
-        </Reveal>
-      </Parallax>
-      </div>
+          <ManifestDataPlate />
+        </div>
 
-      {/* Sponsor logo cloud — pinned to the bottom of the hero. */}
-      <div className="relative z-20 mx-auto w-full max-w-6xl">
-        <SponsorCarousel />
+        <div className="mt-14 border-t border-line-strong pt-8">
+          <Countdown targetISO={site.event.startISO} label={site.event.countdownLabel} />
+        </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * The hero's one "visual" - a stamped manifest data plate restating real
+ * event facts (route, date, cargo) in a shipping-manifest register instead
+ * of an illustrative image. No asset exists (or should exist) to fill this
+ * space; the data itself is the graphic.
+ */
+function ManifestDataPlate() {
+  const { venue, details, hero } = site;
+  const when = details.essentials.find((e) => e.icon === "calendar")?.value ?? "16 August 2026";
+
+  const fields: Array<{ label: string; value: string }> = [
+    { label: "Route", value: `${venue.city}` },
+    { label: "Date", value: when },
+    {
+      label: "Cargo",
+      value: `${hero.stats[0]?.value ?? "80"} builders / ${hero.stats[1]?.value ?? "~20"} teams`,
+    },
+  ];
+
+  return (
+    <div className="notch-corner w-full max-w-xs shrink-0 border border-line-strong bg-paper-raised shadow-raised sm:max-w-sm">
+      <div className="flex items-center justify-between gap-3 border-b border-line-strong px-5 py-3">
+        <span className="font-mono text-[10px] font-light uppercase tracking-[0.18em] text-ink-2">
+          Manifest
+        </span>
+        <span className="font-mono text-[10px] font-light uppercase tracking-[0.18em] text-stamp">
+          No. CH-2026
+        </span>
+      </div>
+      <dl className="divide-y divide-line px-5">
+        {fields.map((f) => (
+          <div key={f.label} className="flex items-baseline justify-between gap-4 py-3.5">
+            <dt className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-2">
+              {f.label}
+            </dt>
+            <dd className="text-right text-sm font-light text-ink">{f.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
   );
 }

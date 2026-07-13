@@ -8,15 +8,15 @@ import { Resend } from "resend";
  * here; we validate server-side, then send a structured enquiry email via
  * Resend to the team inbox. Reply-To is set to the submitter so the team can
  * reply directly. No mail is sent back to the submitter. (Sponsor enquiries are
- * handled separately on the contact page — they're directed to Sharukesh.)
+ * handled separately on the contact page - they're directed to Sharukesh.)
  *
  * ───────────────────────────────────────────────────────────────────────────
- *  ENVIRONMENT VARIABLES (set in .env.local — never hardcode secrets)
+ *  ENVIRONMENT VARIABLES (set in .env.local - never hardcode secrets)
  * ───────────────────────────────────────────────────────────────────────────
  *  RESEND_API_KEY      Resend API secret (server-only, never NEXT_PUBLIC_*).
  *  CONTACT_FROM_EMAIL  The "from" address. MUST be on a Resend-verified domain
  *                      (DNS/SPF/DKIM). Use onboarding@resend.dev for local
- *                      testing before convoy-tech.com is verified — note that
+ *                      testing before convoy-tech.com is verified - note that
  *                      in test mode Resend only delivers to the account owner.
  *  CONTACT_TO_EMAIL    Recipient for contact-form enquiries.
  * ───────────────────────────────────────────────────────────────────────────
@@ -88,14 +88,14 @@ export async function POST(request: Request) {
   };
 
   const fullName = `${data.firstname} ${data.lastname}`.trim();
-  const emailSubject = `Cloudhack 2026 — New signup enquiry from ${fullName}`;
+  const emailSubject = `Cloudhack 2026 - New signup enquiry from ${fullName}`;
 
   const text = [
     `New Cloudhack 2026 team signup enquiry`,
     ``,
     `Name:         ${fullName}`,
     `Email:        ${data.email}`,
-    `Subject:      ${data.subject || "—"}`,
+    `Subject:      ${data.subject || "-"}`,
     ``,
     `Message:`,
     data.message,
@@ -109,7 +109,7 @@ export async function POST(request: Request) {
       <table style="border-collapse: collapse;">
         <tr><td style="padding: 4px 16px 4px 0; color: #666;">Name</td><td style="padding: 4px 0;">${escapeHtml(fullName)}</td></tr>
         <tr><td style="padding: 4px 16px 4px 0; color: #666;">Email</td><td style="padding: 4px 0;"><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></td></tr>
-        <tr><td style="padding: 4px 16px 4px 0; color: #666;">Subject</td><td style="padding: 4px 0;">${escapeHtml(data.subject) || "—"}</td></tr>
+        <tr><td style="padding: 4px 16px 4px 0; color: #666;">Subject</td><td style="padding: 4px 0;">${escapeHtml(data.subject) || "-"}</td></tr>
       </table>
       <h3 style="margin: 20px 0 8px;">Message</h3>
       <p style="white-space: pre-wrap; margin: 0;">${escapeHtml(data.message)}</p>

@@ -1,80 +1,82 @@
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Cloud } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { site } from "@/content/site";
-import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
+import { ManifestList, ManifestRow } from "@/components/ManifestRow";
+import type { DispatchStage } from "@/lib/dispatch";
 
-const ICONS = [Cloud, CalendarDays];
+const STEP_STAGES: DispatchStage[] = ["PENDING", "BUILDING", "DEPLOYING", "DEPLOYED"];
 
+/**
+ * Cloud Platform - consolidated (P3): absorbs the old Details section's
+ * duplicated AI-model/tokens/deployment content so it's said exactly once.
+ * Presented as a literal four-stage manifest - Workshop, Build, Deploy,
+ * Submit - each stamped with the matching real Status Chip state. This is
+ * the most literal use of the status-machine device on the page: these
+ * four rows ARE the `pending → building → deploying → deployed` lifecycle,
+ * not just a page scroll position standing in for it.
+ */
 export function CloudPlatform() {
-  const { cloudPlatform } = site;
+  const { cloudPlatform, convoyCloudPage, details } = site;
+  const buildSetup = details.groups.find((g) => g.title === "Build setup");
 
   return (
     <Section
       id="cloud-platform"
+      eyebrow="Cloud platform"
       title={cloudPlatform.heading}
       intro={cloudPlatform.intro}
     >
-      <div className="grid gap-4 lg:grid-cols-[1fr_0.75fr]">
-        <div className="grid gap-4 sm:grid-cols-2">
-          {cloudPlatform.items.map((item, i) => {
-            const Icon = ICONS[i] ?? Cloud;
+      <ManifestList>
+        {convoyCloudPage.steps.map((step, i) => (
+          <ManifestRow
+            key={step.title}
+            index={i}
+            total={convoyCloudPage.steps.length}
+            code={step.label}
+            title={step.title}
+            description={step.body}
+            statusStage={STEP_STAGES[i]}
+          />
+        ))}
+      </ManifestList>
 
-            return (
-              <Reveal as="div" key={item.title} delay={i * 0.06}>
-                <div className="flex h-full flex-col rounded-lg border border-tarmac bg-charcoal p-6">
-                  <div className="flex size-11 items-center justify-center rounded-lg border border-tarmac bg-graphite">
-                    <Icon
-                      className="size-5 text-ignition-orange"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold text-stark-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ash">
-                    {item.body}
-                  </p>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
-
-        <Reveal as="div" delay={0.14}>
-          <div className="flex h-full flex-col justify-between rounded-lg border border-ignition-orange/30 bg-graphite p-7">
-            <div>
-              <p className="font-tomorrow text-xs font-medium uppercase tracking-[0.18em] text-dusk-gray">
-                Platform requirement
-              </p>
-              <p className="mt-4 text-xl font-semibold leading-snug text-stark-white">
-                Deploy apps to Convoy Cloud
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-ash">
-                Final submissions must include a live Convoy Cloud URL. Judges
-                use that link to test each app.
-              </p>
+      {buildSetup && (
+        <dl className="mt-8 grid grid-cols-1 gap-px border border-line-strong bg-line-strong sm:grid-cols-3">
+          {buildSetup.items.map((item) => (
+            <div key={item.label} className="bg-paper-raised p-5">
+              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-2">
+                {item.label}
+              </dt>
+              <dd className="mt-1.5">
+                <span className="block text-base font-light text-ink">{item.value}</span>
+                <span className="mt-1 block text-xs leading-relaxed text-ink-2">{item.note}</span>
+              </dd>
             </div>
+          ))}
+        </dl>
+      )}
 
-            <Link
-              href={cloudPlatform.ctaHref}
-              className="mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-ignition-orange px-5 py-3 text-sm font-semibold text-stark-white transition hover:bg-ignition-orange/90"
-            >
-              {cloudPlatform.ctaLabel}
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
-            <a
-              href={cloudPlatform.externalHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg border border-tarmac px-5 py-3 text-sm font-medium text-stark-white transition hover:bg-tarmac"
-            >
-              {cloudPlatform.externalLabel}
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </a>
-          </div>
-        </Reveal>
+      <div className="mt-8 flex flex-wrap gap-4">
+        <Link
+          href={cloudPlatform.ctaHref}
+          className="group inline-flex items-center justify-center gap-2 rounded-full bg-stamp-deep px-6 py-3 text-sm font-light text-ink shadow-stamp transition-colors hover:opacity-90"
+        >
+          {cloudPlatform.ctaLabel}
+          <ArrowRight
+            className="size-4 transition-transform group-hover:translate-x-0.5"
+            aria-hidden="true"
+          />
+        </Link>
+        <a
+          href={cloudPlatform.externalHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-line-strong bg-transparent px-6 py-3 text-sm font-light text-ink transition-colors hover:border-stamp hover:text-stamp"
+        >
+          {cloudPlatform.externalLabel}
+          <ArrowRight className="size-4" aria-hidden="true" />
+        </a>
       </div>
     </Section>
   );

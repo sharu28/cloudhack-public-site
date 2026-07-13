@@ -4,7 +4,7 @@ import { SITE_URL, SITE_NAME } from "@/lib/seo";
 /**
  * Site-wide JSON-LD structured data (Organization + WebSite + Event). Rendered
  * once in the root layout so search engines get a machine-readable description
- * of the event on every page — the Event node makes the page eligible for
+ * of the event on every page - the Event node makes the page eligible for
  * Google event rich results.
  */
 export function StructuredData() {
@@ -32,7 +32,7 @@ export function StructuredData() {
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
         name: SITE_NAME,
-        description: `${site.hero.tagline} — ${site.hero.oneLiner}`,
+        description: `${site.hero.tagline} - ${site.hero.oneLiner}`,
         inLanguage: "en",
         publisher: { "@id": `${SITE_URL}/#organization` },
       },
@@ -40,7 +40,7 @@ export function StructuredData() {
         "@type": "Event",
         "@id": `${SITE_URL}/#event`,
         name: SITE_NAME,
-        description: `${site.hero.tagline} — ${site.hero.oneLiner}`,
+        description: `${site.hero.tagline} - ${site.hero.oneLiner}`,
         startDate: site.event.startISO,
         eventStatus: "https://schema.org/EventScheduled",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",

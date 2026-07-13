@@ -37,7 +37,7 @@ function validate(values: typeof initial): Errors {
 }
 
 const fieldBase =
-  "w-full rounded-lg border bg-[var(--color-paper)] px-4 py-3 text-[var(--color-text)] placeholder-[var(--color-text-2)]/60 transition focus:outline-none focus:ring-2 focus:ring-ignition-orange";
+  "w-full border bg-paper px-4 py-3 text-ink placeholder-ink-2/60 transition focus:outline-none focus:ring-2 focus:ring-stamp";
 
 export function RegisterForm() {
   const { signup } = site;
@@ -54,7 +54,7 @@ export function RegisterForm() {
   }
 
   function borderFor(key: keyof typeof initial) {
-    return errors[key] ? "border-red-500/70" : "border-[var(--color-line)]";
+    return errors[key] ? "border-stamp" : "border-line-strong";
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -97,8 +97,8 @@ export function RegisterForm() {
   // ── Success confirmation state ──────────────────────────────────────────
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-[var(--color-line)] bg-[var(--color-paper)] p-10 text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-graphite border border-tarmac text-stark-white">
+      <div className="notch-corner border border-line-strong bg-paper-raised p-10 text-center shadow-raised">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center border border-line-strong bg-paper text-stamp">
           <svg
             width="30"
             height="30"
@@ -113,13 +113,13 @@ export function RegisterForm() {
             <path d="M20 6 9 17l-5-5" />
           </svg>
         </div>
-        <h2 className="mt-6 text-2xl font-semibold text-[var(--color-text)]">
+        <h2 className="mt-6 text-2xl font-extralight text-ink">
           You&apos;re on the list, {values.teamName}.
         </h2>
-        <p className="mx-auto mt-3 max-w-md text-[var(--color-text-2)]">
+        <p className="mx-auto mt-3 max-w-md text-ink-2">
           We&apos;ve recorded your registration and will email{" "}
-          <span className="font-medium text-ignition-orange">{values.email}</span> with
-          next steps and confirmation. Keep an eye on your inbox.
+          <span className="font-light text-stamp">{values.email}</span> with next steps and
+          confirmation. Keep an eye on your inbox.
         </p>
         <button
           type="button"
@@ -127,7 +127,7 @@ export function RegisterForm() {
             setValues(initial);
             setStatus("idle");
           }}
-          className="mt-8 rounded-lg border border-[var(--color-line)] px-6 py-2.5 text-sm text-[var(--color-text)] transition hover:bg-white/5"
+          className="mt-8 border border-line-strong px-6 py-2.5 text-sm font-light text-ink transition-colors hover:border-stamp hover:text-stamp"
         >
           Register another team
         </button>
@@ -138,10 +138,7 @@ export function RegisterForm() {
   return (
     <form noValidate onSubmit={handleSubmit} className="space-y-6">
       {formError && (
-        <div
-          role="alert"
-          className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-700"
-        >
+        <div role="alert" className="border border-stamp bg-stamp-wash px-4 py-3 text-sm text-ink">
           {formError}
         </div>
       )}
@@ -257,7 +254,7 @@ export function RegisterForm() {
           onChange={(e) => update("role", e.target.value)}
           aria-invalid={!!errors.role}
           className={`${fieldBase} ${borderFor("role")} ${
-            values.role ? "text-[var(--color-text)]" : "text-[var(--color-text-2)]"
+            values.role ? "text-ink" : "text-ink-2"
           }`}
         >
           <option value="" disabled>
@@ -294,7 +291,7 @@ export function RegisterForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-ignition-orange px-8 py-4 text-sm font-semibold text-stark-white transition hover:bg-ignition-orange/90 disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-stamp-deep px-8 py-4 text-sm font-light text-ink shadow-stamp transition-colors hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "submitting" ? "Submitting…" : "Register team"}
       </button>
@@ -319,23 +316,16 @@ function Field({
 }) {
   return (
     <div>
-      <label
-        htmlFor={id}
-        className="mb-2 flex items-baseline justify-between text-sm font-medium text-[var(--color-text)]"
-      >
+      <label htmlFor={id} className="mb-2 flex items-baseline justify-between text-sm font-medium text-ink">
         <span>
           {label}
-          {required && <span className="ml-1 text-ignition-orange">*</span>}
+          {required && <span className="ml-1 text-stamp">*</span>}
         </span>
-        {hint && (
-          <span className="text-xs font-normal text-[var(--color-text-2)]">
-            {hint}
-          </span>
-        )}
+        {hint && <span className="text-xs font-normal text-ink-2">{hint}</span>}
       </label>
       {children}
       {error && (
-        <p className="mt-1.5 text-xs text-red-600" role="alert">
+        <p className="mt-1.5 font-mono text-xs text-stamp" role="alert">
           {error}
         </p>
       )}

@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import { SplitFlap } from "@/components/SplitFlap";
+
 const UNITS = [
   { key: "days", label: "Days" },
   { key: "hours", label: "Hours" },
@@ -23,6 +25,9 @@ export function partsUntil(targetMs: number, nowMs: number): Parts | null {
   };
 }
 
+/** The countdown, rendered entirely on Split-Flap digits - the single best
+ *  fit for the device outside Schedule, since a countdown is a live number
+ *  changing in place. Only the digits that actually change flip each tick. */
 export function Countdown({
   targetISO,
   label,
@@ -45,37 +50,35 @@ export function Countdown({
 
   if (parts === null) {
     return (
-      <p className={`font-tomorrow text-sm uppercase tracking-[0.25em] text-ignition-orange ${className}`}>
+      <p className={`font-mono text-sm font-light uppercase tracking-[0.2em] text-stamp ${className}`}>
         Happening now
       </p>
     );
   }
 
+  const display = parts === "pending" ? { days: 0, hours: 0, minutes: 0, seconds: 0 } : parts;
+
   return (
     <div className={className}>
       {label && (
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-dusk-gray">
-          {label}
-        </p>
+        <p className="font-mono text-xs font-light uppercase tracking-[0.2em] text-ink-2">{label}</p>
       )}
-      <div className="mt-3 flex items-start justify-center gap-4 sm:gap-6">
+      <div className="mt-3 flex items-end gap-2.5 sm:gap-4">
         {UNITS.map((unit, i) => (
-          <div key={unit.key} className="flex items-start gap-4 sm:gap-6">
+          <div key={unit.key} className="flex items-end gap-2.5 sm:gap-4">
             {i > 0 && (
-              <span
-                aria-hidden="true"
-                className="font-tomorrow text-2xl leading-none text-tarmac sm:text-3xl"
-              >
+              <span aria-hidden="true" className="mb-2 font-mono text-lg text-line-strong sm:text-xl">
                 :
               </span>
             )}
-            <div className="flex w-12 flex-col items-center sm:w-14">
-              <span className="font-tomorrow text-2xl font-medium tabular-nums leading-none text-stark-white sm:text-3xl">
-                {parts === "pending"
-                  ? "--"
-                  : String(parts[unit.key]).padStart(2, "0")}
-              </span>
-              <span className="mt-2 text-[0.65rem] uppercase tracking-[0.2em] text-dusk-gray">
+            <div className="flex flex-col items-center gap-2">
+              <SplitFlap
+                value={String(display[unit.key]).padStart(2, "0")}
+                cellClassName="h-9 w-7 text-2xl font-medium font-mono sm:h-11 sm:w-9 sm:text-3xl"
+                staggerMs={20}
+                ariaLabel={`${display[unit.key]} ${unit.label}`}
+              />
+              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-2">
                 {unit.label}
               </span>
             </div>

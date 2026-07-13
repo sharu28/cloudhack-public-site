@@ -81,18 +81,18 @@ export async function POST(request: Request) {
     submittedAt: new Date().toISOString(),
   };
 
-  const emailSubject = `Cloudhack 2026 — New team registration: ${data.teamName}`;
+  const emailSubject = `Cloudhack 2026 - New team registration: ${data.teamName}`;
 
   const text = [
     `New Cloudhack 2026 team registration`,
     ``,
     `Team name:   ${data.teamName}`,
-    `Team size:   ${data.teamSize ?? "—"}`,
+    `Team size:   ${data.teamSize ?? "-"}`,
     `Email:       ${data.email}`,
-    `Phone:       ${data.phone ?? "—"}`,
-    `University:  ${data.university ?? "—"}`,
-    `Role:        ${data.role ?? "—"}`,
-    `Link:        ${data.link ?? "—"}`,
+    `Phone:       ${data.phone ?? "-"}`,
+    `University:  ${data.university ?? "-"}`,
+    `Role:        ${data.role ?? "-"}`,
+    `Link:        ${data.link ?? "-"}`,
     ``,
     `Submitted at: ${data.submittedAt}`,
   ].join("\n");
@@ -105,12 +105,12 @@ export async function POST(request: Request) {
       <h2 style="margin: 0 0 16px;">New Cloudhack 2026 team registration</h2>
       <table style="border-collapse: collapse;">
         ${row("Team name", `<strong>${escapeHtml(data.teamName)}</strong>`)}
-        ${row("Team size", String(data.teamSize ?? "—"))}
+        ${row("Team size", String(data.teamSize ?? "-"))}
         ${row("Email", `<a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a>`)}
-        ${row("Phone", data.phone ? escapeHtml(data.phone) : "—")}
-        ${row("University", data.university ? escapeHtml(data.university) : "—")}
-        ${row("Role", data.role ? escapeHtml(data.role) : "—")}
-        ${row("Link", data.link ? `<a href="${escapeHtml(data.link)}">${escapeHtml(data.link)}</a>` : "—")}
+        ${row("Phone", data.phone ? escapeHtml(data.phone) : "-")}
+        ${row("University", data.university ? escapeHtml(data.university) : "-")}
+        ${row("Role", data.role ? escapeHtml(data.role) : "-")}
+        ${row("Link", data.link ? `<a href="${escapeHtml(data.link)}">${escapeHtml(data.link)}</a>` : "-")}
       </table>
       <p style="margin: 24px 0 0; color: #999; font-size: 12px;">Submitted at ${escapeHtml(data.submittedAt)}</p>
     </div>

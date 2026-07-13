@@ -13,7 +13,9 @@ import { site } from "@/content/site";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
-import { CircuitCorner } from "@/components/graphics";
+import { ManifestList, ManifestRow } from "@/components/ManifestRow";
+import { StatusChip } from "@/components/StatusChip";
+import type { DispatchStage } from "@/lib/dispatch";
 
 export const metadata: Metadata = {
   title: "What is Convoy Cloud?",
@@ -23,7 +25,7 @@ export const metadata: Metadata = {
     canonical: "/convoy-cloud",
   },
   openGraph: {
-    title: "What is Convoy Cloud? — CloudHack 2026",
+    title: "What is Convoy Cloud? - CloudHack 2026",
     description:
       "CloudHack teams deploy final apps on Convoy Cloud for live demos and judging, with hands-on guidance at the in-person workshop.",
     url: "/convoy-cloud",
@@ -35,13 +37,14 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "CloudHack 2026 — Where Cloud Meets Creation",
+        alt: "CloudHack 2026 - Where Cloud Meets Creation",
       },
     ],
   },
 };
 
 const sectionIcons = [Cloud, Server, CalendarDays, CheckCircle2];
+const STEP_STAGES: DispatchStage[] = ["PENDING", "BUILDING", "DEPLOYING", "DEPLOYED"];
 
 export default function ConvoyCloudPage() {
   const { convoyCloudPage } = site;
@@ -49,13 +52,11 @@ export default function ConvoyCloudPage() {
   return (
     <>
       <Nav />
-      <main className="relative overflow-hidden px-5 pb-24 pt-28 sm:px-8 sm:pt-32">
-        <CircuitCorner className="absolute right-0 top-24 hidden text-white/10 lg:block" />
-
+      <main id="main" className="relative px-5 pb-24 pt-32 sm:px-8 sm:pt-40">
         <div className="relative mx-auto max-w-6xl">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-[var(--color-text-2)] transition hover:text-ignition-orange"
+            className="inline-flex items-center gap-2 text-sm font-medium text-ink-2 transition-colors hover:text-stamp"
           >
             <ArrowLeft className="size-4" aria-hidden="true" />
             Back to home
@@ -64,24 +65,27 @@ export default function ConvoyCloudPage() {
           <section className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.72fr] lg:items-end">
             <Reveal>
               <div>
-                <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-[var(--color-text)] sm:text-5xl md:text-6xl md:leading-[1.05]">
+                <p className="font-mono text-xs font-light uppercase tracking-[0.18em] text-stamp">
+                  The cloud platform partner
+                </p>
+                <h1 className="mt-4 max-w-3xl text-4xl font-thin tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl md:leading-[1.03]">
                   {convoyCloudPage.title}
                 </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-text-2)]">
+                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">
                   {convoyCloudPage.subtitle}
                 </p>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Link
                     href="/signup"
-                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-ignition-orange px-6 py-3 text-sm font-semibold text-stark-white transition hover:bg-ignition-orange/90"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-stamp-deep px-6 py-3 text-sm font-light text-ink shadow-stamp transition-colors hover:opacity-90"
                   >
                     Register for CloudHack
                     <ArrowRight className="size-4" aria-hidden="true" />
                   </Link>
                   <Link
                     href="/#cloud-platform"
-                    className="inline-flex items-center justify-center rounded-lg border border-tarmac bg-graphite px-6 py-3 text-sm font-medium text-stark-white transition hover:bg-tarmac"
+                    className="inline-flex items-center justify-center rounded-full border border-line-strong bg-transparent px-6 py-3 text-sm font-light text-ink transition-colors hover:border-stamp hover:text-stamp"
                   >
                     View event requirement
                   </Link>
@@ -89,7 +93,7 @@ export default function ConvoyCloudPage() {
                     href={convoyCloudPage.externalHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-lg border border-tarmac bg-graphite px-6 py-3 text-sm font-medium text-stark-white transition hover:bg-tarmac"
+                    className="inline-flex items-center justify-center rounded-full border border-line-strong bg-transparent px-6 py-3 text-sm font-light text-ink transition-colors hover:border-stamp hover:text-stamp"
                   >
                     {convoyCloudPage.externalLabel}
                   </a>
@@ -98,18 +102,14 @@ export default function ConvoyCloudPage() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <div className="rounded-lg border border-ignition-orange/30 bg-charcoal p-7">
-                <div className="flex size-12 items-center justify-center rounded-lg border border-tarmac bg-graphite">
-                  <CalendarDays
-                    className="size-5 text-ignition-orange"
-                    strokeWidth={1.75}
-                    aria-hidden="true"
-                  />
+              <div className="notch-corner border border-line-strong bg-paper-raised p-8 shadow-raised">
+                <div className="flex size-12 items-center justify-center border border-line-strong bg-paper text-stamp">
+                  <CalendarDays className="size-5" strokeWidth={1.75} aria-hidden="true" />
                 </div>
-                <h2 className="mt-5 text-xl font-semibold text-stark-white">
+                <h2 className="mt-5 text-2xl font-extralight tracking-[-0.02em] text-ink">
                   In-person platform workshop
                 </h2>
-                <p className="mt-3 text-sm leading-relaxed text-ash">
+                <p className="mt-3 text-sm leading-relaxed text-ink-2">
                   {convoyCloudPage.workshop}
                 </p>
               </div>
@@ -119,57 +119,52 @@ export default function ConvoyCloudPage() {
           <section className="mt-16 sm:mt-20">
             <Reveal>
               <div className="flex items-center gap-3">
-                <Workflow
-                  className="size-5 text-ignition-orange"
-                  strokeWidth={1.75}
-                  aria-hidden="true"
-                />
-                <h2 className="text-2xl font-semibold text-stark-white">
+                <Workflow className="size-5 text-stamp" strokeWidth={1.75} aria-hidden="true" />
+                <h2 className="text-3xl font-extralight tracking-[-0.02em] text-ink">
                   CloudHack deployment flow
                 </h2>
               </div>
+              <p className="mt-2 max-w-2xl text-sm text-ink-2">
+                The same four stages your app will actually run through on deploy day - see{" "}
+                <Link href="/#cloud-platform" className="font-light text-stamp hover:text-ink">
+                  Cloud Platform
+                </Link>{" "}
+                on the homepage for the short version.
+              </p>
             </Reveal>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-4">
-              {convoyCloudPage.steps.map((step, i) => (
-                <Reveal as="div" key={step.title} delay={i * 0.05}>
-                  <div className="flex h-full flex-col rounded-lg border border-tarmac bg-charcoal p-5">
-                    <span className="font-tomorrow text-xs font-medium uppercase tracking-[0.18em] text-dusk-gray">
-                      {step.label}
-                    </span>
-                    <h3 className="mt-4 text-lg font-semibold text-stark-white">
-                      {step.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-ash">
-                      {step.body}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
+            <div className="mt-8">
+              <ManifestList>
+                {convoyCloudPage.steps.map((step, i) => (
+                  <ManifestRow
+                    key={step.title}
+                    index={i}
+                    total={convoyCloudPage.steps.length}
+                    code={step.label}
+                    title={step.title}
+                    description={step.body}
+                    statusStage={STEP_STAGES[i]}
+                  />
+                ))}
+              </ManifestList>
             </div>
           </section>
 
-          <section className="mt-16 grid gap-4 sm:mt-20 md:grid-cols-2">
+          <section className="mt-16 grid gap-px border border-line-strong bg-line-strong sm:mt-20 md:grid-cols-2">
             {convoyCloudPage.sections.map((section, i) => {
               const Icon = sectionIcons[i] ?? Cloud;
 
               return (
-                <Reveal as="div" key={section.title} delay={i * 0.05}>
-                  <div className="flex h-full gap-4 rounded-lg border border-tarmac bg-charcoal p-6">
-                    <div className="flex size-11 shrink-0 items-center justify-center rounded-lg border border-tarmac bg-graphite">
-                      <Icon
-                        className="size-5 text-stark-white"
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
+                <Reveal as="div" key={section.title} delay={i * 0.05} className="bg-paper-raised">
+                  <div className="flex h-full gap-4 p-7">
+                    <div className="flex size-11 shrink-0 items-center justify-center border border-line-strong bg-paper text-stamp">
+                      <Icon className="size-5" strokeWidth={1.75} aria-hidden="true" />
                     </div>
                     <div>
-                      <h2 className="text-lg font-semibold text-stark-white">
+                      <h2 className="text-xl font-extralight tracking-[-0.01em] text-ink">
                         {section.title}
                       </h2>
-                      <p className="mt-3 text-sm leading-relaxed text-ash">
-                        {section.body}
-                      </p>
+                      <p className="mt-3 text-sm leading-relaxed text-ink-2">{section.body}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -179,24 +174,25 @@ export default function ConvoyCloudPage() {
 
           <section className="mt-16 sm:mt-20">
             <Reveal>
-              <h2 className="text-2xl font-semibold text-stark-white">
-                Convoy Cloud FAQ
-              </h2>
+              <div className="flex items-center gap-3">
+                <h2 className="text-3xl font-extralight tracking-[-0.02em] text-ink">Convoy Cloud FAQ</h2>
+                <StatusChip stage="DEPLOYED" />
+              </div>
             </Reveal>
             <div className="mt-6 max-w-3xl">
               {convoyCloudPage.faq.map((item, i) => (
                 <Reveal as="div" key={item.q} delay={i * 0.04}>
-                  <details className="group border-b border-tarmac">
+                  <details className="group border-b border-line">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">
-                      <span className="font-tomorrow text-base font-medium text-stark-white sm:text-lg">
+                      <span className="text-base font-light tracking-[-0.01em] text-ink sm:text-lg">
                         {item.q}
                       </span>
                       <ArrowRight
-                        className="size-5 shrink-0 text-dusk-gray transition-transform duration-200 group-open:rotate-90"
+                        className="size-5 shrink-0 text-ink-2 transition-transform duration-200 group-open:rotate-90"
                         aria-hidden="true"
                       />
                     </summary>
-                    <p className="max-w-2xl pb-6 text-sm leading-relaxed text-ash sm:text-base">
+                    <p className="max-w-2xl pb-6 text-sm leading-relaxed text-ink-2 sm:text-base">
                       {item.a}
                     </p>
                   </details>
