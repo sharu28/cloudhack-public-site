@@ -44,15 +44,19 @@ export function StructuredData() {
         startDate: site.event.startISO,
         eventStatus: "https://schema.org/EventScheduled",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-        location: {
-          "@type": "Place",
-          name: site.venue.name,
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Colombo",
-            addressCountry: "LK",
-          },
-        },
+        ...(site.venue.mapQuery
+          ? {
+              location: {
+                "@type": "Place",
+                name: site.venue.name,
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: site.venue.city,
+                  addressCountry: "LK",
+                },
+              },
+            }
+          : {}),
         organizer: { "@id": `${SITE_URL}/#organization` },
         isAccessibleForFree: true,
         offers: {

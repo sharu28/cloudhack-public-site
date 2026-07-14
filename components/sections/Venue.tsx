@@ -10,7 +10,9 @@ import { Section } from "@/components/Section";
  */
 export function Venue() {
   const { venue } = site;
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.mapQuery)}`;
+  const mapsHref = venue.mapQuery
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.mapQuery)}`
+    : null;
 
   return (
     <Section id="venue" eyebrow="Venue" title={venue.heading} intro={venue.intro}>
@@ -53,7 +55,7 @@ export function Venue() {
                   <Crosshair className="size-4 text-stamp" strokeWidth={1.5} aria-hidden="true" />
                   Location signal
                 </span>
-                <span>Colombo / LK</span>
+                <span>Location / TBA</span>
               </div>
 
               <div className="self-center text-center">
@@ -64,16 +66,22 @@ export function Venue() {
                 <p className="mt-1 text-sm font-light text-ink">{venue.name}</p>
               </div>
 
-              <a
-                href={mapsHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-max items-center gap-2 border border-line-strong bg-paper-raised px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-stamp hover:text-stamp"
-              >
-                <Navigation className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
-                Open in Maps
-                <ArrowUpRight className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
-              </a>
+              {mapsHref ? (
+                <a
+                  href={mapsHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-max items-center gap-2 border border-line-strong bg-paper-raised px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-stamp hover:text-stamp"
+                >
+                  <Navigation className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+                  Open in Maps
+                  <ArrowUpRight className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+                </a>
+              ) : (
+                <span className="inline-flex w-max items-center gap-2 border border-line-strong bg-paper-raised px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-2">
+                  Venue announcement coming soon
+                </span>
+              )}
             </div>
           </div>
         </Reveal>
@@ -83,7 +91,7 @@ export function Venue() {
             <div>
               <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-ink-2">
                 <MapPin className="size-4 text-stamp" strokeWidth={2} aria-hidden="true" />
-                Venue Partner
+                Venue status
               </p>
               <h3 className="mt-4 text-2xl font-extralight tracking-[-0.01em] text-ink sm:text-3xl">
                 {venue.name}

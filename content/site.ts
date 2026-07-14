@@ -107,7 +107,7 @@ export const site = {
   // ── Event details ──────────────────────────────────────────────────────────
   details: {
     heading: "Event details",
-    notice: "Venue confirmed: SLIIT - Curtin Campus.",
+    notice: "Venue to be announced.",
     essentials: [
       {
         icon: "calendar",
@@ -118,8 +118,8 @@ export const site = {
       {
         icon: "pin",
         label: "Venue",
-        value: "SLIIT - Curtin Campus",
-        note: "Colombo",
+        value: "To be announced",
+        note: "Details coming soon",
       },
       {
         icon: "clock",
@@ -174,11 +174,10 @@ export const site = {
   //  full address) once the exact building/hall is confirmed.
   venue: {
     heading: "The venue",
-    intro:
-      "Hosted at SLIIT – Curtin Campus in Colombo, our Venue Partner for CloudHack 2026.",
-    name: "SLIIT – Curtin Campus",
-    city: "Colombo, Sri Lanka",
-    mapQuery: "SLIIT Curtin Campus Colombo",
+    intro: "The CloudHack 2026 venue will be announced soon.",
+    name: "To be announced",
+    city: "Details coming soon",
+    mapQuery: "",
     notes: [
       {
         title: "Doors open 08:30",
@@ -473,16 +472,13 @@ export const site = {
     heading: "Sponsors",
     intro: "Made possible by our incredible partners.",
     pending: "Full sponsor line-up to be announced.",
-    logos: [
-      {
-        name: "SLIIT",
-        tier: "Venue Partner",
-        logo: "",
-        blurb:
-          "SLIIT opens its Curtin Campus in Colombo as CloudHack 2026's venue for the day.",
-        confirmed: true,
-      },
-    ],
+    logos: [] as Array<{
+      name: string;
+      tier: string;
+      logo: string;
+      blurb: string;
+      confirmed: boolean;
+    }>,
   },
 
   // ── FAQ ──────────────────────────────────────────────────────────────────────
@@ -554,8 +550,8 @@ export const site = {
       {
         q: "When and where exactly is the event?",
         a:
-          "16 August 2026, at SLIIT - Curtin Campus in Colombo. Register and " +
-          "we'll send you the details first.",
+          "CloudHack 2026 takes place on 16 August 2026. The venue will be " +
+          "announced soon, so register and we'll send you the details first.",
       },
     ],
   },
