@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { parseEmailRecipients } from "@/lib/emailRecipients";
 
 /**
  * Contact-form endpoint for Cloudhack 2026.
@@ -18,7 +19,7 @@ import { Resend } from "resend";
  *                      (DNS/SPF/DKIM). Use onboarding@resend.dev for local
  *                      testing before convoy-tech.com is verified - note that
  *                      in test mode Resend only delivers to the account owner.
- *  CONTACT_TO_EMAIL    Recipient for contact-form enquiries.
+ *  CONTACT_TO_EMAIL    Comma-separated recipients for contact-form enquiries.
  * ───────────────────────────────────────────────────────────────────────────
  */
 
@@ -75,7 +76,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const to = process.env.CONTACT_TO_EMAIL ?? "info@convoy-tech.com";
+  const to = parseEmailRecipients(
+    process.env.CONTACT_TO_EMAIL,
+    "info@convoy-tech.com",
+  );
   const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
 
   const data = {

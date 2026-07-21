@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { parseEmailRecipients } from "@/lib/emailRecipients";
 
 /**
  * Team registration endpoint for Cloudhack 2026.
@@ -67,7 +68,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const to = process.env.CONTACT_TO_EMAIL ?? "info@convoy-tech.com";
+  const to = parseEmailRecipients(
+    process.env.CONTACT_TO_EMAIL,
+    "info@convoy-tech.com",
+  );
   const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
 
   const data = {

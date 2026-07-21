@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { parseEmailRecipients } from "@/lib/emailRecipients";
 
 type ConnectPayload = {
   name?: string;
@@ -64,7 +65,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const to = process.env.MEETUP_TO_EMAIL ?? process.env.CONTACT_TO_EMAIL ?? "info@convoy-tech.com";
+  const to = parseEmailRecipients(
+    process.env.MEETUP_TO_EMAIL ?? process.env.CONTACT_TO_EMAIL,
+    "info@convoy-tech.com",
+  );
   const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
   const submittedAt = new Date().toISOString();
   const emailContact = EMAIL_RE.test(contact) ? contact : undefined;
