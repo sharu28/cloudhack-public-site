@@ -53,6 +53,7 @@ export async function POST(request: Request) {
   } else if (!EMAIL_RE.test(body.email.trim())) {
     errors.email = "Enter a valid email address.";
   }
+  if (!body.phone?.trim()) errors.phone = "Phone number is required.";
   // University / institution and role are optional.
 
   if (Object.keys(errors).length > 0) {
@@ -78,7 +79,7 @@ export async function POST(request: Request) {
     teamName: body.teamName!.trim(),
     teamSize: body.teamSize ? Number(body.teamSize) : null,
     email: body.email!.trim(),
-    phone: body.phone?.trim() || null,
+    phone: body.phone!.trim(),
     university: body.university?.trim() || null,
     role: body.role?.trim() || null,
     link: body.link?.trim() || null,

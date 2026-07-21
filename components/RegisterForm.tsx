@@ -25,6 +25,7 @@ function validate(values: typeof initial): Errors {
   } else if (!EMAIL_RE.test(values.email.trim())) {
     errors.email = "Enter a valid email address.";
   }
+  if (!values.phone.trim()) errors.phone = "Phone number is required.";
   // University / institution and role are optional.
   if (values.teamSize) {
     const n = Number(values.teamSize);
@@ -207,15 +208,17 @@ export function RegisterForm() {
       </Field>
 
       {/* Phone */}
-      <Field id="phone" label="Phone number" hint="Optional" error={errors.phone}>
+      <Field id="phone" label="Phone number" required error={errors.phone}>
         <input
           id="phone"
           name="phone"
           type="tel"
+          required
           autoComplete="tel"
           placeholder="+94 7X XXX XXXX"
           value={values.phone}
           onChange={(e) => update("phone", e.target.value)}
+          aria-invalid={!!errors.phone}
           className={`${fieldBase} ${borderFor("phone")}`}
         />
       </Field>
