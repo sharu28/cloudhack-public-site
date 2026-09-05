@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}/convoy-cloud`,
+      url: `${SITE_URL}/glenr`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.7,

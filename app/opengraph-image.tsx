@@ -75,7 +75,7 @@ export default function OpengraphImage() {
             letterSpacing: "0.16em",
           }}
         >
-          ETHER LABS &amp; CONVOY TECHNOLOGIES PRESENT
+          ETHER LABS &amp; GLENR PRESENT
         </div>
         <div style={{ position: "relative", display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", fontSize: 122, fontWeight: 100, letterSpacing: "-0.03em", lineHeight: 0.9 }}>

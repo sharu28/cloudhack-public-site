@@ -101,7 +101,7 @@ function ManifestDataPlate() {
   const when = details.essentials.find((e) => e.icon === "calendar")?.value ?? "19 September 2026";
 
   const fields: Array<{ label: string; value: string }> = [
-    { label: "Route", value: `${venue.city}` },
+    { label: "Venue", value: venue.name },
     { label: "Date", value: when },
     {
       label: "Cargo",

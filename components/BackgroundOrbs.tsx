@@ -1,7 +1,7 @@
 /**
- * Drifting glow-orb background field - Convoy Cloud's own marketing-site
+ * Drifting glow-orb background field - Glenr's marketing-site
  * technique (see control-plane-frontend-v2), translated to CloudHack's
- * ink-stamp red/amber instead of Convoy's emerald. Three large, heavily
+ * ink-stamp red/amber. Three large, heavily
  * blurred radial gradients drift and pulse on independent, slow loops
  * behind all page content.
  *

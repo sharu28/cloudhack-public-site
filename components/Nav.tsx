@@ -47,7 +47,7 @@ function useScrollDirection() {
 }
 
 /**
- * Masthead navigation - a floating, frosted pill (Convoy Cloud's own chrome
+ * Masthead navigation - a floating, frosted pill (Glenr's chrome
  * language), hiding on scroll-down and reappearing on scroll-up so it never
  * competes with the Route Line for the reader's eye. Sign Up is the one
  * visually dominant action everywhere on the site; "Join as Partner" is a

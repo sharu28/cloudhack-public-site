@@ -67,7 +67,7 @@ export async function POST(request: Request) {
 
   const to = parseEmailRecipients(
     process.env.MEETUP_TO_EMAIL ?? process.env.CONTACT_TO_EMAIL,
-    "info@convoy-tech.com",
+    "info@glenr.io",
   );
   const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
   const submittedAt = new Date().toISOString();

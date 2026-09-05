@@ -10,7 +10,7 @@ interface SectionProps {
   /** Small uppercase kicker above the title. */
   eyebrow?: string;
   /** Section headline - Inter extralight at fluid display sizes, matching
-   *  Convoy Cloud's own h2 register. Never bold; the wordmark's thin weight
+   *  Glenr's h2 register. Never bold; the wordmark's thin weight
    *  and the Split-Flap/Status Chip glow stay the only "loud" moments. */
   title?: ReactNode;
   /** Optional supporting paragraph under the title. */

@@ -12,7 +12,7 @@ export const site = {
   brand: {
     wordmark: "CLOUDHACK",
     year: "2026",
-    eyebrow: "ETHER LABS  &  CONVOY TECHNOLOGIES present",
+    eyebrow: "ETHER LABS  &  GLENR present",
   },
 
   // Event timing. Single source of truth for the countdown timer and sticky CTA.
@@ -107,7 +107,7 @@ export const site = {
   // ── Event details ──────────────────────────────────────────────────────────
   details: {
     heading: "Event details",
-    notice: "Saturday 19 September at ESOFT Metro Campus.",
+    notice: "Saturday 19 September at ESOFT University Colombo, Block B.",
     essentials: [
       {
         icon: "calendar",
@@ -118,7 +118,7 @@ export const site = {
       {
         icon: "pin",
         label: "Venue",
-        value: "ESOFT Metro Campus",
+        value: "ESOFT University Colombo, Block B",
         note: "Colombo",
       },
       {
@@ -151,13 +151,13 @@ export const site = {
       },
       {
         title: "Build setup",
-        ctaLabel: "How Convoy Cloud works",
-        ctaHref: "/convoy-cloud",
+        ctaLabel: "How Glenr works",
+        ctaHref: "/glenr",
         items: [
           {
             label: "Inference",
             value: "Shared inference endpoint",
-            note: "Includes models hosted directly by Convoy.",
+            note: "Includes models hosted directly by Glenr.",
           },
           {
             label: "Tokens",
@@ -174,10 +174,10 @@ export const site = {
   //  full address) once the exact building/hall is confirmed.
   venue: {
     heading: "The venue",
-    intro: "CloudHack 2026 takes place at ESOFT Metro Campus on Saturday 19 September.",
-    name: "ESOFT Metro Campus",
+    intro: "CloudHack 2026 takes place at ESOFT University Colombo, Block B on Saturday 19 September.",
+    name: "ESOFT University Colombo, Block B",
     city: "Colombo",
-    mapQuery: "ESOFT Metro Campus, Colombo",
+    mapQuery: "ESOFT University Colombo, Block B",
     notes: [
       {
         title: "Doors open 08:30",
@@ -197,15 +197,15 @@ export const site = {
   cloudPlatform: {
     heading: "Cloud platform",
     intro:
-      "Every final app runs on Convoy Cloud, our Cloud Platform Partner, giving judges a live, shared platform for review.",
-    ctaLabel: "What is Convoy Cloud?",
-    ctaHref: "/convoy-cloud",
-    externalLabel: "Visit Convoy Tech",
-    externalHref: "https://convoy-tech.com",
+      "Every final app runs on Glenr, our Cloud Platform Partner, giving judges a live, shared platform for review.",
+    ctaLabel: "What is Glenr?",
+    ctaHref: "/glenr",
+    externalLabel: "Visit Glenr",
+    externalHref: "https://glenr.io",
     items: [
       {
         title: "Submit a live demo link",
-        body: "Teams include a working Convoy Cloud URL with their repo and short presentation or demo video.",
+        body: "Teams include a working Glenr URL with their repo and short presentation or demo video.",
       },
       {
         title: "In-person workshop",
@@ -272,7 +272,7 @@ export const site = {
         time: "18:00",
         title: "Closing keynote",
         blurb:
-          "A closing address from Convoy Tech, our Cloud Platform Partner.",
+          "A closing address from Glenr, our Cloud Platform Partner.",
       },
       {
         time: "19:00",
@@ -323,7 +323,7 @@ export const site = {
       "Teams are 3–4 people. Every member must be registered.",
       "All project code is written on the day. Open-source libraries, frameworks and AI tools (including the hackathon inference endpoint) are fair game.",
       "Each team builds against one or more of the themes (Automation, Sustainability, AI Enablement) and the sponsor problem briefs.",
-      "Final submissions must be demoable apps that are deployed on Convoy Cloud.",
+      "Final submissions must be demoable apps that are deployed on Glenr.",
       "Final submissions must include a working demo, a GitHub/repo link, and a short demo video. Submission links close before final demos.",
       "Judges' decisions are final.",
     ],
@@ -356,16 +356,16 @@ export const site = {
         href: "https://etherlabs.lk",
       },
       {
-        name: "Convoy Tech",
+        name: "Glenr",
         role: "Tech Partner",
         blurb:
-          "The technology and infrastructure partner behind the event. Convoy " +
-          "Cloud will set up the cluster and a shared inference endpoint - " +
-          "spanning several models, including some hosted directly by Convoy - " +
+          "The technology and infrastructure partner behind the event. Glenr " +
+          "will set up the cluster and a shared inference endpoint - " +
+          "spanning several models, including some hosted directly by Glenr - " +
           "that teams use to build and run their solutions on the day.",
         email: "krishakary2j@gmail.com",
-        website: "convoy-tech.com",
-        href: "https://convoy-tech.com",
+        website: "glenr.io",
+        href: "https://glenr.io",
       },
     ],
   },
@@ -530,28 +530,27 @@ export const site = {
           "link, and a short presentation or demo video.",
       },
       {
-        q: "What is Convoy Cloud?",
+        q: "What is Glenr?",
         a:
-          "Convoy Cloud is CloudHack's Cloud Platform Partner. Teams will use it " +
+          "Glenr is CloudHack's Cloud Platform Partner. Teams will use it " +
           "to deploy final apps for demos and judging, with an in-person platform " +
           "workshop planned two weeks ahead of the hackathon.",
-        href: "/convoy-cloud",
-        linkLabel: "Learn about Convoy Cloud",
+        href: "/glenr",
+        linkLabel: "Learn about Glenr",
       },
       {
         q: "Do teams need their own AI API tokens?",
         a:
           "No. We will provide teams with access to a shared inference " +
           "endpoint spanning multiple models, including some hosted directly " +
-          "on Convoy Cloud, with unlimited tokens for teams during the event. " +
-          "Convoy Cloud sets up the cluster so teams can build without using " +
-          "their own tokens.",
+          "on Glenr, with unlimited tokens for teams during the event. Glenr " +
+          "sets up the cluster so teams can build without using their own tokens.",
       },
       {
         q: "When and where exactly is the event?",
         a:
           "CloudHack 2026 takes place on Saturday 19 September 2026 at " +
-          "ESOFT Metro Campus in Colombo.",
+          "ESOFT University Colombo, Block B.",
       },
     ],
   },
@@ -579,10 +578,10 @@ export const site = {
         phone: "+94 74 221 6040",
       },
       {
-        name: "Convoy Tech",
+        name: "Glenr",
         role: "Tech Partner",
-        website: "convoy-tech.com",
-        websiteHref: "https://convoy-tech.com",
+        website: "glenr.io",
+        websiteHref: "https://glenr.io",
         email: "krishakary2j@gmail.com",
         phone: "",
       },
@@ -593,9 +592,9 @@ export const site = {
       { label: "LinkedIn", href: "#" },
     ],
     tagline:
-      "CloudHack 2026 - Co-hosted by Ether Labs & Convoy Tech. Building Sri " +
-      "Lanka's Tech Future, One Hack at a Time.",
-    copyright: "CloudHack 2026 · Co-hosted by Ether Labs & Convoy Tech",
+      "CloudHack 2026 - Co-hosted by Ether Labs & Glenr. Building Sri Lanka's " +
+      "Tech Future, One Hack at a Time.",
+    copyright: "CloudHack 2026 · Co-hosted by Ether Labs & Glenr",
   },
 
   // ── Signup page ──────────────────────────────────────────────────────────────
@@ -614,19 +613,19 @@ export const site = {
     },
   },
 
-  convoyCloudPage: {
-    title: "What is Convoy Cloud?",
+  glenrPage: {
+    title: "What is Glenr?",
     subtitle:
-      "Convoy Cloud is CloudHack's Cloud Platform Partner. Every team will deploy its final app on the platform so demos are live, reviewable, and consistent for judges.",
-    externalLabel: "Visit Convoy Tech",
-    externalHref: "https://convoy-tech.com",
+      "Glenr is CloudHack's Cloud Platform Partner. Every team will deploy its final app on the platform so demos are live, reviewable, and consistent for judges.",
+    externalLabel: "Visit Glenr",
+    externalHref: "https://glenr.io",
     workshop:
-      "An in-person Convoy Cloud workshop will be scheduled ahead of CloudHack. Timing and location will be shared with confirmed participants through email and WhatsApp.",
+      "An in-person Glenr workshop will be scheduled ahead of CloudHack. Timing and location will be shared with confirmed participants through email and WhatsApp.",
     steps: [
       {
         label: "Workshop",
         title: "Learn the platform",
-        body: "Selected teams attend the in-person Convoy Cloud workshop and get comfortable with the deployment workflow ahead of event day.",
+        body: "Selected teams attend the in-person Glenr workshop and get comfortable with the deployment workflow ahead of event day.",
       },
       {
         label: "Build",
@@ -635,23 +634,23 @@ export const site = {
       },
       {
         label: "Deploy",
-        title: "Publish on Convoy Cloud",
+        title: "Publish on Glenr",
         body: "Teams deploy the app, test the live URL, and keep it ready for judges when submissions close.",
       },
       {
         label: "Submit",
         title: "Share the demo package",
-        body: "Final submissions include the Convoy Cloud URL, GitHub/repo link, and a short presentation or demo video.",
+        body: "Final submissions include the Glenr URL, GitHub/repo link, and a short presentation or demo video.",
       },
     ],
     sections: [
       {
         title: "Why CloudHack uses it",
-        body: "Hackathon demos are easier to judge when they are deployed in one reliable place. Convoy Cloud gives teams a shared deployment path, gives judges live URLs to test, and helps avoid laptop-only demos or last-minute hosting issues.",
+        body: "Hackathon demos are easier to judge when they are deployed in one reliable place. Glenr gives teams a shared deployment path, gives judges live URLs to test, and helps avoid laptop-only demos or last-minute hosting issues.",
       },
       {
         title: "How it works for teams",
-        body: "Teams build locally during the event, then publish their frontend, backend, or full-stack app to Convoy Cloud for submission. Your final package should include the deployed URL, a GitHub/repo link, and a short presentation or demo video.",
+        body: "Teams build locally during the event, then publish their frontend, backend, or full-stack app to Glenr for submission. Your final package should include the deployed URL, a GitHub/repo link, and a short presentation or demo video.",
       },
       {
         title: "What the workshop covers",
@@ -664,16 +663,16 @@ export const site = {
     ],
     faq: [
       {
-        q: "Do I need Convoy Cloud experience to apply?",
+        q: "Do I need Glenr experience to apply?",
         a: "No. The workshop is designed to get selected teams comfortable with the platform ahead of the hackathon.",
       },
       {
         q: "Can we use another hosting provider?",
-        a: "For final CloudHack judging, apps need to be deployed on Convoy Cloud. You can still use familiar tools while building locally.",
+        a: "For final CloudHack judging, apps need to be deployed on Glenr. You can still use familiar tools while building locally.",
       },
       {
         q: "What if my app needs a backend or database?",
-        a: "Bring your expected stack and environment-variable needs to the workshop. The Convoy Cloud team will explain the supported deployment path and help teams plan a demo-safe setup.",
+        a: "Bring your expected stack and environment-variable needs to the workshop. The Glenr team will explain the supported deployment path and help teams plan a demo-safe setup.",
       },
     ],
   },

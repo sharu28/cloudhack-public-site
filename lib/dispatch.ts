@@ -1,6 +1,6 @@
 /**
  * Single source of truth for the DISPATCH route: the ordered list of
- * homepage sections, their manifest waypoint codes, and which real Convoy
+ * homepage sections, their manifest waypoint codes, and which real Glenr
  * Cloud deployment state (`pending -> building -> deploying -> deployed`,
  * see AGENTS.md) each one maps to. RouteLine and StatusChip both read this
  * list so the rail, the waypoint dots, and the status readout can never

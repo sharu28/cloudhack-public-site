@@ -17,7 +17,7 @@ import { parseEmailRecipients } from "@/lib/emailRecipients";
  *  RESEND_API_KEY      Resend API secret (server-only, never NEXT_PUBLIC_*).
  *  CONTACT_FROM_EMAIL  The "from" address. MUST be on a Resend-verified domain
  *                      (DNS/SPF/DKIM). Use onboarding@resend.dev for local
- *                      testing before convoy-tech.com is verified - note that
+ *                      testing before glenr.io is verified - note that
  *                      in test mode Resend only delivers to the account owner.
  *  CONTACT_TO_EMAIL    Comma-separated recipients for contact-form enquiries.
  * ───────────────────────────────────────────────────────────────────────────
@@ -78,7 +78,7 @@ export async function POST(request: Request) {
 
   const to = parseEmailRecipients(
     process.env.CONTACT_TO_EMAIL,
-    "info@convoy-tech.com",
+    "info@glenr.io",
   );
   const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
 

@@ -23,12 +23,12 @@ const BUILD_SETUP_ICONS: Record<string, typeof Cpu> = {
  * The build-setup tile grid below reuses the icon-box pattern from the
  * Details section's essentials grid instead of a bare stacked dt/dd list,
  * so the two manifest-tile treatments on the page read as one consistent
- * device. The old third tile (Deployment: Convoy Cloud) is dropped here -
+ * device. The old third tile (Deployment: Glenr) is dropped here -
  * the four-stage manifest above and the Ground Rules section already say
  * that once each; a third repeat added nothing.
  */
 export function CloudPlatform() {
-  const { cloudPlatform, convoyCloudPage, details } = site;
+  const { cloudPlatform, glenrPage, details } = site;
   const buildSetup = details.groups.find((g) => g.title === "Build setup");
 
   return (
@@ -39,11 +39,11 @@ export function CloudPlatform() {
       intro={cloudPlatform.intro}
     >
       <ManifestList>
-        {convoyCloudPage.steps.map((step, i) => (
+        {glenrPage.steps.map((step, i) => (
           <ManifestRow
             key={step.title}
             index={i}
-            total={convoyCloudPage.steps.length}
+            total={glenrPage.steps.length}
             code={step.label}
             title={step.title}
             description={step.body}

@@ -7,8 +7,8 @@
  *  The site reads as a live dispatch board for a one-day build-and-ship
  *  operation, now on a dark control-plane canvas: a near-black field, warm
  *  glowing red-ember accents, thin/light Inter type, and drifting soft glow
- *  orbs - the same register Convoy Cloud's own product marketing uses,
- *  translated to CloudHack's ink-stamp red instead of Convoy's emerald.
+ *  orbs - a clean product-marketing register translated to CloudHack's
+ *  ink-stamp red.
  *  Content surfaces (manifest rows/cards, Split-Flap, Route Line, Status
  *  Chip) stay hard-edged; only chrome (nav, primary buttons) is pill-shaped.
  *  See DESIGN.md for the full rationale - this file is the token source of
@@ -41,10 +41,10 @@
 
   /* Legacy alias kept so any untouched utility resolves sanely during the
      migration; new work should reach for the tokens above. */
-  --color-convoy-red: var(--color-stamp);
-  --color-convoy-red-deep: var(--color-stamp-deep);
-  --color-convoy-rose: var(--color-stamp-wash);
-  --color-convoy-blush: var(--color-paper-dim);
+  --color-glenr-red: var(--color-stamp);
+  --color-glenr-red-deep: var(--color-stamp-deep);
+  --color-glenr-rose: var(--color-stamp-wash);
+  --color-glenr-blush: var(--color-paper-dim);
   --color-obsidian: var(--color-paper);
   --color-text: var(--color-ink);
   --color-text-2: var(--color-ink-2);
@@ -70,7 +70,7 @@
   --color-ring: var(--color-stamp);
 
   /* ── Typography - Inter only, thin-to-medium, never bold ──────────────
-     Convoy's own register: font-thin display, font-extralight headings,
+     Glenr's register: font-thin display, font-extralight headings,
      font-light everything else. Reference codes/data stay on mono. */
   --font-body: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -381,7 +381,7 @@ h3 {
 }
 
 /* ── Background glow orbs (see components/BackgroundOrbs.tsx) ─────────────
-   Convoy's own technique, translated to CloudHack's ink-stamp red/amber:
+   A clean product-marketing technique translated to CloudHack's ink-stamp red/amber:
    large, heavily-blurred radial gradients drifting on slow independent
    loops with a gentle pulse. Purely decorative (aria-hidden), disabled
    entirely under prefers-reduced-motion rather than merely slowed. */

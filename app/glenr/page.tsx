@@ -18,17 +18,17 @@ import { StatusChip } from "@/components/StatusChip";
 import type { DispatchStage } from "@/lib/dispatch";
 
 export const metadata: Metadata = {
-  title: "What is Convoy Cloud?",
+  title: "What is Glenr?",
   description:
-    "Learn how CloudHack teams will deploy final apps on Convoy Cloud, the event's Cloud Platform Partner.",
+    "Learn how CloudHack teams will deploy final apps on Glenr, the event's Cloud Platform Partner.",
   alternates: {
-    canonical: "/convoy-cloud",
+    canonical: "/glenr",
   },
   openGraph: {
-    title: "What is Convoy Cloud? - CloudHack 2026",
+    title: "What is Glenr? - CloudHack 2026",
     description:
-      "CloudHack teams deploy final apps on Convoy Cloud for live demos and judging, with hands-on guidance at the in-person workshop.",
-    url: "/convoy-cloud",
+      "CloudHack teams deploy final apps on Glenr for live demos and judging, with hands-on guidance at the in-person workshop.",
+    url: "/glenr",
     siteName: "CloudHack 2026",
     type: "website",
     locale: "en_US",
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
 const sectionIcons = [Cloud, Server, CalendarDays, CheckCircle2];
 const STEP_STAGES: DispatchStage[] = ["PENDING", "BUILDING", "DEPLOYING", "DEPLOYED"];
 
-export default function ConvoyCloudPage() {
-  const { convoyCloudPage } = site;
+export default function GlenrPage() {
+  const { glenrPage } = site;
 
   return (
     <>
@@ -69,10 +69,10 @@ export default function ConvoyCloudPage() {
                   The cloud platform partner
                 </p>
                 <h1 className="mt-4 max-w-3xl text-4xl font-thin tracking-[-0.03em] text-ink sm:text-5xl md:text-6xl md:leading-[1.03]">
-                  {convoyCloudPage.title}
+                  {glenrPage.title}
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">
-                  {convoyCloudPage.subtitle}
+                  {glenrPage.subtitle}
                 </p>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -90,12 +90,12 @@ export default function ConvoyCloudPage() {
                     View event requirement
                   </Link>
                   <a
-                    href={convoyCloudPage.externalHref}
+                    href={glenrPage.externalHref}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-full border border-line-strong bg-transparent px-6 py-3 text-sm font-light text-ink transition-colors hover:border-stamp hover:text-stamp"
                   >
-                    {convoyCloudPage.externalLabel}
+                    {glenrPage.externalLabel}
                   </a>
                 </div>
               </div>
@@ -110,7 +110,7 @@ export default function ConvoyCloudPage() {
                   In-person platform workshop
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-ink-2">
-                  {convoyCloudPage.workshop}
+                  {glenrPage.workshop}
                 </p>
               </div>
             </Reveal>
@@ -135,11 +135,11 @@ export default function ConvoyCloudPage() {
 
             <div className="mt-8">
               <ManifestList>
-                {convoyCloudPage.steps.map((step, i) => (
+                {glenrPage.steps.map((step, i) => (
                   <ManifestRow
                     key={step.title}
                     index={i}
-                    total={convoyCloudPage.steps.length}
+                    total={glenrPage.steps.length}
                     code={step.label}
                     title={step.title}
                     description={step.body}
@@ -151,7 +151,7 @@ export default function ConvoyCloudPage() {
           </section>
 
           <section className="mt-16 grid gap-px border border-line-strong bg-line-strong sm:mt-20 md:grid-cols-2">
-            {convoyCloudPage.sections.map((section, i) => {
+            {glenrPage.sections.map((section, i) => {
               const Icon = sectionIcons[i] ?? Cloud;
 
               return (
@@ -175,12 +175,12 @@ export default function ConvoyCloudPage() {
           <section className="mt-16 sm:mt-20">
             <Reveal>
               <div className="flex items-center gap-3">
-                <h2 className="text-3xl font-extralight tracking-[-0.02em] text-ink">Convoy Cloud FAQ</h2>
+                <h2 className="text-3xl font-extralight tracking-[-0.02em] text-ink">Glenr FAQ</h2>
                 <StatusChip stage="DEPLOYED" />
               </div>
             </Reveal>
             <div className="mt-6 max-w-3xl">
-              {convoyCloudPage.faq.map((item, i) => (
+              {glenrPage.faq.map((item, i) => (
                 <Reveal as="div" key={item.q} delay={i * 0.04}>
                   <details className="group border-b border-line">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">

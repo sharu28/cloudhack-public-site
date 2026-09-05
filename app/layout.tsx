@@ -5,7 +5,7 @@ import { BackgroundOrbs } from "@/components/BackgroundOrbs";
 import { StructuredData } from "@/components/StructuredData";
 import { SITE_URL, SITE_NAME } from "@/lib/seo";
 
-// Body + UI copy, thin-to-medium only - Convoy Cloud's own register, never
+// Body + UI copy, thin-to-medium only - Glenr's register, never
 // bold. Loaded as five static weights (Inter's variable axis would pull in
 // the full 100–900 range; static files keep only what's actually used).
 const inter = Inter({
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s - CloudHack 2026",
   },
   description:
-    "A one-day hackathon where 80 of Sri Lanka's strongest university students and early-career builders compete to solve real business problems set by sponsor companies. Co-hosted by Ether Labs & Convoy Tech.",
+    "A one-day hackathon where 80 of Sri Lanka's strongest university students and early-career builders compete to solve real business problems set by sponsor companies. Co-hosted by Ether Labs & Glenr.",
   applicationName: SITE_NAME,
   keywords: [
     "CloudHack",
@@ -45,14 +45,14 @@ export const metadata: Metadata = {
     "developers",
     "students",
     "Ether Labs",
-    "Convoy Tech",
+    "Glenr",
   ],
   authors: [
     { name: "Ether Labs", url: "https://etherlabs.lk" },
-    { name: "Convoy Tech", url: "https://convoy-tech.com" },
+    { name: "Glenr", url: "https://glenr.io" },
   ],
-  creator: "Ether Labs & Convoy Tech",
-  publisher: "Ether Labs & Convoy Tech",
+  creator: "Ether Labs & Glenr",
+  publisher: "Ether Labs & Glenr",
   alternates: {
     canonical: "/",
   },
