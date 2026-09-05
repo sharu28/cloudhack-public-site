@@ -71,7 +71,7 @@ export async function POST(request: Request) {
 
   const to = parseEmailRecipients(
     process.env.CONTACT_TO_EMAIL,
-    "info@glenr.io",
+    "info@convoy-tech.com",
   );
   const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
 
