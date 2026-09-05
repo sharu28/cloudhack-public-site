@@ -55,7 +55,7 @@ export function Venue() {
                   <Crosshair className="size-4 text-stamp" strokeWidth={1.5} aria-hidden="true" />
                   Location signal
                 </span>
-                <span>Location / TBA</span>
+                <span>Location / Confirmed</span>
               </div>
 
               <div className="self-center text-center">
@@ -91,7 +91,7 @@ export function Venue() {
             <div>
               <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-ink-2">
                 <MapPin className="size-4 text-stamp" strokeWidth={2} aria-hidden="true" />
-                Venue status
+                Confirmed venue
               </p>
               <h3 className="mt-4 text-2xl font-extralight tracking-[-0.01em] text-ink sm:text-3xl">
                 {venue.name}

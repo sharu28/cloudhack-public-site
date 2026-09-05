@@ -17,7 +17,7 @@ export const site = {
 
   // Event timing. Single source of truth for the countdown timer and sticky CTA.
   event: {
-    startISO: "2026-08-16T09:00:00+05:30",
+    startISO: "2026-09-19T09:00:00+05:30",
     countdownLabel: "Kickoff in",
   },
 
@@ -107,19 +107,19 @@ export const site = {
   // ── Event details ──────────────────────────────────────────────────────────
   details: {
     heading: "Event details",
-    notice: "Venue to be announced.",
+    notice: "Saturday 19 September at ESOFT Metro Campus.",
     essentials: [
       {
         icon: "calendar",
         label: "When",
-        value: "16 August 2026",
-        note: "Sunday · save the date",
+        value: "19 September 2026",
+        note: "Saturday · confirmed",
       },
       {
         icon: "pin",
         label: "Venue",
-        value: "To be announced",
-        note: "Details coming soon",
+        value: "ESOFT Metro Campus",
+        note: "Colombo",
       },
       {
         icon: "clock",
@@ -174,10 +174,10 @@ export const site = {
   //  full address) once the exact building/hall is confirmed.
   venue: {
     heading: "The venue",
-    intro: "The CloudHack 2026 venue will be announced soon.",
-    name: "To be announced",
-    city: "Details coming soon",
-    mapQuery: "",
+    intro: "CloudHack 2026 takes place at ESOFT Metro Campus on Saturday 19 September.",
+    name: "ESOFT Metro Campus",
+    city: "Colombo",
+    mapQuery: "ESOFT Metro Campus, Colombo",
     notes: [
       {
         title: "Doors open 08:30",
@@ -185,7 +185,7 @@ export const site = {
       },
       {
         title: "What to bring",
-        body: "Laptop, charger, and whatever you build best with. WiFi and power will be available.",
+        body: "Laptop, charger, and whatever you build best with. Reliable WiFi and laptop power are required in the venue selection.",
       },
       {
         title: "Getting there",
@@ -218,7 +218,7 @@ export const site = {
   schedule: {
     heading: "Run of day",
     intro:
-      "One day, morning brief to evening demos. Here's how Sunday 16 August plays out.",
+      "One day, morning brief to evening demos. Here's how Saturday 19 September will run.",
     note: "Times are provisional and may shift slightly on the day.",
     items: [
       {
@@ -398,8 +398,8 @@ export const site = {
   //  the full sponsorship pricing table inside the participant funnel.
   partnersTeaser: {
     eyebrow: "Partnerships",
-    heading: "Set a real problem. Meet the builders.",
-    body: "Sponsor tracks, judging seats and recruiting access are open - full tiers and contribution levels live on the partnership page.",
+    heading: "The exclusive title partnership is open.",
+    body: "One title slot, sponsor tracks, judging seats and recruiting access are open - full tiers and contribution levels live on the partnership page.",
     ctaLabel: "View partnership tiers",
     ctaHref: "/partners",
   },
@@ -471,7 +471,7 @@ export const site = {
   sponsors: {
     heading: "Sponsors",
     intro: "Made possible by our incredible partners.",
-    pending: "Full sponsor line-up to be announced.",
+    pending: "The exclusive title partnership and supporting partner slots are open.",
     logos: [] as Array<{
       name: string;
       tier: string;
@@ -550,8 +550,8 @@ export const site = {
       {
         q: "When and where exactly is the event?",
         a:
-          "CloudHack 2026 takes place on 16 August 2026. The venue will be " +
-          "announced soon, so register and we'll send you the details first.",
+          "CloudHack 2026 takes place on Saturday 19 September 2026 at " +
+          "ESOFT Metro Campus in Colombo.",
       },
     ],
   },
@@ -621,7 +621,7 @@ export const site = {
     externalLabel: "Visit Convoy Tech",
     externalHref: "https://convoy-tech.com",
     workshop:
-      "An in-person Convoy Cloud workshop is planned for Sunday 2 August 2026, two weeks ahead of CloudHack. Final time and location will be shared with confirmed participants through email and WhatsApp.",
+      "An in-person Convoy Cloud workshop will be scheduled ahead of CloudHack. Timing and location will be shared with confirmed participants through email and WhatsApp.",
     steps: [
       {
         label: "Workshop",

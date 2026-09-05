@@ -98,7 +98,7 @@ export function Hero() {
  */
 function ManifestDataPlate() {
   const { venue, details, hero } = site;
-  const when = details.essentials.find((e) => e.icon === "calendar")?.value ?? "16 August 2026";
+  const when = details.essentials.find((e) => e.icon === "calendar")?.value ?? "19 September 2026";
 
   const fields: Array<{ label: string; value: string }> = [
     { label: "Route", value: `${venue.city}` },
