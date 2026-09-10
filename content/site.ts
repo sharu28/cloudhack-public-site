@@ -209,7 +209,7 @@ export const site = {
       },
       {
         title: "In-person workshop",
-        body: "A hands-on session two weeks ahead of CloudHack walks teams through the platform, deployment flow, environment variables, and demo setup.",
+        body: "A hands-on session on Monday 14 September walks teams through the platform, deployment flow, environment variables, and demo setup.",
       },
     ],
   },
@@ -534,7 +534,7 @@ export const site = {
         a:
           "Glenr is CloudHack's Cloud Platform Partner. Teams will use it " +
           "to deploy final apps for demos and judging, with an in-person platform " +
-          "workshop planned two weeks ahead of the hackathon.",
+          "workshop on Monday 14 September, ahead of the hackathon.",
         href: "/glenr",
         linkLabel: "Learn about Glenr",
       },
@@ -620,12 +620,12 @@ export const site = {
     externalLabel: "Visit Glenr",
     externalHref: "https://glenr.io",
     workshop:
-      "An in-person Glenr workshop will be scheduled ahead of CloudHack. Timing and location will be shared with confirmed participants through email and WhatsApp.",
+      "The in-person Glenr workshop takes place on Monday 14 September, ahead of CloudHack. Timing and location will be shared with confirmed participants through email and WhatsApp.",
     steps: [
       {
         label: "Workshop",
         title: "Learn the platform",
-        body: "Selected teams attend the in-person Glenr workshop and get comfortable with the deployment workflow ahead of event day.",
+        body: "Selected teams attend the in-person Glenr workshop on Monday 14 September and get comfortable with the deployment workflow ahead of event day.",
       },
       {
         label: "Build",
