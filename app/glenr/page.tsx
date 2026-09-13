@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "What is Glenr? - CloudHack 2026",
     description:
-      "CloudHack teams deploy final apps on Glenr for live demos and judging, with hands-on guidance at the in-person workshop.",
+      "CloudHack teams deploy final apps on Glenr for live demos and judging, with a hands-on guidance at the in-person workshop.",
     url: "/glenr",
     siteName: "CloudHack 2026",
     type: "website",
