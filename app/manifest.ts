@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: `${SITE_NAME} - Where Cloud Meets Creation`,
     short_name: SITE_NAME,
     description:
-      "A one-day hackathon where 80 of Sri Lanka's best young builders solve real business problems set by sponsor companies.",
+      "A three-day hybrid hackathon where 80 of Sri Lanka's best young builders solve a real sponsor problem.",
     start_url: "/",
     display: "standalone",
     background_color: "#161210",

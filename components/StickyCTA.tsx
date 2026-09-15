@@ -10,6 +10,7 @@ export function StickyCTA() {
   const [daysLeft, setDaysLeft] = useState<number | null>(null);
 
   useEffect(() => {
+    if (!site.event.startISO) return;
     const target = new Date(site.event.startISO).getTime();
     const days = Math.ceil((target - Date.now()) / 86_400_000);
     setDaysLeft(days > 0 ? days : null);
@@ -20,7 +21,7 @@ export function StickyCTA() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (daysLeft === null) return null;
+  if (!site.event.startISO || daysLeft === null) return null;
 
   return (
     <div

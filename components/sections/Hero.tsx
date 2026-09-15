@@ -83,7 +83,13 @@ export function Hero() {
         </div>
 
         <div className="mt-14 border-t border-line-strong pt-8">
-          <Countdown targetISO={site.event.startISO} label={site.event.countdownLabel} />
+          {site.event.startISO ? (
+            <Countdown targetISO={site.event.startISO} label={site.event.countdownLabel} />
+          ) : (
+            <p className="font-mono text-sm font-light uppercase tracking-[0.2em] text-stamp">
+              New October dates announcing soon
+            </p>
+          )}
         </div>
       </div>
     </section>
@@ -98,7 +104,7 @@ export function Hero() {
  */
 function ManifestDataPlate() {
   const { venue, details, hero } = site;
-  const when = details.essentials.find((e) => e.icon === "calendar")?.value ?? "19 September 2026";
+  const when = details.essentials.find((e) => e.icon === "calendar")?.value ?? "Announcing soon";
 
   const fields: Array<{ label: string; value: string }> = [
     { label: "Venue", value: venue.name },

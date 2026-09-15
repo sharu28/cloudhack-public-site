@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   // Root layout's title.template appends " - CloudHack 2026", so keep this short.
   title: "Register your team",
   description:
-    "Register solo, with a partial team, or as a full team for CloudHack 2026, a one-day hackathon in Colombo.",
+    "Register solo, with a partial team, or as a full team for CloudHack 2026, a three-day hybrid hackathon in Sri Lanka.",
   alternates: {
     canonical: "/signup",
   },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Register your team - CloudHack 2026",
     description:
-      "Register solo, with a partial team, or as a full team for CloudHack 2026, a one-day hackathon in Colombo.",
+      "Register solo, with a partial team, or as a full team for CloudHack 2026, a three-day hybrid hackathon in Sri Lanka.",
     url: "/signup",
     siteName: "CloudHack 2026",
     type: "website",

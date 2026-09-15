@@ -17,8 +17,15 @@ export const site = {
 
   // Event timing. Single source of truth for the countdown timer and sticky CTA.
   event: {
-    startISO: "2026-09-19T09:00:00+05:30",
+    startISO: null as string | null,
     countdownLabel: "Kickoff in",
+  },
+
+  announcement: {
+    label: "Schedule update",
+    title: "CloudHack has been postponed",
+    body:
+      "Due to a scheduling conflict with one of our lead sponsors, we're not able to hold CloudHack this week, so the hackathon has been postponed to the second week of October. The exact date will be announced soon.",
   },
 
   // ── Hero ─────────────────────────────────────────────────────────────────
@@ -27,7 +34,7 @@ export const site = {
     tagline: "Where Cloud Meets Creation",
     // Short, punchy one-liner under the tagline.
     oneLiner:
-      "80 of Sri Lanka's best young builders. Real problems. One day to solve them.",
+      "80 of Sri Lanka's best young builders. One real problem. Three days to build and prove it.",
     ctaLabel: "Sign Up",
     ctaHref: "/signup",
     partnerLabel: "Join as a Partner",
@@ -36,7 +43,7 @@ export const site = {
     stats: [
       { value: "80", label: "Participants" },
       { value: "~20", label: "Teams" },
-      { value: "1", label: "Day" },
+      { value: "3", label: "Days" },
     ],
   },
 
@@ -44,9 +51,9 @@ export const site = {
   about: {
     heading: "About CloudHack",
     body:
-      "CloudHack is a one-day hackathon where 80 of Sri Lanka's strongest " +
-      "university students and early-career builders compete to solve real " +
-      "business problems set by sponsor companies. Born from a simple belief - " +
+      "CloudHack is a three-day hackathon where 80 of Sri Lanka's strongest " +
+      "university students and early-career builders compete to solve a real " +
+      "business problem shaped with our sponsors. Born from a simple belief - " +
       "Sri Lanka has exceptional tech talent that deserves a stage - CloudHack " +
       "isn't just a hackathon. It's the beginning of a movement. A community " +
       "where students and professionals collaborate, grow, and put Sri Lanka's " +
@@ -61,8 +68,8 @@ export const site = {
   tracks: {
     heading: "The themes",
     intro:
-      "Three challenge tracks, each set by a Track Partner. Pick the one that " +
-      "fits your team and build against a real brief.",
+      "The challenge will be grounded in Automation, Sustainability, and AI Enablement. " +
+      "The exact problem statement will be revealed two days before the in-person final.",
     items: [
       {
         name: "Automation",
@@ -86,9 +93,9 @@ export const site = {
   challenge: {
     heading: "The Challenge",
     intro:
-      "The problem briefs - set by our sponsor companies - drop on the day. The specifics are under wraps for now.",
+      "The exact problem statement will be revealed two days before the in-person final. Teams will then have two consecutive days to build remotely together.",
     status: "Coming soon",
-    note: "The challenge briefs will be revealed closer to the event. Watch this space.",
+    note: "The themes are public; the final brief stays under wraps until the remote build begins.",
   },
 
   // ── Prizes ───────────────────────────────────────────────────────────────────
@@ -107,13 +114,13 @@ export const site = {
   // ── Event details ──────────────────────────────────────────────────────────
   details: {
     heading: "Event details",
-    notice: "Saturday 19 September at ESOFT University Colombo, Block B.",
+    notice: "Postponed to the second week of October. Exact dates will be announced soon.",
     essentials: [
       {
         icon: "calendar",
         label: "When",
-        value: "19 September 2026",
-        note: "Saturday · confirmed",
+        value: "Second week of October 2026",
+        note: "Exact dates · announcing soon",
       },
       {
         icon: "pin",
@@ -124,8 +131,8 @@ export const site = {
       {
         icon: "clock",
         label: "Duration",
-        value: "One full day",
-        note: "Morning brief to evening demos",
+        value: "Three days",
+        note: "Two remote build days · one in-person final",
       },
     ],
     groups: [
@@ -174,14 +181,14 @@ export const site = {
   //  full address) once the exact building/hall is confirmed.
   venue: {
     heading: "The venue",
-    intro: "CloudHack 2026 takes place at ESOFT University Colombo, Block B on Saturday 19 September.",
+    intro: "Teams come together at ESOFT University Colombo, Block B for the final day. The exact October date will be announced soon.",
     name: "ESOFT University Colombo, Block B",
     city: "Colombo",
     mapQuery: "ESOFT University Colombo, Block B",
     notes: [
       {
-        title: "Doors open 08:30",
-        body: "Check-in closes at kickoff - arrive early to settle in.",
+        title: "Final-day arrival",
+        body: "Check-in time and arrival instructions will be shared once the new date is confirmed.",
       },
       {
         title: "What to bring",
@@ -209,75 +216,32 @@ export const site = {
       },
       {
         title: "In-person workshop",
-        body: "A hands-on session on Tuesday 15 September walks teams through the platform, deployment flow, environment variables, and demo setup.",
+        body: "A hands-on session will walk teams through the platform, deployment flow, environment variables, and demo setup. The workshop date will be announced soon.",
       },
     ],
   },
 
-  // Participant-facing agenda, distilled from the day-of runbook.
+  // Participant-facing format for the three-day hackathon.
   schedule: {
-    heading: "Run of day",
+    heading: "How the three days work",
     intro:
-      "One day, morning brief to evening demos. Here's how Saturday 19 September will run.",
-    note: "Times are provisional and may shift slightly on the day.",
+      "The problem statement is revealed before two consecutive remote build days. Teams then meet mentors and judges in person on the final day.",
+    note: "Exact dates and final-day timings will be announced soon.",
     items: [
       {
-        time: "08:30",
-        title: "Doors open & check-in",
-        blurb: "Grab your name tag, find your table, settle in.",
+        phase: "DAY 1",
+        title: "Problem reveal & remote build",
+        blurb: "The exact problem statement is revealed and teams begin building remotely together.",
       },
       {
-        time: "08:45",
-        title: "Opening keynote",
-        blurb:
-          "A short address to open CloudHack before the day's briefings begin.",
+        phase: "DAY 2",
+        title: "Remote build continues",
+        blurb: "Teams work remotely for a second consecutive day to develop and test their prototypes.",
       },
       {
-        time: "09:00",
-        title: "Kickoff",
-        blurb: "Format, rules, judging criteria and how submissions work.",
-      },
-      {
-        time: "09:30",
-        title: "Challenge briefings",
-        blurb: "Sponsor companies walk through the real problems you'll solve.",
-      },
-      {
-        time: "10:00",
-        title: "Hacking begins",
-        blurb: "Pick your track and start building.",
-      },
-      {
-        time: "11:30",
-        title: "Mentor checkpoint 1",
-        blurb: "Sanity-check your approach with mentors before you go deep.",
-      },
-      { time: "13:00", title: "Lunch", blurb: "Fuel up." },
-      {
-        time: "14:30",
-        title: "Mentor checkpoint 2",
-        blurb: "Pressure-test your demo path and scope for the final stretch.",
-      },
-      {
-        time: "16:00",
-        title: "Submissions open",
-        blurb: "Lock in your links, decks and demo videos.",
-      },
-      {
-        time: "17:00",
-        title: "Final demos",
-        blurb: "Every team presents in a fixed slot for real judges.",
-      },
-      {
-        time: "18:00",
-        title: "Closing keynote",
-        blurb:
-          "A closing address from Glenr, our Cloud Platform Partner.",
-      },
-      {
-        time: "19:00",
-        title: "Winners & closing",
-        blurb: "Prizes, photos and what happens next.",
+        phase: "DAY 3",
+        title: "In-person final",
+        blurb: "Teams come to the venue to talk with mentors, review their approach, showcase prototypes, make final changes, and deliver their demos and pitches.",
       },
     ],
   },
@@ -288,7 +252,7 @@ export const site = {
   judges: {
     heading: "Judges & mentors",
     intro:
-      "Industry engineers and founders who set the briefs, mentor teams through the day, and judge the final demos.",
+      "Industry engineers and founders who shape the challenge, mentor teams on the final day, and judge the demos and pitches.",
     pending: "The full panel is being confirmed. Announcing soon.",
   },
 
@@ -298,7 +262,7 @@ export const site = {
   // never as empty cards (see DESIGN.md: no placeholder theater).
   speakers: {
     heading: "Keynote speakers",
-    intro: "Short keynotes bookend the day - one to open, one to close.",
+    intro: "Short keynotes will open and close the in-person final.",
     pending: "Speaker names and bios are being confirmed. Announcing soon.",
     items: [] as Array<{
       name: string;
@@ -316,13 +280,13 @@ export const site = {
   rules: {
     heading: "Judging & rules",
     intro:
-      "Every team demos to the full judging panel and is scored on the same sheet. The detailed criteria are revealed at kickoff - here are the ground rules to plan around.",
-    criteriaNote: "Full judging criteria will be shared at kickoff on the day.",
+      "Every team demos to the full judging panel and is scored on the same sheet. Detailed criteria will be shared before the final presentations - here are the ground rules to plan around.",
+    criteriaNote: "Full judging criteria will be shared before demos and pitches on the final day.",
     rulesHeading: "Ground rules",
     items: [
       "Teams are 3–4 people. Every member must be registered.",
-      "All project code is written on the day. Open-source libraries, frameworks and AI tools (including the hackathon inference endpoint) are fair game.",
-      "Each team builds against one or more of the themes (Automation, Sustainability, AI Enablement) and the sponsor problem briefs.",
+      "All project code must be written during the three-day hackathon window. Open-source libraries, frameworks and AI tools (including the hackathon inference endpoint) are fair game.",
+      "Each team builds against the revealed problem statement, grounded in Automation, Sustainability, and AI Enablement.",
       "Final submissions must be demoable apps that are deployed on Glenr.",
       "Final submissions must include a working demo, a GitHub/repo link, and a short demo video. Submission links close before final demos.",
       "Judges' decisions are final.",
@@ -334,7 +298,7 @@ export const site = {
   //  "link coming soon" until it starts with http.
   community: {
     heading: "Join the community",
-    body: "The CloudHack WhatsApp community is where announcements drop first - and where solo builders find teammates before the day.",
+    body: "The CloudHack WhatsApp community is where schedule announcements drop first - and where solo builders can find teammates before the event.",
     ctaLabel: "Join the WhatsApp community",
     pendingLabel: "WhatsApp community link coming soon",
     href: "https://chat.whatsapp.com/KND60dRYwZz8GE3YU9NH9U",
@@ -362,7 +326,7 @@ export const site = {
           "The technology and infrastructure partner behind the event. Glenr " +
           "will set up the cluster and a shared inference endpoint - " +
           "spanning several models, including some hosted directly by Glenr - " +
-          "that teams use to build and run their solutions on the day.",
+          "that teams use to build and run their solutions throughout the hackathon.",
         email: "krishakary2j@gmail.com",
         website: "glenr.io",
         href: "https://glenr.io",
@@ -375,8 +339,8 @@ export const site = {
     heading: "Why participate",
     items: [
       {
-        title: "Solve real problems",
-        body: "Build against actual business challenges set by sponsor companies - not made-up briefs.",
+        title: "Solve a real problem",
+        body: "Build against an actual business challenge shaped with our sponsors - not a made-up brief.",
       },
       {
         title: "Showcase your talent",
@@ -490,7 +454,7 @@ export const site = {
         a:
           "CloudHack is open to university students and early-career builders in Sri Lanka. " +
           "Teams can include developers, AI builders, designers, product thinkers, or anyone " +
-          "who can help ship a working prototype in one day.",
+          "who can help ship a working prototype across the three-day format.",
       },
       {
         q: "How do I register?",
@@ -512,7 +476,7 @@ export const site = {
           "details from shortlisted teams.",
       },
       {
-        q: "What should I bring on the day?",
+        q: "What should I bring on the final day?",
         a:
           "Your laptop, charger, and whatever you build best with. You do not need " +
           "to bring your own AI API tokens.",
@@ -524,17 +488,17 @@ export const site = {
       {
         q: "What do I need to build?",
         a:
-          "Pick one of the sponsor problem tracks - Automation, Sustainability, " +
-          "or AI Enablement - and ship a working prototype using AI tools by the " +
-          "evening demo. Final submissions must include a working demo, a GitHub/repo " +
-          "link, and a short presentation or demo video.",
+          "The exact problem statement will be revealed two days before the in-person final. " +
+          "Use the two remote build days to create a working prototype, then refine and present it " +
+          "at the venue. Final submissions must include a working demo, a GitHub/repo link, and a " +
+          "short presentation or demo video.",
       },
       {
         q: "What is Glenr?",
         a:
           "Glenr is CloudHack's Cloud Platform Partner. Teams will use it " +
           "to deploy final apps for demos and judging, with an in-person platform " +
-          "workshop on Tuesday 15 September, ahead of the hackathon.",
+          "workshop ahead of the hackathon. The workshop date will be announced soon.",
         href: "/glenr",
         linkLabel: "Learn about Glenr",
       },
@@ -549,8 +513,8 @@ export const site = {
       {
         q: "When and where exactly is the event?",
         a:
-          "CloudHack 2026 takes place on Saturday 19 September 2026 at " +
-          "ESOFT University Colombo, Block B.",
+          "CloudHack 2026 has been postponed to the second week of October 2026. " +
+          "The exact dates will be announced soon, with the final day at ESOFT University Colombo, Block B.",
       },
     ],
   },
@@ -620,17 +584,17 @@ export const site = {
     externalLabel: "Visit Glenr",
     externalHref: "https://glenr.io",
     workshop:
-      "The in-person Glenr workshop takes place on Tuesday 15 September, ahead of CloudHack. Timing and location will be shared with confirmed participants through email and WhatsApp.",
+      "The in-person Glenr workshop will take place ahead of CloudHack. The date, time, and location will be announced soon through email and WhatsApp.",
     steps: [
       {
         label: "Workshop",
         title: "Learn the platform",
-        body: "Selected teams attend the in-person Glenr workshop on Tuesday 15 September and get comfortable with the deployment workflow ahead of event day.",
+        body: "Selected teams attend the in-person Glenr workshop and get comfortable with the deployment workflow ahead of the hackathon. The workshop date will be announced soon.",
       },
       {
         label: "Build",
         title: "Ship locally first",
-        body: "Teams build their prototype during CloudHack using their preferred framework, repo, and local development setup.",
+        body: "Teams build their prototype remotely over two consecutive days using their preferred framework, repo, and local development setup.",
       },
       {
         label: "Deploy",
@@ -650,7 +614,7 @@ export const site = {
       },
       {
         title: "How it works for teams",
-        body: "Teams build locally during the event, then publish their frontend, backend, or full-stack app to Glenr for submission. Your final package should include the deployed URL, a GitHub/repo link, and a short presentation or demo video.",
+        body: "Teams build remotely over the first two days, then publish their frontend, backend, or full-stack app to Glenr for the in-person final. The final package should include the deployed URL, a GitHub/repo link, and a short presentation or demo video.",
       },
       {
         title: "What the workshop covers",

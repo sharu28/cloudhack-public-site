@@ -3,6 +3,7 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { BackgroundOrbs } from "@/components/BackgroundOrbs";
 import { StructuredData } from "@/components/StructuredData";
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { SITE_URL, SITE_NAME } from "@/lib/seo";
 
 // Body + UI copy, thin-to-medium only - Glenr's register, never
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s - CloudHack 2026",
   },
   description:
-    "A one-day hackathon where 80 of Sri Lanka's strongest university students and early-career builders compete to solve real business problems set by sponsor companies. Co-hosted by Ether Labs & Glenr.",
+    "A three-day hybrid hackathon where 80 of Sri Lanka's strongest university students and early-career builders solve a real sponsor problem through two remote build days and an in-person final.",
   applicationName: SITE_NAME,
   keywords: [
     "CloudHack",
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CloudHack 2026 - Where Cloud Meets Creation",
     description:
-      "80 of Sri Lanka's best young builders. Real problems. One day to solve them.",
+      "80 of Sri Lanka's best young builders. One real problem. Three days to build and prove it.",
     url: "/",
     siteName: SITE_NAME,
     type: "website",
@@ -81,7 +82,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CloudHack 2026",
     description:
-      "Where Cloud Meets Creation - a one-day hackathon in Colombo.",
+      "Where Cloud Meets Creation - a three-day hybrid hackathon in Sri Lanka.",
     // twitter:image is injected automatically from app/twitter-image.tsx
   },
   // Google Search Console - HTML-tag ownership verification.
@@ -115,7 +116,10 @@ export default function RootLayout({
           <BackgroundOrbs />
           <div className="manifest-grid absolute inset-0" />
         </div>
-        <div className="relative z-10">{children}</div>
+        <div className="relative z-10">
+          <AnnouncementBanner />
+          {children}
+        </div>
       </body>
     </html>
   );

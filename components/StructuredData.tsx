@@ -14,36 +14,15 @@ export function StructuredData() {
     .map((h) => h.href)
     .filter((href) => href.startsWith("http"));
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": `${SITE_URL}/#organization`,
-        name: "CloudHack",
-        alternateName: SITE_NAME,
-        url: SITE_URL,
-        logo: `${SITE_URL}/icon.svg`,
-        description: site.hero.oneLiner,
-        sameAs,
-      },
-      {
-        "@type": "WebSite",
-        "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
-        name: SITE_NAME,
-        description: `${site.hero.tagline} - ${site.hero.oneLiner}`,
-        inLanguage: "en",
-        publisher: { "@id": `${SITE_URL}/#organization` },
-      },
-      {
+  const eventNode = site.event.startISO
+    ? {
         "@type": "Event",
         "@id": `${SITE_URL}/#event`,
         name: SITE_NAME,
         description: `${site.hero.tagline} - ${site.hero.oneLiner}`,
         startDate: site.event.startISO,
         eventStatus: "https://schema.org/EventScheduled",
-        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
         ...(site.venue.mapQuery
           ? {
               location: {
@@ -67,7 +46,32 @@ export function StructuredData() {
           availability: "https://schema.org/InStock",
         },
         image: [`${SITE_URL}/opengraph-image`],
+      }
+    : null;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: "CloudHack",
+        alternateName: SITE_NAME,
+        url: SITE_URL,
+        logo: `${SITE_URL}/icon.svg`,
+        description: site.hero.oneLiner,
+        sameAs,
       },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: SITE_NAME,
+        description: `${site.hero.tagline} - ${site.hero.oneLiner}`,
+        inLanguage: "en",
+        publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+      ...(eventNode ? [eventNode] : []),
     ],
   };
 
